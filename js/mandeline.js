@@ -1,6 +1,6 @@
 /**
  * MANDELINE (مندلين) — Core Interactive Controller & Motion Engine
- * Features: Word-by-word reveal, RAF-lerped cursor spotlight, i18n, concierge generator, lightbox, drawer nav
+ * Features: Masked Word Reveal, RAF Spotlight & Pointer Parallax, Expanding Canvas, Concierge Generator
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroBgContainer = document.getElementById('hero-bg-container');
   const heroSpotlight = document.getElementById('hero-spotlight');
   const heroHeadline = document.getElementById('hero-headline');
+  const heroPrimaryCta = document.getElementById('hero-primary-cta');
   const navHeader = document.getElementById('main-nav');
   const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -36,42 +37,45 @@ document.addEventListener('DOMContentLoaded', () => {
   const collectionsContainer = document.getElementById('collections-container');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const conciergeForm = document.getElementById('concierge-form');
-  const conciergeSubmitBtn = document.getElementById('concierge-submit-btn');
   const floatingWhatsappBtn = document.getElementById('floating-whatsapp-bar');
   const quickViewModal = document.getElementById('quick-view-modal');
   const modalCloseBtn = document.getElementById('modal-close-btn');
+  const expandCanvasCard = document.getElementById('expand-canvas-card');
 
-  // --- 1. HERO WORD-BY-WORD REVEAL ENGINE (TerraElix Concept) ---
+  // --- 1. HERO MASKED WORD REVEAL (TerraElix Staged Intro) ---
   function renderHeroWords() {
     if (!heroHeadline) return;
     const t = data.translations[currentLang].hero;
     const words = t.words;
     
-    // Clear and build wrapped word spans
     heroHeadline.innerHTML = '';
     words.forEach((word, idx) => {
+      const wrap = document.createElement('span');
+      wrap.className = 'word-mask-wrap mx-1.5 inline-block';
+      
       const span = document.createElement('span');
-      span.className = `reveal-word delay-${(idx + 2) * 100} mx-1.5 inline-block`;
+      span.className = `reveal-word delay-${(idx + 2) * 100} inline-block`;
       span.textContent = word;
-      heroHeadline.appendChild(span);
+      
+      wrap.appendChild(span);
+      heroHeadline.appendChild(wrap);
     });
 
-    // Trigger loaded states after slight tick
+    // Staged trigger
     setTimeout(() => {
-      if (heroBgContainer) heroBgContainer.classList.add('loaded');
       if (heroSection) heroSection.classList.add('hero-loaded');
     }, 150);
   }
 
-  // --- 2. DESKTOP FLORAL SPOTLIGHT ENGINE (Lithos Concept - RAF + Lerp) ---
-  let isPointerActive = false;
-  let mouseX = window.innerWidth * 0.75;
-  let mouseY = window.innerHeight * 0.55;
+  // --- 2. DESKTOP SPOTLIGHT & POINTER PARALLAX (Lithos Concept - RAF + Lerp) ---
+  let isPointerInside = false;
+  let mouseX = window.innerWidth * 0.7;
+  let mouseY = window.innerHeight * 0.5;
   let spotX = mouseX;
   let spotY = mouseY;
   let rafId = null;
 
-  function updateSpotlightLoop() {
+  function updateMotionLoop() {
     // Lerp smooth interpolation (0.09 factor)
     spotX += (mouseX - spotX) * 0.09;
     spotY += (mouseY - spotY) * 0.09;
@@ -81,14 +85,28 @@ document.addEventListener('DOMContentLoaded', () => {
       heroSpotlight.style.setProperty('--spot-y', `${spotY.toFixed(1)}px`);
     }
 
-    if (isPointerActive) {
-      rafId = requestAnimationFrame(updateSpotlightLoop);
+    if (heroSection) {
+      const rect = heroSection.getBoundingClientRect();
+      const normX = ((spotX - rect.width / 2) / (rect.width / 2));
+      const normY = ((spotY - rect.height / 2) / (rect.height / 2));
+
+      // Subtle parallax layers
+      heroSection.style.setProperty('--bg-shift-x', `${(normX * -2).toFixed(1)}px`);
+      heroSection.style.setProperty('--bg-shift-y', `${(normY * -2).toFixed(1)}px`);
+      heroSection.style.setProperty('--main-shift-x', `${(normX * -5).toFixed(1)}px`);
+      heroSection.style.setProperty('--main-shift-y', `${(normY * -5).toFixed(1)}px`);
+      heroSection.style.setProperty('--fg-shift-x', `${(normX * -9).toFixed(1)}px`);
+      heroSection.style.setProperty('--fg-shift-y', `${(normY * -9).toFixed(1)}px`);
+    }
+
+    if (isPointerInside) {
+      rafId = requestAnimationFrame(updateMotionLoop);
     }
   }
 
   if (heroSection && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     heroSection.addEventListener('mouseenter', (e) => {
-      isPointerActive = true;
+      isPointerInside = true;
       const rect = heroSection.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
@@ -96,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
       spotY = mouseY;
       if (heroSpotlight) heroSpotlight.style.setProperty('--spot-opacity', '1');
       cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(updateSpotlightLoop);
+      rafId = requestAnimationFrame(updateMotionLoop);
     });
 
     heroSection.addEventListener('mousemove', (e) => {
@@ -106,23 +124,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     heroSection.addEventListener('mouseleave', () => {
-      isPointerActive = false;
+      isPointerInside = false;
       if (heroSpotlight) heroSpotlight.style.setProperty('--spot-opacity', '0');
+      if (heroSection) {
+        heroSection.style.setProperty('--main-shift-x', '0px');
+        heroSection.style.setProperty('--main-shift-y', '0px');
+      }
     });
   }
 
-  // --- 3. LANGUAGE SWITCHER ENGINE ---
+  // --- 3. MAGNETIC HERO PRIMARY CTA (Desktop Only) ---
+  if (heroPrimaryCta && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    heroPrimaryCta.addEventListener('mousemove', (e) => {
+      const rect = heroPrimaryCta.getBoundingClientRect();
+      const x = (e.clientX - (rect.left + rect.width / 2)) * 0.2;
+      const y = (e.clientY - (rect.top + rect.height / 2)) * 0.2;
+      heroPrimaryCta.style.setProperty('--btn-mag-x', `${x.toFixed(1)}px`);
+      heroPrimaryCta.style.setProperty('--btn-mag-y', `${y.toFixed(1)}px`);
+    });
+
+    heroPrimaryCta.addEventListener('mouseleave', () => {
+      heroPrimaryCta.style.setProperty('--btn-mag-x', '0px');
+      heroPrimaryCta.style.setProperty('--btn-mag-y', '0px');
+    });
+  }
+
+  // --- 4. LANGUAGE SWITCHER ENGINE ---
   function applyTranslations() {
     const t = data.translations[currentLang];
     htmlEl.lang = currentLang;
     htmlEl.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
 
-    // Update document title & meta
     document.title = currentLang === 'ar' 
       ? `${data.businessConfig.brandAr} — بوتيك الزهور الفاخرة في جدة`
       : `${data.businessConfig.brandEn} — Fine Floral Boutique Jeddah`;
 
-    // Update text elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach((el) => {
       const keyPath = el.getAttribute('data-i18n').split('.');
       let val = t;
@@ -134,12 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
           break;
         }
       }
-      if (val !== null) {
-        el.textContent = val;
-      }
+      if (val !== null) el.textContent = val;
     });
 
-    // Update placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
       const keyPath = el.getAttribute('data-i18n-placeholder').split('.');
       let val = t;
@@ -151,25 +184,20 @@ document.addEventListener('DOMContentLoaded', () => {
           break;
         }
       }
-      if (val !== null) {
-        el.setAttribute('placeholder', val);
-      }
+      if (val !== null) el.setAttribute('placeholder', val);
     });
 
-    // Update Lang button text
     langToggleBtns.forEach(btn => {
       btn.textContent = t.langBtn;
       btn.setAttribute('aria-label', currentLang === 'ar' ? 'Switch to English' : 'التحويل إلى العربية');
     });
 
-    // Update dynamic components
     renderHeroWords();
     renderMarquee();
     renderOccasions();
     renderCollections();
     renderConciergeOptions();
 
-    // Re-initialize Lucide Icons for dynamic content
     if (window.lucide) {
       window.lucide.createIcons();
     }
@@ -188,23 +216,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 4. MARQUEE RENDERER ---
+  // --- 5. MARQUEE RENDERER ---
   function renderMarquee() {
     const marqueeContainer = document.getElementById('marquee-content');
     if (!marqueeContainer) return;
     const items = data.translations[currentLang].marquee;
     const content = items.map(text => `
-      <span class="inline-flex items-center gap-4 text-xs lg:text-sm tracking-wider uppercase font-medium text-stone-300">
+      <span class="inline-flex items-center gap-4 text-xs tracking-wider uppercase font-medium text-stone-300">
         <span>${text}</span>
         <span class="text-[#D4AF37] opacity-60">✦</span>
       </span>
     `).join('');
     
-    // Duplicate to ensure seamless continuous loop
     marqueeContainer.innerHTML = `${content} ${content} ${content}`;
   }
 
-  // --- 5. OCCASIONS SECTION ---
+  // --- 6. OCCASIONS SECTION ---
   function renderOccasions() {
     if (!occasionsContainer) return;
     const isAr = currentLang === 'ar';
@@ -235,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
               class="w-full py-3 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#FAF7F2] hover:bg-[#D4AF37] hover:text-black text-stone-800 border border-[#E5DED2] transition-all duration-300 flex items-center justify-center gap-2 group-hover:border-[#D4AF37]"
             >
               <span>${tSec.selectCta}</span>
-              <span class="text-sm transition-transform group-hover:translate-x-1 ${isAr ? 'group-hover:-translate-x-1' : ''}">${isAr ? '←' : '→'}</span>
+              <span class="text-sm transition-transform ${isAr ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}">${isAr ? '←' : '→'}</span>
             </button>
           </div>
         </div>
@@ -243,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
   }
 
-  // Global helper for occasion card CTA
   window.selectOccasionAndScroll = function(occId, budget, palette) {
     conciergeState.occasion = occId;
     if (budget && budget !== 'undefined') conciergeState.budget = budget;
@@ -257,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // --- 6. COLLECTIONS SECTION & FILTER TABS ---
+  // --- 7. COLLECTIONS SECTION & FILTER TABS ---
   function renderCollections() {
     if (!collectionsContainer) return;
     const isAr = currentLang === 'ar';
@@ -325,7 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('');
   }
 
-  // Filter Buttons
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => {
@@ -339,7 +364,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Direct Product WhatsApp Order
   window.orderDirectItem = function(itemId) {
     const item = data.collections.find(c => c.id === itemId);
     if (!item) return;
@@ -355,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open(url, '_blank');
   };
 
-  // --- 7. QUICK VIEW / LIGHTBOX MODAL ---
+  // --- 8. QUICK VIEW / LIGHTBOX MODAL ---
   window.openQuickView = function(itemId) {
     const item = data.collections.find(c => c.id === itemId);
     if (!item || !quickViewModal) return;
@@ -402,12 +426,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 8. INTERACTIVE BESPOKE CONCIERGE ENGINE ---
+  // --- 9. INTERACTIVE BESPOKE CONCIERGE ENGINE ---
   function renderConciergeOptions() {
     const isAr = currentLang === 'ar';
     const t = data.translations[currentLang].conciergeSec;
 
-    // Render Occasion Radios
     const occasionContainer = document.getElementById('concierge-occasions-grid');
     if (occasionContainer) {
       occasionContainer.innerHTML = data.occasions.map(occ => {
@@ -424,7 +447,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }).join('');
     }
 
-    // Render Budget Radios
     const budgetContainer = document.getElementById('concierge-budget-grid');
     if (budgetContainer) {
       const budgets = [
@@ -447,7 +469,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }).join('');
     }
 
-    // Render Palette Radios
     const paletteContainer = document.getElementById('concierge-palette-grid');
     if (paletteContainer) {
       const palettes = [
@@ -470,7 +491,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }).join('');
     }
 
-    // Bind Radio Change Handlers
     document.querySelectorAll('input[name="c_occasion"]').forEach(el => {
       el.addEventListener('change', (e) => { conciergeState.occasion = e.target.value; });
     });
@@ -482,7 +502,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Concierge Form Submission to WhatsApp
   if (conciergeForm) {
     conciergeForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -494,7 +513,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const deliveryVal = deliveryInput ? deliveryInput.value.trim() : '';
       const noteVal = noteInput ? noteInput.value.trim() : '';
 
-      // Find labels
       const occObj = data.occasions.find(o => o.id === conciergeState.occasion);
       const occName = occObj ? (isAr ? occObj.titleAr : occObj.titleEn) : conciergeState.occasion;
 
@@ -511,7 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (conciergeState.palette === 'florist_choice') paletteLabel = isAr ? 'على ذوق المنسق المحترف' : 'Florist Choice';
 
       const msg = isAr
-        ? `مرحباً بوتيك مندلين للزهور 🌸\nأرغب بطلب تنسيق مخصص عبر المنسّق الشخصي:\n` +
+        ? `مرحباً بوتيك مندلين للزهور 🌸\nأرغب بطلب تنسيق مخصص عبر المنسق الشخصي:\n` +
           `• المناسبة: *${occName}*\n` +
           `• الميزانية التقريبية: *${budgetLabel}*\n` +
           `• درجات الألوان: *${paletteLabel}*\n` +
@@ -531,11 +549,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 9. NAVBAR SCROLL & FLOATING CTA BEHAVIOR ---
+  // --- 10. SCROLL & PROGRESSIVE MOTION CONTROLLER ---
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
 
-    // Navbar translucency
+    // Navbar state
     if (navHeader) {
       if (scrollY > 50) {
         navHeader.classList.add('scrolled');
@@ -544,9 +562,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // Hero scroll-out parallax
+    if (scrollY < window.innerHeight && heroHeadline) {
+      const offset = scrollY * 0.15;
+      const opacity = Math.max(0, 1 - (scrollY / 700));
+      heroHeadline.style.transform = `translateY(-${offset}px)`;
+      heroHeadline.style.opacity = opacity;
+    }
+
     // Floating WhatsApp Bar appearance on mobile
     if (floatingWhatsappBtn) {
-      if (scrollY > 400) {
+      if (scrollY > 350) {
         floatingWhatsappBtn.classList.remove('translate-y-32', 'opacity-0');
         floatingWhatsappBtn.classList.add('translate-y-0', 'opacity-100');
       } else {
@@ -556,7 +582,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
-  // --- 10. MOBILE MENU DRAWER ---
+  // --- 11. MOBILE MENU DRAWER ---
   function openMobileMenu() {
     if (!mobileMenuDrawer) return;
     mobileMenuDrawer.classList.remove('translate-x-full', '-translate-x-full', 'hidden');
@@ -576,12 +602,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', openMobileMenu);
   if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
   
-  // Close menu on nav link clicks
   document.querySelectorAll('.mobile-nav-link').forEach(link => {
     link.addEventListener('click', closeMobileMenu);
   });
 
-  // --- 11. SCROLL REVEAL OBSERVER ---
+  // --- 12. SCROLL REVEAL OBSERVER & EXPANDING CANVAS OBSERVER ---
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -590,7 +615,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    root: null,
     threshold: 0.12,
     rootMargin: '0px 0px -40px 0px'
   });
@@ -598,6 +622,19 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.scroll-reveal').forEach(el => {
     revealObserver.observe(el);
   });
+
+  if (expandCanvasCard) {
+    const expandObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          expandCanvasCard.classList.add('is-expanded');
+        }
+      });
+    }, {
+      threshold: 0.25
+    });
+    expandObserver.observe(expandCanvasCard);
+  }
 
   // --- INITIAL RENDER ---
   applyTranslations();

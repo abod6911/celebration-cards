@@ -6,15 +6,15 @@
   <title>مندلين للورد — بوتيك الزهور الفاخرة في جدة | MANDELINE Fine Floral Atelier</title>
   
   <!-- SEO & Social Meta Tags -->
-  <meta name="description" content="بوتيك مندلين للزهور الفاخرة في جدة. تنسيق باقات ورد طبيعية نادرة، فازات رخامية فاخرة، وتصاميم زهرية للمناسبات الراقية مع توصيل سريع ومُبرّد.">
+  <meta name="description" content="بوتيك مندلين للزهور الفاخرة في جدة. تنسيق باقات ورد طبيعية نادرة، فازات رخامية فاخرة، وتصاميم زهرية للمناسبات الراقية مع توصيل سريع ومبرد.">
   <meta name="keywords" content="ورد جدة, بوتيك مندلين, باقات ورد فاخرة جدة, توصيل ورد جدة, منسق زهور جدة, هدايا ورد فخمة">
   <meta property="og:title" content="مندلين للورد — بوتيك الزهور الفاخرة في جدة">
-  <meta property="og:description" content="زهور تُصاغ لتبقى في الذاكرة. حدد مناسبتك وميزانيتك، ومندلين يتكفل بالباقي.">
-  <meta property="og:image" content="assets/images/hero-base.jpg">
+  <meta property="og:description" content="زهور تبقى في الذاكرة. حدد مناسبتك وميزانيتك، ومندلين يتكفل بالباقي.">
+  <meta property="og:image" content="assets/images/hero-framing-master.jpg">
   <meta property="og:type" content="website">
   
   <!-- Preload Critical Hero Asset -->
-  <link rel="preload" as="image" href="assets/images/hero-base.jpg">
+  <link rel="preload" as="image" href="assets/images/hero-framing-master.jpg">
   <link rel="preload" as="image" href="assets/images/hero-reveal.jpg">
 
   <!-- Tailwind CSS CDN -->
@@ -39,9 +39,9 @@
             }
           },
           fontFamily: {
-            display: ['Alexandria', 'Amiri', 'serif'],
-            sans: ['Alexandria', 'Plus Jakarta Sans', 'sans-serif'],
-            serif: ['Cormorant Garamond', 'Amiri', 'serif'],
+            display: ['Noto Naskh Arabic', 'Cormorant Garamond', 'serif'],
+            sans: ['IBM Plex Sans Arabic', 'Manrope', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'Noto Naskh Arabic', 'serif'],
           }
         }
       }
@@ -61,7 +61,7 @@
     "@type": "Florist",
     "name": "Mandeline Fine Floral Atelier",
     "alternateName": "مندلين للورد",
-    "image": "assets/images/hero-base.jpg",
+    "image": "assets/images/hero-framing-master.jpg",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Jeddah",
@@ -77,29 +77,27 @@
 <body class="bg-[#FAF7F2] text-[#1A1514] font-sans antialiased selection:bg-[#D4AF37]/30 relative flex flex-col min-h-screen">
 
   <!-- =================================================================== -->
-  <!-- 1. NAVIGATION BAR (Frosted Dark Glass on Scroll)                     -->
+  <!-- 1. NAVIGATION BAR (Starts 100% Transparent, Frosted on Scroll)       -->
   <!-- =================================================================== -->
-  <nav id="main-nav" class="glass-nav fixed top-0 inset-x-0 z-50 transition-all duration-500 py-4 px-4 sm:px-8">
+  <nav id="main-nav" class="glass-nav fixed top-0 inset-x-0 z-50 py-5 px-4 sm:px-8 lg:px-12 transition-all">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
       
-      <!-- Brand Monogram & Name -->
+      <!-- Refined Brand Wordmark -->
       <a href="#hero-section" class="flex items-center gap-3 group focus:outline-none" aria-label="Mandeline Home">
-        <div class="w-10 h-10 rounded-full border border-[#D4AF37]/40 flex items-center justify-center bg-black/40 group-hover:border-[#D4AF37] transition-colors">
-          <span class="font-serif text-[#D4AF37] text-lg font-bold">M</span>
-        </div>
-        <div class="flex flex-col">
-          <span class="text-white font-bold tracking-wider text-base lg:text-lg font-display group-hover:text-[#D4AF37] transition-colors">مـنـدليـن</span>
-          <span class="text-[10px] text-stone-400 tracking-widest uppercase font-serif-en">MANDELINE · JEDDAH</span>
+        <span class="text-[#D4AF37] text-lg font-serif">✦</span>
+        <div class="flex items-baseline gap-2">
+          <span class="text-white font-bold tracking-wide text-lg lg:text-xl font-display group-hover:text-[#D4AF37] transition-colors">مندلين</span>
+          <span class="text-[10px] text-stone-400 tracking-widest uppercase font-editorial-en border-s border-white/20 ps-2">MANDELINE · JEDDAH</span>
         </div>
       </a>
 
       <!-- Desktop Navigation Menu -->
-      <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-300">
+      <div class="hidden lg:flex items-center gap-8 text-xs font-medium text-stone-300 tracking-wide uppercase">
         <a href="#hero-section" data-i18n="nav.home" class="hover:text-white transition-colors">الرئيسية</a>
         <a href="#occasions" data-i18n="nav.occasions" class="hover:text-white transition-colors">المناسبات</a>
         <a href="#collections" data-i18n="nav.collections" class="hover:text-white transition-colors">تشكيلاتنا</a>
         <a href="#experience" data-i18n="nav.experience" class="hover:text-white transition-colors">تجربة الإهداء</a>
-        <a href="#concierge" data-i18n="nav.concierge" class="text-[#D4AF37] hover:text-[#E2C766] transition-colors">صمّم باقتك</a>
+        <a href="#concierge" data-i18n="nav.concierge" class="text-[#D4AF37] hover:text-[#E2C766] transition-colors">صمم باقتك</a>
         <a href="#atelier" data-i18n="nav.atelier" class="hover:text-white transition-colors">عن مندلين</a>
         <a href="#contact" data-i18n="nav.contact" class="hover:text-white transition-colors">تواصل معنا</a>
       </div>
@@ -109,7 +107,7 @@
         <!-- Language Switcher Button -->
         <button 
           type="button" 
-          class="lang-toggle-btn glass-pill text-xs font-semibold text-white px-3.5 py-2 rounded-full cursor-pointer hover:text-[#D4AF37]"
+          class="lang-toggle-btn glass-pill text-xs font-medium text-white px-3.5 py-2 rounded-full cursor-pointer hover:text-[#D4AF37]"
           aria-label="Switch Language"
         >
           English
@@ -123,7 +121,7 @@
           class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-[#D4AF37] to-[#C5A880] text-black font-semibold text-xs px-5 py-2.5 rounded-full shadow-md hover:from-[#E2C766] hover:to-[#D4AF37] hover:scale-105 transition-all"
         >
           <i data-lucide="message-circle" class="w-4 h-4"></i>
-          <span data-i18n="nav.orderNow">اطلب الآن عبر واتساب</span>
+          <span data-i18n="nav.orderNow">اطلب الآن</span>
         </a>
 
         <!-- Mobile Hamburger Button -->
@@ -141,76 +139,72 @@
   </nav>
 
   <!-- =================================================================== -->
-  <!-- 2. SIGNATURE CINEMATIC HERO SECTION (Flowpath + Lithos + TerraElix) -->
+  <!-- 2. SIGNATURE CINEMATIC HERO (Flowpath Edge Framing + TikTok Intro) -->
   <!-- =================================================================== -->
-  <section id="hero-section" class="hero-viewport flex items-center relative text-white pt-24 pb-16 px-4 sm:px-8 lg:px-16">
+  <section id="hero-section" class="hero-viewport flex items-center relative text-white pt-28 pb-20 px-4 sm:px-8 lg:px-16">
     
-    <!-- Base Dark Floral Layer -->
+    <!-- Base Flowpath-style Edge Framing Master Artwork Layer -->
     <div 
       id="hero-bg-container" 
-      class="hero-bg-container absolute inset-0 bg-cover bg-center lg:bg-right bg-no-repeat"
-      style="background-image: url('assets/images/hero-base.jpg');"
+      class="hero-bg-container absolute inset-0"
+      style="background-image: url('assets/images/hero-framing-master.jpg');"
     ></div>
 
     <!-- Desktop Spotlight Reveal Layer (Lithos radial gradient mask) -->
     <div 
       id="hero-spotlight" 
-      class="hero-spotlight-layer bg-cover bg-center lg:bg-right bg-no-repeat"
+      class="hero-spotlight-layer absolute inset-0"
       style="background-image: url('assets/images/hero-reveal.jpg');"
     ></div>
 
-    <!-- Cinematic Vignette & Radial Shadow Overlay (Guarantees WCAG Contrast) -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0A0808]/90 via-[#0A0808]/60 to-transparent pointer-events-none"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-[#0A0808] via-transparent to-black/30 pointer-events-none"></div>
+    <!-- Soft Directional Atmospheric Vignette & Mobile Scrim -->
+    <div class="hero-mobile-scrim absolute inset-0 bg-gradient-to-t from-[#0A0808] via-transparent to-black/40 pointer-events-none"></div>
 
-    <!-- Hero Content Container (Positioned intentionally in the atmospheric negative space) -->
-    <div class="relative z-10 max-w-xl lg:max-w-2xl my-auto p-6 sm:p-8 rounded-3xl bg-black/20 backdrop-blur-xs border border-white/10 shadow-2xl">
+    <!-- Hero Content Container (NO Glass Card Box — Sits Directly in Composition) -->
+    <div class="relative z-10 max-w-xl lg:max-w-2xl my-auto">
       
       <!-- Eyebrow Tag -->
       <div class="hero-fade-up delay-100 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[#D4AF37] text-xs font-semibold tracking-widest uppercase mb-6">
         <span>✦</span>
-        <span data-i18n="hero.eyebrow">بـوتـيـك مـنـدليـن للـزهـور الفـاخـرة · جــدة</span>
+        <span data-i18n="hero.eyebrow">بوتيك مندلين للزهور الفاخرة · جدة</span>
       </div>
 
-      <!-- Sequential Word Reveal Headline (TerraElix Concept) -->
+      <!-- Sequential Masked Word Reveal Headline (TerraElix Concept) -->
       <h1 
         id="hero-headline" 
-        class="text-3xl sm:text-5xl md:text-6xl font-bold font-display text-white tracking-tight leading-[1.2] mb-6 drop-shadow-md"
+        class="text-4xl sm:text-6xl md:text-7xl font-bold font-display text-white tracking-tight leading-[1.18] mb-6 drop-shadow-xl"
       >
-        <!-- Words dynamically inserted & staggered via JS -->
+        <!-- Injected dynamically with overflow-hidden mask spans -->
       </h1>
 
       <!-- Supporting Editorial Copy -->
       <p 
         data-i18n="hero.supporting" 
-        class="hero-fade-up delay-600 text-stone-300 text-base sm:text-lg lg:text-xl font-light leading-relaxed mb-10 max-w-xl"
+        class="hero-fade-up delay-600 text-stone-300 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-lg drop-shadow-md"
       >
-        أخبرنا بالمناسبة وميزانيتك، ونحن نتكفّل بصياغة الهدية المثالية وتوصيلها بأعلى معايير الرقي.
+        أخبرنا بالمناسبة وميزانيتك، ونحن نتكفل بصياغة الهدية المثالية وتوصيلها بأعلى معايير الرقي.
       </p>
 
       <!-- Primary & Secondary Action CTAs -->
       <div class="hero-fade-up delay-800 flex flex-wrap items-center gap-4">
         <a 
+          id="hero-primary-cta"
           href="#collections" 
           class="btn-luxury-primary text-sm sm:text-base font-semibold group"
         >
-          <span data-i18n="hero.ctaExplore">اكتشف الزهور</span>
-          <i data-lucide="arrow-down-right" class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1"></i>
+          <span data-i18n="hero.ctaExplore">اكتشف التشكيلات</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
         </a>
 
         <a 
-          href="#concierge" 
+          href="https://wa.me/966500000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A8%D9%88%D8%AA%D9%8A%D9%83%20%D9%85%D9%86%D8%AF%D9%84%D9%8A%D9%86%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D8%AA%D9%86%D8%B3%D9%8A%D9%82%20%D9%88%D8%B1%D8%AF"
+          target="_blank"
+          rel="noopener noreferrer"
           class="btn-luxury-secondary text-sm sm:text-base font-medium group"
         >
-          <i data-lucide="sparkles" class="w-4 h-4 text-[#D4AF37]"></i>
-          <span data-i18n="hero.ctaWhatsapp">المنسّق الشخصي</span>
+          <i data-lucide="message-circle" class="w-4 h-4 text-[#D4AF37]"></i>
+          <span data-i18n="hero.ctaWhatsapp">اطلب عبر واتساب</span>
         </a>
-      </div>
-
-      <!-- Desktop Spotlight Interaction Hint -->
-      <div class="hidden lg:flex hero-fade-up delay-1000 items-center gap-2.5 text-xs text-stone-400 mt-12 bg-black/40 backdrop-blur-md w-max px-3.5 py-1.5 rounded-full border border-white/10">
-        <span class="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
-        <span data-i18n="hero.spotlightHint">حرّك المؤشر فوق الزهور لاكتشاف تفاصيل التفتح والألوان</span>
       </div>
 
     </div>
@@ -218,11 +212,11 @@
     <!-- Scroll Indicator Pill -->
     <a 
       href="#occasions" 
-      class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 text-stone-400 hover:text-white transition-colors"
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 text-stone-400 hover:text-white transition-colors"
       aria-label="Scroll to content"
     >
-      <div class="w-6 h-10 rounded-full border border-white/20 flex items-start justify-center p-1.5">
-        <div class="w-1.5 h-2 bg-[#D4AF37] rounded-full animate-bounce"></div>
+      <div class="w-5 h-9 rounded-full border border-white/25 flex items-start justify-center p-1">
+        <div class="w-1 h-2 bg-[#D4AF37] rounded-full animate-bounce"></div>
       </div>
     </a>
 
@@ -246,7 +240,7 @@
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
         <span data-i18n="occasionsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">اختر حسب النية والمناسبة</span>
-        <h2 data-i18n="occasionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">مـا هـي مـنـاسـبـتـك الـقـادمـة؟</h2>
+        <h2 data-i18n="occasionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">ما هي مناسبتك القادمة؟</h2>
         <p data-i18n="occasionsSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">صممنا مجموعات متخصصة تناسب كل لحظة إنسانية لتجعل إهداءك مؤثراً وراسخاً.</p>
       </div>
 
@@ -268,8 +262,8 @@
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 scroll-reveal">
         <div>
           <span data-i18n="collectionsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">إبداعات الأتيليه</span>
-          <h2 data-i18n="collectionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-3">تـشـكـيـلات مـنـدليـن الـمـخـتـارة</h2>
-          <p data-i18n="collectionsSec.subtitle" class="text-stone-600 text-sm sm:text-base max-w-xl">زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تُنسق بشغف ودقة فنية.</p>
+          <h2 data-i18n="collectionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-3">تشكيلات مندلين المختارة</h2>
+          <p data-i18n="collectionsSec.subtitle" class="text-stone-600 text-sm sm:text-base max-w-xl">زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تنسق بشغف ودقة فنية.</p>
         </div>
 
         <!-- Filter Pills -->
@@ -290,7 +284,29 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 6. "YOUR GIFT, MADE EASY" (3-Step Effortless Experience)            -->
+  <!-- 6. TIKTOK-INSPIRED EXPANDABLE EDITORIAL CANVAS MOMENT               -->
+  <!-- =================================================================== -->
+  <section id="editorial-moment" class="py-12 px-4 sm:px-8 lg:px-16 bg-[#F2EDE4] overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div id="expand-canvas-card" class="editorial-expand-canvas relative rounded-3xl overflow-hidden shadow-2xl aspect-16/9 md:aspect-21/9 bg-[#0A0808] flex items-center justify-center text-center p-8 sm:p-16">
+        <img 
+          src="assets/images/collection-bespoke.jpg" 
+          alt="Mandeline Grand Floral Canvas" 
+          loading="lazy" 
+          class="editorial-canvas-img absolute inset-0 w-full h-full object-cover opacity-50"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/60"></div>
+        <div class="relative z-10 max-w-2xl text-white">
+          <span data-i18n="editorialMoment.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-3">فلسفة الجمال والندرة</span>
+          <h3 data-i18n="editorialMoment.title" class="text-2xl sm:text-4xl lg:text-5xl font-bold font-display leading-tight mb-4">كل بتلة تروي قصة لا تتكرر</h3>
+          <p data-i18n="editorialMoment.subtitle" class="text-sm sm:text-base text-stone-300 font-light leading-relaxed">ننتقي أندر السلالات النباتية لنقدم لك قطعة فنية حية تحاكي ذوقك الرفيع في جدة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 7. "YOUR GIFT, MADE EASY" (3-Step Effortless Experience)            -->
   <!-- =================================================================== -->
   <section id="experience" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2]">
     <div class="max-w-7xl mx-auto">
@@ -298,7 +314,7 @@
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
         <span data-i18n="stepsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">سلاسة وفخامة</span>
-        <h2 data-i18n="stepsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">هـديـتـك.. بـكـل بـسـاطـة وأريـحـيـة</h2>
+        <h2 data-i18n="stepsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">هديتك.. بكل بساطة وأريحية</h2>
         <p data-i18n="stepsSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">لا داعي للحيرة والبحث الطويل، إليك كيف نعتني بإهدائك من البداية حتى الاستلام:</p>
       </div>
 
@@ -327,7 +343,7 @@
           </div>
           <div>
             <h3 data-i18n="stepsSec.step2Title" class="text-xl font-bold font-display text-stone-900 mb-3">2. لمسات فنية مخصصة</h3>
-            <p data-i18n="stepsSec.step2Desc" class="text-sm text-stone-600 leading-relaxed">منسقو مندلين يختارون أندر الزهور وينسقونها بكرتون إهداء فاخر مع كرت رسالتك.</p>
+            <p data-i18n="stepsSec.step2Desc" class="text-sm text-stone-600 leading-relaxed">منسقو مندلين يختارون أندر الزهور وينسقونها بتغليف إهداء فاخر مع كرت رسالتك.</p>
           </div>
           <div class="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-semibold text-[#D4AF37]">
             <span>حرفة راقية</span>
@@ -345,7 +361,7 @@
             <p data-i18n="stepsSec.step3Desc" class="text-sm text-stone-600 leading-relaxed">سيارات مبردة مخصصة تضمن وصول الزهور بنضارتها التامة في الموعد المحدد.</p>
           </div>
           <div class="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-semibold text-[#D4AF37]">
-            <span>توصيل مُبرّد</span>
+            <span>توصيل مبرد</span>
             <span>✦</span>
           </div>
         </div>
@@ -356,7 +372,7 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 7. INTERACTIVE BESPOKE CONCIERGE ("تبغى شيء مختلف؟")                 -->
+  <!-- 8. INTERACTIVE BESPOKE CONCIERGE ("تبغى شيء مختلف؟")                 -->
   <!-- =================================================================== -->
   <section id="concierge" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#0A0808] text-white relative overflow-hidden">
     
@@ -368,9 +384,9 @@
       
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
-        <span data-i18n="conciergeSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">المنسّق الشخصي التفاعلي</span>
-        <h2 data-i18n="conciergeSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-white mb-4">تـبـغـى شـيء مـخـتـلـف وُمـخـصّـص؟</h2>
-        <p data-i18n="conciergeSec.subtitle" class="text-stone-400 text-sm sm:text-base leading-relaxed">حدد تفضيلاتك في ثوانٍ، وسنجهّز لك رسالة الطلب مباشرة مع فريق التنسيق في مندلين.</p>
+        <span data-i18n="conciergeSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">المنسق الشخصي التفاعلي</span>
+        <h2 data-i18n="conciergeSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-white mb-4">تبغى شيء مختلف ومخصص؟</h2>
+        <p data-i18n="conciergeSec.subtitle" class="text-stone-400 text-sm sm:text-base leading-relaxed">حدد تفضيلاتك في ثوانٍ، وسنجهز لك رسالة الطلب مباشرة مع فريق التنسيق في مندلين.</p>
       </div>
 
       <!-- Interactive Concierge Builder Form -->
@@ -434,11 +450,11 @@
               class="w-full sm:w-auto btn-luxury-primary text-base font-semibold px-10 py-4 shadow-xl"
             >
               <i data-lucide="message-circle" class="w-5 h-5"></i>
-              <span data-i18n="conciergeSec.submitBtn">إرسال الطلب لمنسّق مندلين عبر واتساب</span>
+              <span data-i18n="conciergeSec.submitBtn">إرسال الطلب لمنسق مندلين عبر واتساب</span>
             </button>
 
             <p data-i18n="conciergeSec.guarantee" class="text-xs text-stone-400 text-center flex items-center justify-center gap-1.5">
-              ✨ يتم الرد الفوري من المنسّق مع إرسال صور الزهور المتاحة للتأكيد قبل التجهيز.
+              ✨ يتم الرد الفوري من المنسق مع إرسال صور الزهور المتاحة للتأكيد قبل التجهيز.
             </p>
           </div>
 
@@ -449,7 +465,7 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 8. BRAND STORY & ATELIER CRAFTSMANSHIP                             -->
+  <!-- 9. BRAND STORY & ATELIER CRAFTSMANSHIP                             -->
   <!-- =================================================================== -->
   <section id="atelier" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2]">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -471,7 +487,7 @@
       <!-- Atelier Editorial Text -->
       <div class="flex flex-col justify-center scroll-reveal">
         <span data-i18n="atelierSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">عالم مندلين</span>
-        <h2 data-i18n="atelierSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-6 leading-tight">حـرفـة صـيـاغـة الـمـشـاعـر فـي جـدة</h2>
+        <h2 data-i18n="atelierSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-6 leading-tight">حرفة صياغة المشاعر في جدة</h2>
         
         <blockquote data-i18n="atelierSec.quote" class="text-base sm:text-lg font-serif-ar italic text-stone-700 border-s-2 border-[#D4AF37] ps-4 py-1 mb-6">
           «الورد ليس مجرد نبات، بل هو الرسول الصامت الذي يقول ما تعجز عنه الكلمات.»
@@ -507,7 +523,7 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 9. CURATED EDITORIAL FLORAL JOURNAL & GALLERY                       -->
+  <!-- 10. CURATED EDITORIAL FLORAL JOURNAL & GALLERY                      -->
   <!-- =================================================================== -->
   <section id="journal" class="py-20 px-4 sm:px-8 lg:px-16 bg-[#F2EDE4] border-t border-[#E5DED2]">
     <div class="max-w-7xl mx-auto">
@@ -516,7 +532,7 @@
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 scroll-reveal">
         <div>
           <span class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-1">معرض الأتيليه</span>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-display text-[#1A1514]">يـومـيـات مـنـدليـن الـبـصـريـة</h2>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-display text-[#1A1514]">يوميات مندلين البصرية</h2>
         </div>
         <a 
           href="https://instagram.com/mandeline.flowers" 
@@ -553,7 +569,7 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 10. BOUTIQUE LOCATION & CONCIERGE TOUCHPOINTS                       -->
+  <!-- 11. BOUTIQUE LOCATION & CONCIERGE TOUCHPOINTS                       -->
   <!-- =================================================================== -->
   <section id="contact" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2] border-t border-[#E5DED2]">
     <div class="max-w-7xl mx-auto">
@@ -561,7 +577,7 @@
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
         <span data-i18n="contactSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">تفضل بزيارتنا أو تواصل</span>
-        <h2 data-i18n="contactSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">بـوتـيـك مـنـدليـن — جــدة</h2>
+        <h2 data-i18n="contactSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">بوتيك مندلين — جدة</h2>
         <p data-i18n="contactSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">يسعدنا استقبالكم في فرعنا أو خدمتكم عبر قنوات التواصل السريع.</p>
       </div>
 
@@ -627,7 +643,7 @@
             class="mt-6 text-xs font-semibold text-stone-900 hover:text-[#D4AF37] flex items-center gap-1.5"
           >
             <i data-lucide="message-circle" class="w-4 h-4 text-[#D4AF37]"></i>
-            <span>محادثة فورية مع المنسّق</span>
+            <span>محادثة فورية مع المنسق</span>
           </a>
         </div>
 
@@ -637,7 +653,7 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 11. EDITORIAL FOOTER                                                -->
+  <!-- 12. EDITORIAL FOOTER                                                -->
   <!-- =================================================================== -->
   <footer class="bg-[#0A0808] text-stone-400 py-16 px-4 sm:px-8 lg:px-16 border-t border-white/10 mt-auto">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
@@ -645,10 +661,8 @@
       <!-- Brand Summary -->
       <div class="md:col-span-2">
         <div class="flex items-center gap-3 mb-4">
-          <div class="w-8 h-8 rounded-full border border-[#D4AF37]/40 flex items-center justify-center">
-            <span class="font-serif text-[#D4AF37] text-sm font-bold">M</span>
-          </div>
-          <span class="text-white font-bold text-lg font-display">مـنـدليـن للـزهـور</span>
+          <span class="text-[#D4AF37] text-lg font-serif">✦</span>
+          <span class="text-white font-bold text-lg font-display">مندلين للزهور</span>
         </div>
         <p data-i18n="footer.about" class="text-xs sm:text-sm text-stone-400 leading-relaxed max-w-md mb-6">
           مندلين — أتيليه الزهور الفاخرة في جدة. نصنع من كل مناسبة ذكرى استثنائية من خلال تنسيقات نباتية ملهمة وتجربة إهداء متكاملة.
@@ -691,14 +705,14 @@
     <!-- Bottom Copyright -->
     <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
       <div data-i18n="footer.rights">جميع الحقوق محفوظة © بوتيك مندلين للزهور 2026.</div>
-      <div class="flex items-center gap-1 font-serif-en tracking-widest text-[10px] uppercase text-stone-600">
+      <div class="flex items-center gap-1 font-editorial-en tracking-widest text-[10px] uppercase text-stone-600">
         <span>CRAFTED FOR MANDELINE FLORAL ATELIER</span>
       </div>
     </div>
   </footer>
 
   <!-- =================================================================== -->
-  <!-- 12. FLOATING MOBILE WHATSAPP ORDER BAR (Thumb Zone)                 -->
+  <!-- 13. FLOATING MOBILE WHATSAPP ORDER BAR (Thumb Zone)                 -->
   <!-- =================================================================== -->
   <div 
     id="floating-whatsapp-bar" 
@@ -716,18 +730,16 @@
   </div>
 
   <!-- =================================================================== -->
-  <!-- 13. MOBILE NAVIGATION DRAWER (Full-screen Frosted Glass)            -->
+  <!-- 14. MOBILE NAVIGATION DRAWER (Full-screen Frosted Glass)            -->
   <!-- =================================================================== -->
   <div 
     id="mobile-menu-drawer" 
     class="fixed inset-0 z-50 bg-[#0A0808]/95 backdrop-blur-2xl p-6 flex flex-col justify-between hidden transition-all duration-300"
   >
     <div class="flex items-center justify-between pb-6 border-b border-white/10">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-full border border-[#D4AF37]/40 flex items-center justify-center">
-          <span class="font-serif text-[#D4AF37] font-bold">M</span>
-        </div>
-        <span class="text-white font-bold font-display text-base">مـنـدليـن</span>
+      <div class="flex items-center gap-2">
+        <span class="text-[#D4AF37] text-lg font-serif">✦</span>
+        <span class="text-white font-bold font-display text-base">مندلين</span>
       </div>
       <button 
         id="mobile-menu-close" 
@@ -745,7 +757,7 @@
       <a href="#occasions" data-i18n="nav.occasions" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">المناسبات</a>
       <a href="#collections" data-i18n="nav.collections" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">تشكيلاتنا</a>
       <a href="#experience" data-i18n="nav.experience" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">تجربة الإهداء</a>
-      <a href="#concierge" data-i18n="nav.concierge" class="mobile-nav-link text-[#D4AF37]">صمّم باقتك</a>
+      <a href="#concierge" data-i18n="nav.concierge" class="mobile-nav-link text-[#D4AF37]">صمم باقتك</a>
       <a href="#atelier" data-i18n="nav.atelier" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">عن مندلين</a>
       <a href="#contact" data-i18n="nav.contact" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">تواصل معنا</a>
     </div>
@@ -765,13 +777,13 @@
         class="w-full py-3.5 rounded-xl bg-[#D4AF37] text-black font-bold text-xs flex items-center justify-center gap-2"
       >
         <i data-lucide="message-circle" class="w-4 h-4"></i>
-        <span>محادثة فورية مع المنسّق</span>
+        <span>محادثة فورية مع المنسق</span>
       </a>
     </div>
   </div>
 
   <!-- =================================================================== -->
-  <!-- 14. PRODUCT DETAILS / IMAGE ZOOM LIGHTBOX MODAL                     -->
+  <!-- 15. PRODUCT DETAILS / IMAGE ZOOM LIGHTBOX MODAL                     -->
   <!-- =================================================================== -->
   <div 
     id="quick-view-modal" 
@@ -826,7 +838,6 @@
   <script src="js/data.js"></script>
   <script src="js/mandeline.js"></script>
   <script>
-    // Initialize Lucide Icons after render
     window.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) {
         window.lucide.createIcons();

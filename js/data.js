@@ -1,20 +1,20 @@
 /**
  * MANDELINE (مندلين) — Central Data & Localization Architecture
- * Complete Business Information, Collections, Occasions & Bilingual Dictionaries
+ * Clean Editorial Typography (No Tatweel/Kashida) & Bilingual Dictionaries
  */
 
 window.MandelineData = {
   businessConfig: {
     brandAr: "مندلين للورد",
     brandEn: "MANDELINE Fine Floral Atelier",
-    taglineAr: "زهور تُصاغ لتبقى في الذاكرة",
+    taglineAr: "زهور تبقى في الذاكرة",
     taglineEn: "Flowers, Made to Be Remembered",
     cityAr: "جدة، المملكة العربية السعودية",
     cityEn: "Jeddah, Saudi Arabia",
-    districtAr: "حي الروضة / التحلية، جدة",
-    districtEn: "Al Rawdah / Tahlia District, Jeddah",
+    districtAr: "حي الروضة / طريق التحلية، جدة",
+    districtEn: "Al Rawdah / Tahlia Street, Jeddah",
     phone: "+966 12 600 0000",
-    whatsappNumber: "966500000000", // Central WhatsApp concierge number
+    whatsappNumber: "966500000000", // Central WhatsApp concierge
     instagram: "mandeline.flowers",
     tiktok: "mandeline.flowers",
     hoursAr: "يومياً من 9:00 صباحاً حتى 11:00 مساءً (توصيل فوري خلال ساعتين في جدة)",
@@ -140,36 +140,36 @@ window.MandelineData = {
         occasions: "المناسبات",
         collections: "تشكيلاتنا",
         experience: "تجربة الإهداء",
-        concierge: "صمّم باقتك",
+        concierge: "صمم باقتك",
         atelier: "عن مندلين",
         contact: "تواصل معنا",
-        orderNow: "اطلب الآن عبر واتساب"
+        orderNow: "اطلب الآن"
       },
       hero: {
-        eyebrow: "بـوتـيـك مـنـدليـن للـزهـور الفـاخـرة · جــدة",
-        words: ["زهـور", "تُصـاغ", "لتـبـقـى", "فـي", "الـذاكـرة"],
-        supporting: "أخبرنا بالمناسبة وميزانيتك، ونحن نتكفّل بصياغة الهدية المثالية وتوصيلها بأعلى معايير الرقي.",
-        ctaExplore: "اكتشف الزهور",
-        ctaWhatsapp: "محادثة مع المنسّق مباشرة",
-        spotlightHint: "حرّك المؤشر فوق الزهور لاكتشاف تفاصيل التفتح والألوان"
+        eyebrow: "بوتيك مندلين للزهور الفاخرة · جدة",
+        words: ["زهور", "تبقى", "في", "الذاكرة"],
+        supporting: "أخبرنا بالمناسبة وميزانيتك، ونحن نتكفل بصياغة الهدية المثالية وتوصيلها بأعلى معايير الرقي.",
+        ctaExplore: "اكتشف التشكيلات",
+        ctaWhatsapp: "اطلب عبر واتساب",
+        spotlightHint: "حرك المؤشر فوق الزهور لاكتشاف تفاصيل التفتح والألوان"
       },
       marquee: [
         "ورد للمناسبات الراقية",
         "هدية فاخرة بلا حيرة",
         "تنسيق حسب ميزانيتك وذوقك",
         "مندلين جدة — صياغة المشاعر بأناقة",
-        "توصيل فوري مُبرّد ومُحكم"
+        "توصيل فوري مبرد ومحكم"
       ],
       occasionsSec: {
         eyebrow: "اختر حسب النية والمناسبة",
-        title: "مـا هـي مـنـاسـبـتـك الـقـادمـة؟",
+        title: "ما هي مناسبتك القادمة؟",
         subtitle: "صممنا مجموعات متخصصة تناسب كل لحظة إنسانية لتجعل إهداءك مؤثراً وراسخاً.",
         selectCta: "اختر هذه المناسبة"
       },
       collectionsSec: {
         eyebrow: "إبداعات الأتيليه",
-        title: "تـشـكـيـلات مـنـدليـن الـمـخـتـارة",
-        subtitle: "زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تُنسق بشغف ودقة فنية.",
+        title: "تشكيلات مندلين المختارة",
+        subtitle: "زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تنسق بشغف ودقة فنية.",
         filterAll: "الكل",
         filterBouquets: "باقات الإهداء",
         filterVases: "فازات وسنتربيس",
@@ -179,19 +179,24 @@ window.MandelineData = {
       },
       stepsSec: {
         eyebrow: "سلاسة وفخامة",
-        title: "هـديـتـك.. بـكـل بـسـاطـة وأريـحـيـة",
+        title: "هديتك.. بكل بساطة وأريحية",
         subtitle: "لا داعي للحيرة والبحث الطويل، إليك كيف نعتني بإهدائك من البداية حتى الاستلام:",
         step1Title: "1. حدد المناسبة والميزانية",
         step1Desc: "اختر نوع المناسبة وحدد الميزانية التي تناسبك دون أي تعقيد.",
         step2Title: "2. لمسات فنية مخصصة",
-        step2Desc: "منسقو مندلين يختارون أندر الزهور وينسقونها بكرتون إهداء فاخر مع كرت رسالتك.",
+        step2Desc: "منسقو مندلين يختارون أندر الزهور وينسقونها بتغليف إهداء فاخر مع كرت رسالتك.",
         step3Title: "3. توصيل فوري أنيق",
         step3Desc: "سيارات مبردة مخصصة تضمن وصول الزهور بنضارتها التامة في الموعد المحدد."
       },
+      editorialMoment: {
+        eyebrow: "فلسفة الجمال والندرة",
+        title: "كل بتلة تروي قصة لا تتكرر",
+        subtitle: "ننتقي أندر السلالات النباتية لنقدم لك قطعة فنية حية تحاكي ذوقك الرفيع في جدة."
+      },
       conciergeSec: {
-        eyebrow: "المنسّق الشخصي التفاعلي",
-        title: "تـبـغـى شـيء مـخـتـلـف وُمـخـصّـص؟",
-        subtitle: "حدد تفضيلاتك في ثوانٍ، وسنجهّز لك رسالة الطلب مباشرة مع فريق التنسيق في مندلين.",
+        eyebrow: "المنسق الشخصي التفاعلي",
+        title: "تبغى شيء مختلف ومخصص؟",
+        subtitle: "حدد تفضيلاتك في ثوانٍ، وسنجهز لك رسالة الطلب مباشرة مع فريق التنسيق في مندلين.",
         stepOccasion: "1. ما هي المناسبة؟",
         stepBudget: "2. الميزانية التقريبية:",
         stepPalette: "3. درجات الألوان المفضلة:",
@@ -202,17 +207,17 @@ window.MandelineData = {
         paletteRomantic: "شامبين ووردي ناعم (Champagne & Blush)",
         paletteVelvet: "برغندي مخملي وداكن (Velvet Burgundy)",
         paletteWhite: "أبيض ملكي وذهبي (Royal White & Gold)",
-        paletteCustom: "على ذوق المنسّق المحترف (Florist Choice)",
+        paletteCustom: "على ذوق المنسق المحترف (Florist Choice)",
         budgetOption1: "350 ر.س (لمسة كلاسيكية أنيقة)",
         budgetOption2: "650 ر.س (باقة فاخرة متكاملة)",
         budgetOption3: "1,200 ر.س (فازة ملكية كبيرة)",
         budgetOption4: "تنسيق خاص / ميزانية مفتوحة",
-        submitBtn: "إرسال الطلب لمنسّق مندلين عبر واتساب",
-        guarantee: "✨ يتم الرد الفوري من المنسّق مع إرسال صور الزهور المتاحة للتأكيد قبل التجهيز."
+        submitBtn: "إرسال الطلب لمنسق مندلين عبر واتساب",
+        guarantee: "✨ يتم الرد الفوري من المنسق مع إرسال صور الزهور المتاحة للتأكيد قبل التجهيز."
       },
       atelierSec: {
         eyebrow: "عالم مندلين",
-        title: "حـرفـة صـيـاغـة الـمـشـاعـر فـي جـدة",
+        title: "حرفة صياغة المشاعر في جدة",
         quote: "«الورد ليس مجرد نبات، بل هو الرسول الصامت الذي يقول ما تعجز عنه الكلمات.»",
         p1: "في مندلين، ننظر إلى كل زهرة كعنصر فني فريد. نستورد ورودنا يومياً من هولندا والإكوادور وكينيا، ونعتني بترطيبها وتهذيبها لتمنحكم أطول فترة نضارة وعبق.",
         p2: "نحن نؤمن أن الهدية الفاخرة تكتمل بالتفاصيل: التغليف المخملي المات، الأشرطة الحريرية المتناغمة، وكرت الإهداء المصنوع من الورق القطني الفاخر.",
@@ -225,7 +230,7 @@ window.MandelineData = {
       },
       contactSec: {
         eyebrow: "تفضل بزيارتنا أو تواصل",
-        title: "بـوتـيـك مـنـدليـن — جــدة",
+        title: "بوتيك مندلين — جدة",
         subtitle: "يسعدنا استقبالكم في فرعنا أو خدمتكم عبر قنوات التواصل السريع.",
         locationTitle: "موقع الأتيليه",
         locationVal: "حي الروضة / طريق التحلية، جدة، المملكة العربية السعودية",
@@ -234,7 +239,7 @@ window.MandelineData = {
         contactTitle: "خدمة العملاء والواتساب",
         contactVal: "متاح للمحادثة الفورية وتأكيد الطلبات",
         mapsBtn: "فتح الموقع في خرائط Google",
-        whatsappBtn: "محادثة فورية مع المنسّق"
+        whatsappBtn: "محادثة فورية مع المنسق"
       },
       footer: {
         about: "مندلين — أتيليه الزهور الفاخرة في جدة. نصنع من كل مناسبة ذكرى استثنائية من خلال تنسيقات نباتية ملهمة وتجربة إهداء متكاملة.",
@@ -258,14 +263,14 @@ window.MandelineData = {
         concierge: "Bespoke Concierge",
         atelier: "About Mandeline",
         contact: "Contact",
-        orderNow: "Order on WhatsApp"
+        orderNow: "Order Now"
       },
       hero: {
         eyebrow: "MANDELINE FINE FLORAL ATELIER · JEDDAH",
         words: ["Flowers,", "Made", "to", "Be", "Remembered."],
         supporting: "Tell us the occasion and your budget. We will craft the quintessential floral gift and deliver it with uncompromised grace.",
         ctaExplore: "Explore Collections",
-        ctaWhatsapp: "Chat with Floral Concierge",
+        ctaWhatsapp: "Order on WhatsApp",
         spotlightHint: "Hover over the blooms to reveal luminous petals & golden highlights"
       },
       marquee: [
@@ -302,6 +307,11 @@ window.MandelineData = {
         step2Desc: "Our artisans hand-select pristine stems, wrapping them in matte luxury paper with silk ribbons.",
         step3Title: "3. Express Chilled Delivery",
         step3Desc: "Delivered in climate-controlled vehicles ensuring peak bloom freshness across Jeddah."
+      },
+      editorialMoment: {
+        eyebrow: "Philosophy of Rare Beauty",
+        title: "Every Petal Articulates a Unique Story",
+        subtitle: "Hand-selecting heirloom botanicals to create living art tailored to your discerning taste in Jeddah."
       },
       conciergeSec: {
         eyebrow: "Interactive Bespoke Concierge",
@@ -343,7 +353,7 @@ window.MandelineData = {
         title: "MANDELINE BOUTIQUE — JEDDAH",
         subtitle: "We welcome you to visit our physical atelier or connect with our concierge digitally.",
         locationTitle: "Atelier Address",
-        locationVal: "Al Rawdah / Tahlia District, Jeddah, Saudi Arabia",
+        locationVal: "Al Rawdah / Tahlia Street, Jeddah, Saudi Arabia",
         hoursTitle: "Opening Hours",
         hoursVal: "Daily from 9:00 AM to 11:00 PM",
         contactTitle: "Concierge & WhatsApp",
