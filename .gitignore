@@ -1,0 +1,8 @@
+node_modules/
+test_screenshots/
+backup_phase01_snapshot/
+backup_production_reliability_snapshot/
+assets/wedding_sample.mp4
+.DS_Store
+Thumbs.db
+*.log

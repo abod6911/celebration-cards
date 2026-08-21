@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>مندلين للورد — بوتيك الزهور الفاخرة في جدة | MANDELINE Fine Floral Atelier</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="بوتيك مندلين للزهور الفاخرة في جدة. تنسيق باقات ورد طبيعية نادرة، فازات رخامية فاخرة، وتصاميم زهرية للمناسبات الراقية مع توصيل سريع ومُبرّد.">
+  <meta name="keywords" content="ورد جدة, بوتيك مندلين, باقات ورد فاخرة جدة, توصيل ورد جدة, منسق زهور جدة, هدايا ورد فخمة">
+  <meta property="og:title" content="مندلين للورد — بوتيك الزهور الفاخرة في جدة">
+  <meta property="og:description" content="زهور تُصاغ لتبقى في الذاكرة. حدد مناسبتك وميزانيتك، ومندلين يتكفل بالباقي.">
+  <meta property="og:image" content="assets/images/hero-base.jpg">
+  <meta property="og:type" content="website">
+  
+  <!-- Preload Critical Hero Asset -->
+  <link rel="preload" as="image" href="assets/images/hero-base.jpg">
+  <link rel="preload" as="image" href="assets/images/hero-reveal.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              charcoal: '#0A0808',
+              espresso: '#120E0D',
+              dark: '#1A1514',
+              gold: '#D4AF37',
+              goldLight: '#E2C766',
+              champagne: '#C5A880',
+              ivory: '#FAF7F2',
+              cream: '#F2EDE4',
+              blush: '#E8D3CE',
+              burgundy: '#5C1D24',
+            }
+          },
+          fontFamily: {
+            display: ['Alexandria', 'Amiri', 'serif'],
+            sans: ['Alexandria', 'Plus Jakarta Sans', 'sans-serif'],
+            serif: ['Cormorant Garamond', 'Amiri', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Mandeline Custom Design System Stylesheet -->
+  <link rel="stylesheet" href="css/mandeline.css">
+
+  <!-- Structured Data / JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Florist",
+    "name": "Mandeline Fine Floral Atelier",
+    "alternateName": "مندلين للورد",
+    "image": "assets/images/hero-base.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Jeddah",
+      "addressRegion": "Makkah Province",
+      "addressCountry": "SA"
+    },
+    "openingHours": "Mo-Su 09:00-23:00",
+    "priceRange": "$$$"
+  }
+  </script>
+</head>
+
+<body class="bg-[#FAF7F2] text-[#1A1514] font-sans antialiased selection:bg-[#D4AF37]/30 relative flex flex-col min-h-screen">
+
+  <!-- =================================================================== -->
+  <!-- 1. NAVIGATION BAR (Frosted Dark Glass on Scroll)                     -->
+  <!-- =================================================================== -->
+  <nav id="main-nav" class="glass-nav fixed top-0 inset-x-0 z-50 transition-all duration-500 py-4 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      
+      <!-- Brand Monogram & Name -->
+      <a href="#hero-section" class="flex items-center gap-3 group focus:outline-none" aria-label="Mandeline Home">
+        <div class="w-10 h-10 rounded-full border border-[#D4AF37]/40 flex items-center justify-center bg-black/40 group-hover:border-[#D4AF37] transition-colors">
+          <span class="font-serif text-[#D4AF37] text-lg font-bold">M</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-white font-bold tracking-wider text-base lg:text-lg font-display group-hover:text-[#D4AF37] transition-colors">مـنـدليـن</span>
+          <span class="text-[10px] text-stone-400 tracking-widest uppercase font-serif-en">MANDELINE · JEDDAH</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-300">
+        <a href="#hero-section" data-i18n="nav.home" class="hover:text-white transition-colors">الرئيسية</a>
+        <a href="#occasions" data-i18n="nav.occasions" class="hover:text-white transition-colors">المناسبات</a>
+        <a href="#collections" data-i18n="nav.collections" class="hover:text-white transition-colors">تشكيلاتنا</a>
+        <a href="#experience" data-i18n="nav.experience" class="hover:text-white transition-colors">تجربة الإهداء</a>
+        <a href="#concierge" data-i18n="nav.concierge" class="text-[#D4AF37] hover:text-[#E2C766] transition-colors">صمّم باقتك</a>
+        <a href="#atelier" data-i18n="nav.atelier" class="hover:text-white transition-colors">عن مندلين</a>
+        <a href="#contact" data-i18n="nav.contact" class="hover:text-white transition-colors">تواصل معنا</a>
+      </div>
+
+      <!-- Right Nav Actions: Language Toggle & Order CTA -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher Button -->
+        <button 
+          type="button" 
+          class="lang-toggle-btn glass-pill text-xs font-semibold text-white px-3.5 py-2 rounded-full cursor-pointer hover:text-[#D4AF37]"
+          aria-label="Switch Language"
+        >
+          English
+        </button>
+
+        <!-- Desktop WhatsApp Order CTA -->
+        <a 
+          href="https://wa.me/966500000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A8%D9%88%D8%AA%D9%8A%D9%83%20%D9%85%D9%86%D8%AF%D9%84%D9%8A%D9%86%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A7%D8%AA%20%D8%A7%D9%84%D9%88%D8%B1%D8%AF" 
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-[#D4AF37] to-[#C5A880] text-black font-semibold text-xs px-5 py-2.5 rounded-full shadow-md hover:from-[#E2C766] hover:to-[#D4AF37] hover:scale-105 transition-all"
+        >
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span data-i18n="nav.orderNow">اطلب الآن عبر واتساب</span>
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button 
+          id="mobile-menu-toggle" 
+          type="button" 
+          class="lg:hidden w-10 h-10 rounded-full glass-pill flex items-center justify-center text-white focus:outline-none"
+          aria-label="Open Mobile Menu"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- =================================================================== -->
+  <!-- 2. SIGNATURE CINEMATIC HERO SECTION (Flowpath + Lithos + TerraElix) -->
+  <!-- =================================================================== -->
+  <section id="hero-section" class="hero-viewport flex items-center relative text-white pt-24 pb-16 px-4 sm:px-8 lg:px-16">
+    
+    <!-- Base Dark Floral Layer -->
+    <div 
+      id="hero-bg-container" 
+      class="hero-bg-container absolute inset-0 bg-cover bg-center lg:bg-right bg-no-repeat"
+      style="background-image: url('assets/images/hero-base.jpg');"
+    ></div>
+
+    <!-- Desktop Spotlight Reveal Layer (Lithos radial gradient mask) -->
+    <div 
+      id="hero-spotlight" 
+      class="hero-spotlight-layer bg-cover bg-center lg:bg-right bg-no-repeat"
+      style="background-image: url('assets/images/hero-reveal.jpg');"
+    ></div>
+
+    <!-- Cinematic Vignette & Radial Shadow Overlay (Guarantees WCAG Contrast) -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0A0808]/90 via-[#0A0808]/60 to-transparent pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0A0808] via-transparent to-black/30 pointer-events-none"></div>
+
+    <!-- Hero Content Container (Positioned intentionally in the atmospheric negative space) -->
+    <div class="relative z-10 max-w-xl lg:max-w-2xl my-auto p-6 sm:p-8 rounded-3xl bg-black/20 backdrop-blur-xs border border-white/10 shadow-2xl">
+      
+      <!-- Eyebrow Tag -->
+      <div class="hero-fade-up delay-100 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[#D4AF37] text-xs font-semibold tracking-widest uppercase mb-6">
+        <span>✦</span>
+        <span data-i18n="hero.eyebrow">بـوتـيـك مـنـدليـن للـزهـور الفـاخـرة · جــدة</span>
+      </div>
+
+      <!-- Sequential Word Reveal Headline (TerraElix Concept) -->
+      <h1 
+        id="hero-headline" 
+        class="text-3xl sm:text-5xl md:text-6xl font-bold font-display text-white tracking-tight leading-[1.2] mb-6 drop-shadow-md"
+      >
+        <!-- Words dynamically inserted & staggered via JS -->
+      </h1>
+
+      <!-- Supporting Editorial Copy -->
+      <p 
+        data-i18n="hero.supporting" 
+        class="hero-fade-up delay-600 text-stone-300 text-base sm:text-lg lg:text-xl font-light leading-relaxed mb-10 max-w-xl"
+      >
+        أخبرنا بالمناسبة وميزانيتك، ونحن نتكفّل بصياغة الهدية المثالية وتوصيلها بأعلى معايير الرقي.
+      </p>
+
+      <!-- Primary & Secondary Action CTAs -->
+      <div class="hero-fade-up delay-800 flex flex-wrap items-center gap-4">
+        <a 
+          href="#collections" 
+          class="btn-luxury-primary text-sm sm:text-base font-semibold group"
+        >
+          <span data-i18n="hero.ctaExplore">اكتشف الزهور</span>
+          <i data-lucide="arrow-down-right" class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1"></i>
+        </a>
+
+        <a 
+          href="#concierge" 
+          class="btn-luxury-secondary text-sm sm:text-base font-medium group"
+        >
+          <i data-lucide="sparkles" class="w-4 h-4 text-[#D4AF37]"></i>
+          <span data-i18n="hero.ctaWhatsapp">المنسّق الشخصي</span>
+        </a>
+      </div>
+
+      <!-- Desktop Spotlight Interaction Hint -->
+      <div class="hidden lg:flex hero-fade-up delay-1000 items-center gap-2.5 text-xs text-stone-400 mt-12 bg-black/40 backdrop-blur-md w-max px-3.5 py-1.5 rounded-full border border-white/10">
+        <span class="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse"></span>
+        <span data-i18n="hero.spotlightHint">حرّك المؤشر فوق الزهور لاكتشاف تفاصيل التفتح والألوان</span>
+      </div>
+
+    </div>
+
+    <!-- Scroll Indicator Pill -->
+    <a 
+      href="#occasions" 
+      class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 text-stone-400 hover:text-white transition-colors"
+      aria-label="Scroll to content"
+    >
+      <div class="w-6 h-10 rounded-full border border-white/20 flex items-start justify-center p-1.5">
+        <div class="w-1.5 h-2 bg-[#D4AF37] rounded-full animate-bounce"></div>
+      </div>
+    </a>
+
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 3. EDITORIAL MARQUEE TICKER                                         -->
+  <!-- =================================================================== -->
+  <section class="bg-[#120E0D] border-y border-white/10 py-3.5 overflow-hidden select-none">
+    <div id="marquee-content" class="marquee-track flex items-center gap-8">
+      <!-- Injected dynamically via JS -->
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 4. OCCASION DISCOVERY SECTION ("ما المناسبة؟")                      -->
+  <!-- =================================================================== -->
+  <section id="occasions" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
+        <span data-i18n="occasionsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">اختر حسب النية والمناسبة</span>
+        <h2 data-i18n="occasionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">مـا هـي مـنـاسـبـتـك الـقـادمـة؟</h2>
+        <p data-i18n="occasionsSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">صممنا مجموعات متخصصة تناسب كل لحظة إنسانية لتجعل إهداءك مؤثراً وراسخاً.</p>
+      </div>
+
+      <!-- Occasions Grid (4 Cards) -->
+      <div id="occasions-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 scroll-reveal">
+        <!-- Rendered via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 5. FEATURED COLLECTIONS / FLORAL MASTERPIECES                       -->
+  <!-- =================================================================== -->
+  <section id="collections" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#F2EDE4] border-t border-[#E5DED2]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header & Filter Tabs -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 scroll-reveal">
+        <div>
+          <span data-i18n="collectionsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">إبداعات الأتيليه</span>
+          <h2 data-i18n="collectionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-3">تـشـكـيـلات مـنـدليـن الـمـخـتـارة</h2>
+          <p data-i18n="collectionsSec.subtitle" class="text-stone-600 text-sm sm:text-base max-w-xl">زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تُنسق بشغف ودقة فنية.</p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="flex flex-wrap items-center gap-2 bg-white/70 backdrop-blur-md p-1.5 rounded-2xl border border-[#E5DED2]">
+          <button type="button" data-filter="all" data-i18n="collectionsSec.filterAll" class="filter-btn py-2 px-4 rounded-xl text-xs font-semibold transition-all bg-stone-900 text-white">الكل</button>
+          <button type="button" data-filter="bouquets" data-i18n="collectionsSec.filterBouquets" class="filter-btn py-2 px-4 rounded-xl text-xs font-medium transition-all text-stone-700 hover:bg-stone-200">باقات الإهداء</button>
+          <button type="button" data-filter="vases" data-i18n="collectionsSec.filterVases" class="filter-btn py-2 px-4 rounded-xl text-xs font-medium transition-all text-stone-700 hover:bg-stone-200">فازات وسنتربيس</button>
+          <button type="button" data-filter="events" data-i18n="collectionsSec.filterEvents" class="filter-btn py-2 px-4 rounded-xl text-xs font-medium transition-all text-stone-700 hover:bg-stone-200">مناسبات خاصة</button>
+        </div>
+      </div>
+
+      <!-- Collections Grid -->
+      <div id="collections-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 scroll-reveal">
+        <!-- Rendered via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 6. "YOUR GIFT, MADE EASY" (3-Step Effortless Experience)            -->
+  <!-- =================================================================== -->
+  <section id="experience" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
+        <span data-i18n="stepsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">سلاسة وفخامة</span>
+        <h2 data-i18n="stepsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">هـديـتـك.. بـكـل بـسـاطـة وأريـحـيـة</h2>
+        <p data-i18n="stepsSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">لا داعي للحيرة والبحث الطويل، إليك كيف نعتني بإهدائك من البداية حتى الاستلام:</p>
+      </div>
+
+      <!-- 3 Steps Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-reveal">
+        
+        <!-- Step 1 -->
+        <div class="bg-white p-8 rounded-3xl border border-[#E5DED2] shadow-sm relative overflow-hidden flex flex-col justify-between">
+          <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center mb-6">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 data-i18n="stepsSec.step1Title" class="text-xl font-bold font-display text-stone-900 mb-3">1. حدد المناسبة والميزانية</h3>
+            <p data-i18n="stepsSec.step1Desc" class="text-sm text-stone-600 leading-relaxed">اختر نوع المناسبة وحدد الميزانية التي تناسبك دون أي تعقيد.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-semibold text-[#D4AF37]">
+            <span>بكل سهولة</span>
+            <span>✦</span>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="bg-white p-8 rounded-3xl border border-[#E5DED2] shadow-sm relative overflow-hidden flex flex-col justify-between">
+          <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center mb-6">
+            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 data-i18n="stepsSec.step2Title" class="text-xl font-bold font-display text-stone-900 mb-3">2. لمسات فنية مخصصة</h3>
+            <p data-i18n="stepsSec.step2Desc" class="text-sm text-stone-600 leading-relaxed">منسقو مندلين يختارون أندر الزهور وينسقونها بكرتون إهداء فاخر مع كرت رسالتك.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-semibold text-[#D4AF37]">
+            <span>حرفة راقية</span>
+            <span>✦</span>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="bg-white p-8 rounded-3xl border border-[#E5DED2] shadow-sm relative overflow-hidden flex flex-col justify-between">
+          <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center mb-6">
+            <i data-lucide="truck" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 data-i18n="stepsSec.step3Title" class="text-xl font-bold font-display text-stone-900 mb-3">3. توصيل فوري أنيق</h3>
+            <p data-i18n="stepsSec.step3Desc" class="text-sm text-stone-600 leading-relaxed">سيارات مبردة مخصصة تضمن وصول الزهور بنضارتها التامة في الموعد المحدد.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-semibold text-[#D4AF37]">
+            <span>توصيل مُبرّد</span>
+            <span>✦</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 7. INTERACTIVE BESPOKE CONCIERGE ("تبغى شيء مختلف؟")                 -->
+  <!-- =================================================================== -->
+  <section id="concierge" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#0A0808] text-white relative overflow-hidden">
+    
+    <!-- Ambient Floral Backdrop -->
+    <div class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full bg-[#D4AF37]/10 blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-24 -top-24 w-96 h-96 rounded-full bg-[#5C1D24]/20 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
+        <span data-i18n="conciergeSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">المنسّق الشخصي التفاعلي</span>
+        <h2 data-i18n="conciergeSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-white mb-4">تـبـغـى شـيء مـخـتـلـف وُمـخـصّـص؟</h2>
+        <p data-i18n="conciergeSec.subtitle" class="text-stone-400 text-sm sm:text-base leading-relaxed">حدد تفضيلاتك في ثوانٍ، وسنجهّز لك رسالة الطلب مباشرة مع فريق التنسيق في مندلين.</p>
+      </div>
+
+      <!-- Interactive Concierge Builder Form -->
+      <div class="glass-card-dark rounded-3xl p-6 sm:p-10 lg:p-12 border border-[#D4AF37]/20 shadow-2xl scroll-reveal">
+        <form id="concierge-form" class="space-y-8">
+          
+          <!-- Step 1: Occasion Selection -->
+          <div>
+            <label data-i18n="conciergeSec.stepOccasion" class="block text-sm font-semibold text-stone-200 mb-3">1. ما هي المناسبة؟</label>
+            <div id="concierge-occasions-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Step 2: Budget Tiers -->
+          <div>
+            <label data-i18n="conciergeSec.stepBudget" class="block text-sm font-semibold text-stone-200 mb-3">2. الميزانية التقريبية:</label>
+            <div id="concierge-budget-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Step 3: Color Palette & Mood -->
+          <div>
+            <label data-i18n="conciergeSec.stepPalette" class="block text-sm font-semibold text-stone-200 mb-3">3. درجات الألوان المفضلة:</label>
+            <div id="concierge-palette-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Step 4 & 5: Delivery & Gift Card Message -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label data-i18n="conciergeSec.stepDelivery" class="block text-sm font-semibold text-stone-200 mb-2">4. موعد التوصيل المطلوب:</label>
+              <input 
+                type="text" 
+                id="concierge-delivery-input" 
+                data-i18n-placeholder="conciergeSec.stepDeliveryPlaceholder"
+                placeholder="مثال: اليوم مساءً / غداً 8 مساءً"
+                class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-stone-500 focus:border-[#D4AF37] focus:bg-white/10 focus:outline-none transition-all"
+              />
+            </div>
+
+            <div>
+              <label data-i18n="conciergeSec.stepNote" class="block text-sm font-semibold text-stone-200 mb-2">5. نص كرت الإهداء (اختياري):</label>
+              <input 
+                type="text" 
+                id="concierge-note-input" 
+                data-i18n-placeholder="conciergeSec.stepNotePlaceholder"
+                placeholder="اكتب الكلمات التي ترغب بتضمينها في الكرت الفاخر..."
+                class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-stone-500 focus:border-[#D4AF37] focus:bg-white/10 focus:outline-none transition-all"
+              />
+            </div>
+          </div>
+
+          <!-- Submit Button & Live Guarantee -->
+          <div class="pt-4 flex flex-col items-center gap-4">
+            <button 
+              id="concierge-submit-btn" 
+              type="submit" 
+              class="w-full sm:w-auto btn-luxury-primary text-base font-semibold px-10 py-4 shadow-xl"
+            >
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+              <span data-i18n="conciergeSec.submitBtn">إرسال الطلب لمنسّق مندلين عبر واتساب</span>
+            </button>
+
+            <p data-i18n="conciergeSec.guarantee" class="text-xs text-stone-400 text-center flex items-center justify-center gap-1.5">
+              ✨ يتم الرد الفوري من المنسّق مع إرسال صور الزهور المتاحة للتأكيد قبل التجهيز.
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 8. BRAND STORY & ATELIER CRAFTSMANSHIP                             -->
+  <!-- =================================================================== -->
+  <section id="atelier" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2]">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <!-- Atelier Craft Image -->
+      <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-4/3 bg-stone-100 group scroll-reveal">
+        <img 
+          src="assets/images/atelier-craft.jpg" 
+          alt="Mandeline Master Florist Craftsmanship" 
+          loading="lazy"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 start-6 text-white text-xs font-semibold bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+          ✦ مندلين · فن صياغة المشاعر في جدة
+        </div>
+      </div>
+
+      <!-- Atelier Editorial Text -->
+      <div class="flex flex-col justify-center scroll-reveal">
+        <span data-i18n="atelierSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">عالم مندلين</span>
+        <h2 data-i18n="atelierSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-6 leading-tight">حـرفـة صـيـاغـة الـمـشـاعـر فـي جـدة</h2>
+        
+        <blockquote data-i18n="atelierSec.quote" class="text-base sm:text-lg font-serif-ar italic text-stone-700 border-s-2 border-[#D4AF37] ps-4 py-1 mb-6">
+          «الورد ليس مجرد نبات، بل هو الرسول الصامت الذي يقول ما تعجز عنه الكلمات.»
+        </blockquote>
+
+        <p data-i18n="atelierSec.p1" class="text-sm sm:text-base text-stone-600 leading-relaxed mb-4">
+          في مندلين، ننظر إلى كل زهرة كعنصر فني فريد. نستورد ورودنا يومياً من هولندا والإكوادور وكينيا، ونعتني بترطيبها وتهذيبها لتمنحكم أطول فترة نضارة وعبق.
+        </p>
+
+        <p data-i18n="atelierSec.p2" class="text-sm sm:text-base text-stone-600 leading-relaxed mb-8">
+          نحن نؤمن أن الهدية الفاخرة تكتمل بالتفاصيل: التغليف المخملي المات، الأشرطة الحريرية المتناغمة، وكرت الإهداء المصنوع من الورق القطني الفاخر.
+        </p>
+
+        <!-- Stats Counters -->
+        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#E5DED2]">
+          <div>
+            <div data-i18n="atelierSec.stat1Num" class="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-display">100%</div>
+            <div data-i18n="atelierSec.stat1Label" class="text-xs text-stone-500 mt-1">زهور طبيعية نضرة يومياً</div>
+          </div>
+          <div>
+            <div data-i18n="atelierSec.stat2Num" class="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-display">2h</div>
+            <div data-i18n="atelierSec.stat2Label" class="text-xs text-stone-500 mt-1">توصيل سريع داخل جدة</div>
+          </div>
+          <div>
+            <div data-i18n="atelierSec.stat3Num" class="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-display">4.9/5</div>
+            <div data-i18n="atelierSec.stat3Label" class="text-xs text-stone-500 mt-1">تقييم عملاء النخبة</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 9. CURATED EDITORIAL FLORAL JOURNAL & GALLERY                       -->
+  <!-- =================================================================== -->
+  <section id="journal" class="py-20 px-4 sm:px-8 lg:px-16 bg-[#F2EDE4] border-t border-[#E5DED2]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 scroll-reveal">
+        <div>
+          <span class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-1">معرض الأتيليه</span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-display text-[#1A1514]">يـومـيـات مـنـدليـن الـبـصـريـة</h2>
+        </div>
+        <a 
+          href="https://instagram.com/mandeline.flowers" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-2 text-xs font-semibold text-stone-800 hover:text-[#D4AF37] transition-colors"
+        >
+          <i data-lucide="instagram" class="w-4 h-4 text-[#D4AF37]"></i>
+          <span>@mandeline.flowers</span>
+        </a>
+      </div>
+
+      <!-- Visual Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 scroll-reveal">
+        <div class="rounded-2xl overflow-hidden aspect-square bg-stone-200 group relative">
+          <img src="assets/images/collection-roses.jpg" alt="Mandeline roses" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">L'Amour</div>
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-square bg-stone-200 group relative">
+          <img src="assets/images/collection-burgundy.jpg" alt="Mandeline twilight" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">Twilight</div>
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-square bg-stone-200 group relative">
+          <img src="assets/images/collection-orchids.jpg" alt="Mandeline orchids" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">Solace</div>
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-square bg-stone-200 group relative">
+          <img src="assets/images/collection-bespoke.jpg" alt="Mandeline installation" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">Grand Arch</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 10. BOUTIQUE LOCATION & CONCIERGE TOUCHPOINTS                       -->
+  <!-- =================================================================== -->
+  <section id="contact" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2] border-t border-[#E5DED2]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
+        <span data-i18n="contactSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">تفضل بزيارتنا أو تواصل</span>
+        <h2 data-i18n="contactSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">بـوتـيـك مـنـدليـن — جــدة</h2>
+        <p data-i18n="contactSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">يسعدنا استقبالكم في فرعنا أو خدمتكم عبر قنوات التواصل السريع.</p>
+      </div>
+
+      <!-- Contact Info Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 scroll-reveal">
+        
+        <!-- Address -->
+        <div class="bg-white p-6 rounded-2xl border border-[#E5DED2] shadow-xs flex flex-col justify-between">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center shrink-0">
+              <i data-lucide="map-pin" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 data-i18n="contactSec.locationTitle" class="text-base font-bold text-stone-900 mb-1">موقع الأتيليه</h3>
+              <p data-i18n="contactSec.locationVal" class="text-xs text-stone-600 leading-relaxed">حي الروضة / طريق التحلية، جدة، المملكة العربية السعودية</p>
+            </div>
+          </div>
+          <a 
+            href="https://maps.google.com/?q=Jeddah+Saudi+Arabia" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            data-i18n="contactSec.mapsBtn" 
+            class="mt-6 text-xs font-semibold text-[#D4AF37] hover:underline flex items-center gap-1"
+          >
+            <span>فتح الموقع في خرائط Google</span>
+            <span>↗</span>
+          </a>
+        </div>
+
+        <!-- Hours -->
+        <div class="bg-white p-6 rounded-2xl border border-[#E5DED2] shadow-xs flex flex-col justify-between">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center shrink-0">
+              <i data-lucide="clock" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 data-i18n="contactSec.hoursTitle" class="text-base font-bold text-stone-900 mb-1">ساعات العمل</h3>
+              <p data-i18n="contactSec.hoursVal" class="text-xs text-stone-600 leading-relaxed">يومياً من 9:00 صباحاً حتى 11:00 مساءً</p>
+            </div>
+          </div>
+          <div class="mt-6 text-xs font-medium text-emerald-700 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>مفتوح الآن وجاهز لاستقبال الطلبات</span>
+          </div>
+        </div>
+
+        <!-- WhatsApp & Phone -->
+        <div class="bg-white p-6 rounded-2xl border border-[#E5DED2] shadow-xs flex flex-col justify-between">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center shrink-0">
+              <i data-lucide="phone-call" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 data-i18n="contactSec.contactTitle" class="text-base font-bold text-stone-900 mb-1">خدمة العملاء والواتساب</h3>
+              <p data-i18n="contactSec.contactVal" class="text-xs text-stone-600 leading-relaxed">متاح للمحادثة الفورية وتأكيد الطلبات</p>
+            </div>
+          </div>
+          <a 
+            href="https://wa.me/966500000000" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            data-i18n="contactSec.whatsappBtn" 
+            class="mt-6 text-xs font-semibold text-stone-900 hover:text-[#D4AF37] flex items-center gap-1.5"
+          >
+            <i data-lucide="message-circle" class="w-4 h-4 text-[#D4AF37]"></i>
+            <span>محادثة فورية مع المنسّق</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 11. EDITORIAL FOOTER                                                -->
+  <!-- =================================================================== -->
+  <footer class="bg-[#0A0808] text-stone-400 py-16 px-4 sm:px-8 lg:px-16 border-t border-white/10 mt-auto">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      
+      <!-- Brand Summary -->
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-8 h-8 rounded-full border border-[#D4AF37]/40 flex items-center justify-center">
+            <span class="font-serif text-[#D4AF37] text-sm font-bold">M</span>
+          </div>
+          <span class="text-white font-bold text-lg font-display">مـنـدليـن للـزهـور</span>
+        </div>
+        <p data-i18n="footer.about" class="text-xs sm:text-sm text-stone-400 leading-relaxed max-w-md mb-6">
+          مندلين — أتيليه الزهور الفاخرة في جدة. نصنع من كل مناسبة ذكرى استثنائية من خلال تنسيقات نباتية ملهمة وتجربة إهداء متكاملة.
+        </p>
+        <div class="flex items-center gap-4">
+          <a href="https://instagram.com/mandeline.flowers" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#D4AF37] hover:border-[#D4AF37] transition-colors" aria-label="Instagram">
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+          </a>
+          <a href="https://wa.me/966500000000" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:text-[#D4AF37] hover:border-[#D4AF37] transition-colors" aria-label="WhatsApp">
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 data-i18n="footer.quickLinks" class="text-xs font-bold uppercase tracking-widest text-white mb-4">روابط سريعة</h4>
+        <ul class="space-y-2.5 text-xs">
+          <li><a href="#occasions" data-i18n="footer.occasions" class="hover:text-[#D4AF37] transition-colors">المناسبات</a></li>
+          <li><a href="#collections" data-i18n="footer.collections" class="hover:text-[#D4AF37] transition-colors">التشكيلات</a></li>
+          <li><a href="#concierge" data-i18n="footer.concierge" class="hover:text-[#D4AF37] transition-colors">المنسق الخاص</a></li>
+          <li><a href="#contact" data-i18n="footer.contact" class="hover:text-[#D4AF37] transition-colors">الموقع والتواصل</a></li>
+        </ul>
+      </div>
+
+      <!-- Location Info -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-widest text-white mb-4">أتيليه جدة</h4>
+        <p class="text-xs leading-relaxed text-stone-400 mb-3">
+          حي الروضة / طريق التحلية، جدة<br>
+          المملكة العربية السعودية
+        </p>
+        <div class="text-[11px] text-[#D4AF37] font-mono">
+          توصيل فوري خلال ساعتين
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
+      <div data-i18n="footer.rights">جميع الحقوق محفوظة © بوتيك مندلين للزهور 2026.</div>
+      <div class="flex items-center gap-1 font-serif-en tracking-widest text-[10px] uppercase text-stone-600">
+        <span>CRAFTED FOR MANDELINE FLORAL ATELIER</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =================================================================== -->
+  <!-- 12. FLOATING MOBILE WHATSAPP ORDER BAR (Thumb Zone)                 -->
+  <!-- =================================================================== -->
+  <div 
+    id="floating-whatsapp-bar" 
+    class="fixed bottom-4 inset-x-4 z-40 lg:hidden transform translate-y-32 opacity-0 transition-all duration-500"
+  >
+    <a 
+      href="https://wa.me/966500000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A8%D9%88%D8%AA%D9%8A%D9%83%20%D9%85%D9%86%D8%AF%D9%84%D9%8A%D9%86%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D8%A8%D8%A7%D9%82%D8%A9%20%D9%88%D8%B1%D8%AF" 
+      target="_blank"
+      rel="noopener noreferrer"
+      class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#D4AF37] to-[#C5A880] text-black font-bold text-sm shadow-2xl flex items-center justify-center gap-2.5 border border-white/20 active:scale-95 transition-transform"
+    >
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      <span data-i18n="floatingCta">اطلب باقتك عبر واتساب</span>
+    </a>
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- 13. MOBILE NAVIGATION DRAWER (Full-screen Frosted Glass)            -->
+  <!-- =================================================================== -->
+  <div 
+    id="mobile-menu-drawer" 
+    class="fixed inset-0 z-50 bg-[#0A0808]/95 backdrop-blur-2xl p-6 flex flex-col justify-between hidden transition-all duration-300"
+  >
+    <div class="flex items-center justify-between pb-6 border-b border-white/10">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full border border-[#D4AF37]/40 flex items-center justify-center">
+          <span class="font-serif text-[#D4AF37] font-bold">M</span>
+        </div>
+        <span class="text-white font-bold font-display text-base">مـنـدليـن</span>
+      </div>
+      <button 
+        id="mobile-menu-close" 
+        type="button" 
+        class="w-10 h-10 rounded-full glass-pill flex items-center justify-center text-white"
+        aria-label="Close Mobile Menu"
+      >
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Links List -->
+    <div class="flex flex-col gap-5 text-lg font-bold font-display text-white py-8">
+      <a href="#hero-section" data-i18n="nav.home" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">الرئيسية</a>
+      <a href="#occasions" data-i18n="nav.occasions" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">المناسبات</a>
+      <a href="#collections" data-i18n="nav.collections" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">تشكيلاتنا</a>
+      <a href="#experience" data-i18n="nav.experience" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">تجربة الإهداء</a>
+      <a href="#concierge" data-i18n="nav.concierge" class="mobile-nav-link text-[#D4AF37]">صمّم باقتك</a>
+      <a href="#atelier" data-i18n="nav.atelier" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">عن مندلين</a>
+      <a href="#contact" data-i18n="nav.contact" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">تواصل معنا</a>
+    </div>
+
+    <!-- Mobile Drawer Footer Actions -->
+    <div class="space-y-4 pt-6 border-t border-white/10">
+      <button 
+        type="button" 
+        class="lang-toggle-btn w-full py-3 rounded-xl glass-pill text-white text-xs font-semibold"
+      >
+        English
+      </button>
+      <a 
+        href="https://wa.me/966500000000" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full py-3.5 rounded-xl bg-[#D4AF37] text-black font-bold text-xs flex items-center justify-center gap-2"
+      >
+        <i data-lucide="message-circle" class="w-4 h-4"></i>
+        <span>محادثة فورية مع المنسّق</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- =================================================================== -->
+  <!-- 14. PRODUCT DETAILS / IMAGE ZOOM LIGHTBOX MODAL                     -->
+  <!-- =================================================================== -->
+  <div 
+    id="quick-view-modal" 
+    class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div class="bg-white rounded-3xl overflow-hidden max-w-3xl w-full max-h-[90vh] flex flex-col md:flex-row shadow-2xl relative">
+      
+      <!-- Close Button -->
+      <button 
+        id="modal-close-btn" 
+        type="button" 
+        class="absolute top-4 end-4 z-20 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition-colors"
+        aria-label="Close modal"
+      >
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Image -->
+      <div class="md:w-1/2 aspect-4/3 md:aspect-auto bg-stone-100 relative">
+        <img id="modal-img" src="" alt="" class="w-full h-full object-cover" />
+        <span id="modal-tag" class="absolute top-4 start-4 glass-pill text-xs font-semibold text-white px-3 py-1 rounded-full"></span>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto">
+        <div>
+          <h3 id="modal-title" class="text-2xl font-bold font-display text-stone-900 mb-1"></h3>
+          <p id="modal-subtitle" class="text-xs text-stone-500 mb-4"></p>
+          <div id="modal-price" class="text-lg font-bold text-[#D4AF37] mb-6"></div>
+          
+          <div class="space-y-3 text-xs sm:text-sm text-stone-600 leading-relaxed mb-6">
+            <p id="modal-desc"></p>
+          </div>
+        </div>
+
+        <button 
+          id="modal-order-btn" 
+          type="button" 
+          class="w-full btn-luxury-primary text-sm font-semibold py-3.5"
+        >
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>طلب هذا التنسيق عبر واتساب</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/mandeline.js"></script>
+  <script>
+    // Initialize Lucide Icons after render
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>
