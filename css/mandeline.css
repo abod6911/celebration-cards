@@ -29,11 +29,11 @@
   --color-blush-200: #e8d3ce;
   --color-rose-muted: #c48b8b;
   
-  /* Two-Tier Typography System */
-  --font-ar-display: 'Noto Naskh Arabic', Georgia, serif;
-  --font-ar-body: 'IBM Plex Sans Arabic', -apple-system, system-ui, sans-serif;
-  --font-en-display: 'Cormorant Garamond', Georgia, serif;
-  --font-en-body: 'Manrope', -apple-system, system-ui, sans-serif;
+  /* Two-Tier Typography System - Saudi Luxury Standard */
+  --font-ar-display: 'Readex Pro', 'Noto Kufi Arabic', -apple-system, system-ui, sans-serif;
+  --font-ar-body: 'IBM Plex Sans Arabic', 'Readex Pro', -apple-system, system-ui, sans-serif;
+  --font-en-display: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  --font-en-body: 'Readex Pro', 'Manrope', -apple-system, system-ui, sans-serif;
   
   /* Motion Easing Tokens */
   --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
@@ -90,6 +90,10 @@ body {
 
 .font-editorial-ar {
   font-family: var(--font-ar-display);
+}
+
+.font-serif {
+  font-family: 'Amiri', 'Cormorant Garamond', Georgia, serif;
 }
 
 /* ==========================================================================

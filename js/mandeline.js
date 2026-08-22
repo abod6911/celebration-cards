@@ -515,7 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const title = isAr ? occ.titleAr : occ.titleEn;
       const desc = isAr ? occ.descAr : occ.descEn;
       return `
-        <div class="group relative overflow-hidden rounded-2xl bg-white border border-[#E2D8C9] shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between">
+        <div class="group relative overflow-hidden rounded-3xl bg-white border-2 border-[#E5DBC7] shadow-md hover:shadow-2xl hover:border-[#D4AF37] transition-all duration-300 flex flex-col justify-between">
           <div class="relative aspect-4/3 overflow-hidden bg-stone-100">
             <img 
               src="${occ.image}" 
@@ -523,17 +523,17 @@ document.addEventListener('DOMContentLoaded', () => {
               loading="lazy"
               class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent opacity-90 group-hover:opacity-75 transition-opacity"></div>
             <div class="absolute bottom-4 ${isAr ? 'right-4 text-right' : 'left-4 text-left'} text-white">
-              <h3 class="text-xl font-bold font-display drop-shadow-sm">${title}</h3>
+              <h3 class="text-xl font-bold font-display drop-shadow-md tracking-tight">${title}</h3>
             </div>
           </div>
           <div class="p-6 flex-1 flex flex-col justify-between">
-            <p class="text-sm text-stone-600 leading-relaxed mb-6">${desc}</p>
+            <p class="text-sm text-stone-800 font-medium leading-relaxed mb-6">${desc}</p>
             <button 
               type="button"
               onclick="window.selectOccasionAndScroll('${occ.id}', '${occ.defaultBudget}', '${occ.recommendedPalette}')"
-              class="w-full py-3 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#F8F5EF] hover:bg-[#D4AF37] hover:text-black text-stone-800 border border-[#E2D8C9] transition-all duration-300 flex items-center justify-center gap-2 group-hover:border-[#D4AF37] cursor-pointer"
+              class="w-full py-3.5 px-4 rounded-2xl text-xs font-bold uppercase tracking-wider bg-stone-950 hover:bg-[#D4AF37] text-white hover:text-black border border-stone-900 hover:border-[#D4AF37] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer shadow-sm active:scale-95"
             >
               <span>${tSec.selectCta}</span>
               <span class="text-sm transition-transform ${isAr ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}">${isAr ? '←' : '→'}</span>
@@ -574,7 +574,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const tag = isAr ? item.tagAr : item.tagEn;
 
       return `
-        <div class="flower-card rounded-2xl bg-white border border-[#E2D8C9] overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-lg transition-all duration-300">
+        <div class="flower-card rounded-3xl bg-white border-2 border-[#E5DBC7] overflow-hidden flex flex-col justify-between group shadow-md hover:shadow-2xl hover:border-[#D4AF37] transition-all duration-300">
           <div class="relative aspect-4/3 overflow-hidden bg-stone-100 cursor-pointer" onclick="window.openQuickView('${item.id}')">
             <img 
               src="${item.image}" 
@@ -583,37 +583,37 @@ document.addEventListener('DOMContentLoaded', () => {
               class="flower-card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div class="absolute top-3 ${isAr ? 'right-3' : 'left-3'}">
-              <span class="glass-pill text-[11px] font-semibold text-white px-3 py-1 rounded-full shadow-sm">
+              <span class="bg-black/80 border border-[#D4AF37]/50 text-[11px] font-bold text-[#F3E5AB] px-3.5 py-1.5 rounded-full shadow-md backdrop-blur-md">
                 ${tag}
               </span>
             </div>
-            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="glass-pill text-xs font-semibold text-stone-900 bg-white/90 px-4 py-2 rounded-full transform translate-y-2 group-hover:translate-y-0 transition-transform shadow-md">
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-white text-xs font-bold text-stone-950 px-4 py-2 rounded-full transform translate-y-2 group-hover:translate-y-0 transition-transform shadow-xl border border-stone-200">
                 ${tSec.viewDetails} ⤢
               </span>
             </div>
           </div>
 
-          <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+          <div class="p-6 flex-1 flex flex-col justify-between">
             <div class="mb-4">
-              <h3 class="font-display font-bold text-lg text-stone-900 leading-snug mb-1.5">${title}</h3>
-              <p class="text-xs text-stone-500 line-clamp-2 leading-relaxed mb-3">${subtitle}</p>
-              <div class="text-base font-bold text-[#D4AF37]">${price}</div>
+              <h3 class="font-display font-extrabold text-lg text-stone-950 leading-snug mb-1.5">${title}</h3>
+              <p class="text-xs text-stone-700 font-medium line-clamp-2 leading-relaxed mb-3">${subtitle}</p>
+              <div class="text-base font-extrabold text-[#9E7A1C] font-display">${price}</div>
             </div>
 
             <div class="flex items-center gap-2 pt-3 border-t border-stone-100">
               <button 
                 type="button" 
                 onclick="window.orderDirectItem('${item.id}')"
-                class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold text-black bg-[#D4AF37] hover:bg-[#E2C766] transition-all text-center shadow-xs cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
+                class="flex-1 py-3 px-3 rounded-xl text-xs font-bold text-black bg-[#D4AF37] hover:bg-[#E2C766] transition-all text-center shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
               >
-                <i data-lucide="message-circle" class="w-3.5 h-3.5 shrink-0"></i>
+                <i data-lucide="message-circle" class="w-4 h-4 shrink-0"></i>
                 <span class="whitespace-nowrap">${isAr ? 'طلب التنسيق' : 'Order Now'}</span>
               </button>
               <button 
                 type="button" 
                 onclick="window.openQuickView('${item.id}')"
-                class="py-2.5 px-3.5 rounded-xl text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200 transition-colors text-center cursor-pointer shrink-0 active:scale-95"
+                class="py-3 px-4 rounded-xl text-xs font-bold text-stone-900 bg-stone-100 hover:bg-stone-200 transition-colors text-center cursor-pointer shrink-0 active:scale-95"
                 aria-label="${tSec.viewDetails}"
               >
                 <span class="whitespace-nowrap">${isAr ? 'التفاصيل' : 'Details'}</span>

@@ -17,6 +17,11 @@
   <link rel="preload" as="image" href="assets/hero/mandeline-hero-bg.jpg">
   <link rel="preload" as="image" href="assets/hero/mandeline-hero-01-ivory.webp">
 
+  <!-- Google Fonts: Readex Pro, IBM Plex Sans Arabic, Noto Kufi Arabic, Amiri & Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700;800;900&family=Readex+Pro:wght@300;400;500;600;700;800&display=swap">
+
   <!-- Scroll Restoration & Viewport Reset -->
   <script>
     if ('scrollRestoration' in history) {
@@ -41,17 +46,19 @@
               dark: '#1A1716',
               gold: '#D4AF37',
               goldLight: '#E2C766',
+              goldDark: '#9E7A1C',
               champagne: '#C9B08D',
-              ivory: '#F8F5EF',
-              cream: '#EFE8DE',
+              ivory: '#FAF7F2',
+              warmBase: '#F5EFE6',
+              cream: '#EDE4D5',
               blush: '#E8D3CE',
               burgundy: '#3A171B',
             }
           },
           fontFamily: {
-            display: ['Noto Naskh Arabic', 'Cormorant Garamond', 'serif'],
-            sans: ['IBM Plex Sans Arabic', 'Manrope', 'sans-serif'],
-            serif: ['Cormorant Garamond', 'Noto Naskh Arabic', 'serif'],
+            display: ['Readex Pro', 'Noto Kufi Arabic', 'Cinzel', 'sans-serif'],
+            sans: ['IBM Plex Sans Arabic', 'Readex Pro', 'sans-serif'],
+            serif: ['Amiri', 'Cormorant Garamond', 'serif'],
           }
         }
       }
@@ -263,18 +270,21 @@
   <!-- =================================================================== -->
   <!-- 4. OCCASION DISCOVERY SECTION ("ما المناسبة؟")                      -->
   <!-- =================================================================== -->
-  <section id="occasions" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#F8F5EF]">
+  <section id="occasions" class="py-24 lg:py-32 px-4 sm:px-8 lg:px-16 bg-gradient-to-b from-[#F5EFE6] via-[#FAF7F2] to-[#EFE7D8] border-t border-[#DCD0B9]">
     <div class="max-w-7xl mx-auto">
       
       <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
-        <span data-i18n="occasionsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">اختر حسب النية والمناسبة</span>
-        <h2 data-i18n="occasionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1716] mb-4">ما هي مناسبتك القادمة؟</h2>
-        <p data-i18n="occasionsSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">صممنا مجموعات متخصصة تناسب كل لحظة إنسانية لتجعل إهداءك مؤثراً لا ينسى.</p>
+      <div class="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1A1716] border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-3.5 shadow-md">
+          <span>✦</span>
+          <span data-i18n="occasionsSec.eyebrow">اختر حسب النية والمناسبة</span>
+        </div>
+        <h2 data-i18n="occasionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-stone-950 mb-4 tracking-tight">ما هي مناسبتك القادمة؟</h2>
+        <p data-i18n="occasionsSec.subtitle" class="text-stone-800 text-sm sm:text-base font-medium leading-relaxed max-w-lg mx-auto">صممنا مجموعات متخصصة تناسب كل لحظة إنسانية لتجعل إهداءك مؤثراً وراسخاً في الذاكرة.</p>
       </div>
 
       <!-- Occasions Grid -->
-      <div id="occasions-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 scroll-reveal">
+      <div id="occasions-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 scroll-reveal">
         <!-- Rendered via JS -->
       </div>
 
@@ -284,28 +294,31 @@
   <!-- =================================================================== -->
   <!-- 5. SIGNATURE COLLECTIONS ("تشكيلات ميديلين المختارة")              -->
   <!-- =================================================================== -->
-  <section id="collections" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2] border-t border-[#E2D8C9]">
+  <section id="collections" class="py-24 lg:py-32 px-4 sm:px-8 lg:px-16 bg-gradient-to-b from-[#EFE7D8] via-[#FAF7F2] to-[#F5EFE6] border-t border-[#DCD0B9]">
     <div class="max-w-7xl mx-auto">
       
       <!-- Section Header & Filter Tabs -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 scroll-reveal">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 scroll-reveal">
         <div>
-          <span data-i18n="collectionsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">إبداعات الأتيليه</span>
-          <h2 data-i18n="collectionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1716] mb-3">تشكيلات ميديلين المختارة</h2>
-          <p data-i18n="collectionsSec.subtitle" class="text-stone-600 text-sm sm:text-base max-w-xl">زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تنسق بشغف ودقة فنية.</p>
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1A1716] border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-3.5 shadow-md">
+            <span>✦</span>
+            <span data-i18n="collectionsSec.eyebrow">إبداعات الأتيليه</span>
+          </div>
+          <h2 data-i18n="collectionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-stone-950 mb-3 tracking-tight">تشكيلات ميديلين المختارة</h2>
+          <p data-i18n="collectionsSec.subtitle" class="text-stone-800 text-sm sm:text-base font-medium max-w-xl leading-relaxed">زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تنسق بشغف ودقة فنية استثنائية.</p>
         </div>
 
         <!-- Filter Pills -->
-        <div class="flex flex-wrap items-center gap-2 bg-white/70 backdrop-blur-md p-1.5 rounded-2xl border border-[#E2D8C9]">
-          <button type="button" data-filter="all" data-i18n="collectionsSec.filterAll" class="filter-btn py-2 px-4 rounded-xl text-xs font-semibold transition-all bg-stone-900 text-white">الكل</button>
-          <button type="button" data-filter="bouquets" data-i18n="collectionsSec.filterBouquets" class="filter-btn py-2 px-4 rounded-xl text-xs font-medium transition-all text-stone-700 hover:bg-stone-200">باقات الإهداء</button>
-          <button type="button" data-filter="vases" data-i18n="collectionsSec.filterVases" class="filter-btn py-2 px-4 rounded-xl text-xs font-medium transition-all text-stone-700 hover:bg-stone-200">فازات وسنتربيس</button>
-          <button type="button" data-filter="events" data-i18n="collectionsSec.filterEvents" class="filter-btn py-2 px-4 rounded-xl text-xs font-medium transition-all text-stone-700 hover:bg-stone-200">مناسبات خاصة</button>
+        <div class="flex flex-wrap items-center gap-2 bg-[#12100F] p-2 rounded-2xl border border-[#D4AF37]/35 shadow-xl">
+          <button type="button" data-filter="all" data-i18n="collectionsSec.filterAll" class="filter-btn py-2.5 px-4 rounded-xl text-xs font-bold transition-all bg-[#D4AF37] text-black shadow-sm">الكل</button>
+          <button type="button" data-filter="bouquets" data-i18n="collectionsSec.filterBouquets" class="filter-btn py-2.5 px-4 rounded-xl text-xs font-medium transition-all text-stone-300 hover:text-white hover:bg-white/10">باقات الإهداء</button>
+          <button type="button" data-filter="vases" data-i18n="collectionsSec.filterVases" class="filter-btn py-2.5 px-4 rounded-xl text-xs font-medium transition-all text-stone-300 hover:text-white hover:bg-white/10">فازات وسنتربيس</button>
+          <button type="button" data-filter="events" data-i18n="collectionsSec.filterEvents" class="filter-btn py-2.5 px-4 rounded-xl text-xs font-medium transition-all text-stone-300 hover:text-white hover:bg-white/10">مناسبات خاصة</button>
         </div>
       </div>
 
       <!-- Collections Grid -->
-      <div id="collections-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 scroll-reveal">
+      <div id="collections-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7 scroll-reveal">
         <!-- Rendered via JS -->
       </div>
 
@@ -335,63 +348,82 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 7. "YOUR GIFT, MADE EASY" (3-Step Effortless Experience)            -->
+  <!-- 7. GIFTING EXPERIENCE STEPS ("هديتك.. بكل بساطة وأريحية")          -->
   <!-- =================================================================== -->
-  <section id="experience" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#F8F5EF]">
+  <section id="experience" class="py-24 lg:py-32 px-4 sm:px-8 lg:px-16 bg-gradient-to-b from-[#F5EFE6] via-[#FAF7F2] to-[#EFE7D8] border-t border-[#DCD0B9]">
     <div class="max-w-7xl mx-auto">
       
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
-        <span data-i18n="stepsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">سلاسة وفخامة</span>
-        <h2 data-i18n="stepsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1716] mb-4">هديتك.. بكل بساطة وأريحية</h2>
-        <p data-i18n="stepsSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">لا داعي للحيرة والبحث الطويل، إليك كيف نعتني بإهدائك من البداية حتى الاستلام:</p>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1A1716] border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-3.5 shadow-md">
+          <span>✦</span>
+          <span data-i18n="stepsSec.eyebrow">سلاسة وفخامة</span>
+        </div>
+        <h2 data-i18n="stepsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-stone-950 mb-4 tracking-tight">هديتك.. بكل بساطة وأريحية</h2>
+        <p data-i18n="stepsSec.subtitle" class="text-stone-800 text-sm sm:text-base font-medium leading-relaxed max-w-lg mx-auto">لا داعي للحيرة والبحث الطويل، إليك كيف نعتني بإهدائك من البداية حتى الاستلام:</p>
       </div>
 
       <!-- 3 Steps Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-reveal">
         
         <!-- Step 1 -->
-        <div class="bg-white p-8 rounded-3xl border border-[#E2D8C9] shadow-sm relative overflow-hidden flex flex-col justify-between">
-          <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center mb-6">
-            <i data-lucide="sparkles" class="w-6 h-6"></i>
+        <div class="bg-white p-8 rounded-3xl border-2 border-[#E5DBC7] hover:border-[#D4AF37] shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#D4AF37]/25 to-[#F3E5AB]/40 text-[#8C6B14] flex items-center justify-center mb-6 shadow-xs border border-[#D4AF37]/35 group-hover:scale-105 transition-transform">
+            <svg class="w-7 h-7 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+            </svg>
           </div>
           <div>
-            <h3 data-i18n="stepsSec.step1Title" class="text-xl font-bold font-display text-stone-900 mb-3">1. حدد المناسبة والميزانية</h3>
-            <p data-i18n="stepsSec.step1Desc" class="text-sm text-stone-600 leading-relaxed">اختر نوع المناسبة وحدد الميزانية التي تناسبك دون أي تعقيد.</p>
+            <h3 data-i18n="stepsSec.step1Title" class="text-xl font-bold font-display text-stone-950 mb-3">1. حدد المناسبة والميزانية</h3>
+            <p data-i18n="stepsSec.step1Desc" class="text-sm text-stone-700 font-medium leading-relaxed">اختر نوع المناسبة وحدد الميزانية التي تناسبك دون أي تعقيد.</p>
           </div>
-          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-semibold text-[#D4AF37]">
-            <span>بكل سهولة</span>
-            <span>✦</span>
+          <div class="mt-6 pt-5 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-[#8C6B14]">
+            <span class="bg-[#F5EFE6] px-3.5 py-1.5 rounded-full border border-[#D4AF37]/35 inline-flex items-center gap-1.5 shadow-xs">
+              <span>بكل سهولة</span>
+              <span>✦</span>
+            </span>
           </div>
         </div>
 
         <!-- Step 2 -->
-        <div class="bg-white p-8 rounded-3xl border border-[#E2D8C9] shadow-sm relative overflow-hidden flex flex-col justify-between">
-          <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center mb-6">
-            <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+        <div class="bg-white p-8 rounded-3xl border-2 border-[#E5DBC7] hover:border-[#D4AF37] shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#D4AF37]/25 to-[#F3E5AB]/40 text-[#8C6B14] flex items-center justify-center mb-6 shadow-xs border border-[#D4AF37]/35 group-hover:scale-105 transition-transform">
+            <svg class="w-7 h-7 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+            </svg>
           </div>
           <div>
-            <h3 data-i18n="stepsSec.step2Title" class="text-xl font-bold font-display text-stone-900 mb-3">2. لمسات فنية مخصصة</h3>
-            <p data-i18n="stepsSec.step2Desc" class="text-sm text-stone-600 leading-relaxed">منسقو ميديلين يختارون أندر الزهور وينسقونها بتغليف إهداء فاخر مع كرت رسالتك.</p>
+            <h3 data-i18n="stepsSec.step2Title" class="text-xl font-bold font-display text-stone-950 mb-3">2. لمسات فنية مخصصة</h3>
+            <p data-i18n="stepsSec.step2Desc" class="text-sm text-stone-700 font-medium leading-relaxed">منسقو ميديلين يختارون أندر الزهور وينسقونها بتغليف إهداء فاخر مع كرت رسالتك.</p>
           </div>
-          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-semibold text-[#D4AF37]">
-            <span>حرفة راقية</span>
-            <span>✦</span>
+          <div class="mt-6 pt-5 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-[#8C6B14]">
+            <span class="bg-[#F5EFE6] px-3.5 py-1.5 rounded-full border border-[#D4AF37]/35 inline-flex items-center gap-1.5 shadow-xs">
+              <span>حرفة راقية</span>
+              <span>✦</span>
+            </span>
           </div>
         </div>
 
         <!-- Step 3 -->
-        <div class="bg-white p-8 rounded-3xl border border-[#E2D8C9] shadow-sm relative overflow-hidden flex flex-col justify-between">
-          <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center mb-6">
-            <i data-lucide="truck" class="w-6 h-6"></i>
+        <div class="bg-white p-8 rounded-3xl border-2 border-[#E5DBC7] hover:border-[#D4AF37] shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 relative overflow-hidden flex flex-col justify-between group">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-[#D4AF37]/25 to-[#F3E5AB]/40 text-[#8C6B14] flex items-center justify-center mb-6 shadow-xs border border-[#D4AF37]/35 group-hover:scale-105 transition-transform">
+            <svg class="w-7 h-7 stroke-current fill-none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/>
+              <path d="M15 18H9"/>
+              <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/>
+              <circle cx="17" cy="18" r="2"/>
+              <circle cx="7" cy="18" r="2"/>
+            </svg>
           </div>
           <div>
-            <h3 data-i18n="stepsSec.step3Title" class="text-xl font-bold font-display text-stone-900 mb-3">3. توصيل فوري أنيق</h3>
-            <p data-i18n="stepsSec.step3Desc" class="text-sm text-stone-600 leading-relaxed">سيارات مبردة مخصصة تضمن وصول الزهور بنضارتها التامة في الموعد المحدد.</p>
+            <h3 data-i18n="stepsSec.step3Title" class="text-xl font-bold font-display text-stone-950 mb-3">3. توصيل فوري أنيق</h3>
+            <p data-i18n="stepsSec.step3Desc" class="text-sm text-stone-700 font-medium leading-relaxed">سيارات مبردة مخصصة تضمن وصول الزهور بنضارتها التامة في الموعد المحدد.</p>
           </div>
-          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-semibold text-[#D4AF37]">
-            <span>توصيل مبرد</span>
-            <span>✦</span>
+          <div class="mt-6 pt-5 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-[#8C6B14]">
+            <span class="bg-[#F5EFE6] px-3.5 py-1.5 rounded-full border border-[#D4AF37]/35 inline-flex items-center gap-1.5 shadow-xs">
+              <span>توصيل مبرد</span>
+              <span>✦</span>
+            </span>
           </div>
         </div>
 
@@ -403,28 +435,31 @@
   <!-- =================================================================== -->
   <!-- 8. INTERACTIVE BESPOKE CONCIERGE ("تبغى شيء مختلف؟")                 -->
   <!-- =================================================================== -->
-  <section id="concierge" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#090807] text-white relative overflow-hidden">
+  <section id="concierge" class="py-24 lg:py-32 px-4 sm:px-8 lg:px-16 bg-[#080605] text-white relative overflow-hidden border-t border-white/10">
     
     <!-- Ambient Floral Backdrop -->
-    <div class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full bg-[#D4AF37]/10 blur-3xl pointer-events-none"></div>
-    <div class="absolute -left-24 -top-24 w-96 h-96 rounded-full bg-[#3A171B]/30 blur-3xl pointer-events-none"></div>
+    <div class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full bg-[#D4AF37]/15 blur-[120px] pointer-events-none"></div>
+    <div class="absolute -left-24 -top-24 w-96 h-96 rounded-full bg-[#3A171B]/35 blur-[120px] pointer-events-none"></div>
 
     <div class="max-w-5xl mx-auto relative z-10">
       
       <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
-        <span data-i18n="conciergeSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">المنسق الشخصي التفاعلي</span>
-        <h2 data-i18n="conciergeSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-white mb-4">تبغى شيء مختلف ومخصص؟</h2>
-        <p data-i18n="conciergeSec.subtitle" class="text-stone-400 text-sm sm:text-base leading-relaxed">حدد تفضيلاتك في ثوانٍ، وسنجهز لك رسالة الطلب مباشرة مع فريق التنسيق في ميديلين.</p>
+      <div class="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-3.5 shadow-md">
+          <span>✦</span>
+          <span data-i18n="conciergeSec.eyebrow">المنسق الشخصي التفاعلي</span>
+        </div>
+        <h2 data-i18n="conciergeSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-white mb-4 tracking-tight">تبغى شيء مختلف ومخصص؟</h2>
+        <p data-i18n="conciergeSec.subtitle" class="text-stone-300 text-sm sm:text-base font-normal leading-relaxed">حدد تفضيلاتك في ثوانٍ، وسنجهز لك رسالة الطلب مباشرة مع فريق التنسيق في ميديلين.</p>
       </div>
 
       <!-- Interactive Concierge Builder Form -->
-      <div class="glass-card-dark rounded-3xl p-6 sm:p-10 lg:p-12 border border-[#D4AF37]/20 shadow-2xl scroll-reveal">
+      <div class="glass-card-dark rounded-3xl p-6 sm:p-10 lg:p-12 border border-[#D4AF37]/30 shadow-2xl scroll-reveal bg-black/70 backdrop-blur-2xl">
         <form id="concierge-form" class="space-y-8">
           
           <!-- Step 1: Occasion Selection -->
           <div>
-            <label data-i18n="conciergeSec.stepOccasion" class="block text-sm font-semibold text-stone-200 mb-3">1. ما هي المناسبة؟</label>
+            <label data-i18n="conciergeSec.stepOccasion" class="block text-sm font-bold text-stone-200 mb-3">1. ما هي المناسبة؟</label>
             <div id="concierge-occasions-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <!-- Rendered via JS -->
             </div>
@@ -432,7 +467,7 @@
 
           <!-- Step 2: Budget Tiers -->
           <div>
-            <label data-i18n="conciergeSec.stepBudget" class="block text-sm font-semibold text-stone-200 mb-3">2. الميزانية التقريبية:</label>
+            <label data-i18n="conciergeSec.stepBudget" class="block text-sm font-bold text-stone-200 mb-3">2. الميزانية التقريبية:</label>
             <div id="concierge-budget-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <!-- Rendered via JS -->
             </div>
@@ -440,7 +475,7 @@
 
           <!-- Step 3: Color Palette & Mood -->
           <div>
-            <label data-i18n="conciergeSec.stepPalette" class="block text-sm font-semibold text-stone-200 mb-3">3. درجات الألوان المفضلة:</label>
+            <label data-i18n="conciergeSec.stepPalette" class="block text-sm font-bold text-stone-200 mb-3">3. درجات الألوان المفضلة:</label>
             <div id="concierge-palette-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               <!-- Rendered via JS -->
             </div>
@@ -449,24 +484,24 @@
           <!-- Step 4 & 5: Delivery & Gift Card Message -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label data-i18n="conciergeSec.stepDelivery" class="block text-sm font-semibold text-stone-200 mb-2">4. موعد التوصيل المطلوب:</label>
+              <label data-i18n="conciergeSec.stepDelivery" class="block text-sm font-bold text-stone-200 mb-2">4. موعد التوصيل المطلوب:</label>
               <input 
                 type="text" 
                 id="concierge-delivery-input" 
                 data-i18n-placeholder="conciergeSec.stepDeliveryPlaceholder"
                 placeholder="مثال: اليوم مساءً / غداً 8 مساءً"
-                class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-stone-500 focus:border-[#D4AF37] focus:bg-white/10 focus:outline-none transition-all"
+                class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3.5 text-sm text-white placeholder-stone-400 focus:border-[#D4AF37] focus:bg-white/10 focus:outline-none transition-all font-medium"
               />
             </div>
 
             <div>
-              <label data-i18n="conciergeSec.stepNote" class="block text-sm font-semibold text-stone-200 mb-2">5. نص كرت الإهداء (اختياري):</label>
+              <label data-i18n="conciergeSec.stepNote" class="block text-sm font-bold text-stone-200 mb-2">5. نص كرت الإهداء (اختياري):</label>
               <input 
                 type="text" 
                 id="concierge-note-input" 
                 data-i18n-placeholder="conciergeSec.stepNotePlaceholder"
                 placeholder="اكتب الكلمات التي ترغب بتضمينها في الكرت الفاخر..."
-                class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-stone-500 focus:border-[#D4AF37] focus:bg-white/10 focus:outline-none transition-all"
+                class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3.5 text-sm text-white placeholder-stone-400 focus:border-[#D4AF37] focus:bg-white/10 focus:outline-none transition-all font-medium"
               />
             </div>
           </div>
@@ -476,13 +511,16 @@
             <button 
               id="concierge-submit-btn" 
               type="submit" 
-              class="w-full sm:w-auto btn-luxury-primary text-base font-semibold px-10 py-4 shadow-xl cursor-pointer"
+              class="w-full sm:w-auto btn-luxury-primary text-base font-bold px-10 py-4 shadow-xl cursor-pointer"
             >
-              <i data-lucide="message-circle" class="w-5 h-5"></i>
-              <span data-i18n="conciergeSec.submitBtn">إرسال الطلب لمنسق ميديلين عبر واتساب</span>
+              <div class="btn-animated-text">
+                <span data-i18n="conciergeSec.submitBtn">إرسال الطلب لمنسق ميديلين عبر واتساب</span>
+                <span data-i18n="conciergeSec.submitBtn">إرسال الطلب لمنسق ميديلين عبر واتساب</span>
+              </div>
+              <i data-lucide="message-circle" class="w-5 h-5 text-black"></i>
             </button>
 
-            <p data-i18n="conciergeSec.guarantee" class="text-xs text-stone-400 text-center flex items-center justify-center gap-1.5">
+            <p data-i18n="conciergeSec.guarantee" class="text-xs text-stone-300 text-center flex items-center justify-center gap-1.5 font-medium">
               ✨ يتم الرد الفوري من المنسق مع إرسال صور الزهور المتاحة للتأكيد قبل التجهيز.
             </p>
           </div>
@@ -496,53 +534,56 @@
   <!-- =================================================================== -->
   <!-- 9. BRAND STORY & ATELIER CRAFTSMANSHIP                             -->
   <!-- =================================================================== -->
-  <section id="atelier" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#F8F5EF]">
+  <section id="atelier" class="py-24 lg:py-32 px-4 sm:px-8 lg:px-16 bg-gradient-to-b from-[#FAF7F2] via-[#F4ECE1] to-[#EFE7D8] border-t border-[#DCD0B9]">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       
       <!-- Atelier Craft Image -->
-      <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-4/3 bg-stone-100 group scroll-reveal">
+      <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-4/3 bg-stone-100 group scroll-reveal border-2 border-[#E5DBC7]">
         <img 
           src="assets/images/atelier-craft.jpg" 
           alt="Medellin Master Florist Craftsmanship" 
           loading="lazy" 
           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-        <div class="absolute bottom-6 start-6 text-white text-xs font-semibold bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 start-6 text-white text-xs font-bold bg-black/75 backdrop-blur-md px-4 py-2 rounded-full border border-[#D4AF37]/40 shadow-lg">
           ✦ ميديلين · فن صياغة المشاعر في جدة
         </div>
       </div>
 
       <!-- Atelier Editorial Text -->
       <div class="flex flex-col justify-center scroll-reveal">
-        <span data-i18n="atelierSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">عالم ميديلين</span>
-        <h2 data-i18n="atelierSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1716] mb-6 leading-tight">حرفة صياغة المشاعر في جدة</h2>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1A1716] border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-bold tracking-widest uppercase mb-3.5 shadow-md self-start">
+          <span>✦</span>
+          <span data-i18n="atelierSec.eyebrow">عالم ميديلين</span>
+        </div>
+        <h2 data-i18n="atelierSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-stone-950 mb-6 leading-tight tracking-tight">حرفة صياغة المشاعر في جدة</h2>
         
-        <blockquote data-i18n="atelierSec.quote" class="text-base sm:text-lg font-serif italic text-stone-700 border-s-2 border-[#D4AF37] ps-4 py-1 mb-6">
+        <blockquote data-i18n="atelierSec.quote" class="text-lg sm:text-xl font-serif font-bold italic text-stone-950 border-s-4 border-[#D4AF37] ps-5 py-3 mb-6 bg-[#D4AF37]/15 rounded-e-2xl leading-relaxed shadow-xs">
           «الورد ليس مجرد نبات، بل هو الرسول الصامت الذي يقول ما تعجز عنه الكلمات.»
         </blockquote>
 
-        <p data-i18n="atelierSec.p1" class="text-sm sm:text-base text-stone-600 leading-relaxed mb-4">
+        <p data-i18n="atelierSec.p1" class="text-sm sm:text-base text-stone-800 font-medium leading-loose mb-4">
           في ميديلين، ننظر إلى كل زهرة كعنصر فني فريد. نستورد ورودنا يومياً من هولندا والإكوادور وكينيا، ونعتني بترطيبها وتهذيبها لتمنحكم أطول فترة نضارة وعبق.
         </p>
 
-        <p data-i18n="atelierSec.p2" class="text-sm sm:text-base text-stone-600 leading-relaxed mb-8">
+        <p data-i18n="atelierSec.p2" class="text-sm sm:text-base text-stone-800 font-medium leading-loose mb-8">
           نحن نؤمن أن الهدية الفاخرة تكتمل بالتفاصيل: التغليف المخملي المات، الأشرطة الحريرية المتناغمة، وكرت الإهداء المصنوع من الورق القطني الفاخر.
         </p>
 
-        <!-- Stats Counters -->
-        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#E2D8C9]">
-          <div>
-            <div data-i18n="atelierSec.stat1Num" class="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-display">100%</div>
-            <div data-i18n="atelierSec.stat1Label" class="text-xs text-stone-500 mt-1">زهور طبيعية نضرة يومياً</div>
+        <!-- Stats Counters in Luxury Cards -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-6 border-t border-[#DCD0B9]">
+          <div class="bg-white p-4 sm:p-5 rounded-2xl border-2 border-[#E5DBC7] shadow-xs text-center">
+            <div data-i18n="atelierSec.stat1Num" class="text-2xl sm:text-3xl font-extrabold text-[#9E7A1C] font-display">100%</div>
+            <div data-i18n="atelierSec.stat1Label" class="text-[11px] sm:text-xs font-bold text-stone-800 mt-1">زهور طبيعية نضرة يومياً</div>
           </div>
-          <div>
-            <div data-i18n="atelierSec.stat2Num" class="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-display">2h</div>
-            <div data-i18n="atelierSec.stat2Label" class="text-xs text-stone-500 mt-1">توصيل سريع داخل جدة</div>
+          <div class="bg-white p-4 sm:p-5 rounded-2xl border-2 border-[#E5DBC7] shadow-xs text-center">
+            <div data-i18n="atelierSec.stat2Num" class="text-2xl sm:text-3xl font-extrabold text-[#9E7A1C] font-display">2h</div>
+            <div data-i18n="atelierSec.stat2Label" class="text-[11px] sm:text-xs font-bold text-stone-800 mt-1">توصيل سريع داخل جدة</div>
           </div>
-          <div>
-            <div data-i18n="atelierSec.stat3Num" class="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-display">4.9/5</div>
-            <div data-i18n="atelierSec.stat3Label" class="text-xs text-stone-500 mt-1">تقييم عملاء النخبة</div>
+          <div class="bg-white p-4 sm:p-5 rounded-2xl border-2 border-[#E5DBC7] shadow-xs text-center">
+            <div data-i18n="atelierSec.stat3Num" class="text-2xl sm:text-3xl font-extrabold text-[#9E7A1C] font-display">4.9/5</div>
+            <div data-i18n="atelierSec.stat3Label" class="text-[11px] sm:text-xs font-bold text-stone-800 mt-1">تقييم عملاء النخبة</div>
           </div>
         </div>
 

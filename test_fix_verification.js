@@ -17,6 +17,16 @@ const fs = require('fs');
   await desktopPage.screenshot({ path: dHeroPath });
   fs.copyFileSync(dHeroPath, path.join(brainDir, 'verify_desktop_hero.png'));
 
+  // Scroll to Occasions
+  const dOccasions = await desktopPage.$('#occasions');
+  if (dOccasions) {
+    await dOccasions.scrollIntoViewIfNeeded();
+    await desktopPage.waitForTimeout(500);
+    const dOccPath = path.join(localDir, 'verify_desktop_occasions.png');
+    await desktopPage.screenshot({ path: dOccPath });
+    fs.copyFileSync(dOccPath, path.join(brainDir, 'verify_desktop_occasions.png'));
+  }
+
   // Scroll to Collections on Desktop (Arabic)
   const dCollections = await desktopPage.$('#collections');
   if (dCollections) {
@@ -25,6 +35,26 @@ const fs = require('fs');
     const dCollPath = path.join(localDir, 'verify_desktop_collections.png');
     await desktopPage.screenshot({ path: dCollPath });
     fs.copyFileSync(dCollPath, path.join(brainDir, 'verify_desktop_collections.png'));
+  }
+
+  // Scroll to Experience
+  const dExperience = await desktopPage.$('#experience');
+  if (dExperience) {
+    await dExperience.scrollIntoViewIfNeeded();
+    await desktopPage.waitForTimeout(500);
+    const dExpPath = path.join(localDir, 'verify_desktop_experience.png');
+    await desktopPage.screenshot({ path: dExpPath });
+    fs.copyFileSync(dExpPath, path.join(brainDir, 'verify_desktop_experience.png'));
+  }
+
+  // Scroll to Atelier Story
+  const dAtelier = await desktopPage.$('#atelier');
+  if (dAtelier) {
+    await dAtelier.scrollIntoViewIfNeeded();
+    await desktopPage.waitForTimeout(500);
+    const dAtelierPath = path.join(localDir, 'verify_desktop_atelier.png');
+    await desktopPage.screenshot({ path: dAtelierPath });
+    fs.copyFileSync(dAtelierPath, path.join(brainDir, 'verify_desktop_atelier.png'));
   }
 
   // Scroll to Reviews on Desktop (Arabic)
