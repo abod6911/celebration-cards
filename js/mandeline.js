@@ -1,7 +1,7 @@
 /**
  * MANDELINE (مندلين) — Final Premium Interactive Controller & Motion Engine
- * Combines: TOONHUB Synchronized Floral Carousel + Vantage One-Shot Staged Entrance +
- * Lithos Spotlight Reveal + Velorah-style Parallax Reviews + Bilingual Architecture
+ * Adapts: TOONHUB Synchronized Floral Depth Carousel + Vantage One-Shot Entrance +
+ * Velorah-style Parallax Reviews + Bilingual Architecture
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,11 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeFilter = 'all';
   let activeModalItem = null;
   
-  // Hero Carousel State
+  // Hero Floral Carousel State (TOONHUB Architecture)
   let heroActiveIdx = 0;
   let isHeroAnimating = false;
   let heroAutoTimer = null;
-  const heroSlideCount = (data.heroSlides && data.heroSlides.length) || 4;
+  const floralObjects = document.querySelectorAll('.floral-object');
+  const heroSlideCount = (data.heroSlides && data.heroSlides.length) || floralObjects.length || 4;
 
   // Reviews Carousel State
   let revActiveIdx = 0;
@@ -35,13 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- DOM Elements ---
   const htmlEl = document.documentElement;
   const heroSection = document.getElementById('hero-section');
-  const heroSpotlight = document.getElementById('hero-spotlight');
   const heroHeadline = document.getElementById('hero-headline');
   const heroPrimaryCta = document.getElementById('hero-primary-cta');
   const heroPrevBtn = document.getElementById('hero-prev-btn');
   const heroNextBtn = document.getElementById('hero-next-btn');
   const heroActiveNum = document.getElementById('hero-active-num');
-  const heroCarouselSlides = document.querySelectorAll('.hero-carousel-slide');
   
   const navHeader = document.getElementById('main-nav');
   const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
@@ -65,9 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 1. VANTAGE-INSPIRED ONE-SHOT CINEMATIC ENTRANCE ---
   function initOneShotEntrance() {
-    renderHeroWords();
+    renderHeroHeadlineLines();
+    updateFloralCarouselRoles();
     
-    // Remove motion-pending and add hero-loaded after brief layout stability
+    // Remove motion-pending and trigger entrance
     requestAnimationFrame(() => {
       setTimeout(() => {
         htmlEl.classList.remove('motion-pending');
@@ -76,51 +76,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function renderHeroWords() {
+  function renderHeroHeadlineLines() {
     if (!heroHeadline) return;
-    const t = data.translations[currentLang].hero;
-    const words = t.words;
-    
-    heroHeadline.innerHTML = '';
-    words.forEach((word, idx) => {
-      const wrap = document.createElement('span');
-      wrap.className = 'word-mask-wrap mx-1.5 inline-block';
-      
-      const span = document.createElement('span');
-      span.className = `reveal-word delay-${idx === 0 ? '300' : idx === 1 ? '440' : idx === 2 ? '700' : '900'} inline-block`;
-      span.textContent = word;
-      
-      wrap.appendChild(span);
-      heroHeadline.appendChild(wrap);
-    });
+    const isAr = currentLang === 'ar';
+    const line1 = isAr ? 'زهور تبقى' : 'Blooms That';
+    const line2 = isAr ? 'في الذاكرة' : 'Linger in Memory';
+
+    heroHeadline.innerHTML = `
+      <span class="hero-line-mask">
+        <span class="hero-line-inner delay-300">${line1}</span>
+      </span>
+      <span class="hero-line-mask">
+        <span class="hero-line-inner delay-440">${line2}</span>
+      </span>
+    `;
   }
 
-  // --- 2. TOONHUB-INSPIRED SYNCHRONIZED FLORAL CAROUSEL ---
-  function updateHeroCarouselRoles() {
-    if (!heroCarouselSlides.length) return;
+  // --- 2. TOONHUB-INSPIRED SYNCHRONIZED FLORAL DEPTH CAROUSEL ---
+  function updateFloralCarouselRoles() {
+    if (!floralObjects.length) return;
 
-    heroCarouselSlides.forEach((slide, idx) => {
+    floralObjects.forEach((obj, idx) => {
       // Calculate circular offset relative to heroActiveIdx
       const offset = (idx - heroActiveIdx + heroSlideCount) % heroSlideCount;
 
       if (offset === 0) {
-        slide.setAttribute('data-role', 'center');
+        obj.setAttribute('data-role', 'center');
       } else if (offset === 1) {
-        slide.setAttribute('data-role', 'right');
+        obj.setAttribute('data-role', 'right');
       } else if (offset === heroSlideCount - 1) {
-        slide.setAttribute('data-role', 'left');
+        obj.setAttribute('data-role', 'left');
       } else {
-        slide.setAttribute('data-role', 'back');
+        obj.setAttribute('data-role', 'back');
       }
     });
 
-    // Update background tone smoothly
-    const currentSlideData = data.heroSlides[heroActiveIdx];
+    // Update background tone smoothly over 650ms
+    const currentSlideData = data.heroSlides && data.heroSlides[heroActiveIdx];
     if (currentSlideData && heroSection) {
       heroSection.style.setProperty('--hero-bg-tone', currentSlideData.bgTone || '#090807');
-      if (heroSpotlight && currentSlideData.revealImage) {
-        heroSpotlight.style.backgroundImage = `url('${currentSlideData.revealImage}')`;
-      }
     }
 
     // Update indicator counter
@@ -129,34 +123,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function goToHeroSlide(targetIdx) {
+  function navigateHero(direction) {
     if (isHeroAnimating) return;
     isHeroAnimating = true;
 
-    heroActiveIdx = (targetIdx + heroSlideCount) % heroSlideCount;
-    updateHeroCarouselRoles();
+    if (direction === 'next') {
+      heroActiveIdx = (heroActiveIdx + 1) % heroSlideCount;
+    } else {
+      heroActiveIdx = (heroActiveIdx - 1 + heroSlideCount) % heroSlideCount;
+    }
 
+    updateFloralCarouselRoles();
+
+    // 650ms animation lock matching CSS transition duration
     setTimeout(() => {
       isHeroAnimating = false;
-    }, 650); // 650ms animation lock matching TOONHUB easing duration
+    }, 650);
   }
 
-  function nextHeroSlide() {
-    goToHeroSlide(heroActiveIdx + 1);
-  }
+  if (heroNextBtn) heroNextBtn.addEventListener('click', () => { resetHeroAutoTimer(); navigateHero('next'); });
+  if (heroPrevBtn) heroPrevBtn.addEventListener('click', () => { resetHeroAutoTimer(); navigateHero('prev'); });
 
-  function prevHeroSlide() {
-    goToHeroSlide(heroActiveIdx - 1);
-  }
-
-  if (heroNextBtn) heroNextBtn.addEventListener('click', () => { resetHeroAutoTimer(); nextHeroSlide(); });
-  if (heroPrevBtn) heroPrevBtn.addEventListener('click', () => { resetHeroAutoTimer(); prevHeroSlide(); });
-
-  // Auto-advance Timer (7.5s interval, paused on reduced-motion or user interaction)
+  // Auto-advance Timer (7.5s interval)
   function startHeroAutoTimer() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     clearInterval(heroAutoTimer);
-    heroAutoTimer = setInterval(nextHeroSlide, 7500);
+    heroAutoTimer = setInterval(() => navigateHero('next'), 7500);
   }
 
   function resetHeroAutoTimer() {
@@ -166,7 +158,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   startHeroAutoTimer();
 
-  // Mobile Touch Swipe for Hero Carousel
+  // Keyboard navigation for Desktop
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      resetHeroAutoTimer();
+      currentLang === 'ar' ? navigateHero('next') : navigateHero('prev');
+    } else if (e.key === 'ArrowRight') {
+      resetHeroAutoTimer();
+      currentLang === 'ar' ? navigateHero('prev') : navigateHero('next');
+    }
+  });
+
+  // Mobile Touch Swipe for Floral Carousel
   let touchStartX = 0;
   let touchStartY = 0;
 
@@ -179,66 +182,57 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSection.addEventListener('touchend', (e) => {
       const deltaX = e.changedTouches[0].clientX - touchStartX;
       const deltaY = e.changedTouches[0].clientY - touchStartY;
+      // Trigger slide change only on intentional horizontal swipe (>45px) and not vertical scroll
       if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY)) {
         resetHeroAutoTimer();
         const isAr = currentLang === 'ar';
         if (deltaX < 0) {
-          isAr ? prevHeroSlide() : nextHeroSlide();
+          isAr ? navigateHero('prev') : navigateHero('next');
         } else {
-          isAr ? nextHeroSlide() : prevHeroSlide();
+          isAr ? navigateHero('next') : navigateHero('prev');
         }
       }
     }, { passive: true });
   }
 
-  // --- 3. DESKTOP SPOTLIGHT & POINTER PARALLAX (Lithos RAF Lerp) ---
-  let isPointerInside = false;
-  let mouseX = window.innerWidth * 0.7;
-  let mouseY = window.innerHeight * 0.5;
-  let spotX = mouseX;
-  let spotY = mouseY;
-  let rafId = null;
+  // --- 3. RESTRAINED DESKTOP POINTER DEPTH PARALLAX ---
+  if (heroSection && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let mouseX = window.innerWidth * 0.5;
+    let mouseY = window.innerHeight * 0.5;
+    let currentX = mouseX;
+    let currentY = mouseY;
+    let isMouseInside = false;
+    let rafParallax = null;
 
-  function updateMotionLoop() {
-    // Lerp smooth interpolation (0.09 factor)
-    spotX += (mouseX - spotX) * 0.09;
-    spotY += (mouseY - spotY) * 0.09;
+    function parallaxLoop() {
+      currentX += (mouseX - currentX) * 0.08;
+      currentY += (mouseY - currentY) * 0.08;
 
-    if (heroSpotlight) {
-      heroSpotlight.style.setProperty('--spot-x', `${spotX.toFixed(1)}px`);
-      heroSpotlight.style.setProperty('--spot-y', `${spotY.toFixed(1)}px`);
-    }
-
-    if (heroSection) {
       const rect = heroSection.getBoundingClientRect();
-      const normX = ((spotX - rect.width / 2) / (rect.width / 2));
-      const normY = ((spotY - rect.height / 2) / (rect.height / 2));
+      const normX = ((currentX - rect.width / 2) / (rect.width / 2));
+      const normY = ((currentY - rect.height / 2) / (rect.height / 2));
 
-      // Multi-layer pointer parallax
       heroSection.style.setProperty('--bg-shift-x', `${(normX * -2).toFixed(1)}px`);
       heroSection.style.setProperty('--bg-shift-y', `${(normY * -2).toFixed(1)}px`);
-      heroSection.style.setProperty('--main-shift-x', `${(normX * -5).toFixed(1)}px`);
-      heroSection.style.setProperty('--main-shift-y', `${(normY * -5).toFixed(1)}px`);
-      heroSection.style.setProperty('--fg-shift-x', `${(normX * -9).toFixed(1)}px`);
-      heroSection.style.setProperty('--fg-shift-y', `${(normY * -9).toFixed(1)}px`);
+      heroSection.style.setProperty('--side-shift-x', `${(normX * -4).toFixed(1)}px`);
+      heroSection.style.setProperty('--side-shift-y', `${(normY * -4).toFixed(1)}px`);
+      heroSection.style.setProperty('--main-shift-x', `${(normX * -6).toFixed(1)}px`);
+      heroSection.style.setProperty('--main-shift-y', `${(normY * -6).toFixed(1)}px`);
+
+      if (isMouseInside) {
+        rafParallax = requestAnimationFrame(parallaxLoop);
+      }
     }
 
-    if (isPointerInside) {
-      rafId = requestAnimationFrame(updateMotionLoop);
-    }
-  }
-
-  if (heroSection && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     heroSection.addEventListener('mouseenter', (e) => {
-      isPointerInside = true;
+      isMouseInside = true;
       const rect = heroSection.getBoundingClientRect();
       mouseX = e.clientX - rect.left;
       mouseY = e.clientY - rect.top;
-      spotX = mouseX;
-      spotY = mouseY;
-      if (heroSpotlight) heroSpotlight.style.setProperty('--spot-opacity', '1');
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(updateMotionLoop);
+      currentX = mouseX;
+      currentY = mouseY;
+      cancelAnimationFrame(rafParallax);
+      rafParallax = requestAnimationFrame(parallaxLoop);
     });
 
     heroSection.addEventListener('mousemove', (e) => {
@@ -248,12 +242,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     heroSection.addEventListener('mouseleave', () => {
-      isPointerInside = false;
-      if (heroSpotlight) heroSpotlight.style.setProperty('--spot-opacity', '0');
-      if (heroSection) {
-        heroSection.style.setProperty('--main-shift-x', '0px');
-        heroSection.style.setProperty('--main-shift-y', '0px');
-      }
+      isMouseInside = false;
+      heroSection.style.setProperty('--main-shift-x', '0px');
+      heroSection.style.setProperty('--main-shift-y', '0px');
     });
   }
 
@@ -381,8 +372,8 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.setAttribute('aria-label', currentLang === 'ar' ? 'Switch to English' : 'التحويل إلى العربية');
     });
 
-    renderHeroWords();
-    updateHeroCarouselRoles();
+    renderHeroHeadlineLines();
+    updateFloralCarouselRoles();
     renderMarquee();
     renderOccasions();
     renderCollections();
@@ -450,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <button 
               type="button"
               onclick="window.selectOccasionAndScroll('${occ.id}', '${occ.defaultBudget}', '${occ.recommendedPalette}')"
-              class="w-full py-3 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#F8F5EF] hover:bg-[#D4AF37] hover:text-black text-stone-800 border border-[#E2D8C9] transition-all duration-300 flex items-center justify-center gap-2 group-hover:border-[#D4AF37]"
+              class="w-full py-3 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#F8F5EF] hover:bg-[#D4AF37] hover:text-black text-stone-800 border border-[#E2D8C9] transition-all duration-300 flex items-center justify-center gap-2 group-hover:border-[#D4AF37] cursor-pointer"
             >
               <span>${tSec.selectCta}</span>
               <span class="text-sm transition-transform ${isAr ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}">${isAr ? '←' : '→'}</span>
@@ -524,14 +515,14 @@ document.addEventListener('DOMContentLoaded', () => {
               <button 
                 type="button" 
                 onclick="window.openQuickView('${item.id}')"
-                class="py-2.5 px-3 rounded-xl text-xs font-medium text-stone-700 bg-stone-100 hover:bg-stone-200 transition-colors text-center"
+                class="py-2.5 px-3 rounded-xl text-xs font-medium text-stone-700 bg-stone-100 hover:bg-stone-200 transition-colors text-center cursor-pointer"
               >
                 ${tSec.viewDetails}
               </button>
               <button 
                 type="button" 
                 onclick="window.orderDirectItem('${item.id}')"
-                class="py-2.5 px-3 rounded-xl text-xs font-semibold text-stone-950 bg-[#D4AF37] hover:bg-[#E2C766] transition-colors text-center shadow-xs"
+                class="py-2.5 px-3 rounded-xl text-xs font-semibold text-stone-950 bg-[#D4AF37] hover:bg-[#E2C766] transition-colors text-center shadow-xs cursor-pointer"
               >
                 ${tSec.orderItem}
               </button>
@@ -740,7 +731,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 12. SCROLL & PROGRESSIVE MOTION CONTROLLER ---
+  // --- 12. SCROLL CONTROLLER ---
   let isScrollPending = false;
   window.addEventListener('scroll', () => {
     if (!isScrollPending) {
@@ -756,15 +747,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
 
-        // Hero scroll-out parallax
-        if (scrollY < window.innerHeight && heroHeadline) {
-          const offset = scrollY * 0.15;
-          const opacity = Math.max(0, 1 - (scrollY / 700));
-          heroHeadline.style.transform = `translateY(-${offset.toFixed(1)}px)`;
-          heroHeadline.style.opacity = opacity.toFixed(2);
-        }
-
-        // Reviews section foreground parallax (Velorah concept)
+        // Reviews section foreground botanical parallax (Velorah concept)
         const reviewsSection = document.getElementById('reviews');
         if (reviewsSection) {
           const rect = reviewsSection.getBoundingClientRect();

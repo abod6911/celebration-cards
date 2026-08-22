@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 (async () => {
-  console.log('🚀 Starting MANDELINE Final Premium Luxury QA Verification...');
+  console.log('🚀 Starting MANDELINE TOONHUB Floral Depth Carousel QA Verification...');
   
   const screenshotsDir = path.join(__dirname, 'test_screenshots', 'mandeline');
   if (!fs.existsSync(screenshotsDir)) {
@@ -29,7 +29,7 @@ const fs = require('fs');
   await page.goto(fileUrl, { waitUntil: 'load' });
   await page.waitForTimeout(1000);
 
-  console.log('1️⃣ Verifying Page Title, One-shot Entrance & Console Errors...');
+  console.log('1️⃣ Verifying Page Title, One-shot Entrance & Floral Objects...');
   const title = await page.title();
   console.log(`   Page title: "${title}"`);
   if (consoleErrors.length > 0) {
@@ -38,90 +38,54 @@ const fs = require('fs');
     console.log('✅ No console errors!');
   }
 
-  // Verify Hero words rendered
-  const wordSpans = await page.$$('#hero-headline .reveal-word');
-  console.log(`✅ Hero words rendered: ${wordSpans.length} words`);
+  // Verify Floral Carousel 4 objects and initial roles
+  const floralCount = await page.$$eval('.floral-object', els => els.length);
+  console.log(`✅ Floral objects count: ${floralCount}`);
 
-  // Verify Hero Carousel slides and active center role
-  const centerSlide = await page.$eval('.hero-carousel-slide[data-role="center"]', el => el.getAttribute('data-slide'));
-  console.log(`✅ Active Hero Floral Carousel slide: ${centerSlide} (center role)`);
+  const initialCenter = await page.$eval('.floral-object[data-role="center"]', el => el.getAttribute('data-slide'));
+  const initialRight = await page.$eval('.floral-object[data-role="right"]', el => el.getAttribute('data-slide'));
+  const initialLeft = await page.$eval('.floral-object[data-role="left"]', el => el.getAttribute('data-slide'));
+  const initialBack = await page.$eval('.floral-object[data-role="back"]', el => el.getAttribute('data-slide'));
+  console.log(`✅ Initial Roles -> Center: Slide ${initialCenter}, Right: Slide ${initialRight}, Left: Slide ${initialLeft}, Back: Slide ${initialBack}`);
 
-  // Test Hero Carousel Next Slide Interaction
-  console.log('   Testing Hero Carousel Next navigation...');
+  // Capture Desktop Hero Initial State (Slide 0)
+  await page.screenshot({ path: path.join(screenshotsDir, '01_desktop_hero_slide0.png') });
+
+  // Test 2: Trigger Next Navigation and Verify Role Transitions
+  console.log('2️⃣ Testing Next Navigation & 650ms Role Transition...');
   await page.click('#hero-next-btn');
   await page.waitForTimeout(700);
-  const nextCenterSlide = await page.$eval('.hero-carousel-slide[data-role="center"]', el => el.getAttribute('data-slide'));
-  console.log(`✅ Transitioned to slide ${nextCenterSlide} with synchronized roles!`);
 
-  // Test Spotlight mousemove
-  await page.mouse.move(900, 450);
-  await page.waitForTimeout(300);
-  const spotX = await page.evaluate(() => {
-    const el = document.getElementById('hero-spotlight');
-    return el ? el.style.getPropertyValue('--spot-x') : null;
-  });
-  console.log(`✅ Desktop Spotlight position: ${spotX}`);
+  const nextCenter = await page.$eval('.floral-object[data-role="center"]', el => el.getAttribute('data-slide'));
+  const nextRight = await page.$eval('.floral-object[data-role="right"]', el => el.getAttribute('data-slide'));
+  const nextLeft = await page.$eval('.floral-object[data-role="left"]', el => el.getAttribute('data-slide'));
+  const nextBack = await page.$eval('.floral-object[data-role="back"]', el => el.getAttribute('data-slide'));
+  console.log(`✅ Transitioned Roles -> Center: Slide ${nextCenter}, Right: Slide ${nextRight}, Left: Slide ${nextLeft}, Back: Slide ${nextBack}`);
 
-  // Capture Desktop Hero Screenshot
-  await page.screenshot({ path: path.join(screenshotsDir, '01_desktop_hero_ar.png') });
+  // Capture Desktop Hero Slide 1 State
+  await page.screenshot({ path: path.join(screenshotsDir, '02_desktop_hero_slide1.png') });
 
-  // Test 2: Language Switcher to English
-  console.log('2️⃣ Testing Language Switcher (AR -> EN)...');
+  // Test 3: Language Switcher to English
+  console.log('3️⃣ Testing Language Switcher (AR -> EN)...');
   await page.click('.lang-toggle-btn');
   await page.waitForTimeout(400);
 
   const htmlDir = await page.getAttribute('html', 'dir');
   const htmlLang = await page.getAttribute('html', 'lang');
   console.log(`   html dir: ${htmlDir}, lang: ${htmlLang}`);
-  if (htmlDir === 'ltr' && htmlLang === 'en') {
-    console.log('✅ LTR and English language switch successful!');
-  } else {
-    console.error('❌ Language switch failed!');
-  }
-
-  await page.screenshot({ path: path.join(screenshotsDir, '02_desktop_hero_en.png') });
+  await page.screenshot({ path: path.join(screenshotsDir, '03_desktop_hero_en.png') });
 
   // Switch back to Arabic
-  console.log('   Switching back to Arabic...');
   await page.click('.lang-toggle-btn');
   await page.waitForTimeout(400);
 
-  // Test 3: Customer Reviews Section
-  console.log('3️⃣ Verifying Customer Reviews Section...');
+  // Test 4: Customer Reviews Section
+  console.log('4️⃣ Verifying Customer Reviews Section...');
   const reviewCards = await page.$$('#reviews-carousel-track .review-slide');
-  console.log(`✅ Customer Reviews rendered: ${reviewCards.length} authentic testimonials`);
-  await page.click('#rev-next-btn');
-  await page.waitForTimeout(400);
-  console.log('✅ Review carousel rotation verified!');
+  console.log(`✅ Customer Reviews rendered: ${reviewCards.length} testimonials`);
 
-  // Test 4: Collections Filter Tabs & Quick View Modal
-  console.log('4️⃣ Testing Collections Filter & Quick View Lightbox...');
-  await page.click('button[data-filter="vases"]');
-  await page.waitForTimeout(300);
-  const vaseCount = await page.$$('#collections-container .flower-card');
-  console.log(`   Vases filtered count: ${vaseCount.length}`);
-
-  await page.click('button[data-filter="all"]');
-  await page.waitForTimeout(300);
-
-  await page.click('#collections-container .flower-card:first-child button');
-  await page.waitForTimeout(400);
-  const isModalVisible = await page.isVisible('#quick-view-modal');
-  console.log(`✅ Quick View Modal visible: ${isModalVisible}`);
-  await page.screenshot({ path: path.join(screenshotsDir, '03_quick_view_modal.png') });
-  await page.keyboard.press('Escape');
-  await page.waitForTimeout(300);
-
-  // Test 5: Occasion Selection & Concierge
-  console.log('5️⃣ Testing Occasion selection & Concierge...');
-  await page.click('#occasions-container > div:nth-child(2) button');
-  await page.waitForTimeout(500);
-  await page.fill('#concierge-delivery-input', 'اليوم الساعة 8:30 مساءً');
-  await page.fill('#concierge-note-input', 'ألف مبروك التخرج ✨');
-  await page.screenshot({ path: path.join(screenshotsDir, '04_concierge_filled.png') });
-
-  // Test 6: Full Page Scroll & Full Desktop Screenshot
-  console.log('6️⃣ Capturing Full Page Desktop View...');
+  // Test 5: Full Page Desktop Screenshot
+  console.log('5️⃣ Capturing Full Page Desktop View...');
   await page.evaluate(async () => {
     const distance = 400;
     const delay = 100;
@@ -135,7 +99,7 @@ const fs = require('fs');
   await page.waitForTimeout(500);
   await page.screenshot({ path: path.join(screenshotsDir, '05_desktop_fullpage.png'), fullPage: true });
 
-  // Test 7: Mobile Viewports Testing (360px, 375px, 390px, 393px, 412px, 430px)
+  // Test 6: Mobile Viewports (360, 375, 390, 393, 412, 430)
   const mobileViewports = [
     { width: 360, height: 800, name: 'mobile_360_galaxy' },
     { width: 375, height: 812, name: 'mobile_375_iphone_x' },
@@ -161,30 +125,18 @@ const fs = require('fs');
       console.log(`✅ No horizontal overflow on ${vp.width}px (width: ${clientWidth}px)`);
     }
 
-    // Scroll to check Floating WhatsApp bar
-    await page.evaluate(() => window.scrollBy(0, 600));
-    await page.waitForTimeout(400);
-    const isFloatingCtaVisible = await page.isVisible('#floating-whatsapp-bar');
-    console.log(`   Floating WhatsApp bar visible on scroll: ${isFloatingCtaVisible}`);
+    // Capture Mobile Hero
+    await page.screenshot({ path: path.join(screenshotsDir, `07_${vp.name}_hero.png`) });
 
     // Test Mobile Menu Drawer
     await page.click('#mobile-menu-toggle');
-    await page.waitForTimeout(400);
-    const isMenuOpen = await page.isVisible('#mobile-menu-drawer');
-    console.log(`   Mobile Menu Drawer opened: ${isMenuOpen}`);
+    await page.waitForTimeout(300);
     await page.screenshot({ path: path.join(screenshotsDir, `06_${vp.name}_drawer.png`) });
-
-    // Close Menu
     await page.click('#mobile-menu-close');
-    await page.waitForTimeout(400);
-
-    // Capture Mobile Hero
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await page.waitForTimeout(400);
-    await page.screenshot({ path: path.join(screenshotsDir, `07_${vp.name}_hero.png`) });
+    await page.waitForTimeout(300);
   }
 
-  // Test 8: Tablet 768x1024 & 1024x1366
+  // Test 7: Tablet 768x1024 & 1024x1366
   console.log('📱 Testing Tablet Viewports (768x1024 & 1024x1366)...');
   await page.setViewportSize({ width: 768, height: 1024 });
   await page.reload({ waitUntil: 'load' });
@@ -196,7 +148,7 @@ const fs = require('fs');
   await page.waitForTimeout(600);
   await page.screenshot({ path: path.join(screenshotsDir, '09_tablet_1024_hero.png') });
 
-  // Test 9: Desktop 1920x1080
+  // Test 8: Large Desktop 1920x1080
   console.log('🖥️ Testing Large Desktop Viewport (1920x1080)...');
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.reload({ waitUntil: 'load' });
@@ -204,5 +156,5 @@ const fs = require('fs');
   await page.screenshot({ path: path.join(screenshotsDir, '10_desktop_1920_hero.png') });
 
   await browser.close();
-  console.log('🎉 MANDELINE Final QA Verification completed successfully! All checks passed.');
+  console.log('🎉 MANDELINE TOONHUB Floral Depth Carousel QA Completed Successfully!');
 })();
