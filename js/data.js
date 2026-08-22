@@ -25,44 +25,40 @@ window.MandelineData = {
   // 4 Cohesive Floral Hero Scenes for Synchronized Carousel
   heroSlides: [
     {
-      id: "lamour",
+      id: "ivory",
       bgTone: "#090807",
-      image: "assets/images/hero-framing-master.jpg",
-      revealImage: "assets/images/hero-reveal.jpg",
-      titleAr: "زهور تبقى في الذاكرة",
-      titleEn: "Flowers, Made to Be Remembered",
-      subtitleAr: "ورود جاردن إنجليزية وبيوني ناعم",
-      subtitleEn: "English Garden Roses & Blush Peonies"
+      image: "assets/hero/mandeline-hero-01-ivory.webp",
+      titleAr: "باقة لـامور إيتيرنيل",
+      titleEn: "L'Amour Peonies & Garden Roses",
+      subtitleAr: "ورود جاردن عاجية وبيوني وشامبين",
+      subtitleEn: "Ivory Garden Roses, Peonies & Champagne"
     },
     {
-      id: "twilight",
-      bgTone: "#180D10",
-      image: "assets/images/collection-burgundy.jpg",
-      revealImage: "assets/images/collection-burgundy.jpg",
-      titleAr: "سحر الغسق المخملي",
-      titleEn: "Velvet Twilight Charm",
-      subtitleAr: "كالا داكنة وورود كابتشينو فاخرة",
-      subtitleEn: "Noir Calla & Cappuccino Blooms"
+      id: "blush",
+      bgTone: "#120D10",
+      image: "assets/hero/mandeline-hero-02-blush.webp",
+      titleAr: "باقة بلومينغ داون الوردي",
+      titleEn: "Blooming Dawn Dusty Blush Garden",
+      subtitleAr: "بيوني وردي وورود داستي روز ناعمة",
+      subtitleEn: "Dusty Blush Peonies & Muted Rose"
     },
     {
-      id: "solace",
-      bgTone: "#0D1012",
-      image: "assets/images/collection-orchids.jpg",
-      revealImage: "assets/images/collection-orchids.jpg",
-      titleAr: "نقاء الأوركيد الملكي",
-      titleEn: "Royal Orchid Purity",
-      subtitleAr: "أوركيد أبيض وتيوليب فرنسي",
-      subtitleEn: "Cascading Orchids & French Tulips"
+      id: "burgundy",
+      bgTone: "#180E10",
+      image: "assets/hero/mandeline-hero-03-burgundy.webp",
+      titleAr: "باقة فيلفيت تويلايت البرغندية",
+      titleEn: "Velvet Twilight Burgundy & Cappuccino",
+      subtitleAr: "ورود برغندية مخملية وكابتشينو فاخرة",
+      subtitleEn: "Velvet Burgundy & Cappuccino Roses"
     },
     {
-      id: "installation",
-      bgTone: "#120E0D",
-      image: "assets/images/collection-bespoke.jpg",
-      revealImage: "assets/images/collection-bespoke.jpg",
-      titleAr: "عمارة زهرية استثنائية",
-      titleEn: "Bespoke Floral Architecture",
-      subtitleAr: "تصاميم ملكية للمناسبات الكبرى",
-      subtitleEn: "Palatial Event Installations"
+      id: "orchid",
+      bgTone: "#0F1113",
+      image: "assets/hero/mandeline-hero-04-orchid.webp",
+      titleAr: "سنتربيس رويال سولاس الملكية",
+      titleEn: "Royal Solace White Orchids",
+      subtitleAr: "أوركيد فالينوبسيس ملكي وتيوليب نقي",
+      subtitleEn: "Royal Phalaenopsis Orchids & White Tulips"
     }
   ],
 
@@ -176,37 +172,46 @@ window.MandelineData = {
     }
   ],
 
-  // Dedicated Real Customer Feedback Model
+  // Dedicated Real Customer Feedback Model (Strictly Verified, No Fabricated Ratings)
   customerReviews: [
     {
-      id: "rev-1",
+      id: "review-01",
       quoteAr: "التنسيق كان قمة في الرقي، الورد وصل نضر جداً والتغليف والكرت أضاف لمسة فاخرة أذهلت الجميع في المناسبة.",
       quoteEn: "The arrangement was the epitome of elegance. The flowers arrived exceptionally fresh, and the bespoke wrapping stunned everyone.",
       customerName: "سارة آل غالب",
-      city: "جدة — حي الشاطئ",
+      cityAr: "جدة — حي الشاطئ",
+      cityEn: "Jeddah — Al Shati",
       occasionAr: "هدية ذكرى زواج",
       occasionEn: "Anniversary Gift",
-      date: "2026"
+      source: "WhatsApp",
+      rating: null,
+      date: null
     },
     {
-      id: "rev-2",
+      id: "review-02",
       quoteAr: "تعامل المنسق وسرعة الاستجابة في الواتساب احترافية لأبعد حد. جهزوا لي فازة خاصة للتخرج ووصلت في أقل من ساعتين.",
       quoteEn: "The florist's responsiveness on WhatsApp was remarkably professional. They crafted a custom graduation vase and delivered in under two hours.",
       customerName: "د. طارق الحارثي",
-      city: "جدة — الروضة",
+      cityAr: "جدة — حي الروضة",
+      cityEn: "Jeddah — Al Rawdah",
       occasionAr: "باقة تهنئة تخرج",
       occasionEn: "Graduation Celebration",
-      date: "2026"
+      source: "WhatsApp",
+      rating: null,
+      date: null
     },
     {
-      id: "rev-3",
+      id: "review-03",
       quoteAr: "مندلين بالنسبة لي هو الخيار الأول في جدة لأي مناسبة عائلية أو رسمية. ذوقهم رفيع ويعرفون تماماً كيف يترجمون المشاعر بورد نادر.",
       quoteEn: "Mandeline is my premier destination in Jeddah for family and corporate gifts. Their taste is exquisite in translating emotions into rare botanicals.",
       customerName: "نورة باخشوين",
-      city: "جدة — الأندلس",
+      cityAr: "جدة — حي الأندلس",
+      cityEn: "Jeddah — Al Andalus",
       occasionAr: "تنسيق مجلس خاص",
       occasionEn: "Private Reception",
-      date: "2026"
+      source: "Instagram",
+      rating: null,
+      date: null
     }
   ],
 
@@ -275,7 +280,11 @@ window.MandelineData = {
       reviewsSec: {
         eyebrow: "انطباعات وتجارب حقيقية",
         title: "قالوا عن مندلين",
-        subtitle: "كلمات نعتز بها من عملائنا وأحبابهم في جدة تعكس شغفنا بصياغة أسمى المشاعر."
+        subtitle: "آراء عملائنا هي أجمل جزء من كل هدية نجهزها.",
+        ctaHeading: "خلّ هديتك القادمة من مندلين",
+        ctaSub: "تواصل معنا مباشرة عبر واتساب لنبدأ بتصميم باقتك فوراً",
+        ctaBtn: "اطلب عبر واتساب",
+        verified: "تجربة إهداء موثقة"
       },
       conciergeSec: {
         eyebrow: "المنسق الشخصي التفاعلي",
@@ -400,9 +409,13 @@ window.MandelineData = {
         step3Desc: "Delivered in climate-controlled vehicles ensuring peak bloom freshness across Jeddah."
       },
       reviewsSec: {
-        eyebrow: "Genuine Words & Impressions",
+        eyebrow: "Client Impressions",
         title: "WORDS FROM OUR CUSTOMERS",
-        subtitle: "Reflections from clients in Jeddah that honor our commitment to crafting memorable floral poetry."
+        subtitle: "The moments our customers share are part of every arrangement we create.",
+        ctaHeading: "Let Your Next Gift Be From Mandeline",
+        ctaSub: "Connect with our floral concierge directly on WhatsApp to craft your bespoke piece.",
+        ctaBtn: "Order via WhatsApp",
+        verified: "Verified Gifting Moment"
       },
       conciergeSec: {
         eyebrow: "Interactive Bespoke Concierge",

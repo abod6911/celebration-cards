@@ -1,7 +1,7 @@
 /**
  * MANDELINE (مندلين) — Final Premium Interactive Controller & Motion Engine
  * Adapts: TOONHUB Synchronized Floral Depth Carousel + Vantage One-Shot Entrance +
- * Velorah-style Parallax Reviews + Bilingual Architecture
+ * Velorah-style Parallax Liquid-Glass Reviews + Bilingual Architecture
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeFilter = 'all';
   let activeModalItem = null;
   
-  // Hero Floral Carousel State (TOONHUB Architecture)
+  // Hero Floral Depth Carousel State (TOONHUB Architecture)
   let heroActiveIdx = 0;
   let isHeroAnimating = false;
   let heroAutoTimer = null;
@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Reviews Carousel State
   let revActiveIdx = 0;
+  let isRevAnimating = false;
+  let revAutoTimer = null;
+  let isReviewsInView = false;
   const reviewCount = (data.customerReviews && data.customerReviews.length) || 3;
 
   // Concierge Form State
@@ -57,17 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalCloseBtn = document.getElementById('modal-close-btn');
   const expandCanvasCard = document.getElementById('expand-canvas-card');
   
-  const reviewsTrack = document.getElementById('reviews-carousel-track');
+  const reviewsSection = document.getElementById('reviews');
+  const reviewsStage = document.getElementById('reviews-stage');
   const revPrevBtn = document.getElementById('rev-prev-btn');
   const revNextBtn = document.getElementById('rev-next-btn');
-  const reviewsDots = document.getElementById('reviews-dots');
+  const revActiveNum = document.getElementById('rev-active-num');
 
   // --- 1. VANTAGE-INSPIRED ONE-SHOT CINEMATIC ENTRANCE ---
   function initOneShotEntrance() {
     renderHeroHeadlineLines();
     updateFloralCarouselRoles();
     
-    // Remove motion-pending and trigger entrance
     requestAnimationFrame(() => {
       setTimeout(() => {
         htmlEl.classList.remove('motion-pending');
@@ -97,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!floralObjects.length) return;
 
     floralObjects.forEach((obj, idx) => {
-      // Calculate circular offset relative to heroActiveIdx
       const offset = (idx - heroActiveIdx + heroSlideCount) % heroSlideCount;
 
       if (offset === 0) {
@@ -111,13 +113,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update background tone smoothly over 650ms
     const currentSlideData = data.heroSlides && data.heroSlides[heroActiveIdx];
     if (currentSlideData && heroSection) {
       heroSection.style.setProperty('--hero-bg-tone', currentSlideData.bgTone || '#090807');
     }
 
-    // Update indicator counter
     if (heroActiveNum) {
       heroActiveNum.textContent = `0${heroActiveIdx + 1}`;
     }
@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateFloralCarouselRoles();
 
-    // 650ms animation lock matching CSS transition duration
     setTimeout(() => {
       isHeroAnimating = false;
     }, 650);
@@ -144,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroNextBtn) heroNextBtn.addEventListener('click', () => { resetHeroAutoTimer(); navigateHero('next'); });
   if (heroPrevBtn) heroPrevBtn.addEventListener('click', () => { resetHeroAutoTimer(); navigateHero('prev'); });
 
-  // Auto-advance Timer (7.5s interval)
   function startHeroAutoTimer() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     clearInterval(heroAutoTimer);
@@ -158,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   startHeroAutoTimer();
 
-  // Keyboard navigation for Desktop
   document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') {
       resetHeroAutoTimer();
@@ -182,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSection.addEventListener('touchend', (e) => {
       const deltaX = e.changedTouches[0].clientX - touchStartX;
       const deltaY = e.changedTouches[0].clientY - touchStartY;
-      // Trigger slide change only on intentional horizontal swipe (>45px) and not vertical scroll
       if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY)) {
         resetHeroAutoTimer();
         const isAr = currentLang === 'ar';
@@ -214,10 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       heroSection.style.setProperty('--bg-shift-x', `${(normX * -2).toFixed(1)}px`);
       heroSection.style.setProperty('--bg-shift-y', `${(normY * -2).toFixed(1)}px`);
-      heroSection.style.setProperty('--side-shift-x', `${(normX * -4).toFixed(1)}px`);
-      heroSection.style.setProperty('--side-shift-y', `${(normY * -4).toFixed(1)}px`);
-      heroSection.style.setProperty('--main-shift-x', `${(normX * -6).toFixed(1)}px`);
-      heroSection.style.setProperty('--main-shift-y', `${(normY * -6).toFixed(1)}px`);
+      heroSection.style.setProperty('--side-shift-x', `${(normX * -3.5).toFixed(1)}px`);
+      heroSection.style.setProperty('--side-shift-y', `${(normY * -3.5).toFixed(1)}px`);
+      heroSection.style.setProperty('--main-shift-x', `${(normX * -5.5).toFixed(1)}px`);
+      heroSection.style.setProperty('--main-shift-y', `${(normY * -5.5).toFixed(1)}px`);
+      heroSection.style.setProperty('--fg-shift-x', `${(normX * -7.5).toFixed(1)}px`);
+      heroSection.style.setProperty('--fg-shift-y', `${(normY * -7.5).toFixed(1)}px`);
 
       if (isMouseInside) {
         rafParallax = requestAnimationFrame(parallaxLoop);
@@ -245,6 +243,8 @@ document.addEventListener('DOMContentLoaded', () => {
       isMouseInside = false;
       heroSection.style.setProperty('--main-shift-x', '0px');
       heroSection.style.setProperty('--main-shift-y', '0px');
+      heroSection.style.setProperty('--fg-shift-x', '0px');
+      heroSection.style.setProperty('--fg-shift-y', '0px');
     });
   }
 
@@ -264,30 +264,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 5. CUSTOMER REVIEWS & PARALLAX DEPTH ENGINE ---
+  // --- 5. CUSTOMER REVIEWS & PARALLAX LIQUID-GLASS ARCHITECTURE ---
   function renderReviews() {
-    if (!reviewsTrack) return;
+    if (!reviewsStage) return;
     const isAr = currentLang === 'ar';
     const reviews = data.customerReviews || [];
 
-    reviewsTrack.innerHTML = reviews.map((rev, idx) => {
+    reviewsStage.innerHTML = reviews.map((rev, idx) => {
       const quote = isAr ? rev.quoteAr : (rev.quoteEn || rev.quoteAr);
       const occasion = isAr ? rev.occasionAr : (rev.occasionEn || rev.occasionAr);
-      const initial = rev.customerName ? rev.customerName.charAt(0) : '✦';
-      const isCenter = idx === revActiveIdx;
-      const role = isCenter ? 'active' : 'neighbor';
+      const city = isAr ? (rev.cityAr || 'جدة') : (rev.cityEn || 'Jeddah');
+      const author = rev.customerName || '';
+      const initial = author ? author.charAt(0) : '✦';
+      
+      const offset = (idx - revActiveIdx + reviewCount) % reviewCount;
+      let role = 'active';
+      if (offset === 1) role = 'next';
+      else if (offset === reviewCount - 1) role = 'prev';
+      else if (offset !== 0) role = 'prev';
 
       return `
-        <div class="review-slide rounded-3xl p-8 bg-gradient-to-b from-[#181514] to-[#12100F] border border-white/10 shadow-xl flex flex-col justify-between" data-role="${role}">
+        <div class="review-card" data-idx="${idx}" data-role="${role}">
           <div>
-            <div class="flex items-center justify-between gap-4 mb-6">
+            <div class="flex items-center justify-between gap-4 mb-5">
               <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] font-bold text-sm flex items-center justify-center font-display">
                   ${initial}
                 </div>
                 <div>
-                  <h4 class="text-sm font-bold text-white font-display">${rev.customerName}</h4>
-                  <p class="text-[11px] text-stone-400">${rev.city || 'جدة'}</p>
+                  <h4 class="text-sm font-bold text-white font-display">${author}</h4>
+                  <p class="text-[11px] text-stone-400">${city}</p>
                 </div>
               </div>
               <span class="text-[10px] text-[#D4AF37] font-medium px-3 py-1 rounded-full bg-white/5 border border-white/10">
@@ -295,39 +301,114 @@ document.addEventListener('DOMContentLoaded', () => {
               </span>
             </div>
             
-            <p class="text-sm text-stone-300 font-light leading-relaxed mb-6 font-serif-ar">
+            <p class="text-base sm:text-lg lg:text-xl text-stone-100 font-light leading-relaxed mb-6 font-display">
               «${quote}»
             </p>
           </div>
 
-          <div class="flex items-center justify-between pt-4 border-t border-white/5 text-[11px] text-stone-500">
-            <span>تجربة إهداء معتمدة</span>
-            <span class="text-[#D4AF37]">✦</span>
+          <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs text-stone-400">
+            <span data-i18n="reviewsSec.verified">${data.translations[currentLang].reviewsSec.verified || 'تجربة إهداء موثقة'}</span>
+            <span class="text-[#D4AF37] font-mono text-xs">${rev.source || 'WhatsApp'}</span>
           </div>
         </div>
       `;
     }).join('');
 
-    // Render Indicator Dots
-    if (reviewsDots) {
-      reviewsDots.innerHTML = reviews.map((_, idx) => `
-        <button 
-          type="button" 
-          onclick="window.goToReviewSlide(${idx})" 
-          class="w-2 h-2 rounded-full transition-all cursor-pointer ${idx === revActiveIdx ? 'w-6 bg-[#D4AF37]' : 'bg-white/20 hover:bg-white/40'}"
-          aria-label="Review ${idx + 1}"
-        ></button>
-      `).join('');
+    if (revActiveNum) {
+      revActiveNum.textContent = `0${revActiveIdx + 1}`;
     }
   }
 
-  window.goToReviewSlide = function(idx) {
-    revActiveIdx = (idx + reviewCount) % reviewCount;
-    renderReviews();
-  };
+  function navigateReview(direction) {
+    if (isRevAnimating) return;
+    isRevAnimating = true;
 
-  if (revNextBtn) revNextBtn.addEventListener('click', () => { window.goToReviewSlide(revActiveIdx + 1); });
-  if (revPrevBtn) revPrevBtn.addEventListener('click', () => { window.goToReviewSlide(revActiveIdx - 1); });
+    if (direction === 'next') {
+      revActiveIdx = (revActiveIdx + 1) % reviewCount;
+    } else {
+      revActiveIdx = (revActiveIdx - 1 + reviewCount) % reviewCount;
+    }
+
+    renderReviews();
+
+    setTimeout(() => {
+      isRevAnimating = false;
+    }, 600);
+  }
+
+  if (revNextBtn) revNextBtn.addEventListener('click', () => { resetRevAutoTimer(); navigateReview('next'); });
+  if (revPrevBtn) revPrevBtn.addEventListener('click', () => { resetRevAutoTimer(); navigateReview('prev'); });
+
+  function startRevAutoTimer() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    clearInterval(revAutoTimer);
+    revAutoTimer = setInterval(() => {
+      if (isReviewsInView) navigateReview('next');
+    }, 8000);
+  }
+
+  function resetRevAutoTimer() {
+    clearInterval(revAutoTimer);
+    startRevAutoTimer();
+  }
+
+  startRevAutoTimer();
+
+  // Reviews mobile touch swipe
+  let revTouchStartX = 0;
+  let revTouchStartY = 0;
+
+  if (reviewsSection) {
+    reviewsSection.addEventListener('touchstart', (e) => {
+      revTouchStartX = e.touches[0].clientX;
+      revTouchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    reviewsSection.addEventListener('touchend', (e) => {
+      const deltaX = e.changedTouches[0].clientX - revTouchStartX;
+      const deltaY = e.changedTouches[0].clientY - revTouchStartY;
+      if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        resetRevAutoTimer();
+        const isAr = currentLang === 'ar';
+        if (deltaX < 0) {
+          isAr ? navigateReview('prev') : navigateReview('next');
+        } else {
+          isAr ? navigateReview('next') : navigateReview('prev');
+        }
+      }
+    }, { passive: true });
+
+    reviewsSection.addEventListener('mouseenter', () => clearInterval(revAutoTimer));
+    reviewsSection.addEventListener('mouseleave', () => resetRevAutoTimer());
+  }
+
+  // Two-Layer Parallax Optimization with IntersectionObserver & RAF batching
+  const reviewsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      isReviewsInView = entry.isIntersecting;
+    });
+  }, { rootMargin: '100px 0px 100px 0px' });
+
+  if (reviewsSection) reviewsObserver.observe(reviewsSection);
+
+  function updateReviewsParallax() {
+    if (!reviewsSection || !isReviewsInView) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const rect = reviewsSection.getBoundingClientRect();
+    const windowH = window.innerHeight;
+    const progress = Math.max(0, Math.min(1, (windowH - rect.top) / (windowH + rect.height)));
+    const isDesktop = window.innerWidth >= 1024;
+
+    const stageRange = isDesktop ? 120 : 35;
+    const fgRange = isDesktop ? 220 : 65;
+
+    const stageY = (0.5 - progress) * stageRange;
+    const fgY = (0.5 - progress) * fgRange;
+
+    reviewsSection.style.setProperty('--reviews-stage-y', `${stageY.toFixed(1)}px`);
+    reviewsSection.style.setProperty('--reviews-fg-y', `${fgY.toFixed(1)}px`);
+  }
 
   // --- 6. LANGUAGE SWITCHER ENGINE ---
   function applyTranslations() {
@@ -731,7 +812,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 12. SCROLL CONTROLLER ---
+  // --- 12. SCROLL CONTROLLER & PERFORMANCE RAF ---
   let isScrollPending = false;
   window.addEventListener('scroll', () => {
     if (!isScrollPending) {
@@ -747,15 +828,8 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
 
-        // Reviews section foreground botanical parallax (Velorah concept)
-        const reviewsSection = document.getElementById('reviews');
-        if (reviewsSection) {
-          const rect = reviewsSection.getBoundingClientRect();
-          if (rect.top < window.innerHeight && rect.bottom > 0) {
-            const shiftY = ((window.innerHeight - rect.top) * 0.08) - 30;
-            reviewsSection.style.setProperty('--reviews-fg-y', `${shiftY.toFixed(1)}px`);
-          }
-        }
+        // Reviews Two-Layer Parallax
+        updateReviewsParallax();
 
         // Floating WhatsApp Bar appearance on mobile
         if (floatingWhatsappBtn) {
@@ -777,20 +851,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 13. MOBILE MENU DRAWER ---
   function openMobileMenu() {
     if (!mobileMenuDrawer) return;
-    mobileMenuDrawer.classList.remove('translate-x-full', '-translate-x-full', 'hidden');
+    mobileMenuDrawer.classList.remove('hidden');
+    mobileMenuDrawer.classList.add('flex');
     mobileMenuDrawer.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMobileMenu() {
     if (!mobileMenuDrawer) return;
-    const isAr = currentLang === 'ar';
-    mobileMenuDrawer.classList.add(isAr ? '-translate-x-full' : 'translate-x-full');
     mobileMenuDrawer.setAttribute('aria-expanded', 'false');
-    setTimeout(() => {
-      mobileMenuDrawer.classList.add('hidden');
-      document.body.style.overflow = '';
-    }, 300);
+    mobileMenuDrawer.classList.add('hidden');
+    mobileMenuDrawer.classList.remove('flex');
+    document.body.style.overflow = '';
   }
 
   if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', openMobileMenu);

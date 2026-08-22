@@ -81,23 +81,22 @@ const fs = require('fs');
 
   // Test 4: Customer Reviews Section
   console.log('4️⃣ Verifying Customer Reviews Section...');
-  const reviewCards = await page.$$('#reviews-carousel-track .review-slide');
+  const reviewCards = await page.$$('#reviews-stage .review-card');
   console.log(`✅ Customer Reviews rendered: ${reviewCards.length} testimonials`);
 
-  // Test 5: Full Page Desktop Screenshot
-  console.log('5️⃣ Capturing Full Page Desktop View...');
-  await page.evaluate(async () => {
-    const distance = 400;
-    const delay = 100;
-    while (document.scrollingElement.scrollTop + window.innerHeight < document.scrollingElement.scrollHeight) {
-      document.scrollingElement.scrollBy(0, distance);
-      await new Promise(resolve => setTimeout(resolve, delay));
-    }
-    await new Promise(resolve => setTimeout(resolve, 500));
-    window.scrollTo(0, 0);
-  });
-  await page.waitForTimeout(500);
-  await page.screenshot({ path: path.join(screenshotsDir, '05_desktop_fullpage.png'), fullPage: true });
+  // Test Review Carousel Navigation
+  await page.click('#rev-next-btn');
+  await page.waitForTimeout(650);
+  const activeRevNum = await page.$eval('#rev-active-num', el => el.textContent.trim());
+  console.log(`✅ Review carousel navigated to: ${activeRevNum}`);
+
+  // Capture Reviews section on Desktop
+  const reviewsEl = await page.$('#reviews');
+  if (reviewsEl) {
+    await reviewsEl.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(400);
+    await page.screenshot({ path: path.join(screenshotsDir, '04_desktop_reviews_section.png') });
+  }
 
   // Test 6: Mobile Viewports (360, 375, 390, 393, 412, 430)
   const mobileViewports = [
@@ -148,7 +147,13 @@ const fs = require('fs');
   await page.waitForTimeout(600);
   await page.screenshot({ path: path.join(screenshotsDir, '09_tablet_1024_hero.png') });
 
-  // Test 8: Large Desktop 1920x1080
+  // Test 8: Desktop 1366x768 & 1920x1080
+  console.log('🖥️ Testing Desktop 1366x768 Viewport...');
+  await page.setViewportSize({ width: 1366, height: 768 });
+  await page.reload({ waitUntil: 'load' });
+  await page.waitForTimeout(600);
+  await page.screenshot({ path: path.join(screenshotsDir, '09_desktop_1366_hero.png') });
+
   console.log('🖥️ Testing Large Desktop Viewport (1920x1080)...');
   await page.setViewportSize({ width: 1920, height: 1080 });
   await page.reload({ waitUntil: 'load' });
