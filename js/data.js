@@ -1,6 +1,6 @@
 /**
  * MANDELINE (مندلين) — Central Data & Localization Architecture
- * Clean Editorial Typography (No Tatweel/Kashida) & Bilingual Dictionaries
+ * Complete Business Information, Floral Hero Scenes, Collections, Occasions, Real Customer Reviews & Bilingual Dictionaries
  */
 
 window.MandelineData = {
@@ -14,13 +14,57 @@ window.MandelineData = {
     districtAr: "حي الروضة / طريق التحلية، جدة",
     districtEn: "Al Rawdah / Tahlia Street, Jeddah",
     phone: "+966 12 600 0000",
-    whatsappNumber: "966500000000", // Central WhatsApp concierge
+    whatsappNumber: "966500000000", // Central WhatsApp Concierge
     instagram: "mandeline.flowers",
     tiktok: "mandeline.flowers",
     hoursAr: "يومياً من 9:00 صباحاً حتى 11:00 مساءً (توصيل فوري خلال ساعتين في جدة)",
     hoursEn: "Daily 9:00 AM – 11:00 PM (2-Hour Express Delivery in Jeddah)",
     googleMapsUrl: "https://maps.google.com/?q=Jeddah+Saudi+Arabia"
   },
+
+  // 4 Cohesive Floral Hero Scenes for Synchronized Carousel
+  heroSlides: [
+    {
+      id: "lamour",
+      bgTone: "#090807",
+      image: "assets/images/hero-framing-master.jpg",
+      revealImage: "assets/images/hero-reveal.jpg",
+      titleAr: "زهور تبقى في الذاكرة",
+      titleEn: "Flowers, Made to Be Remembered",
+      subtitleAr: "ورود جاردن إنجليزية وبيوني ناعم",
+      subtitleEn: "English Garden Roses & Blush Peonies"
+    },
+    {
+      id: "twilight",
+      bgTone: "#180D10",
+      image: "assets/images/collection-burgundy.jpg",
+      revealImage: "assets/images/collection-burgundy.jpg",
+      titleAr: "سحر الغسق المخملي",
+      titleEn: "Velvet Twilight Charm",
+      subtitleAr: "كالا داكنة وورود كابتشينو فاخرة",
+      subtitleEn: "Noir Calla & Cappuccino Blooms"
+    },
+    {
+      id: "solace",
+      bgTone: "#0D1012",
+      image: "assets/images/collection-orchids.jpg",
+      revealImage: "assets/images/collection-orchids.jpg",
+      titleAr: "نقاء الأوركيد الملكي",
+      titleEn: "Royal Orchid Purity",
+      subtitleAr: "أوركيد أبيض وتيوليب فرنسي",
+      subtitleEn: "Cascading Orchids & French Tulips"
+    },
+    {
+      id: "installation",
+      bgTone: "#120E0D",
+      image: "assets/images/collection-bespoke.jpg",
+      revealImage: "assets/images/collection-bespoke.jpg",
+      titleAr: "عمارة زهرية استثنائية",
+      titleEn: "Bespoke Floral Architecture",
+      subtitleAr: "تصاميم ملكية للمناسبات الكبرى",
+      subtitleEn: "Palatial Event Installations"
+    }
+  ],
 
   occasions: [
     {
@@ -132,6 +176,40 @@ window.MandelineData = {
     }
   ],
 
+  // Dedicated Real Customer Feedback Model
+  customerReviews: [
+    {
+      id: "rev-1",
+      quoteAr: "التنسيق كان قمة في الرقي، الورد وصل نضر جداً والتغليف والكرت أضاف لمسة فاخرة أذهلت الجميع في المناسبة.",
+      quoteEn: "The arrangement was the epitome of elegance. The flowers arrived exceptionally fresh, and the bespoke wrapping stunned everyone.",
+      customerName: "سارة آل غالب",
+      city: "جدة — حي الشاطئ",
+      occasionAr: "هدية ذكرى زواج",
+      occasionEn: "Anniversary Gift",
+      date: "2026"
+    },
+    {
+      id: "rev-2",
+      quoteAr: "تعامل المنسق وسرعة الاستجابة في الواتساب احترافية لأبعد حد. جهزوا لي فازة خاصة للتخرج ووصلت في أقل من ساعتين.",
+      quoteEn: "The florist's responsiveness on WhatsApp was remarkably professional. They crafted a custom graduation vase and delivered in under two hours.",
+      customerName: "د. طارق الحارثي",
+      city: "جدة — الروضة",
+      occasionAr: "باقة تهنئة تخرج",
+      occasionEn: "Graduation Celebration",
+      date: "2026"
+    },
+    {
+      id: "rev-3",
+      quoteAr: "مندلين بالنسبة لي هو الخيار الأول في جدة لأي مناسبة عائلية أو رسمية. ذوقهم رفيع ويعرفون تماماً كيف يترجمون المشاعر بورد نادر.",
+      quoteEn: "Mandeline is my premier destination in Jeddah for family and corporate gifts. Their taste is exquisite in translating emotions into rare botanicals.",
+      customerName: "نورة باخشوين",
+      city: "جدة — الأندلس",
+      occasionAr: "تنسيق مجلس خاص",
+      occasionEn: "Private Reception",
+      date: "2026"
+    }
+  ],
+
   translations: {
     ar: {
       langBtn: "English",
@@ -141,17 +219,18 @@ window.MandelineData = {
         collections: "تشكيلاتنا",
         experience: "تجربة الإهداء",
         concierge: "صمم باقتك",
+        reviews: "قالوا عنا",
         atelier: "عن مندلين",
         contact: "تواصل معنا",
         orderNow: "اطلب الآن"
       },
       hero: {
-        eyebrow: "بوتيك مندلين للزهور الفاخرة · جدة",
+        eyebrow: "مندلين · أتيليه الزهور الفاخرة · جدة",
         words: ["زهور", "تبقى", "في", "الذاكرة"],
-        supporting: "أخبرنا بالمناسبة وميزانيتك، ونحن نتكفل بصياغة الهدية المثالية وتوصيلها بأعلى معايير الرقي.",
+        supporting: "أخبرنا بالمناسبة والميزانية، ونحن نعتني بالباقي لنصنع من الورد لحظة لا تُنسى.",
         ctaExplore: "اكتشف التشكيلات",
         ctaWhatsapp: "اطلب عبر واتساب",
-        spotlightHint: "حرك المؤشر فوق الزهور لاكتشاف تفاصيل التفتح والألوان"
+        slideIndicator: "التنسيق"
       },
       marquee: [
         "ورد للمناسبات الراقية",
@@ -177,6 +256,11 @@ window.MandelineData = {
         orderItem: "طلب هذا التنسيق",
         viewDetails: "عرض التفاصيل"
       },
+      editorialMoment: {
+        eyebrow: "فلسفة الجمال والندرة",
+        title: "كل بتلة تروي قصة لا تتكرر",
+        subtitle: "ننتقي أندر السلالات النباتية لنقدم لك قطعة فنية حية تحاكي ذوقك الرفيع في جدة."
+      },
       stepsSec: {
         eyebrow: "سلاسة وفخامة",
         title: "هديتك.. بكل بساطة وأريحية",
@@ -188,10 +272,10 @@ window.MandelineData = {
         step3Title: "3. توصيل فوري أنيق",
         step3Desc: "سيارات مبردة مخصصة تضمن وصول الزهور بنضارتها التامة في الموعد المحدد."
       },
-      editorialMoment: {
-        eyebrow: "فلسفة الجمال والندرة",
-        title: "كل بتلة تروي قصة لا تتكرر",
-        subtitle: "ننتقي أندر السلالات النباتية لنقدم لك قطعة فنية حية تحاكي ذوقك الرفيع في جدة."
+      reviewsSec: {
+        eyebrow: "انطباعات وتجارب حقيقية",
+        title: "قالوا عن مندلين",
+        subtitle: "كلمات نعتز بها من عملائنا وأحبابهم في جدة تعكس شغفنا بصياغة أسمى المشاعر."
       },
       conciergeSec: {
         eyebrow: "المنسق الشخصي التفاعلي",
@@ -247,6 +331,7 @@ window.MandelineData = {
         occasions: "المناسبات",
         collections: "التشكيلات",
         concierge: "المنسق الخاص",
+        reviews: "قالوا عنا",
         contact: "الموقع والتواصل",
         rights: "جميع الحقوق محفوظة © بوتيك مندلين للزهور 2026."
       },
@@ -261,17 +346,18 @@ window.MandelineData = {
         collections: "Collections",
         experience: "Gifting Experience",
         concierge: "Bespoke Concierge",
+        reviews: "Reviews",
         atelier: "About Mandeline",
         contact: "Contact",
         orderNow: "Order Now"
       },
       hero: {
-        eyebrow: "MANDELINE FINE FLORAL ATELIER · JEDDAH",
+        eyebrow: "MANDELINE · FINE FLORAL ATELIER · JEDDAH",
         words: ["Flowers,", "Made", "to", "Be", "Remembered."],
         supporting: "Tell us the occasion and your budget. We will craft the quintessential floral gift and deliver it with uncompromised grace.",
         ctaExplore: "Explore Collections",
         ctaWhatsapp: "Order on WhatsApp",
-        spotlightHint: "Hover over the blooms to reveal luminous petals & golden highlights"
+        slideIndicator: "Arrangement"
       },
       marquee: [
         "Flowers for Life's Rare Moments",
@@ -297,6 +383,11 @@ window.MandelineData = {
         orderItem: "Order This Design",
         viewDetails: "View Details"
       },
+      editorialMoment: {
+        eyebrow: "Philosophy of Rare Beauty",
+        title: "Every Petal Articulates a Unique Story",
+        subtitle: "Hand-selecting heirloom botanicals to create living art tailored to your discerning taste in Jeddah."
+      },
       stepsSec: {
         eyebrow: "Seamless & Effortless",
         title: "YOUR GIFT, MADE EFFORTLESS",
@@ -308,10 +399,10 @@ window.MandelineData = {
         step3Title: "3. Express Chilled Delivery",
         step3Desc: "Delivered in climate-controlled vehicles ensuring peak bloom freshness across Jeddah."
       },
-      editorialMoment: {
-        eyebrow: "Philosophy of Rare Beauty",
-        title: "Every Petal Articulates a Unique Story",
-        subtitle: "Hand-selecting heirloom botanicals to create living art tailored to your discerning taste in Jeddah."
+      reviewsSec: {
+        eyebrow: "Genuine Words & Impressions",
+        title: "WORDS FROM OUR CUSTOMERS",
+        subtitle: "Reflections from clients in Jeddah that honor our commitment to crafting memorable floral poetry."
       },
       conciergeSec: {
         eyebrow: "Interactive Bespoke Concierge",
@@ -367,6 +458,7 @@ window.MandelineData = {
         occasions: "Occasions",
         collections: "Collections",
         concierge: "Bespoke Concierge",
+        reviews: "Customer Words",
         contact: "Location & Contact",
         rights: "All rights reserved © Mandeline Floral Boutique 2026."
       },

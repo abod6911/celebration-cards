@@ -7,27 +7,27 @@
 :root {
   /* Dark Cinematic Palette */
   --color-charcoal-950: #060505;
-  --color-charcoal-900: #0a0808;
-  --color-charcoal-800: #120e0d;
-  --color-charcoal-700: #1a1514;
-  --color-charcoal-600: #261f1d;
+  --color-charcoal-900: #090807;
+  --color-charcoal-800: #12100f;
+  --color-charcoal-700: #1a1716;
+  --color-burgundy-900: #2a0e12;
+  --color-burgundy-800: #3a171b;
+  --color-burgundy-700: #5c1d24;
   
   /* Luxury Warm Neutrals */
   --color-ivory-50: #fdfbf7;
-  --color-ivory-100: #faf7f2;
-  --color-ivory-200: #f2ede4;
-  --color-ivory-300: #e5ded2;
-  --color-ivory-400: #c8bead;
+  --color-ivory-100: #f8f5ef;
+  --color-ivory-200: #efe8de;
+  --color-ivory-300: #e2d8c9;
+  --color-ivory-400: #c9bead;
   
   /* Floral & Champagne Accents */
   --color-gold-400: #d4af37;
   --color-gold-300: #e2c766;
-  --color-champagne: #c5a880;
+  --color-champagne: #c9b08d;
   --color-blush-100: #f7ece8;
   --color-blush-200: #e8d3ce;
   --color-rose-muted: #c48b8b;
-  --color-burgundy-900: #3b1217;
-  --color-burgundy-800: #5c1d24;
   
   /* Two-Tier Typography System */
   --font-ar-display: 'Noto Naskh Arabic', Georgia, serif;
@@ -35,7 +35,13 @@
   --font-en-display: 'Cormorant Garamond', Georgia, serif;
   --font-en-body: 'Manrope', -apple-system, system-ui, sans-serif;
   
-  /* Cursor Spotlight & Pointer Parallax Variables (Desktop) */
+  /* Motion Easing Tokens */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Dynamic Interactive Variables */
+  --hero-bg-tone: #090807;
   --spot-x: 50%;
   --spot-y: 50%;
   --spot-radius: 300px;
@@ -48,16 +54,11 @@
   --fg-shift-x: 0px;
   --fg-shift-y: 0px;
   
-  /* Magnetic Button Variables */
   --btn-mag-x: 0px;
   --btn-mag-y: 0px;
-
-  /* Transitions */
-  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Base resets & typography */
+/* Base resets */
 html {
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
@@ -70,13 +71,14 @@ body {
   background-color: var(--color-ivory-100);
   color: var(--color-charcoal-700);
   overflow-x: hidden;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 [lang="en"] body {
   font-family: var(--font-en-body);
 }
 
-/* Luxury Display Typography Classes */
 .font-display {
   font-family: var(--font-ar-display);
 }
@@ -95,7 +97,74 @@ body {
 }
 
 /* ==========================================================================
-   HERO — ONE ART-DIRECTED COMPOSITION (FLOWPATH + LITHOS + TERRAELIX)
+   VANTAGE-INSPIRED ONE-SHOT ENTRANCE & MOTION-PENDING ARCHITECTURE
+   ========================================================================== */
+
+.motion-pending .hero-fade-up {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+}
+
+.motion-pending .reveal-word {
+  opacity: 0 !important;
+  transform: translateY(115%) skewY(1.8deg) !important;
+  filter: blur(8px) !important;
+}
+
+.motion-pending .hero-carousel-track {
+  opacity: 0 !important;
+  transform: scale(1.05) !important;
+}
+
+/* Entrance Animations on Load */
+.hero-loaded .hero-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.85s var(--ease-editorial), transform 0.85s var(--ease-editorial);
+}
+
+.hero-loaded .reveal-word {
+  opacity: 1;
+  transform: translateY(0) skewY(0);
+  filter: blur(0);
+  transition: 
+    opacity 0.85s var(--ease-premium), 
+    transform 0.95s var(--ease-premium), 
+    filter 0.85s var(--ease-premium);
+}
+
+.hero-loaded .hero-carousel-track {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1.2s var(--ease-editorial), transform 1.4s var(--ease-premium);
+}
+
+/* Stagger Delays */
+.delay-60  { transition-delay: 60ms; }
+.delay-130 { transition-delay: 130ms; }
+.delay-175 { transition-delay: 175ms; }
+.delay-220 { transition-delay: 220ms; }
+.delay-265 { transition-delay: 265ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-440 { transition-delay: 440ms; }
+.delay-700 { transition-delay: 700ms; }
+.delay-900 { transition-delay: 900ms; }
+
+/* Word Mask Wrap for TerraElix Reveal */
+.word-mask-wrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  line-height: 1.15;
+}
+
+.reveal-word {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+/* ==========================================================================
+   TOONHUB-INSPIRED SYNCHRONIZED FLORAL HERO CAROUSEL
    ========================================================================== */
 
 .hero-viewport {
@@ -103,11 +172,19 @@ body {
   min-height: 100dvh;
   position: relative;
   overflow: hidden;
-  background-color: var(--color-charcoal-900);
+  background-color: var(--hero-bg-tone);
+  transition: background-color 0.85s var(--ease-editorial);
 }
 
-/* Master Floral Artwork Layer (Middle Layer) */
-.hero-bg-container {
+.hero-carousel-track {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Floral Slide Roles */
+.hero-carousel-slide {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -115,33 +192,67 @@ body {
   background-size: cover;
   background-position: center right;
   background-repeat: no-repeat;
-  opacity: 0;
-  transform: translate3d(var(--main-shift-x), var(--main-shift-y), 0) scale(1.04);
-  filter: blur(4px);
   transition: 
-    opacity 0.85s var(--ease-cinematic),
-    transform 1.6s var(--ease-cinematic),
-    filter 0.95s var(--ease-cinematic);
+    transform 0.65s var(--ease-premium), 
+    opacity 0.65s var(--ease-premium), 
+    filter 0.65s var(--ease-premium);
   will-change: transform, opacity, filter;
 }
 
-.hero-loaded .hero-bg-container {
+/* Active Center Role */
+.hero-carousel-slide[data-role="center"] {
   opacity: 1;
-  transform: translate3d(var(--main-shift-x), var(--main-shift-y), 0) scale(1);
-  filter: blur(0);
+  transform: translate3d(var(--main-shift-x), var(--main-shift-y), 0) scale(1.08);
+  filter: blur(0px);
+  z-index: 10;
 }
 
-/* RTL Floral Background Orientation */
-[dir="rtl"] .hero-bg-container {
-  transform: translate3d(var(--main-shift-x), var(--main-shift-y), 0) scaleX(-1) scale(1.04);
+/* Left Neighbor Role */
+.hero-carousel-slide[data-role="left"] {
+  opacity: 0.45;
+  transform: translate3d(calc(-18% + var(--main-shift-x)), var(--main-shift-y), 0) scale(0.94);
+  filter: blur(2px);
+  z-index: 5;
+}
+
+/* Right Neighbor Role */
+.hero-carousel-slide[data-role="right"] {
+  opacity: 0.45;
+  transform: translate3d(calc(18% + var(--main-shift-x)), var(--main-shift-y), 0) scale(0.94);
+  filter: blur(2px);
+  z-index: 5;
+}
+
+/* Back Depth Role */
+.hero-carousel-slide[data-role="back"] {
+  opacity: 0.15;
+  transform: translate3d(0, -6%, 0) scale(0.88);
+  filter: blur(4px);
+  z-index: 1;
+}
+
+/* RTL Auto-Mirroring for Edge Framing */
+[dir="rtl"] .hero-carousel-slide {
   background-position: center right;
 }
 
-[dir="rtl"].hero-loaded .hero-bg-container {
-  transform: translate3d(var(--main-shift-x), var(--main-shift-y), 0) scaleX(-1) scale(1);
+[dir="rtl"] .hero-carousel-slide[data-role="center"] {
+  transform: scaleX(-1) translate3d(var(--main-shift-x), var(--main-shift-y), 0) scale(1.08);
 }
 
-/* Desktop Spotlight Reveal Layer (Lithos Concept) */
+[dir="rtl"] .hero-carousel-slide[data-role="left"] {
+  transform: scaleX(-1) translate3d(calc(-18% + var(--main-shift-x)), var(--main-shift-y), 0) scale(0.94);
+}
+
+[dir="rtl"] .hero-carousel-slide[data-role="right"] {
+  transform: scaleX(-1) translate3d(calc(18% + var(--main-shift-x)), var(--main-shift-y), 0) scale(0.94);
+}
+
+[dir="rtl"] .hero-carousel-slide[data-role="back"] {
+  transform: scaleX(-1) translate3d(0, -6%, 0) scale(0.88);
+}
+
+/* Desktop Spotlight Layer (Lithos Concept) */
 .hero-spotlight-layer {
   position: absolute;
   inset: 0;
@@ -153,7 +264,7 @@ body {
   pointer-events: none;
   opacity: var(--spot-opacity);
   transform: translate3d(var(--main-shift-x), var(--main-shift-y), 0);
-  transition: opacity 0.4s var(--ease-smooth);
+  transition: opacity 0.4s var(--ease-standard);
   mask-image: radial-gradient(
     circle var(--spot-radius) at var(--spot-x) var(--spot-y),
     rgba(0, 0, 0, 1) 0%,
@@ -166,116 +277,47 @@ body {
     rgba(0, 0, 0, 0.7) 45%,
     rgba(0, 0, 0, 0) 100%
   );
+  z-index: 12;
   will-change: mask-position, -webkit-mask-position, opacity;
 }
 
 [dir="rtl"] .hero-spotlight-layer {
-  transform: translate3d(var(--main-shift-x), var(--main-shift-y), 0) scaleX(-1);
+  transform: scaleX(-1) translate3d(var(--main-shift-x), var(--main-shift-y), 0);
   background-position: center right;
 }
 
-/* Mobile Dedicated Composition (Upper 50% dark breathing room, Lower 50% flowers) */
+/* Film Grain Overlay */
+.film-grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 14;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Dedicated Mobile Composition */
 @media (max-width: 768px) {
-  .hero-bg-container, .hero-spotlight-layer {
+  .hero-carousel-slide {
     background-position: center 100% !important;
     background-size: 140% auto !important;
+  }
+  .hero-carousel-slide[data-role="center"] {
+    transform: scale(1.02) !important;
+  }
+  [dir="rtl"] .hero-carousel-slide[data-role="center"] {
+    transform: scaleX(-1) scale(1.02) !important;
   }
   .hero-mobile-scrim {
     background: linear-gradient(
       180deg,
-      rgba(10, 8, 8, 0.96) 0%,
-      rgba(10, 8, 8, 0.88) 35%,
-      rgba(10, 8, 8, 0.45) 60%,
-      rgba(10, 8, 8, 0.90) 100%
+      rgba(9, 8, 7, 0.97) 0%,
+      rgba(9, 8, 7, 0.90) 38%,
+      rgba(9, 8, 7, 0.45) 60%,
+      rgba(9, 8, 7, 0.92) 100%
     ) !important;
   }
 }
-
-/* Mobile & Touch Devices: Fluid Ambient Glow without JS overhead */
-@media (hover: none) and (pointer: coarse) {
-  .hero-bg-container, .hero-spotlight-layer {
-    background-position: center 85% !important;
-    background-size: 135% auto !important;
-    transform: none !important;
-  }
-  [dir="rtl"] .hero-bg-container, [dir="rtl"] .hero-spotlight-layer {
-    transform: scaleX(-1) !important;
-  }
-  .hero-spotlight-layer {
-    opacity: 0.15 !important;
-    mask-image: radial-gradient(circle 320px at 70% 65%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: radial-gradient(circle 320px at 70% 65%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-    animation: ambientDrift 14s ease-in-out infinite alternate;
-  }
-}
-
-@keyframes ambientDrift {
-  0% { mask-position: 15% 25%; -webkit-mask-position: 15% 25%; }
-  100% { mask-position: 85% 75%; -webkit-mask-position: 85% 75%; }
-}
-
-/* Foreground Botanical Depth Layer */
-.hero-fg-depth {
-  position: absolute;
-  pointer-events: none;
-  z-index: 15;
-  transform: translate3d(var(--fg-shift-x), var(--fg-shift-y), 0);
-  transition: transform 0.25s var(--ease-smooth);
-  will-change: transform;
-}
-
-/* ==========================================================================
-   TERRAELIX-INSPIRED MASKED WORD REVEAL (NO KASHIDA)
-   ========================================================================== */
-
-.word-mask-wrap {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
-  line-height: 1.15;
-}
-
-.reveal-word {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(110%);
-  filter: blur(6px);
-  transition: 
-    opacity 0.85s var(--ease-cinematic),
-    transform 0.95s var(--ease-cinematic),
-    filter 0.85s var(--ease-cinematic);
-  will-change: transform, opacity, filter;
-}
-
-.hero-loaded .reveal-word {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-.hero-fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.85s var(--ease-cinematic), transform 0.85s var(--ease-cinematic);
-  will-change: transform, opacity;
-}
-
-.hero-loaded .hero-fade-up {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger Delays */
-.delay-100 { transition-delay: 100ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-500 { transition-delay: 500ms; }
-.delay-600 { transition-delay: 600ms; }
-.delay-700 { transition-delay: 700ms; }
-.delay-800 { transition-delay: 800ms; }
-.delay-900 { transition-delay: 900ms; }
-.delay-1000 { transition-delay: 1000ms; }
 
 /* ==========================================================================
    NAVIGATION — FLOATING TRANSPARENT TO FROSTED GLASS
@@ -284,15 +326,19 @@ body {
 .glass-nav {
   background: transparent;
   border-bottom: 1px solid transparent;
-  transition: background 0.45s var(--ease-cinematic), border-color 0.45s var(--ease-cinematic), box-shadow 0.45s var(--ease-cinematic), padding 0.45s var(--ease-cinematic);
+  transition: 
+    background 0.45s var(--ease-editorial), 
+    border-color 0.45s var(--ease-editorial), 
+    box-shadow 0.45s var(--ease-editorial), 
+    padding 0.45s var(--ease-editorial);
 }
 
 .glass-nav.scrolled {
-  background: rgba(10, 8, 8, 0.82);
+  background: rgba(9, 8, 7, 0.85);
   backdrop-filter: blur(20px) saturate(160%);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
   padding-top: 0.85rem !important;
   padding-bottom: 0.85rem !important;
 }
@@ -301,8 +347,8 @@ body {
   background: rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  transition: all 0.3s var(--ease-smooth);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s var(--ease-standard);
 }
 
 .glass-pill:hover {
@@ -311,23 +357,15 @@ body {
   transform: translateY(-1px);
 }
 
-.glass-pill-light {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(197, 168, 128, 0.28);
-  box-shadow: 0 4px 20px -2px rgba(10, 8, 8, 0.04);
-}
-
 .glass-card-dark {
-  background: linear-gradient(135deg, rgba(26, 21, 20, 0.88) 0%, rgba(18, 14, 13, 0.96) 100%);
+  background: linear-gradient(135deg, rgba(26, 23, 22, 0.88) 0%, rgba(18, 16, 15, 0.96) 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 /* ==========================================================================
-   LUXURY BUTTONS & MAGNETIC MOTION
+   LUXURY BUTTONS & ANIMATED TEXT MICRO-INTERACTIONS
    ========================================================================== */
 
 .btn-luxury-primary {
@@ -336,14 +374,15 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
-  background: linear-gradient(135deg, #d4af37 0%, #c5a880 100%);
-  color: #060505;
+  background: linear-gradient(135deg, #d4af37 0%, #c9b08d 100%);
+  color: #090807;
   font-weight: 600;
   border-radius: 9999px;
   padding: 0.875rem 2.25rem;
-  transition: transform 0.35s var(--ease-cinematic), box-shadow 0.35s var(--ease-cinematic), background 0.35s var(--ease-cinematic);
+  transition: transform 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium), background 0.35s var(--ease-premium);
   box-shadow: 0 4px 20px -2px rgba(212, 175, 55, 0.35);
   min-height: 48px;
+  overflow: hidden;
   transform: translate3d(var(--btn-mag-x), var(--btn-mag-y), 0);
   will-change: transform;
 }
@@ -357,6 +396,27 @@ body {
   transform: scale(0.97);
 }
 
+/* Animated Text Roll on CTA (Desktop Only) */
+@media (hover: hover) and (pointer: fine) {
+  .btn-animated-text {
+    position: relative;
+    overflow: hidden;
+    height: 1.25rem;
+    display: inline-flex;
+    flex-direction: column;
+  }
+  .btn-animated-text span {
+    display: block;
+    transition: transform 0.28s var(--ease-editorial);
+  }
+  .btn-luxury-primary:hover .btn-animated-text span:first-child {
+    transform: translateY(-100%);
+  }
+  .btn-luxury-primary:hover .btn-animated-text span:last-child {
+    transform: translateY(-100%);
+  }
+}
+
 .btn-luxury-secondary {
   position: relative;
   display: inline-flex;
@@ -364,13 +424,13 @@ body {
   justify-content: center;
   gap: 0.625rem;
   background: rgba(255, 255, 255, 0.08);
-  color: #faf7f2;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #f8f5ef;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: 9999px;
   padding: 0.875rem 2rem;
-  transition: all 0.35s var(--ease-cinematic);
+  transition: all 0.35s var(--ease-premium);
   min-height: 48px;
 }
 
@@ -381,8 +441,59 @@ body {
   transform: translateY(-2px);
 }
 
-.btn-luxury-secondary:active {
-  transform: scale(0.97);
+/* ==========================================================================
+   CUSTOMER REVIEWS & VELORAH-STYLE PARALLAX DEPTH SECTION
+   ========================================================================== */
+
+.reviews-viewport {
+  background-color: var(--color-charcoal-900);
+  position: relative;
+  overflow: hidden;
+}
+
+.review-slide {
+  transition: 
+    transform 0.6s var(--ease-premium), 
+    opacity 0.6s var(--ease-premium), 
+    filter 0.6s var(--ease-premium);
+  will-change: transform, opacity, filter;
+}
+
+.review-slide[data-role="active"] {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+  z-index: 10;
+}
+
+.review-slide[data-role="neighbor"] {
+  opacity: 0.45;
+  transform: scale(0.94);
+  filter: blur(1px);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.review-slide[data-role="hidden"] {
+  opacity: 0;
+  transform: scale(0.88);
+  filter: blur(3px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.review-fg-botanical {
+  position: absolute;
+  bottom: -40px;
+  right: -30px;
+  width: 280px;
+  height: 280px;
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0.35;
+  transform: translate3d(0, var(--reviews-fg-y, 0px), 0);
+  transition: transform 0.25s var(--ease-standard);
+  will-change: transform;
 }
 
 /* ==========================================================================
@@ -391,7 +502,7 @@ body {
 
 .editorial-expand-canvas {
   clip-path: inset(5% 5% 5% 5% round 24px);
-  transition: clip-path 1.2s var(--ease-cinematic), transform 1.2s var(--ease-cinematic);
+  transition: clip-path 1.2s var(--ease-premium), transform 1.2s var(--ease-premium);
   will-change: clip-path, transform;
 }
 
@@ -401,7 +512,7 @@ body {
 
 .editorial-canvas-img {
   transform: scale(1.08);
-  transition: transform 1.4s var(--ease-cinematic);
+  transition: transform 1.4s var(--ease-premium);
   will-change: transform;
 }
 
@@ -416,7 +527,7 @@ body {
 .scroll-reveal {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.85s var(--ease-cinematic), transform 0.85s var(--ease-cinematic);
+  transition: opacity 0.85s var(--ease-editorial), transform 0.85s var(--ease-editorial);
   will-change: transform, opacity;
 }
 
@@ -426,16 +537,16 @@ body {
 }
 
 .flower-card {
-  transition: transform 0.45s var(--ease-cinematic), box-shadow 0.45s var(--ease-cinematic);
+  transition: transform 0.45s var(--ease-premium), box-shadow 0.45s var(--ease-premium);
 }
 
 .flower-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px -10px rgba(26, 21, 20, 0.12);
+  box-shadow: 0 20px 40px -10px rgba(26, 23, 22, 0.12);
 }
 
 .flower-card-img {
-  transition: transform 0.7s var(--ease-cinematic);
+  transition: transform 0.7s var(--ease-premium);
 }
 
 .flower-card:hover .flower-card-img {
@@ -481,7 +592,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal-word, .hero-fade-up, .scroll-reveal, .editorial-expand-canvas {
+  .reveal-word, .hero-fade-up, .scroll-reveal, .editorial-expand-canvas, .hero-carousel-slide, .review-slide {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;

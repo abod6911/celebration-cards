@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="h-full scroll-smooth">
+<html lang="ar" dir="rtl" class="h-full scroll-smooth motion-pending">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -26,16 +26,16 @@
         extend: {
           colors: {
             brand: {
-              charcoal: '#0A0808',
-              espresso: '#120E0D',
-              dark: '#1A1514',
+              charcoal: '#090807',
+              espresso: '#12100F',
+              dark: '#1A1716',
               gold: '#D4AF37',
               goldLight: '#E2C766',
-              champagne: '#C5A880',
-              ivory: '#FAF7F2',
-              cream: '#F2EDE4',
+              champagne: '#C9B08D',
+              ivory: '#F8F5EF',
+              cream: '#EFE8DE',
               blush: '#E8D3CE',
-              burgundy: '#5C1D24',
+              burgundy: '#3A171B',
             }
           },
           fontFamily: {
@@ -67,14 +67,12 @@
       "addressLocality": "Jeddah",
       "addressRegion": "Makkah Province",
       "addressCountry": "SA"
-    },
-    "openingHours": "Mo-Su 09:00-23:00",
-    "priceRange": "$$$"
+    }
   }
   </script>
 </head>
 
-<body class="bg-[#FAF7F2] text-[#1A1514] font-sans antialiased selection:bg-[#D4AF37]/30 relative flex flex-col min-h-screen">
+<body class="bg-[#F8F5EF] text-[#1A1716] font-sans antialiased selection:bg-[#D4AF37]/30 relative flex flex-col min-h-screen">
 
   <!-- =================================================================== -->
   <!-- 1. NAVIGATION BAR (Starts 100% Transparent, Frosted on Scroll)       -->
@@ -82,8 +80,8 @@
   <nav id="main-nav" class="glass-nav fixed top-0 inset-x-0 z-50 py-5 px-4 sm:px-8 lg:px-12 transition-all">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
       
-      <!-- Refined Brand Wordmark -->
-      <a href="#hero-section" class="flex items-center gap-3 group focus:outline-none" aria-label="Mandeline Home">
+      <!-- Refined Brand Wordmark (Vantage-staged Entrance) -->
+      <a href="#hero-section" class="nav-brand hero-fade-up delay-60 flex items-center gap-3 group focus:outline-none" aria-label="Mandeline Home">
         <span class="text-[#D4AF37] text-lg font-serif">✦</span>
         <div class="flex items-baseline gap-2">
           <span class="text-white font-bold tracking-wide text-lg lg:text-xl font-display group-hover:text-[#D4AF37] transition-colors">مندلين</span>
@@ -92,14 +90,15 @@
       </a>
 
       <!-- Desktop Navigation Menu -->
-      <div class="hidden lg:flex items-center gap-8 text-xs font-medium text-stone-300 tracking-wide uppercase">
-        <a href="#hero-section" data-i18n="nav.home" class="hover:text-white transition-colors">الرئيسية</a>
-        <a href="#occasions" data-i18n="nav.occasions" class="hover:text-white transition-colors">المناسبات</a>
-        <a href="#collections" data-i18n="nav.collections" class="hover:text-white transition-colors">تشكيلاتنا</a>
-        <a href="#experience" data-i18n="nav.experience" class="hover:text-white transition-colors">تجربة الإهداء</a>
-        <a href="#concierge" data-i18n="nav.concierge" class="text-[#D4AF37] hover:text-[#E2C766] transition-colors">صمم باقتك</a>
-        <a href="#atelier" data-i18n="nav.atelier" class="hover:text-white transition-colors">عن مندلين</a>
-        <a href="#contact" data-i18n="nav.contact" class="hover:text-white transition-colors">تواصل معنا</a>
+      <div class="hidden lg:flex items-center gap-7 text-xs font-medium text-stone-300 tracking-wide uppercase">
+        <a href="#hero-section" data-i18n="nav.home" class="nav-link-item hero-fade-up delay-130 hover:text-white transition-colors">الرئيسية</a>
+        <a href="#occasions" data-i18n="nav.occasions" class="nav-link-item hero-fade-up delay-175 hover:text-white transition-colors">المناسبات</a>
+        <a href="#collections" data-i18n="nav.collections" class="nav-link-item hero-fade-up delay-220 hover:text-white transition-colors">تشكيلاتنا</a>
+        <a href="#experience" data-i18n="nav.experience" class="nav-link-item hero-fade-up delay-265 hover:text-white transition-colors">تجربة الإهداء</a>
+        <a href="#reviews" data-i18n="nav.reviews" class="nav-link-item hero-fade-up delay-265 hover:text-white transition-colors">قالوا عنا</a>
+        <a href="#concierge" data-i18n="nav.concierge" class="nav-link-item hero-fade-up delay-300 text-[#D4AF37] hover:text-[#E2C766] transition-colors">صمم باقتك</a>
+        <a href="#atelier" data-i18n="nav.atelier" class="nav-link-item hero-fade-up delay-300 hover:text-white transition-colors">عن مندلين</a>
+        <a href="#contact" data-i18n="nav.contact" class="nav-link-item hero-fade-up delay-300 hover:text-white transition-colors">تواصل معنا</a>
       </div>
 
       <!-- Right Nav Actions: Language Toggle & Order CTA -->
@@ -107,7 +106,7 @@
         <!-- Language Switcher Button -->
         <button 
           type="button" 
-          class="lang-toggle-btn glass-pill text-xs font-medium text-white px-3.5 py-2 rounded-full cursor-pointer hover:text-[#D4AF37]"
+          class="lang-toggle-btn hero-fade-up delay-220 glass-pill text-xs font-medium text-white px-3.5 py-2 rounded-full cursor-pointer hover:text-[#D4AF37]"
           aria-label="Switch Language"
         >
           English
@@ -118,7 +117,7 @@
           href="https://wa.me/966500000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A8%D9%88%D8%AA%D9%8A%D9%83%20%D9%85%D9%86%D8%AF%D9%84%D9%8A%D9%86%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%A7%D9%82%D8%A7%D8%AA%20%D8%A7%D9%84%D9%88%D8%B1%D8%AF" 
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-[#D4AF37] to-[#C5A880] text-black font-semibold text-xs px-5 py-2.5 rounded-full shadow-md hover:from-[#E2C766] hover:to-[#D4AF37] hover:scale-105 transition-all"
+          class="hero-fade-up delay-265 hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-[#D4AF37] to-[#C9B08D] text-black font-semibold text-xs px-5 py-2.5 rounded-full shadow-md hover:from-[#E2C766] hover:to-[#D4AF37] hover:scale-105 transition-all"
         >
           <i data-lucide="message-circle" class="w-4 h-4"></i>
           <span data-i18n="nav.orderNow">اطلب الآن</span>
@@ -139,37 +138,66 @@
   </nav>
 
   <!-- =================================================================== -->
-  <!-- 2. SIGNATURE CINEMATIC HERO (Flowpath Edge Framing + TikTok Intro) -->
+  <!-- 2. SYNCHRONIZED FLORAL HERO CAROUSEL (TOONHUB Motion + Flowpath)   -->
   <!-- =================================================================== -->
   <section id="hero-section" class="hero-viewport flex items-center relative text-white pt-28 pb-20 px-4 sm:px-8 lg:px-16">
     
-    <!-- Base Flowpath-style Edge Framing Master Artwork Layer -->
-    <div 
-      id="hero-bg-container" 
-      class="hero-bg-container absolute inset-0"
-      style="background-image: url('assets/images/hero-framing-master.jpg');"
-    ></div>
+    <!-- Film Grain Subtle Texture -->
+    <div class="film-grain-overlay"></div>
+
+    <!-- Synchronized Floral Carousel Track (4 Cohesive Mandeline Scenes) -->
+    <div id="hero-carousel-track" class="hero-carousel-track">
+      <!-- Slide 0: Center Active -->
+      <div 
+        class="hero-carousel-slide" 
+        data-slide="0" 
+        data-role="center"
+        style="background-image: url('assets/images/hero-framing-master.jpg');"
+      ></div>
+      <!-- Slide 1: Right -->
+      <div 
+        class="hero-carousel-slide" 
+        data-slide="1" 
+        data-role="right"
+        style="background-image: url('assets/images/collection-burgundy.jpg');"
+      ></div>
+      <!-- Slide 2: Back -->
+      <div 
+        class="hero-carousel-slide" 
+        data-slide="2" 
+        data-role="back"
+        style="background-image: url('assets/images/collection-orchids.jpg');"
+      ></div>
+      <!-- Slide 3: Left -->
+      <div 
+        class="hero-carousel-slide" 
+        data-slide="3" 
+        data-role="left"
+        style="background-image: url('assets/images/collection-bespoke.jpg');"
+      ></div>
+    </div>
 
     <!-- Desktop Spotlight Reveal Layer (Lithos radial gradient mask) -->
     <div 
       id="hero-spotlight" 
-      class="hero-spotlight-layer absolute inset-0"
+      class="hero-spotlight-layer"
       style="background-image: url('assets/images/hero-reveal.jpg');"
     ></div>
 
-    <!-- Soft Directional Atmospheric Vignette & Mobile Scrim -->
-    <div class="hero-mobile-scrim absolute inset-0 bg-gradient-to-t from-[#0A0808] via-transparent to-black/40 pointer-events-none"></div>
+    <!-- Directional Atmospheric Vignette & Mobile Scrim (Guaranteed High Contrast for All Slides) -->
+    <div class="hero-mobile-scrim absolute inset-0 bg-gradient-to-t from-[#090807] via-black/40 to-black/55 pointer-events-none z-10"></div>
+    <div class="absolute inset-0 bg-black/25 pointer-events-none z-10"></div>
 
     <!-- Hero Content Container (NO Glass Card Box — Sits Directly in Composition) -->
-    <div class="relative z-10 max-w-xl lg:max-w-2xl my-auto">
+    <div class="relative z-20 max-w-xl lg:max-w-2xl my-auto">
       
       <!-- Eyebrow Tag -->
-      <div class="hero-fade-up delay-100 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[#D4AF37] text-xs font-semibold tracking-widest uppercase mb-6">
+      <div class="hero-fade-up delay-60 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[#D4AF37] text-xs font-semibold tracking-widest uppercase mb-6">
         <span>✦</span>
-        <span data-i18n="hero.eyebrow">بوتيك مندلين للزهور الفاخرة · جدة</span>
+        <span data-i18n="hero.eyebrow">مندلين · أتيليه الزهور الفاخرة · جدة</span>
       </div>
 
-      <!-- Sequential Masked Word Reveal Headline (TerraElix Concept) -->
+      <!-- Masked Word Reveal Headline (TerraElix & Vantage Concept) -->
       <h1 
         id="hero-headline" 
         class="text-4xl sm:text-6xl md:text-7xl font-bold font-display text-white tracking-tight leading-[1.18] mb-6 drop-shadow-xl"
@@ -180,19 +208,22 @@
       <!-- Supporting Editorial Copy -->
       <p 
         data-i18n="hero.supporting" 
-        class="hero-fade-up delay-600 text-stone-300 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-lg drop-shadow-md"
+        class="hero-fade-up delay-700 text-stone-300 text-base sm:text-lg font-light leading-relaxed mb-10 max-w-lg drop-shadow-md"
       >
-        أخبرنا بالمناسبة وميزانيتك، ونحن نتكفل بصياغة الهدية المثالية وتوصيلها بأعلى معايير الرقي.
+        أخبرنا بالمناسبة والميزانية، ونحن نعتني بالباقي لنصنع من الورد لحظة لا تُنسى.
       </p>
 
-      <!-- Primary & Secondary Action CTAs -->
-      <div class="hero-fade-up delay-800 flex flex-wrap items-center gap-4">
+      <!-- Primary & Secondary Action CTAs (Animated Text Roll on Desktop) -->
+      <div class="hero-fade-up delay-900 flex flex-wrap items-center gap-4">
         <a 
           id="hero-primary-cta"
           href="#collections" 
           class="btn-luxury-primary text-sm sm:text-base font-semibold group"
         >
-          <span data-i18n="hero.ctaExplore">اكتشف التشكيلات</span>
+          <div class="btn-animated-text">
+            <span data-i18n="hero.ctaExplore">اكتشف التشكيلات</span>
+            <span data-i18n="hero.ctaExplore">اكتشف التشكيلات</span>
+          </div>
           <i data-lucide="arrow-left" class="w-4 h-4 transition-transform group-hover:-translate-x-1"></i>
         </a>
 
@@ -209,23 +240,37 @@
 
     </div>
 
-    <!-- Scroll Indicator Pill -->
-    <a 
-      href="#occasions" 
-      class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-2 text-stone-400 hover:text-white transition-colors"
-      aria-label="Scroll to content"
-    >
-      <div class="w-5 h-9 rounded-full border border-white/25 flex items-start justify-center p-1">
-        <div class="w-1 h-2 bg-[#D4AF37] rounded-full animate-bounce"></div>
+    <!-- Minimalist Floral Hero Carousel Controls (TOONHUB Adapted) -->
+    <div class="absolute bottom-8 end-4 sm:end-8 lg:end-16 z-20 flex items-center gap-3">
+      <button 
+        id="hero-prev-btn" 
+        type="button" 
+        class="w-11 h-11 rounded-full glass-pill flex items-center justify-center text-white hover:text-[#D4AF37] focus:outline-none cursor-pointer active:scale-95 transition-transform"
+        aria-label="Previous arrangement"
+      >
+        <i data-lucide="chevron-right" class="w-5 h-5"></i>
+      </button>
+      
+      <div id="hero-carousel-indicator" class="text-xs font-mono text-stone-400 px-2 select-none">
+        <span id="hero-active-num" class="text-white font-bold">01</span> / 04
       </div>
-    </a>
+
+      <button 
+        id="hero-next-btn" 
+        type="button" 
+        class="w-11 h-11 rounded-full glass-pill flex items-center justify-center text-white hover:text-[#D4AF37] focus:outline-none cursor-pointer active:scale-95 transition-transform"
+        aria-label="Next arrangement"
+      >
+        <i data-lucide="chevron-left" class="w-5 h-5"></i>
+      </button>
+    </div>
 
   </section>
 
   <!-- =================================================================== -->
   <!-- 3. EDITORIAL MARQUEE TICKER                                         -->
   <!-- =================================================================== -->
-  <section class="bg-[#120E0D] border-y border-white/10 py-3.5 overflow-hidden select-none">
+  <section class="bg-[#12100F] border-y border-white/10 py-3.5 overflow-hidden select-none">
     <div id="marquee-content" class="marquee-track flex items-center gap-8">
       <!-- Injected dynamically via JS -->
     </div>
@@ -234,13 +279,13 @@
   <!-- =================================================================== -->
   <!-- 4. OCCASION DISCOVERY SECTION ("ما المناسبة؟")                      -->
   <!-- =================================================================== -->
-  <section id="occasions" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2]">
+  <section id="occasions" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#F8F5EF]">
     <div class="max-w-7xl mx-auto">
       
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
         <span data-i18n="occasionsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">اختر حسب النية والمناسبة</span>
-        <h2 data-i18n="occasionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">ما هي مناسبتك القادمة؟</h2>
+        <h2 data-i18n="occasionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1716] mb-4">ما هي مناسبتك القادمة؟</h2>
         <p data-i18n="occasionsSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">صممنا مجموعات متخصصة تناسب كل لحظة إنسانية لتجعل إهداءك مؤثراً وراسخاً.</p>
       </div>
 
@@ -255,19 +300,19 @@
   <!-- =================================================================== -->
   <!-- 5. FEATURED COLLECTIONS / FLORAL MASTERPIECES                       -->
   <!-- =================================================================== -->
-  <section id="collections" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#F2EDE4] border-t border-[#E5DED2]">
+  <section id="collections" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#EFE8DE] border-t border-[#E2D8C9]">
     <div class="max-w-7xl mx-auto">
       
       <!-- Section Header & Filter Tabs -->
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 scroll-reveal">
         <div>
           <span data-i18n="collectionsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">إبداعات الأتيليه</span>
-          <h2 data-i18n="collectionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-3">تشكيلات مندلين المختارة</h2>
+          <h2 data-i18n="collectionsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1716] mb-3">تشكيلات مندلين المختارة</h2>
           <p data-i18n="collectionsSec.subtitle" class="text-stone-600 text-sm sm:text-base max-w-xl">زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تنسق بشغف ودقة فنية.</p>
         </div>
 
         <!-- Filter Pills -->
-        <div class="flex flex-wrap items-center gap-2 bg-white/70 backdrop-blur-md p-1.5 rounded-2xl border border-[#E5DED2]">
+        <div class="flex flex-wrap items-center gap-2 bg-white/70 backdrop-blur-md p-1.5 rounded-2xl border border-[#E2D8C9]">
           <button type="button" data-filter="all" data-i18n="collectionsSec.filterAll" class="filter-btn py-2 px-4 rounded-xl text-xs font-semibold transition-all bg-stone-900 text-white">الكل</button>
           <button type="button" data-filter="bouquets" data-i18n="collectionsSec.filterBouquets" class="filter-btn py-2 px-4 rounded-xl text-xs font-medium transition-all text-stone-700 hover:bg-stone-200">باقات الإهداء</button>
           <button type="button" data-filter="vases" data-i18n="collectionsSec.filterVases" class="filter-btn py-2 px-4 rounded-xl text-xs font-medium transition-all text-stone-700 hover:bg-stone-200">فازات وسنتربيس</button>
@@ -286,9 +331,9 @@
   <!-- =================================================================== -->
   <!-- 6. TIKTOK-INSPIRED EXPANDABLE EDITORIAL CANVAS MOMENT               -->
   <!-- =================================================================== -->
-  <section id="editorial-moment" class="py-12 px-4 sm:px-8 lg:px-16 bg-[#F2EDE4] overflow-hidden">
+  <section id="editorial-moment" class="py-12 px-4 sm:px-8 lg:px-16 bg-[#EFE8DE] overflow-hidden">
     <div class="max-w-7xl mx-auto">
-      <div id="expand-canvas-card" class="editorial-expand-canvas relative rounded-3xl overflow-hidden shadow-2xl aspect-16/9 md:aspect-21/9 bg-[#0A0808] flex items-center justify-center text-center p-8 sm:p-16">
+      <div id="expand-canvas-card" class="editorial-expand-canvas relative rounded-3xl overflow-hidden shadow-2xl aspect-16/9 md:aspect-21/9 bg-[#090807] flex items-center justify-center text-center p-8 sm:p-16">
         <img 
           src="assets/images/collection-bespoke.jpg" 
           alt="Mandeline Grand Floral Canvas" 
@@ -308,13 +353,13 @@
   <!-- =================================================================== -->
   <!-- 7. "YOUR GIFT, MADE EASY" (3-Step Effortless Experience)            -->
   <!-- =================================================================== -->
-  <section id="experience" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2]">
+  <section id="experience" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#F8F5EF]">
     <div class="max-w-7xl mx-auto">
       
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
         <span data-i18n="stepsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">سلاسة وفخامة</span>
-        <h2 data-i18n="stepsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">هديتك.. بكل بساطة وأريحية</h2>
+        <h2 data-i18n="stepsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1716] mb-4">هديتك.. بكل بساطة وأريحية</h2>
         <p data-i18n="stepsSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">لا داعي للحيرة والبحث الطويل، إليك كيف نعتني بإهدائك من البداية حتى الاستلام:</p>
       </div>
 
@@ -322,7 +367,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-reveal">
         
         <!-- Step 1 -->
-        <div class="bg-white p-8 rounded-3xl border border-[#E5DED2] shadow-sm relative overflow-hidden flex flex-col justify-between">
+        <div class="bg-white p-8 rounded-3xl border border-[#E2D8C9] shadow-sm relative overflow-hidden flex flex-col justify-between">
           <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center mb-6">
             <i data-lucide="sparkles" class="w-6 h-6"></i>
           </div>
@@ -337,7 +382,7 @@
         </div>
 
         <!-- Step 2 -->
-        <div class="bg-white p-8 rounded-3xl border border-[#E5DED2] shadow-sm relative overflow-hidden flex flex-col justify-between">
+        <div class="bg-white p-8 rounded-3xl border border-[#E2D8C9] shadow-sm relative overflow-hidden flex flex-col justify-between">
           <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center mb-6">
             <i data-lucide="heart-handshake" class="w-6 h-6"></i>
           </div>
@@ -352,7 +397,7 @@
         </div>
 
         <!-- Step 3 -->
-        <div class="bg-white p-8 rounded-3xl border border-[#E5DED2] shadow-sm relative overflow-hidden flex flex-col justify-between">
+        <div class="bg-white p-8 rounded-3xl border border-[#E2D8C9] shadow-sm relative overflow-hidden flex flex-col justify-between">
           <div class="w-12 h-12 rounded-2xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center mb-6">
             <i data-lucide="truck" class="w-6 h-6"></i>
           </div>
@@ -372,13 +417,74 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 8. INTERACTIVE BESPOKE CONCIERGE ("تبغى شيء مختلف؟")                 -->
+  <!-- 8. CUSTOMER REVIEWS & REAL WORDS ("قالوا عن مندلين")               -->
   <!-- =================================================================== -->
-  <section id="concierge" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#0A0808] text-white relative overflow-hidden">
+  <section id="reviews" class="reviews-viewport py-24 lg:py-32 px-4 sm:px-8 lg:px-16 text-white relative">
+    
+    <!-- Ambient Depth Background -->
+    <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-[#5C1D24]/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-[#D4AF37]/10 blur-3xl pointer-events-none"></div>
+
+    <!-- Foreground Botanical Parallax Layer (Velorah concept adapted) -->
+    <img 
+      src="assets/images/collection-roses.jpg" 
+      alt="Botanical detail" 
+      loading="lazy" 
+      class="review-fg-botanical rounded-full object-cover hidden lg:block"
+    />
+
+    <div class="max-w-5xl mx-auto relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
+        <span data-i18n="reviewsSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">انطباعات وتجارب حقيقية</span>
+        <h2 data-i18n="reviewsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-white mb-4">قالوا عن مندلين</h2>
+        <p data-i18n="reviewsSec.subtitle" class="text-stone-400 text-sm sm:text-base leading-relaxed">كلمات نعتز بها من عملائنا وأحبابهم في جدة تعكس شغفنا بصياغة أسمى المشاعر.</p>
+      </div>
+
+      <!-- Real Reviews Dynamic Carousel Container -->
+      <div class="relative scroll-reveal">
+        <div id="reviews-carousel-track" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Rendered dynamically via JS from MandelineData.customerReviews -->
+        </div>
+
+        <!-- Review Controls for Touch & Desktop -->
+        <div class="flex items-center justify-center gap-4 mt-10">
+          <button 
+            id="rev-prev-btn" 
+            type="button" 
+            class="w-10 h-10 rounded-full glass-pill flex items-center justify-center text-white hover:text-[#D4AF37] focus:outline-none"
+            aria-label="Previous review"
+          >
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+          
+          <div id="reviews-dots" class="flex items-center gap-2">
+            <!-- Injected via JS -->
+          </div>
+
+          <button 
+            id="rev-next-btn" 
+            type="button" 
+            class="w-10 h-10 rounded-full glass-pill flex items-center justify-center text-white hover:text-[#D4AF37] focus:outline-none"
+            aria-label="Next review"
+          >
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================================================================== -->
+  <!-- 9. INTERACTIVE BESPOKE CONCIERGE ("تبغى شيء مختلف؟")                 -->
+  <!-- =================================================================== -->
+  <section id="concierge" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#090807] text-white relative overflow-hidden">
     
     <!-- Ambient Floral Backdrop -->
     <div class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full bg-[#D4AF37]/10 blur-3xl pointer-events-none"></div>
-    <div class="absolute -left-24 -top-24 w-96 h-96 rounded-full bg-[#5C1D24]/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-24 -top-24 w-96 h-96 rounded-full bg-[#3A171B]/30 blur-3xl pointer-events-none"></div>
 
     <div class="max-w-5xl mx-auto relative z-10">
       
@@ -465,9 +571,9 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 9. BRAND STORY & ATELIER CRAFTSMANSHIP                             -->
+  <!-- 10. BRAND STORY & ATELIER CRAFTSMANSHIP                            -->
   <!-- =================================================================== -->
-  <section id="atelier" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2]">
+  <section id="atelier" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#F8F5EF]">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       
       <!-- Atelier Craft Image -->
@@ -487,9 +593,9 @@
       <!-- Atelier Editorial Text -->
       <div class="flex flex-col justify-center scroll-reveal">
         <span data-i18n="atelierSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">عالم مندلين</span>
-        <h2 data-i18n="atelierSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-6 leading-tight">حرفة صياغة المشاعر في جدة</h2>
+        <h2 data-i18n="atelierSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1716] mb-6 leading-tight">حرفة صياغة المشاعر في جدة</h2>
         
-        <blockquote data-i18n="atelierSec.quote" class="text-base sm:text-lg font-serif-ar italic text-stone-700 border-s-2 border-[#D4AF37] ps-4 py-1 mb-6">
+        <blockquote data-i18n="atelierSec.quote" class="text-base sm:text-lg font-serif italic text-stone-700 border-s-2 border-[#D4AF37] ps-4 py-1 mb-6">
           «الورد ليس مجرد نبات، بل هو الرسول الصامت الذي يقول ما تعجز عنه الكلمات.»
         </blockquote>
 
@@ -502,7 +608,7 @@
         </p>
 
         <!-- Stats Counters -->
-        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#E5DED2]">
+        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#E2D8C9]">
           <div>
             <div data-i18n="atelierSec.stat1Num" class="text-2xl sm:text-3xl font-bold text-[#D4AF37] font-display">100%</div>
             <div data-i18n="atelierSec.stat1Label" class="text-xs text-stone-500 mt-1">زهور طبيعية نضرة يومياً</div>
@@ -523,61 +629,15 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 10. CURATED EDITORIAL FLORAL JOURNAL & GALLERY                      -->
-  <!-- =================================================================== -->
-  <section id="journal" class="py-20 px-4 sm:px-8 lg:px-16 bg-[#F2EDE4] border-t border-[#E5DED2]">
-    <div class="max-w-7xl mx-auto">
-      
-      <!-- Section Header -->
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 scroll-reveal">
-        <div>
-          <span class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-1">معرض الأتيليه</span>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold font-display text-[#1A1514]">يوميات مندلين البصرية</h2>
-        </div>
-        <a 
-          href="https://instagram.com/mandeline.flowers" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="inline-flex items-center gap-2 text-xs font-semibold text-stone-800 hover:text-[#D4AF37] transition-colors"
-        >
-          <i data-lucide="instagram" class="w-4 h-4 text-[#D4AF37]"></i>
-          <span>@mandeline.flowers</span>
-        </a>
-      </div>
-
-      <!-- Visual Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 scroll-reveal">
-        <div class="rounded-2xl overflow-hidden aspect-square bg-stone-200 group relative">
-          <img src="assets/images/collection-roses.jpg" alt="Mandeline roses" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">L'Amour</div>
-        </div>
-        <div class="rounded-2xl overflow-hidden aspect-square bg-stone-200 group relative">
-          <img src="assets/images/collection-burgundy.jpg" alt="Mandeline twilight" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">Twilight</div>
-        </div>
-        <div class="rounded-2xl overflow-hidden aspect-square bg-stone-200 group relative">
-          <img src="assets/images/collection-orchids.jpg" alt="Mandeline orchids" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">Solace</div>
-        </div>
-        <div class="rounded-2xl overflow-hidden aspect-square bg-stone-200 group relative">
-          <img src="assets/images/collection-bespoke.jpg" alt="Mandeline installation" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-medium">Grand Arch</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- =================================================================== -->
   <!-- 11. BOUTIQUE LOCATION & CONCIERGE TOUCHPOINTS                       -->
   <!-- =================================================================== -->
-  <section id="contact" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#FAF7F2] border-t border-[#E5DED2]">
+  <section id="contact" class="py-20 lg:py-28 px-4 sm:px-8 lg:px-16 bg-[#F8F5EF] border-t border-[#E2D8C9]">
     <div class="max-w-7xl mx-auto">
       
       <!-- Section Header -->
       <div class="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
         <span data-i18n="contactSec.eyebrow" class="text-xs font-bold text-[#D4AF37] uppercase tracking-widest block mb-2">تفضل بزيارتنا أو تواصل</span>
-        <h2 data-i18n="contactSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1514] mb-4">بوتيك مندلين — جدة</h2>
+        <h2 data-i18n="contactSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-[#1A1716] mb-4">بوتيك مندلين — جدة</h2>
         <p data-i18n="contactSec.subtitle" class="text-stone-600 text-sm sm:text-base leading-relaxed">يسعدنا استقبالكم في فرعنا أو خدمتكم عبر قنوات التواصل السريع.</p>
       </div>
 
@@ -585,7 +645,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 scroll-reveal">
         
         <!-- Address -->
-        <div class="bg-white p-6 rounded-2xl border border-[#E5DED2] shadow-xs flex flex-col justify-between">
+        <div class="bg-white p-6 rounded-2xl border border-[#E2D8C9] shadow-xs flex flex-col justify-between">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center shrink-0">
               <i data-lucide="map-pin" class="w-5 h-5"></i>
@@ -608,7 +668,7 @@
         </div>
 
         <!-- Hours -->
-        <div class="bg-white p-6 rounded-2xl border border-[#E5DED2] shadow-xs flex flex-col justify-between">
+        <div class="bg-white p-6 rounded-2xl border border-[#E2D8C9] shadow-xs flex flex-col justify-between">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center shrink-0">
               <i data-lucide="clock" class="w-5 h-5"></i>
@@ -625,7 +685,7 @@
         </div>
 
         <!-- WhatsApp & Phone -->
-        <div class="bg-white p-6 rounded-2xl border border-[#E5DED2] shadow-xs flex flex-col justify-between">
+        <div class="bg-white p-6 rounded-2xl border border-[#E2D8C9] shadow-xs flex flex-col justify-between">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-[#D4AF37]/15 text-[#D4AF37] flex items-center justify-center shrink-0">
               <i data-lucide="phone-call" class="w-5 h-5"></i>
@@ -655,7 +715,7 @@
   <!-- =================================================================== -->
   <!-- 12. EDITORIAL FOOTER                                                -->
   <!-- =================================================================== -->
-  <footer class="bg-[#0A0808] text-stone-400 py-16 px-4 sm:px-8 lg:px-16 border-t border-white/10 mt-auto">
+  <footer class="bg-[#090807] text-stone-400 py-16 px-4 sm:px-8 lg:px-16 border-t border-white/10 mt-auto">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
       
       <!-- Brand Summary -->
@@ -683,6 +743,7 @@
         <ul class="space-y-2.5 text-xs">
           <li><a href="#occasions" data-i18n="footer.occasions" class="hover:text-[#D4AF37] transition-colors">المناسبات</a></li>
           <li><a href="#collections" data-i18n="footer.collections" class="hover:text-[#D4AF37] transition-colors">التشكيلات</a></li>
+          <li><a href="#reviews" data-i18n="footer.reviews" class="hover:text-[#D4AF37] transition-colors">قالوا عنا</a></li>
           <li><a href="#concierge" data-i18n="footer.concierge" class="hover:text-[#D4AF37] transition-colors">المنسق الخاص</a></li>
           <li><a href="#contact" data-i18n="footer.contact" class="hover:text-[#D4AF37] transition-colors">الموقع والتواصل</a></li>
         </ul>
@@ -722,7 +783,7 @@
       href="https://wa.me/966500000000?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D8%A8%D9%88%D8%AA%D9%8A%D9%83%20%D9%85%D9%86%D8%AF%D9%84%D9%8A%D9%86%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%B7%D9%84%D8%A8%20%D8%A8%D8%A7%D9%82%D8%A9%20%D9%88%D8%B1%D8%AF" 
       target="_blank"
       rel="noopener noreferrer"
-      class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#D4AF37] to-[#C5A880] text-black font-bold text-sm shadow-2xl flex items-center justify-center gap-2.5 border border-white/20 active:scale-95 transition-transform"
+      class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-[#D4AF37] to-[#C9B08D] text-black font-bold text-sm shadow-2xl flex items-center justify-center gap-2.5 border border-white/20 active:scale-95 transition-transform"
     >
       <i data-lucide="message-circle" class="w-5 h-5"></i>
       <span data-i18n="floatingCta">اطلب باقتك عبر واتساب</span>
@@ -734,7 +795,10 @@
   <!-- =================================================================== -->
   <div 
     id="mobile-menu-drawer" 
-    class="fixed inset-0 z-50 bg-[#0A0808]/95 backdrop-blur-2xl p-6 flex flex-col justify-between hidden transition-all duration-300"
+    class="fixed inset-0 z-50 bg-[#090807]/95 backdrop-blur-2xl p-6 flex flex-col justify-between hidden transition-all duration-300"
+    role="dialog"
+    aria-modal="true"
+    aria-expanded="false"
   >
     <div class="flex items-center justify-between pb-6 border-b border-white/10">
       <div class="flex items-center gap-2">
@@ -757,6 +821,7 @@
       <a href="#occasions" data-i18n="nav.occasions" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">المناسبات</a>
       <a href="#collections" data-i18n="nav.collections" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">تشكيلاتنا</a>
       <a href="#experience" data-i18n="nav.experience" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">تجربة الإهداء</a>
+      <a href="#reviews" data-i18n="nav.reviews" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">قالوا عنا</a>
       <a href="#concierge" data-i18n="nav.concierge" class="mobile-nav-link text-[#D4AF37]">صمم باقتك</a>
       <a href="#atelier" data-i18n="nav.atelier" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">عن مندلين</a>
       <a href="#contact" data-i18n="nav.contact" class="mobile-nav-link hover:text-[#D4AF37] transition-colors">تواصل معنا</a>
@@ -837,12 +902,5 @@
   <!-- Scripts -->
   <script src="js/data.js"></script>
   <script src="js/mandeline.js"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      if (window.lucide) {
-        window.lucide.createIcons();
-      }
-    });
-  </script>
 </body>
 </html>

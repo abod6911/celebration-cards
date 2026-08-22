@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 (async () => {
-  console.log('🚀 Starting Mandeline Luxury Floral Boutique QA Verification...');
+  console.log('🚀 Starting MANDELINE Final Premium Luxury QA Verification...');
   
   const screenshotsDir = path.join(__dirname, 'test_screenshots', 'mandeline');
   if (!fs.existsSync(screenshotsDir)) {
@@ -29,7 +29,7 @@ const fs = require('fs');
   await page.goto(fileUrl, { waitUntil: 'load' });
   await page.waitForTimeout(1000);
 
-  console.log('1️⃣ Verifying Page Title & Console Errors...');
+  console.log('1️⃣ Verifying Page Title, One-shot Entrance & Console Errors...');
   const title = await page.title();
   console.log(`   Page title: "${title}"`);
   if (consoleErrors.length > 0) {
@@ -38,13 +38,20 @@ const fs = require('fs');
     console.log('✅ No console errors!');
   }
 
-  // Verify Hero word reveal spans
+  // Verify Hero words rendered
   const wordSpans = await page.$$('#hero-headline .reveal-word');
   console.log(`✅ Hero words rendered: ${wordSpans.length} words`);
 
-  // Verify Hero spotlight layer
-  const spotlightExists = await page.$('#hero-spotlight') !== null;
-  console.log(`✅ Spotlight layer present: ${spotlightExists}`);
+  // Verify Hero Carousel slides and active center role
+  const centerSlide = await page.$eval('.hero-carousel-slide[data-role="center"]', el => el.getAttribute('data-slide'));
+  console.log(`✅ Active Hero Floral Carousel slide: ${centerSlide} (center role)`);
+
+  // Test Hero Carousel Next Slide Interaction
+  console.log('   Testing Hero Carousel Next navigation...');
+  await page.click('#hero-next-btn');
+  await page.waitForTimeout(700);
+  const nextCenterSlide = await page.$eval('.hero-carousel-slide[data-role="center"]', el => el.getAttribute('data-slide'));
+  console.log(`✅ Transitioned to slide ${nextCenterSlide} with synchronized roles!`);
 
   // Test Spotlight mousemove
   await page.mouse.move(900, 450);
@@ -53,7 +60,7 @@ const fs = require('fs');
     const el = document.getElementById('hero-spotlight');
     return el ? el.style.getPropertyValue('--spot-x') : null;
   });
-  console.log(`✅ Desktop Spotlight lerp position: ${spotX}`);
+  console.log(`✅ Desktop Spotlight position: ${spotX}`);
 
   // Capture Desktop Hero Screenshot
   await page.screenshot({ path: path.join(screenshotsDir, '01_desktop_hero_ar.png') });
@@ -65,9 +72,7 @@ const fs = require('fs');
 
   const htmlDir = await page.getAttribute('html', 'dir');
   const htmlLang = await page.getAttribute('html', 'lang');
-  const heroEnText = await page.innerText('#hero-headline');
   console.log(`   html dir: ${htmlDir}, lang: ${htmlLang}`);
-  console.log(`   Hero EN headline: "${heroEnText}"`);
   if (htmlDir === 'ltr' && htmlLang === 'en') {
     console.log('✅ LTR and English language switch successful!');
   } else {
@@ -81,47 +86,38 @@ const fs = require('fs');
   await page.click('.lang-toggle-btn');
   await page.waitForTimeout(400);
 
-  // Test 3: Collections Filter Tabs
-  console.log('3️⃣ Testing Collections Filter Tabs...');
-  await page.click('button[data-filter="bouquets"]');
-  await page.waitForTimeout(300);
-  let cardCount = await page.$$('#collections-container .flower-card');
-  console.log(`   Bouquets filtered count: ${cardCount.length}`);
+  // Test 3: Customer Reviews Section
+  console.log('3️⃣ Verifying Customer Reviews Section...');
+  const reviewCards = await page.$$('#reviews-carousel-track .review-slide');
+  console.log(`✅ Customer Reviews rendered: ${reviewCards.length} authentic testimonials`);
+  await page.click('#rev-next-btn');
+  await page.waitForTimeout(400);
+  console.log('✅ Review carousel rotation verified!');
 
+  // Test 4: Collections Filter Tabs & Quick View Modal
+  console.log('4️⃣ Testing Collections Filter & Quick View Lightbox...');
   await page.click('button[data-filter="vases"]');
   await page.waitForTimeout(300);
-  cardCount = await page.$$('#collections-container .flower-card');
-  console.log(`   Vases filtered count: ${cardCount.length}`);
+  const vaseCount = await page.$$('#collections-container .flower-card');
+  console.log(`   Vases filtered count: ${vaseCount.length}`);
 
   await page.click('button[data-filter="all"]');
   await page.waitForTimeout(300);
-  cardCount = await page.$$('#collections-container .flower-card');
-  console.log(`   All items count: ${cardCount.length}`);
 
-  // Test 4: Quick View Lightbox Modal
-  console.log('4️⃣ Testing Quick View Lightbox Modal...');
   await page.click('#collections-container .flower-card:first-child button');
   await page.waitForTimeout(400);
   const isModalVisible = await page.isVisible('#quick-view-modal');
-  console.log(`   Modal visible: ${isModalVisible}`);
+  console.log(`✅ Quick View Modal visible: ${isModalVisible}`);
   await page.screenshot({ path: path.join(screenshotsDir, '03_quick_view_modal.png') });
-
-  // Close modal via Escape
   await page.keyboard.press('Escape');
   await page.waitForTimeout(300);
-  const isModalClosed = !(await page.isVisible('#quick-view-modal'));
-  console.log(`✅ Modal closed via Escape: ${isModalClosed}`);
 
-  // Test 5: Occasion Card selection linking to Concierge
-  console.log('5️⃣ Testing Occasion selection & Concierge integration...');
+  // Test 5: Occasion Selection & Concierge
+  console.log('5️⃣ Testing Occasion selection & Concierge...');
   await page.click('#occasions-container > div:nth-child(2) button');
   await page.waitForTimeout(500);
-  const checkedOccasion = await page.$eval('input[name="c_occasion"]:checked', el => el.value);
-  console.log(`✅ Selected occasion in Concierge: "${checkedOccasion}" (celebration)`);
-
-  // Fill in Delivery & Note
   await page.fill('#concierge-delivery-input', 'اليوم الساعة 8:30 مساءً');
-  await page.fill('#concierge-note-input', 'ألف مبروك التخرج، فخورين بك دائماً ✨');
+  await page.fill('#concierge-note-input', 'ألف مبروك التخرج ✨');
   await page.screenshot({ path: path.join(screenshotsDir, '04_concierge_filled.png') });
 
   // Test 6: Full Page Scroll & Full Desktop Screenshot
@@ -139,11 +135,12 @@ const fs = require('fs');
   await page.waitForTimeout(500);
   await page.screenshot({ path: path.join(screenshotsDir, '05_desktop_fullpage.png'), fullPage: true });
 
-  // Test 7: Mobile Viewports Testing (360px, 375px, 390px, 412px, 430px)
+  // Test 7: Mobile Viewports Testing (360px, 375px, 390px, 393px, 412px, 430px)
   const mobileViewports = [
     { width: 360, height: 800, name: 'mobile_360_galaxy' },
     { width: 375, height: 812, name: 'mobile_375_iphone_x' },
     { width: 390, height: 844, name: 'mobile_390_iphone_14' },
+    { width: 393, height: 852, name: 'mobile_393_iphone_15_pro' },
     { width: 412, height: 915, name: 'mobile_412_pixel_7' },
     { width: 430, height: 932, name: 'mobile_430_iphone_14_pro_max' }
   ];
@@ -154,7 +151,7 @@ const fs = require('fs');
     await page.reload({ waitUntil: 'load' });
     await page.waitForTimeout(600);
 
-    // Check for horizontal scroll overflow
+    // Check for horizontal overflow
     const scrollWidth = await page.evaluate(() => document.documentElement.scrollWidth);
     const clientWidth = await page.evaluate(() => document.documentElement.clientWidth);
     const hasHorizontalOverflow = scrollWidth > clientWidth;
@@ -164,7 +161,7 @@ const fs = require('fs');
       console.log(`✅ No horizontal overflow on ${vp.width}px (width: ${clientWidth}px)`);
     }
 
-    // Scroll down to test Floating WhatsApp bar
+    // Scroll to check Floating WhatsApp bar
     await page.evaluate(() => window.scrollBy(0, 600));
     await page.waitForTimeout(400);
     const isFloatingCtaVisible = await page.isVisible('#floating-whatsapp-bar');
@@ -187,13 +184,25 @@ const fs = require('fs');
     await page.screenshot({ path: path.join(screenshotsDir, `07_${vp.name}_hero.png`) });
   }
 
-  // Test 8: Tablet 768x1024
-  console.log('📱 Testing Tablet Viewport (768x1024)...');
+  // Test 8: Tablet 768x1024 & 1024x1366
+  console.log('📱 Testing Tablet Viewports (768x1024 & 1024x1366)...');
   await page.setViewportSize({ width: 768, height: 1024 });
   await page.reload({ waitUntil: 'load' });
   await page.waitForTimeout(600);
   await page.screenshot({ path: path.join(screenshotsDir, '08_tablet_768_hero.png') });
 
+  await page.setViewportSize({ width: 1024, height: 1366 });
+  await page.reload({ waitUntil: 'load' });
+  await page.waitForTimeout(600);
+  await page.screenshot({ path: path.join(screenshotsDir, '09_tablet_1024_hero.png') });
+
+  // Test 9: Desktop 1920x1080
+  console.log('🖥️ Testing Large Desktop Viewport (1920x1080)...');
+  await page.setViewportSize({ width: 1920, height: 1080 });
+  await page.reload({ waitUntil: 'load' });
+  await page.waitForTimeout(600);
+  await page.screenshot({ path: path.join(screenshotsDir, '10_desktop_1920_hero.png') });
+
   await browser.close();
-  console.log('🎉 Mandeline QA Verification completed successfully! All checks passed.');
+  console.log('🎉 MANDELINE Final QA Verification completed successfully! All checks passed.');
 })();

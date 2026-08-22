@@ -1,16 +1,27 @@
 /**
- * MANDELINE (مندلين) — Core Interactive Controller & Motion Engine
- * Features: Masked Word Reveal, RAF Spotlight & Pointer Parallax, Expanding Canvas, Concierge Generator
+ * MANDELINE (مندلين) — Final Premium Interactive Controller & Motion Engine
+ * Combines: TOONHUB Synchronized Floral Carousel + Vantage One-Shot Staged Entrance +
+ * Lithos Spotlight Reveal + Velorah-style Parallax Reviews + Bilingual Architecture
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   const data = window.MandelineData;
   if (!data) return;
 
-  // --- App State ---
+  // --- Global App State ---
   let currentLang = localStorage.getItem('mandeline_lang') || 'ar';
   let activeFilter = 'all';
   let activeModalItem = null;
+  
+  // Hero Carousel State
+  let heroActiveIdx = 0;
+  let isHeroAnimating = false;
+  let heroAutoTimer = null;
+  const heroSlideCount = (data.heroSlides && data.heroSlides.length) || 4;
+
+  // Reviews Carousel State
+  let revActiveIdx = 0;
+  const reviewCount = (data.customerReviews && data.customerReviews.length) || 3;
 
   // Concierge Form State
   const conciergeState = {
@@ -21,18 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
     note: ''
   };
 
-  // DOM Elements
+  // --- DOM Elements ---
   const htmlEl = document.documentElement;
   const heroSection = document.getElementById('hero-section');
-  const heroBgContainer = document.getElementById('hero-bg-container');
   const heroSpotlight = document.getElementById('hero-spotlight');
   const heroHeadline = document.getElementById('hero-headline');
   const heroPrimaryCta = document.getElementById('hero-primary-cta');
+  const heroPrevBtn = document.getElementById('hero-prev-btn');
+  const heroNextBtn = document.getElementById('hero-next-btn');
+  const heroActiveNum = document.getElementById('hero-active-num');
+  const heroCarouselSlides = document.querySelectorAll('.hero-carousel-slide');
+  
   const navHeader = document.getElementById('main-nav');
   const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
   const mobileMenuClose = document.getElementById('mobile-menu-close');
   const langToggleBtns = document.querySelectorAll('.lang-toggle-btn');
+  
   const occasionsContainer = document.getElementById('occasions-container');
   const collectionsContainer = document.getElementById('collections-container');
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -41,8 +57,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const quickViewModal = document.getElementById('quick-view-modal');
   const modalCloseBtn = document.getElementById('modal-close-btn');
   const expandCanvasCard = document.getElementById('expand-canvas-card');
+  
+  const reviewsTrack = document.getElementById('reviews-carousel-track');
+  const revPrevBtn = document.getElementById('rev-prev-btn');
+  const revNextBtn = document.getElementById('rev-next-btn');
+  const reviewsDots = document.getElementById('reviews-dots');
 
-  // --- 1. HERO MASKED WORD REVEAL (TerraElix Staged Intro) ---
+  // --- 1. VANTAGE-INSPIRED ONE-SHOT CINEMATIC ENTRANCE ---
+  function initOneShotEntrance() {
+    renderHeroWords();
+    
+    // Remove motion-pending and add hero-loaded after brief layout stability
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        htmlEl.classList.remove('motion-pending');
+        if (heroSection) heroSection.classList.add('hero-loaded');
+      }, 100);
+    });
+  }
+
   function renderHeroWords() {
     if (!heroHeadline) return;
     const t = data.translations[currentLang].hero;
@@ -54,20 +87,111 @@ document.addEventListener('DOMContentLoaded', () => {
       wrap.className = 'word-mask-wrap mx-1.5 inline-block';
       
       const span = document.createElement('span');
-      span.className = `reveal-word delay-${(idx + 2) * 100} inline-block`;
+      span.className = `reveal-word delay-${idx === 0 ? '300' : idx === 1 ? '440' : idx === 2 ? '700' : '900'} inline-block`;
       span.textContent = word;
       
       wrap.appendChild(span);
       heroHeadline.appendChild(wrap);
     });
-
-    // Staged trigger
-    setTimeout(() => {
-      if (heroSection) heroSection.classList.add('hero-loaded');
-    }, 150);
   }
 
-  // --- 2. DESKTOP SPOTLIGHT & POINTER PARALLAX (Lithos Concept - RAF + Lerp) ---
+  // --- 2. TOONHUB-INSPIRED SYNCHRONIZED FLORAL CAROUSEL ---
+  function updateHeroCarouselRoles() {
+    if (!heroCarouselSlides.length) return;
+
+    heroCarouselSlides.forEach((slide, idx) => {
+      // Calculate circular offset relative to heroActiveIdx
+      const offset = (idx - heroActiveIdx + heroSlideCount) % heroSlideCount;
+
+      if (offset === 0) {
+        slide.setAttribute('data-role', 'center');
+      } else if (offset === 1) {
+        slide.setAttribute('data-role', 'right');
+      } else if (offset === heroSlideCount - 1) {
+        slide.setAttribute('data-role', 'left');
+      } else {
+        slide.setAttribute('data-role', 'back');
+      }
+    });
+
+    // Update background tone smoothly
+    const currentSlideData = data.heroSlides[heroActiveIdx];
+    if (currentSlideData && heroSection) {
+      heroSection.style.setProperty('--hero-bg-tone', currentSlideData.bgTone || '#090807');
+      if (heroSpotlight && currentSlideData.revealImage) {
+        heroSpotlight.style.backgroundImage = `url('${currentSlideData.revealImage}')`;
+      }
+    }
+
+    // Update indicator counter
+    if (heroActiveNum) {
+      heroActiveNum.textContent = `0${heroActiveIdx + 1}`;
+    }
+  }
+
+  function goToHeroSlide(targetIdx) {
+    if (isHeroAnimating) return;
+    isHeroAnimating = true;
+
+    heroActiveIdx = (targetIdx + heroSlideCount) % heroSlideCount;
+    updateHeroCarouselRoles();
+
+    setTimeout(() => {
+      isHeroAnimating = false;
+    }, 650); // 650ms animation lock matching TOONHUB easing duration
+  }
+
+  function nextHeroSlide() {
+    goToHeroSlide(heroActiveIdx + 1);
+  }
+
+  function prevHeroSlide() {
+    goToHeroSlide(heroActiveIdx - 1);
+  }
+
+  if (heroNextBtn) heroNextBtn.addEventListener('click', () => { resetHeroAutoTimer(); nextHeroSlide(); });
+  if (heroPrevBtn) heroPrevBtn.addEventListener('click', () => { resetHeroAutoTimer(); prevHeroSlide(); });
+
+  // Auto-advance Timer (7.5s interval, paused on reduced-motion or user interaction)
+  function startHeroAutoTimer() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    clearInterval(heroAutoTimer);
+    heroAutoTimer = setInterval(nextHeroSlide, 7500);
+  }
+
+  function resetHeroAutoTimer() {
+    clearInterval(heroAutoTimer);
+    startHeroAutoTimer();
+  }
+
+  startHeroAutoTimer();
+
+  // Mobile Touch Swipe for Hero Carousel
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  if (heroSection) {
+    heroSection.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    heroSection.addEventListener('touchend', (e) => {
+      const deltaX = e.changedTouches[0].clientX - touchStartX;
+      const deltaY = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        resetHeroAutoTimer();
+        const isAr = currentLang === 'ar';
+        if (deltaX < 0) {
+          isAr ? prevHeroSlide() : nextHeroSlide();
+        } else {
+          isAr ? nextHeroSlide() : prevHeroSlide();
+        }
+      }
+    }, { passive: true });
+  }
+
+  // --- 3. DESKTOP SPOTLIGHT & POINTER PARALLAX (Lithos RAF Lerp) ---
   let isPointerInside = false;
   let mouseX = window.innerWidth * 0.7;
   let mouseY = window.innerHeight * 0.5;
@@ -90,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const normX = ((spotX - rect.width / 2) / (rect.width / 2));
       const normY = ((spotY - rect.height / 2) / (rect.height / 2));
 
-      // Subtle parallax layers
+      // Multi-layer pointer parallax
       heroSection.style.setProperty('--bg-shift-x', `${(normX * -2).toFixed(1)}px`);
       heroSection.style.setProperty('--bg-shift-y', `${(normY * -2).toFixed(1)}px`);
       heroSection.style.setProperty('--main-shift-x', `${(normX * -5).toFixed(1)}px`);
@@ -133,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 3. MAGNETIC HERO PRIMARY CTA (Desktop Only) ---
+  // --- 4. MAGNETIC HERO CTA (Desktop) ---
   if (heroPrimaryCta && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     heroPrimaryCta.addEventListener('mousemove', (e) => {
       const rect = heroPrimaryCta.getBoundingClientRect();
@@ -149,7 +273,72 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 4. LANGUAGE SWITCHER ENGINE ---
+  // --- 5. CUSTOMER REVIEWS & PARALLAX DEPTH ENGINE ---
+  function renderReviews() {
+    if (!reviewsTrack) return;
+    const isAr = currentLang === 'ar';
+    const reviews = data.customerReviews || [];
+
+    reviewsTrack.innerHTML = reviews.map((rev, idx) => {
+      const quote = isAr ? rev.quoteAr : (rev.quoteEn || rev.quoteAr);
+      const occasion = isAr ? rev.occasionAr : (rev.occasionEn || rev.occasionAr);
+      const initial = rev.customerName ? rev.customerName.charAt(0) : '✦';
+      const isCenter = idx === revActiveIdx;
+      const role = isCenter ? 'active' : 'neighbor';
+
+      return `
+        <div class="review-slide rounded-3xl p-8 bg-gradient-to-b from-[#181514] to-[#12100F] border border-white/10 shadow-xl flex flex-col justify-between" data-role="${role}">
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-6">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] font-bold text-sm flex items-center justify-center font-display">
+                  ${initial}
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white font-display">${rev.customerName}</h4>
+                  <p class="text-[11px] text-stone-400">${rev.city || 'جدة'}</p>
+                </div>
+              </div>
+              <span class="text-[10px] text-[#D4AF37] font-medium px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                ${occasion}
+              </span>
+            </div>
+            
+            <p class="text-sm text-stone-300 font-light leading-relaxed mb-6 font-serif-ar">
+              «${quote}»
+            </p>
+          </div>
+
+          <div class="flex items-center justify-between pt-4 border-t border-white/5 text-[11px] text-stone-500">
+            <span>تجربة إهداء معتمدة</span>
+            <span class="text-[#D4AF37]">✦</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Render Indicator Dots
+    if (reviewsDots) {
+      reviewsDots.innerHTML = reviews.map((_, idx) => `
+        <button 
+          type="button" 
+          onclick="window.goToReviewSlide(${idx})" 
+          class="w-2 h-2 rounded-full transition-all cursor-pointer ${idx === revActiveIdx ? 'w-6 bg-[#D4AF37]' : 'bg-white/20 hover:bg-white/40'}"
+          aria-label="Review ${idx + 1}"
+        ></button>
+      `).join('');
+    }
+  }
+
+  window.goToReviewSlide = function(idx) {
+    revActiveIdx = (idx + reviewCount) % reviewCount;
+    renderReviews();
+  };
+
+  if (revNextBtn) revNextBtn.addEventListener('click', () => { window.goToReviewSlide(revActiveIdx + 1); });
+  if (revPrevBtn) revPrevBtn.addEventListener('click', () => { window.goToReviewSlide(revActiveIdx - 1); });
+
+  // --- 6. LANGUAGE SWITCHER ENGINE ---
   function applyTranslations() {
     const t = data.translations[currentLang];
     htmlEl.lang = currentLang;
@@ -193,9 +382,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     renderHeroWords();
+    updateHeroCarouselRoles();
     renderMarquee();
     renderOccasions();
     renderCollections();
+    renderReviews();
     renderConciergeOptions();
 
     if (window.lucide) {
@@ -216,7 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 5. MARQUEE RENDERER ---
+  // --- 7. MARQUEE RENDERER ---
   function renderMarquee() {
     const marqueeContainer = document.getElementById('marquee-content');
     if (!marqueeContainer) return;
@@ -231,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
     marqueeContainer.innerHTML = `${content} ${content} ${content}`;
   }
 
-  // --- 6. OCCASIONS SECTION ---
+  // --- 8. OCCASIONS SECTION ---
   function renderOccasions() {
     if (!occasionsContainer) return;
     const isAr = currentLang === 'ar';
@@ -241,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const title = isAr ? occ.titleAr : occ.titleEn;
       const desc = isAr ? occ.descAr : occ.descEn;
       return `
-        <div class="group relative overflow-hidden rounded-2xl bg-white border border-[#E5DED2] shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between">
+        <div class="group relative overflow-hidden rounded-2xl bg-white border border-[#E2D8C9] shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between">
           <div class="relative aspect-4/3 overflow-hidden bg-stone-100">
             <img 
               src="${occ.image}" 
@@ -259,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <button 
               type="button"
               onclick="window.selectOccasionAndScroll('${occ.id}', '${occ.defaultBudget}', '${occ.recommendedPalette}')"
-              class="w-full py-3 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#FAF7F2] hover:bg-[#D4AF37] hover:text-black text-stone-800 border border-[#E5DED2] transition-all duration-300 flex items-center justify-center gap-2 group-hover:border-[#D4AF37]"
+              class="w-full py-3 px-4 rounded-xl text-xs font-semibold uppercase tracking-wider bg-[#F8F5EF] hover:bg-[#D4AF37] hover:text-black text-stone-800 border border-[#E2D8C9] transition-all duration-300 flex items-center justify-center gap-2 group-hover:border-[#D4AF37]"
             >
               <span>${tSec.selectCta}</span>
               <span class="text-sm transition-transform ${isAr ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}">${isAr ? '←' : '→'}</span>
@@ -283,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // --- 7. COLLECTIONS SECTION & FILTER TABS ---
+  // --- 9. COLLECTIONS SECTION & FILTER TABS ---
   function renderCollections() {
     if (!collectionsContainer) return;
     const isAr = currentLang === 'ar';
@@ -300,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const tag = isAr ? item.tagAr : item.tagEn;
 
       return `
-        <div class="flower-card rounded-2xl bg-white border border-[#E5DED2] overflow-hidden flex flex-col justify-between group shadow-sm">
+        <div class="flower-card rounded-2xl bg-white border border-[#E2D8C9] overflow-hidden flex flex-col justify-between group shadow-sm">
           <div class="relative aspect-4/3 overflow-hidden bg-stone-100 cursor-pointer" onclick="window.openQuickView('${item.id}')">
             <img 
               src="${item.image}" 
@@ -314,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
               </span>
             </div>
             <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="glass-pill-light text-xs font-semibold text-stone-900 px-4 py-2 rounded-full transform translate-y-2 group-hover:translate-y-0 transition-transform">
+              <span class="glass-pill text-xs font-semibold text-stone-900 bg-white/85 px-4 py-2 rounded-full transform translate-y-2 group-hover:translate-y-0 transition-transform">
                 ${tSec.viewDetails} ⤢
               </span>
             </div>
@@ -379,7 +570,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open(url, '_blank');
   };
 
-  // --- 8. QUICK VIEW / LIGHTBOX MODAL ---
+  // --- 10. QUICK VIEW / LIGHTBOX MODAL ---
   window.openQuickView = function(itemId) {
     const item = data.collections.find(c => c.id === itemId);
     if (!item || !quickViewModal) return;
@@ -426,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 9. INTERACTIVE BESPOKE CONCIERGE ENGINE ---
+  // --- 11. INTERACTIVE BESPOKE CONCIERGE ENGINE ---
   function renderConciergeOptions() {
     const isAr = currentLang === 'ar';
     const t = data.translations[currentLang].conciergeSec;
@@ -549,43 +740,62 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 10. SCROLL & PROGRESSIVE MOTION CONTROLLER ---
+  // --- 12. SCROLL & PROGRESSIVE MOTION CONTROLLER ---
+  let isScrollPending = false;
   window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
+    if (!isScrollPending) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
 
-    // Navbar state
-    if (navHeader) {
-      if (scrollY > 50) {
-        navHeader.classList.add('scrolled');
-      } else {
-        navHeader.classList.remove('scrolled');
-      }
-    }
+        // Navbar state
+        if (navHeader) {
+          if (scrollY > 50) {
+            navHeader.classList.add('scrolled');
+          } else {
+            navHeader.classList.remove('scrolled');
+          }
+        }
 
-    // Hero scroll-out parallax
-    if (scrollY < window.innerHeight && heroHeadline) {
-      const offset = scrollY * 0.15;
-      const opacity = Math.max(0, 1 - (scrollY / 700));
-      heroHeadline.style.transform = `translateY(-${offset}px)`;
-      heroHeadline.style.opacity = opacity;
-    }
+        // Hero scroll-out parallax
+        if (scrollY < window.innerHeight && heroHeadline) {
+          const offset = scrollY * 0.15;
+          const opacity = Math.max(0, 1 - (scrollY / 700));
+          heroHeadline.style.transform = `translateY(-${offset.toFixed(1)}px)`;
+          heroHeadline.style.opacity = opacity.toFixed(2);
+        }
 
-    // Floating WhatsApp Bar appearance on mobile
-    if (floatingWhatsappBtn) {
-      if (scrollY > 350) {
-        floatingWhatsappBtn.classList.remove('translate-y-32', 'opacity-0');
-        floatingWhatsappBtn.classList.add('translate-y-0', 'opacity-100');
-      } else {
-        floatingWhatsappBtn.classList.add('translate-y-32', 'opacity-0');
-        floatingWhatsappBtn.classList.remove('translate-y-0', 'opacity-100');
-      }
+        // Reviews section foreground parallax (Velorah concept)
+        const reviewsSection = document.getElementById('reviews');
+        if (reviewsSection) {
+          const rect = reviewsSection.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const shiftY = ((window.innerHeight - rect.top) * 0.08) - 30;
+            reviewsSection.style.setProperty('--reviews-fg-y', `${shiftY.toFixed(1)}px`);
+          }
+        }
+
+        // Floating WhatsApp Bar appearance on mobile
+        if (floatingWhatsappBtn) {
+          if (scrollY > 350) {
+            floatingWhatsappBtn.classList.remove('translate-y-32', 'opacity-0');
+            floatingWhatsappBtn.classList.add('translate-y-0', 'opacity-100');
+          } else {
+            floatingWhatsappBtn.classList.add('translate-y-32', 'opacity-0');
+            floatingWhatsappBtn.classList.remove('translate-y-0', 'opacity-100');
+          }
+        }
+
+        isScrollPending = false;
+      });
+      isScrollPending = true;
     }
   }, { passive: true });
 
-  // --- 11. MOBILE MENU DRAWER ---
+  // --- 13. MOBILE MENU DRAWER ---
   function openMobileMenu() {
     if (!mobileMenuDrawer) return;
     mobileMenuDrawer.classList.remove('translate-x-full', '-translate-x-full', 'hidden');
+    mobileMenuDrawer.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
 
@@ -593,6 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!mobileMenuDrawer) return;
     const isAr = currentLang === 'ar';
     mobileMenuDrawer.classList.add(isAr ? '-translate-x-full' : 'translate-x-full');
+    mobileMenuDrawer.setAttribute('aria-expanded', 'false');
     setTimeout(() => {
       mobileMenuDrawer.classList.add('hidden');
       document.body.style.overflow = '';
@@ -606,7 +817,7 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', closeMobileMenu);
   });
 
-  // --- 12. SCROLL REVEAL OBSERVER & EXPANDING CANVAS OBSERVER ---
+  // --- 14. SCROLL REVEAL OBSERVER & EXPANDING CANVAS OBSERVER ---
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -636,6 +847,7 @@ document.addEventListener('DOMContentLoaded', () => {
     expandObserver.observe(expandCanvasCard);
   }
 
-  // --- INITIAL RENDER ---
+  // --- INITIAL EXECUTION ---
   applyTranslations();
+  initOneShotEntrance();
 });
