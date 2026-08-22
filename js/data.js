@@ -5,21 +5,19 @@
 
 window.MandelineData = {
   businessConfig: {
-    brandAr: "مندلين للورد",
-    brandEn: "MANDELINE Fine Floral Atelier",
-    taglineAr: "زهور تبقى في الذاكرة",
-    taglineEn: "Flowers, Made to Be Remembered",
+    brandAr: "ميديلين للورد",
+    brandEn: "MEDELLIN Fine Floral Atelier",
     cityAr: "جدة، المملكة العربية السعودية",
     cityEn: "Jeddah, Saudi Arabia",
-    districtAr: "حي الروضة / طريق التحلية، جدة",
-    districtEn: "Al Rawdah / Tahlia Street, Jeddah",
-    phone: "+966 12 600 0000",
-    whatsappNumber: "966500000000", // Central WhatsApp Concierge
-    instagram: "mandeline.flowers",
-    tiktok: "mandeline.flowers",
-    hoursAr: "يومياً من 9:00 صباحاً حتى 11:00 مساءً (توصيل فوري خلال ساعتين في جدة)",
-    hoursEn: "Daily 9:00 AM – 11:00 PM (2-Hour Express Delivery in Jeddah)",
-    googleMapsUrl: "https://maps.google.com/?q=Jeddah+Saudi+Arabia"
+    currencyAr: "ر.س",
+    currencyEn: "SAR",
+    whatsappNumber: "966500000000",
+    phone: "+966 50 000 0000",
+    instagram: "medellin.flowers",
+    tiktok: "medellin.flowers",
+    googleMapsUrl: "https://maps.google.com/?q=Jeddah+Saudi+Arabia",
+    storeHoursAr: "يومياً من 9:00 صباحاً حتى 11:00 مساءً",
+    storeHoursEn: "Daily from 9:00 AM to 11:00 PM"
   },
 
   // 4 Cohesive Floral Hero Scenes for Synchronized Carousel
@@ -167,7 +165,7 @@ window.MandelineData = {
       image: "assets/images/collection-bespoke.jpg",
       tagAr: "خدمة VIP",
       tagEn: "VIP Concierge",
-      detailsAr: "فريق مندلين الهندسي يصمم ديكورات زهرية غامرة تحول مساحات الأفراح والمؤتمرات الكبرى في جدة إلى واحة ملكية خيالية.",
+      detailsAr: "فريق ميديلين الهندسي يصمم ديكورات زهرية غامرة تحول مساحات الأفراح والمؤتمرات الكبرى في جدة إلى واحة ملكية خيالية.",
       detailsEn: "Our floral architects conceptualize and construct bespoke floral installations, transforming luxury venues in Jeddah."
     }
   ],
@@ -202,8 +200,8 @@ window.MandelineData = {
     },
     {
       id: "review-03",
-      quoteAr: "مندلين بالنسبة لي هو الخيار الأول في جدة لأي مناسبة عائلية أو رسمية. ذوقهم رفيع ويعرفون تماماً كيف يترجمون المشاعر بورد نادر.",
-      quoteEn: "Mandeline is my premier destination in Jeddah for family and corporate gifts. Their taste is exquisite in translating emotions into rare botanicals.",
+      quoteAr: "ميديلين بالنسبة لي هو الخيار الأول في جدة لأي مناسبة عائلية أو رسمية. ذوقهم رفيع ويعرفون تماماً كيف يترجمون المشاعر بورد نادر.",
+      quoteEn: "Medellin is my premier destination in Jeddah for family and corporate gifts. Their taste is exquisite in translating emotions into rare botanicals.",
       customerName: "نورة باخشوين",
       cityAr: "جدة — حي الأندلس",
       cityEn: "Jeddah — Al Andalus",
@@ -225,12 +223,12 @@ window.MandelineData = {
         experience: "تجربة الإهداء",
         concierge: "صمم باقتك",
         reviews: "قالوا عنا",
-        atelier: "عن مندلين",
+        atelier: "عن ميديلين",
         contact: "تواصل معنا",
         orderNow: "اطلب الآن"
       },
       hero: {
-        eyebrow: "مندلين · أتيليه الزهور الفاخرة · جدة",
+        eyebrow: "ميديلين · أتيليه الزهور الفاخرة · جدة",
         words: ["زهور", "تبقى", "في", "الذاكرة"],
         supporting: "أخبرنا بالمناسبة والميزانية، ونحن نعتني بالباقي لنصنع من الورد لحظة لا تُنسى.",
         ctaExplore: "اكتشف التشكيلات",
@@ -241,7 +239,7 @@ window.MandelineData = {
         "ورد للمناسبات الراقية",
         "هدية فاخرة بلا حيرة",
         "تنسيق حسب ميزانيتك وذوقك",
-        "مندلين جدة — صياغة المشاعر بأناقة",
+        "ميديلين جدة — صياغة المشاعر بأناقة",
         "توصيل فوري مبرد ومحكم"
       ],
       occasionsSec: {
@@ -252,7 +250,7 @@ window.MandelineData = {
       },
       collectionsSec: {
         eyebrow: "إبداعات الأتيليه",
-        title: "تشكيلات مندلين المختارة",
+        title: "تشكيلات ميديلين المختارة",
         subtitle: "زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تنسق بشغف ودقة فنية.",
         filterAll: "الكل",
         filterBouquets: "باقات الإهداء",
@@ -273,15 +271,15 @@ window.MandelineData = {
         step1Title: "1. حدد المناسبة والميزانية",
         step1Desc: "اختر نوع المناسبة وحدد الميزانية التي تناسبك دون أي تعقيد.",
         step2Title: "2. لمسات فنية مخصصة",
-        step2Desc: "منسقو مندلين يختارون أندر الزهور وينسقونها بتغليف إهداء فاخر مع كرت رسالتك.",
+        step2Desc: "منسقو ميديلين يختارون أندر الزهور وينسقونها بتغليف إهداء فاخر مع كرت رسالتك.",
         step3Title: "3. توصيل فوري أنيق",
         step3Desc: "سيارات مبردة مخصصة تضمن وصول الزهور بنضارتها التامة في الموعد المحدد."
       },
       reviewsSec: {
         eyebrow: "انطباعات وتجارب حقيقية",
-        title: "قالوا عن مندلين",
+        title: "قالوا عن ميديلين",
         subtitle: "آراء عملائنا هي أجمل جزء من كل هدية نجهزها.",
-        ctaHeading: "خلّ هديتك القادمة من مندلين",
+        ctaHeading: "خلّ هديتك القادمة من ميديلين",
         ctaSub: "تواصل معنا مباشرة عبر واتساب لنبدأ بتصميم باقتك فوراً",
         ctaBtn: "اطلب عبر واتساب",
         verified: "تجربة إهداء موثقة"
@@ -289,7 +287,7 @@ window.MandelineData = {
       conciergeSec: {
         eyebrow: "المنسق الشخصي التفاعلي",
         title: "تبغى شيء مختلف ومخصص؟",
-        subtitle: "حدد تفضيلاتك في ثوانٍ، وسنجهز لك رسالة الطلب مباشرة مع فريق التنسيق في مندلين.",
+        subtitle: "حدد تفضيلاتك في ثوانٍ، وسنجهز لك رسالة الطلب مباشرة مع فريق التنسيق في ميديلين.",
         stepOccasion: "1. ما هي المناسبة؟",
         stepBudget: "2. الميزانية التقريبية:",
         stepPalette: "3. درجات الألوان المفضلة:",
@@ -305,14 +303,14 @@ window.MandelineData = {
         budgetOption2: "650 ر.س (باقة فاخرة متكاملة)",
         budgetOption3: "1,200 ر.س (فازة ملكية كبيرة)",
         budgetOption4: "تنسيق خاص / ميزانية مفتوحة",
-        submitBtn: "إرسال الطلب لمنسق مندلين عبر واتساب",
+        submitBtn: "إرسال الطلب لمنسق ميديلين عبر واتساب",
         guarantee: "✨ يتم الرد الفوري من المنسق مع إرسال صور الزهور المتاحة للتأكيد قبل التجهيز."
       },
       atelierSec: {
-        eyebrow: "عالم مندلين",
+        eyebrow: "عالم ميديلين",
         title: "حرفة صياغة المشاعر في جدة",
         quote: "«الورد ليس مجرد نبات، بل هو الرسول الصامت الذي يقول ما تعجز عنه الكلمات.»",
-        p1: "في مندلين، ننظر إلى كل زهرة كعنصر فني فريد. نستورد ورودنا يومياً من هولندا والإكوادور وكينيا، ونعتني بترطيبها وتهذيبها لتمنحكم أطول فترة نضارة وعبق.",
+        p1: "في ميديلين، ننظر إلى كل زهرة كعنصر فني فريد. نستورد ورودنا يومياً من هولندا والإكوادور وكينيا، ونعتني بترطيبها وتهذيبها لتمنحكم أطول فترة نضارة وعبق.",
         p2: "نحن نؤمن أن الهدية الفاخرة تكتمل بالتفاصيل: التغليف المخملي المات، الأشرطة الحريرية المتناغمة، وكرت الإهداء المصنوع من الورق القطني الفاخر.",
         stat1Num: "100%",
         stat1Label: "زهور طبيعية نضرة يومياً",
@@ -323,7 +321,7 @@ window.MandelineData = {
       },
       contactSec: {
         eyebrow: "تفضل بزيارتنا أو تواصل",
-        title: "بوتيك مندلين — جدة",
+        title: "بوتيك ميديلين — جدة",
         subtitle: "يسعدنا استقبالكم في فرعنا أو خدمتكم عبر قنوات التواصل السريع.",
         locationTitle: "موقع الأتيليه",
         locationVal: "حي الروضة / طريق التحلية، جدة، المملكة العربية السعودية",
@@ -335,14 +333,14 @@ window.MandelineData = {
         whatsappBtn: "محادثة فورية مع المنسق"
       },
       footer: {
-        about: "مندلين — أتيليه الزهور الفاخرة في جدة. نصنع من كل مناسبة ذكرى استثنائية من خلال تنسيقات نباتية ملهمة وتجربة إهداء متكاملة.",
+        about: "ميديلين — أتيليه الزهور الفاخرة في جدة. نصنع من كل مناسبة ذكرى استثنائية من خلال تنسيقات نباتية ملهمة وتجربة إهداء متكاملة.",
         quickLinks: "روابط سريعة",
         occasions: "المناسبات",
         collections: "التشكيلات",
         concierge: "المنسق الخاص",
         reviews: "قالوا عنا",
         contact: "الموقع والتواصل",
-        rights: "جميع الحقوق محفوظة © بوتيك مندلين للزهور 2026."
+        rights: "جميع الحقوق محفوظة © بوتيك ميديلين للزهور 2026."
       },
       floatingCta: "اطلب باقتك عبر واتساب"
     },
@@ -356,12 +354,12 @@ window.MandelineData = {
         experience: "Gifting Experience",
         concierge: "Bespoke Concierge",
         reviews: "Reviews",
-        atelier: "About Mandeline",
+        atelier: "About Medellin",
         contact: "Contact",
         orderNow: "Order Now"
       },
       hero: {
-        eyebrow: "MANDELINE · FINE FLORAL ATELIER · JEDDAH",
+        eyebrow: "MEDELLIN · FINE FLORAL ATELIER · JEDDAH",
         words: ["Flowers,", "Made", "to", "Be", "Remembered."],
         supporting: "Tell us the occasion and your budget. We will craft the quintessential floral gift and deliver it with uncompromised grace.",
         ctaExplore: "Explore Collections",
@@ -372,7 +370,7 @@ window.MandelineData = {
         "Flowers for Life's Rare Moments",
         "Effortless Luxury Gifting",
         "Curated to Your Budget & Taste",
-        "Mandeline Jeddah — Artistry in Every Bloom",
+        "Medellin Jeddah — Artistry in Every Bloom",
         "Climate-Controlled Express Delivery"
       ],
       occasionsSec: {
@@ -400,7 +398,7 @@ window.MandelineData = {
       stepsSec: {
         eyebrow: "Seamless & Effortless",
         title: "YOUR GIFT, MADE EFFORTLESS",
-        subtitle: "No confusion, no guesswork. Here is how Mandeline handles your floral gesture with absolute care:",
+        subtitle: "No confusion, no guesswork. Here is how Medellin handles your floral gesture with absolute care:",
         step1Title: "1. Select Occasion & Budget",
         step1Desc: "Pick your reason to celebrate and set your budget tier in seconds.",
         step2Title: "2. Master Florist Touch",
@@ -412,7 +410,7 @@ window.MandelineData = {
         eyebrow: "Client Impressions",
         title: "WORDS FROM OUR CUSTOMERS",
         subtitle: "The moments our customers share are part of every arrangement we create.",
-        ctaHeading: "Let Your Next Gift Be From Mandeline",
+        ctaHeading: "Let Your Next Gift Be From Medellin",
         ctaSub: "Connect with our floral concierge directly on WhatsApp to craft your bespoke piece.",
         ctaBtn: "Order via WhatsApp",
         verified: "Verified Gifting Moment"
@@ -440,10 +438,10 @@ window.MandelineData = {
         guarantee: "✨ Our florist will reply immediately with live photos of today's blooms for your final approval."
       },
       atelierSec: {
-        eyebrow: "The World of Mandeline",
+        eyebrow: "The World of Medellin",
         title: "THE ART OF FLORAL POETRY IN JEDDAH",
         quote: "“Flowers are the silent ambassadors of the heart, speaking when words falter.”",
-        p1: "At Mandeline, we treat every stem as an individual sculpture. Sourced daily from premier farms across the globe, each flower is delicately conditioned to ensure lasting vibrance and natural scent.",
+        p1: "At Medellin, we treat every stem as an individual sculpture. Sourced daily from premier farms across the globe, each flower is delicately conditioned to ensure lasting vibrance and natural scent.",
         p2: "We believe luxury lies in refined restraint: matte imported wrapping, tonal silk ribbons, and heavyweight cotton letterpress stationery.",
         stat1Num: "100%",
         stat1Label: "Fresh Daily Botanical Import",
@@ -454,7 +452,7 @@ window.MandelineData = {
       },
       contactSec: {
         eyebrow: "Visit Our Atelier",
-        title: "MANDELINE BOUTIQUE — JEDDAH",
+        title: "MEDELLIN BOUTIQUE — JEDDAH",
         subtitle: "We welcome you to visit our physical atelier or connect with our concierge digitally.",
         locationTitle: "Atelier Address",
         locationVal: "Al Rawdah / Tahlia Street, Jeddah, Saudi Arabia",
@@ -466,14 +464,14 @@ window.MandelineData = {
         whatsappBtn: "Chat with Concierge"
       },
       footer: {
-        about: "Mandeline — Fine floral boutique in Jeddah. Elevating gifting into an unforgettable emotional experience through intentional botanical design.",
+        about: "Medellin — Fine floral boutique in Jeddah. Elevating gifting into an unforgettable emotional experience through intentional botanical design.",
         quickLinks: "Quick Links",
         occasions: "Occasions",
         collections: "Collections",
         concierge: "Bespoke Concierge",
         reviews: "Customer Words",
         contact: "Location & Contact",
-        rights: "All rights reserved © Mandeline Floral Boutique 2026."
+        rights: "All rights reserved © Medellin Floral Boutique 2026."
       },
       floatingCta: "Order via WhatsApp"
     }

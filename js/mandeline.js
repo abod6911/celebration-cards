@@ -635,8 +635,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const price = isAr ? item.priceAr : item.priceEn;
 
     const msg = isAr
-      ? `مرحباً بوتيك مندلين للزهور 🌸\nأرغب بطلب: *${title}* (${price}).\nهل التنسيق متوفر للتوصيل السريع اليوم في جدة؟`
-      : `Hello Mandeline Floral Atelier 🌸\nI would like to order: *${title}* (${price}).\nIs this arrangement available for express delivery today in Jeddah?`;
+      ? `مرحباً بوتيك ميديلين للزهور 🌸\nأرغب بطلب: *${title}* (${price}).\nهل التنسيق متوفر للتوصيل السريع اليوم في جدة؟`
+      : `Hello Medellin Floral Atelier 🌸\nI would like to order: *${title}* (${price}).\nIs this arrangement available for express delivery today in Jeddah?`;
 
     const url = `https://wa.me/${data.businessConfig.whatsappNumber}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank');
@@ -792,14 +792,14 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (conciergeState.palette === 'florist_choice') paletteLabel = isAr ? 'على ذوق المنسق المحترف' : 'Florist Choice';
 
       const msg = isAr
-        ? `مرحباً بوتيك مندلين للزهور 🌸\nأرغب بطلب تنسيق مخصص عبر المنسق الشخصي:\n` +
+        ? `مرحباً بوتيك ميديلين للزهور 🌸\nأرغب بطلب تنسيق مخصص عبر المنسق الشخصي:\n` +
           `• المناسبة: *${occName}*\n` +
           `• الميزانية التقريبية: *${budgetLabel}*\n` +
           `• درجات الألوان: *${paletteLabel}*\n` +
           (deliveryVal ? `• موعد التوصيل المطلوب: *${deliveryVal}*\n` : '') +
           (noteVal ? `• نص كرت الإهداء: "${noteVal}"\n` : '') +
           `\nيرجى تأكيد الاستلام وإرسال صور الورد للتأكيد. شكراً لكم.`
-        : `Hello Mandeline Floral Atelier 🌸\nI would like to place a bespoke floral order:\n` +
+        : `Hello Medellin Floral Atelier 🌸\nI would like to place a bespoke floral order:\n` +
           `• Occasion: *${occName}*\n` +
           `• Approximate Budget: *${budgetLabel}*\n` +
           `• Preferred Colors: *${paletteLabel}*\n` +

@@ -1,7 +1,7 @@
-# مندلين للورد — MANDELINE Fine Floral Atelier (Jeddah)
+# ميديلين للورد — MEDELLIN Fine Floral Atelier (Jeddah)
 
 > **"زهور تُصاغ لتبقى في الذاكرة"**  
-> *A high-end luxury editorial flower boutique web experience crafted for Mandeline in Jeddah, Saudi Arabia.*
+> *A high-end luxury editorial flower boutique web experience crafted for Medellin in Jeddah, Saudi Arabia.*
 
 ---
 
@@ -17,7 +17,7 @@
   - "Your Gift, Made Easy" 3-step luxury journey.
   - Interactive Bespoke Concierge Builder generating direct formatted WhatsApp orders.
   - Atelier Craftsmanship & Storytelling section.
-  - Visual Editorial Journal / Gallery with zoom lightbox.
+  - Customer Reviews & Parallax Experience.
   - Jeddah Atelier location details & Google Maps integration.
 - **Bilingual & Native RTL**: Complete 100% Arabic (RTL) & English (LTR) language support with instant switching.
 - **Mobile-First Experience**: Optimized and tested on viewports (360px–430px) with thumb-zone floating WhatsApp CTA.
@@ -32,7 +32,7 @@
 - **Vanilla JavaScript (ES6+) Motion Engine**
 - **Playwright Test Suite**
 - **Lucide Icons**
-- **Google Fonts (`Alexandria`, `Amiri`, `Cormorant Garamond`, `Plus Jakarta Sans`)**
+- **Google Fonts (`IBM Plex Sans Arabic`, `Noto Naskh Arabic`, `Cormorant Garamond`, `Manrope`)**
 
 ---
 
@@ -61,4 +61,4 @@ node test_mandeline_qa.js
 
 ## 📄 License
 
-All rights reserved © Mandeline Floral Atelier 2026.
+All rights reserved © Medellin Floral Atelier 2026.
