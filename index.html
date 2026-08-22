@@ -549,52 +549,64 @@
   </section>
 
   <!-- =================================================================== -->
-  <!-- 10. CUSTOMER REVIEWS & PARALLAX EXPERIENCE ("قالوا عن ميديلين")      -->
+  <!-- 10. CUSTOMER REVIEWS & FLORAL FRAME EXPERIENCE ("قالوا عن ميديلين") -->
   <!-- =================================================================== -->
-  <section id="reviews" class="reviews-section relative overflow-hidden bg-[#0A0807] text-white py-24 sm:py-28 lg:py-32 px-4 sm:px-8 lg:px-16 select-none border-t border-white/5">
+  <section id="reviews" class="reviews-section relative overflow-hidden bg-[#070504] text-white py-20 sm:py-28 lg:py-32 px-4 sm:px-8 select-none border-t border-white/5">
     
-    <!-- Atmospheric Ambient Glow -->
-    <div class="absolute inset-0 bg-gradient-to-b from-[#0A0807] via-[#120E0D] to-[#0A0807] pointer-events-none"></div>
-    <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[350px] rounded-full bg-[#D4AF37]/10 blur-[120px] pointer-events-none"></div>
+    <!-- Atmospheric Deep Luxury Gradient & Ambient Gold Backlight -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[#070504] via-[#0E0B0A] to-[#070504] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] rounded-full bg-[#D4AF37]/10 blur-[140px] pointer-events-none"></div>
 
     <div class="max-w-4xl mx-auto relative z-10">
       
       <!-- Centered Editorial Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-14 scroll-reveal">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-[#D4AF37] text-xs font-semibold tracking-widest uppercase mb-3">
+      <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-24 scroll-reveal relative z-20">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 border border-[#D4AF37]/35 text-[#D4AF37] text-xs font-semibold tracking-widest uppercase mb-3.5 backdrop-blur-md shadow-sm">
           <span>✦</span>
           <span data-i18n="reviewsSec.eyebrow">انطباعات وتجارب حقيقية</span>
         </div>
-        <h2 data-i18n="reviewsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-white mb-4 leading-tight tracking-tight">قالوا عن ميديلين</h2>
-        <p data-i18n="reviewsSec.subtitle" class="text-stone-300 text-sm sm:text-base font-light leading-relaxed">
+        <h2 data-i18n="reviewsSec.title" class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display text-white mb-3.5 leading-tight tracking-tight drop-shadow-md">قالوا عن ميديلين</h2>
+        <p data-i18n="reviewsSec.subtitle" class="text-stone-300 text-sm sm:text-base font-light leading-relaxed max-w-md mx-auto">
           آراء عملائنا هي أجمل جزء من كل هدية نجهزها.
         </p>
       </div>
 
-      <!-- Centered Liquid Glass Review Carousel Stage -->
-      <div class="relative min-h-[300px] sm:min-h-[280px] flex items-center justify-center scroll-reveal">
-        <div id="reviews-stage" class="reviews-stage w-full">
+      <!-- Centered Floral Frame Sanctuary & Review Carousel Stage -->
+      <div class="relative w-full max-w-2xl mx-auto min-h-[320px] sm:min-h-[290px] flex items-center justify-center scroll-reveal my-12 sm:my-16">
+        
+        <!-- Luxury Floral Arch Frame Wrapping Around the Card -->
+        <div class="reviews-floral-frame-bg pointer-events-none select-none absolute -inset-x-8 -inset-y-12 sm:-inset-x-24 sm:-inset-y-16 flex items-center justify-center z-1" aria-hidden="true">
+          <img 
+            src="assets/hero/mandeline-reviews-floral-frame.png" 
+            alt="" 
+            class="reviews-floral-frame-img w-full h-full object-contain filter drop-shadow-[0_25px_50px_rgba(0,0,0,0.95)]" 
+          />
+        </div>
+
+        <!-- The Liquid-Glass Moving Review Stage in Center -->
+        <div id="reviews-stage" class="reviews-stage w-full relative z-20">
           <!-- Review slides rendered dynamically via JS -->
         </div>
+
       </div>
 
       <!-- Centered Carousel Navigation Controls -->
-      <div class="flex items-center justify-center gap-4 mt-8 scroll-reveal">
-        <button id="rev-prev-btn" type="button" class="carousel-arrow-btn focus:outline-none" aria-label="Previous review">
+      <div class="flex items-center justify-center gap-4 mt-16 sm:mt-20 scroll-reveal relative z-30">
+        <button id="rev-prev-btn" type="button" class="carousel-arrow-btn focus:outline-none shadow-lg" aria-label="Previous review">
           <i data-lucide="chevron-right" class="w-5 h-5"></i>
         </button>
 
-        <div id="reviews-indicator" class="text-xs font-mono text-stone-400 px-3 select-none">
-          <span id="rev-active-num" class="text-white font-bold text-sm">01</span> / 03
+        <div id="reviews-indicator" class="text-xs font-mono text-stone-300 px-4 select-none bg-black/80 border border-white/20 rounded-full py-2 backdrop-blur-md shadow-md">
+          <span id="rev-active-num" class="text-[#D4AF37] font-bold text-sm">01</span> / 03
         </div>
 
-        <button id="rev-next-btn" type="button" class="carousel-arrow-btn focus:outline-none" aria-label="Next review">
+        <button id="rev-next-btn" type="button" class="carousel-arrow-btn focus:outline-none shadow-lg" aria-label="Next review">
           <i data-lucide="chevron-left" class="w-5 h-5"></i>
         </button>
       </div>
 
       <!-- Integrated Luxury Conversion Banner Below Reviews -->
-      <div class="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-white/[0.06] via-white/[0.03] to-white/[0.06] border border-[#D4AF37]/25 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-6 scroll-reveal shadow-2xl">
+      <div class="mt-12 sm:mt-16 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-black/85 via-black/70 to-black/85 border border-[#D4AF37]/35 backdrop-blur-xl flex flex-col sm:flex-row items-center justify-between gap-6 scroll-reveal shadow-2xl relative z-20">
         <div class="text-center sm:text-start">
           <h3 data-i18n="reviewsSec.ctaHeading" class="text-lg sm:text-xl font-bold font-display text-white mb-1">خلّ هديتك القادمة من ميديلين</h3>
           <p data-i18n="reviewsSec.ctaSub" class="text-xs sm:text-sm text-stone-300">تواصل معنا مباشرة عبر واتساب لنبدأ بتصميم باقتك فوراً</p>
@@ -614,11 +626,6 @@
         </a>
       </div>
 
-    </div>
-
-    <!-- Foreground Botanical Parallax Layer -->
-    <div id="reviews-fg-layer" class="reviews-fg-container pointer-events-none" aria-hidden="true">
-      <img src="assets/hero/mandeline-review-branch.webp" alt="" class="reviews-fg-img" />
     </div>
 
   </section>

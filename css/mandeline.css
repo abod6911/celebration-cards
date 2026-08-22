@@ -607,35 +607,48 @@ body {
 
 .reviews-section {
   position: relative;
-  background-color: #0D0A09;
+  background-color: #070504;
   overflow: hidden;
 }
 
-/* Giant Low-Opacity Typography Background Accent */
-.review-giant-quote {
+/* Background Royal Floral Frame Arch */
+.reviews-floral-frame-bg {
   position: absolute;
-  top: 8%;
-  right: 4%;
-  font-size: clamp(140px, 22vw, 340px);
-  line-height: 1;
-  color: #FAF7F2;
-  opacity: 0.045;
+  inset: -30px -40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   pointer-events: none;
-  user-select: none;
   z-index: 1;
+  will-change: transform;
+  transform: translate3d(0, calc(var(--reviews-stage-y, 0px) * 0.25), 0);
+  transition: transform 0.12s linear;
 }
 
-[dir="ltr"] .review-giant-quote {
-  right: auto;
-  left: 4%;
+.reviews-floral-frame-img {
+  width: 100%;
+  max-width: 860px;
+  height: 100%;
+  object-fit: fill;
+  filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.95));
+}
+
+@media (max-width: 640px) {
+  .reviews-floral-frame-bg {
+    inset: -20px -25px;
+  }
+  .reviews-floral-frame-img {
+    max-width: 100%;
+    transform: scale(1.08);
+  }
 }
 
 .reviews-stage {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 580px;
   margin: 0 auto;
-  min-height: 290px;
+  min-height: 270px;
   will-change: transform;
   transform: translate3d(0, var(--reviews-stage-y, 0px), 0);
   transition: transform 0.12s linear;
@@ -643,25 +656,26 @@ body {
 
 @media (max-width: 640px) {
   .reviews-stage {
-    min-height: 290px;
+    min-height: 300px;
+    max-width: 100%;
   }
 }
 
-/* High-Contrast Luminous Glass Luxury Review Card */
+/* High-Contrast Luminous Liquid Glass Luxury Review Card */
 .review-card {
   position: absolute;
   inset: 0;
   width: 100%;
-  border-radius: 28px;
-  padding: clamp(24px, 4vw, 36px);
-  background: linear-gradient(145deg, rgba(28, 23, 21, 0.92) 0%, rgba(16, 13, 12, 0.96) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.35);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-radius: 26px;
+  padding: clamp(20px, 3.5vw, 32px);
+  background: linear-gradient(145deg, rgba(22, 16, 14, 0.92) 0%, rgba(10, 8, 7, 0.97) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.40);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
   box-shadow: 
-    0 25px 60px -10px rgba(0, 0, 0, 0.75),
-    0 0 35px rgba(212, 175, 55, 0.08),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    0 25px 60px -10px rgba(0, 0, 0, 0.90),
+    0 0 30px rgba(212, 175, 55, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.20);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -684,8 +698,8 @@ body {
 
 .review-card[data-role="prev"] {
   opacity: 0;
-  transform: translate3d(30px, 0, 0) scale(0.95);
-  filter: blur(3px);
+  transform: translate3d(30px, 0, 0) scale(0.94);
+  filter: blur(4px);
   z-index: 5;
   pointer-events: none;
   visibility: hidden;
@@ -693,47 +707,41 @@ body {
 
 .review-card[data-role="next"] {
   opacity: 0;
-  transform: translate3d(-30px, 0, 0) scale(0.95);
-  filter: blur(3px);
+  transform: translate3d(-30px, 0, 0) scale(0.94);
+  filter: blur(4px);
   z-index: 5;
   pointer-events: none;
   visibility: hidden;
 }
 
-/* Foreground Botanical Parallax Layer (Positioned unobtrusively in the background depth) */
+/* Foreground Panoramic Floral Garland Overlay (Velorah-style Botanical Parallax) */
 .reviews-fg-container {
   position: absolute;
-  top: 10%;
-  left: 2%;
-  width: clamp(140px, 16vw, 240px);
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  width: 100%;
   pointer-events: none;
-  z-index: 2;
-  opacity: 0.35;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
   will-change: transform;
   transform: translate3d(0, var(--reviews-fg-y, 0px), 0);
   transition: transform 0.12s linear;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 640px) {
   .reviews-fg-container {
-    top: 5%;
-    left: -15px;
-    width: 110px;
-    opacity: 0.18;
+    bottom: -20px;
   }
-}
-
-[dir="ltr"] .reviews-fg-container {
-  left: auto;
-  right: 2%;
-  transform: scaleX(-1) translate3d(0, var(--reviews-fg-y, 0px), 0);
 }
 
 .reviews-fg-img {
   width: 100%;
+  max-width: 1200px;
   height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.85));
+  object-fit: cover;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.95));
 }
 
 /* ==========================================================================
