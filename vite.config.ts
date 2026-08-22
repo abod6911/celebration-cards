@@ -17,7 +17,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'react.html'),
+        index: path.resolve(__dirname, 'index.html'),
+        react: path.resolve(__dirname, 'react.html'),
       },
     },
   },

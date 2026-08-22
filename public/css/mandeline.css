@@ -1,0 +1,1104 @@
+/* ==========================================================================
+   MANDELINE (مندلين) — LUXURY FLORAL ATELIER DESIGN SYSTEM & MOTION ENGINE
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Dark Cinematic Palette */
+  --color-charcoal-950: #060505;
+  --color-charcoal-900: #090807;
+  --color-charcoal-800: #12100f;
+  --color-charcoal-700: #1a1716;
+  --color-burgundy-900: #2a0e12;
+  --color-burgundy-800: #3a171b;
+  --color-burgundy-700: #5c1d24;
+  
+  /* Luxury Warm Neutrals */
+  --color-ivory-50: #fdfbf7;
+  --color-ivory-100: #f8f5ef;
+  --color-ivory-200: #efe8de;
+  --color-ivory-300: #e2d8c9;
+  --color-ivory-400: #c9bead;
+  
+  /* Floral & Champagne Accents */
+  --color-gold-400: #d4af37;
+  --color-gold-300: #e2c766;
+  --color-champagne: #c9b08d;
+  --color-blush-100: #f7ece8;
+  --color-blush-200: #e8d3ce;
+  --color-rose-muted: #c48b8b;
+  
+  /* Two-Tier Typography System - Saudi Luxury Standard */
+  --font-ar-display: 'Readex Pro', 'Noto Kufi Arabic', -apple-system, system-ui, sans-serif;
+  --font-ar-body: 'IBM Plex Sans Arabic', 'Readex Pro', -apple-system, system-ui, sans-serif;
+  --font-en-display: 'Cinzel', 'Cormorant Garamond', Georgia, serif;
+  --font-en-body: 'Readex Pro', 'Manrope', -apple-system, system-ui, sans-serif;
+  
+  /* Motion Easing Tokens */
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Dynamic Interactive Variables */
+  --hero-bg-tone: #090807;
+  --bg-shift-x: 0px;
+  --bg-shift-y: 0px;
+  --main-shift-x: 0px;
+  --main-shift-y: 0px;
+  --side-shift-x: 0px;
+  --side-shift-y: 0px;
+  --fg-shift-x: 0px;
+  --fg-shift-y: 0px;
+  --btn-mag-x: 0px;
+  --btn-mag-y: 0px;
+}
+
+/* Base Resets */
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-ar-body);
+  background-color: var(--color-ivory-100);
+  color: var(--color-charcoal-700);
+  overflow-x: hidden;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+[lang="en"] body {
+  font-family: var(--font-en-body);
+}
+
+.font-display {
+  font-family: var(--font-ar-display);
+}
+
+[lang="en"] .font-display {
+  font-family: var(--font-en-display);
+  letter-spacing: -0.015em;
+}
+
+.font-editorial-en {
+  font-family: var(--font-en-display);
+}
+
+.font-editorial-ar {
+  font-family: var(--font-ar-display);
+}
+
+.font-serif {
+  font-family: 'Amiri', 'Cormorant Garamond', Georgia, serif;
+}
+
+/* ==========================================================================
+   VANTAGE-INSPIRED ONE-SHOT ENTRANCE & MOTION-PENDING
+   ========================================================================== */
+
+.motion-pending .hero-fade-up {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+}
+
+.motion-pending .hero-line-inner {
+  opacity: 0 !important;
+  transform: translate3d(0, 115%, 0) skewY(2deg) !important;
+  filter: blur(8px) !important;
+}
+
+.motion-pending .floral-object {
+  opacity: 0 !important;
+  transform: scale(0.9) !important;
+}
+
+.motion-pending .hero-giant-word {
+  opacity: 0 !important;
+  transform: translate(-50%, -46%) scale(0.95) !important;
+}
+
+/* Entrance Animations on Load */
+.hero-loaded .hero-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.85s var(--ease-editorial), transform 0.85s var(--ease-editorial);
+}
+
+.hero-loaded .hero-line-inner {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) skewY(0);
+  filter: blur(0);
+  transition: 
+    opacity 0.85s var(--ease-editorial), 
+    transform 0.85s var(--ease-editorial), 
+    filter 0.85s var(--ease-editorial);
+}
+
+.hero-loaded .hero-giant-word {
+  opacity: 0.07;
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity 1.2s var(--ease-editorial), transform 1.4s var(--ease-premium);
+}
+
+/* Stagger Delays */
+.delay-60  { transition-delay: 60ms; }
+.delay-130 { transition-delay: 130ms; }
+.delay-175 { transition-delay: 175ms; }
+.delay-220 { transition-delay: 220ms; }
+.delay-265 { transition-delay: 265ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-440 { transition-delay: 440ms; }
+.delay-700 { transition-delay: 700ms; }
+.delay-900 { transition-delay: 900ms; }
+
+/* Line Mask Wrap for Masked Headline Reveal */
+.hero-line-mask {
+  display: block;
+  overflow: hidden;
+  line-height: 1.18;
+  white-space: nowrap;
+}
+
+.hero-line-inner {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+}
+
+/* ==========================================================================
+   HERO — FLORAL DEPTH CAROUSEL ARCHITECTURE (TOONHUB-ADAPTED)
+   ========================================================================== */
+
+.hero-viewport {
+  min-height: 100svh;
+  height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--hero-bg-tone);
+  transition: background-color 0.65s var(--ease-premium);
+}
+
+/* Atmospheric Background Layer (Full-Bleed 100% Viewport) */
+.hero-atmospheric-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Giant Ghost Editorial Brand Wordmark Behind Flowers */
+.hero-giant-word {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-en-display);
+  font-size: clamp(48px, 12vw, 240px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #FAF7F2;
+  opacity: 0.06;
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+  z-index: 2;
+  max-width: 96vw;
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+@media (max-width: 640px) {
+  .hero-giant-word {
+    top: 38%;
+    font-size: clamp(36px, 11vw, 54px);
+    letter-spacing: 0.05em;
+    opacity: 0.08;
+    max-width: 92vw;
+  }
+}
+
+/* Floral Carousel Stage Container */
+.hero-floral-carousel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Individual Floral Object in 3D Space */
+.floral-object {
+  position: absolute;
+  transform-origin: center bottom;
+  pointer-events: none;
+  transition: 
+    left 0.65s var(--ease-premium),
+    right 0.65s var(--ease-premium),
+    top 0.65s var(--ease-premium),
+    bottom 0.65s var(--ease-premium),
+    transform 0.65s var(--ease-premium),
+    opacity 0.65s var(--ease-premium),
+    filter 0.65s var(--ease-premium),
+    z-index 0.65s step-start;
+  will-change: left, right, top, bottom, transform, opacity, filter;
+}
+
+/* Real Isolated Transparent Bouquet */
+.floral-object-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.70));
+}
+
+/* Hero Content Container */
+.hero-content-container {
+  position: relative;
+  z-index: 30;
+  pointer-events: auto;
+}
+
+/* --- TOONHUB ROLES (Desktop 1024px+) --- */
+@media (min-width: 1024px) {
+  .floral-object {
+    width: clamp(400px, 36vw, 560px);
+    height: clamp(460px, 58vh, 720px);
+  }
+
+  /* RTL Layout (Arabic default) -> Text locked on RIGHT, Bouquet locked on LEFT */
+  [dir="rtl"] .hero-content-container {
+    position: absolute;
+    top: 50%;
+    right: 6%;
+    left: auto;
+    transform: translateY(-50%);
+    width: 36rem;
+    max-width: 44vw;
+    text-align: right;
+    margin: 0;
+  }
+
+  [dir="rtl"] .floral-object[data-role="center"] {
+    left: 28%;
+    top: 52%;
+    bottom: auto;
+    z-index: 20;
+    opacity: 1;
+    filter: blur(0px);
+    transform: translate3d(calc(-50% + var(--main-shift-x)), calc(-50% + var(--main-shift-y)), 0) scale(1.15);
+  }
+
+  [dir="rtl"] .floral-object[data-role="left"] {
+    left: 10%;
+    top: 50%;
+    bottom: auto;
+    z-index: 10;
+    opacity: 0.45;
+    filter: blur(2px);
+    transform: translate3d(calc(-50% + var(--side-shift-x)), calc(-50% + var(--side-shift-y)), 0) scale(0.55);
+  }
+
+  [dir="rtl"] .floral-object[data-role="right"] {
+    left: 46%;
+    top: 50%;
+    bottom: auto;
+    z-index: 10;
+    opacity: 0.45;
+    filter: blur(2px);
+    transform: translate3d(calc(-50% + var(--side-shift-x)), calc(-50% + var(--side-shift-y)), 0) scale(0.55);
+  }
+
+  [dir="rtl"] .floral-object[data-role="back"] {
+    left: 28%;
+    top: 40%;
+    bottom: auto;
+    z-index: 5;
+    opacity: 0.18;
+    filter: blur(4px);
+    transform: translate3d(calc(-50% + var(--bg-shift-x)), calc(-50% + var(--bg-shift-y)), 0) scale(0.38);
+  }
+
+  /* LTR Layout (English) -> Text locked on LEFT, Bouquet locked on RIGHT */
+  [dir="ltr"] .hero-content-container {
+    position: absolute;
+    top: 50%;
+    left: 6%;
+    right: auto;
+    transform: translateY(-50%);
+    width: 36rem;
+    max-width: 44vw;
+    text-align: left;
+    margin: 0;
+  }
+
+  [dir="ltr"] .floral-object[data-role="center"] {
+    left: 72%;
+    top: 52%;
+    bottom: auto;
+    z-index: 20;
+    opacity: 1;
+    filter: blur(0px);
+    transform: translate3d(calc(-50% + var(--main-shift-x)), calc(-50% + var(--main-shift-y)), 0) scale(1.15);
+  }
+
+  [dir="ltr"] .floral-object[data-role="left"] {
+    left: 54%;
+    top: 50%;
+    bottom: auto;
+    z-index: 10;
+    opacity: 0.45;
+    filter: blur(2px);
+    transform: translate3d(calc(-50% + var(--side-shift-x)), calc(-50% + var(--side-shift-y)), 0) scale(0.55);
+  }
+
+  [dir="ltr"] .floral-object[data-role="right"] {
+    left: 90%;
+    top: 50%;
+    bottom: auto;
+    z-index: 10;
+    opacity: 0.45;
+    filter: blur(2px);
+    transform: translate3d(calc(-50% + var(--side-shift-x)), calc(-50% + var(--side-shift-y)), 0) scale(0.55);
+  }
+
+  [dir="ltr"] .floral-object[data-role="back"] {
+    left: 72%;
+    top: 40%;
+    bottom: auto;
+    z-index: 5;
+    opacity: 0.18;
+    filter: blur(4px);
+    transform: translate3d(calc(-50% + var(--bg-shift-x)), calc(-50% + var(--bg-shift-y)), 0) scale(0.38);
+  }
+}
+
+/* --- Dedicated Mobile Floral Hero (< 1024px) --- */
+@media (max-width: 1023px) {
+  .hero-viewport {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 4.75rem;
+    padding-bottom: 1.5rem;
+    padding-inline: 1rem;
+    text-align: center;
+  }
+
+  .hero-content-container {
+    width: 100%;
+    max-width: 24rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 30;
+  }
+
+  .floral-object {
+    width: clamp(260px, 76vw, 340px);
+    height: clamp(300px, 44vh, 400px);
+  }
+
+  .floral-object[data-role="center"] {
+    left: 50%;
+    top: 68%;
+    bottom: auto;
+    z-index: 15;
+    opacity: 1;
+    filter: blur(0px);
+    transform: translate3d(-50%, -50%, 0) scale(1.10);
+  }
+
+  .floral-object[data-role="left"] {
+    left: -18%;
+    top: 66%;
+    bottom: auto;
+    z-index: 5;
+    opacity: 0.22;
+    filter: blur(3px);
+    transform: translate3d(-50%, -50%, 0) scale(0.45);
+  }
+
+  .floral-object[data-role="right"] {
+    left: 118%;
+    top: 66%;
+    bottom: auto;
+    z-index: 5;
+    opacity: 0.22;
+    filter: blur(3px);
+    transform: translate3d(-50%, -50%, 0) scale(0.45);
+  }
+
+  .floral-object[data-role="back"] {
+    left: 50%;
+    top: 56%;
+    bottom: auto;
+    z-index: 2;
+    opacity: 0.10;
+    filter: blur(5px);
+    transform: translate3d(-50%, -50%, 0) scale(0.30);
+  }
+}
+
+/* Film Grain Texture */
+.film-grain-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 12;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   NAVIGATION — FLOATING TRANSPARENT TO FROSTED GLASS
+   ========================================================================== */
+
+.glass-nav {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: 
+    background 0.45s var(--ease-editorial), 
+    border-color 0.45s var(--ease-editorial), 
+    box-shadow 0.45s var(--ease-editorial), 
+    padding 0.45s var(--ease-editorial);
+}
+
+.glass-nav.scrolled {
+  background: rgba(9, 8, 7, 0.90);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+/* Luxury Floating Glass Capsule Nav on Desktop */
+.nav-center-capsule {
+  background: rgba(22, 17, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  padding: 0.35rem 0.65rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link-pill {
+  position: relative;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9999px;
+  color: rgba(250, 247, 242, 0.78);
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.25s var(--ease-standard);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.nav-link-pill:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-link-pill.bespoke-pill {
+  color: #D4AF37;
+  background: rgba(212, 175, 55, 0.14);
+  border: 1px solid rgba(212, 175, 55, 0.40);
+  font-weight: 700;
+}
+
+.nav-link-pill.bespoke-pill:hover {
+  background: #D4AF37;
+  color: #090807;
+  border-color: #D4AF37;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.45);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.3s var(--ease-standard);
+}
+
+.glass-pill:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+/* Luxury Contact & Boutique Touchpoint Cards */
+.contact-touchpoint-card {
+  background: #FFFFFF;
+  border: 1px solid #E8DFCC;
+  border-radius: 1.75rem;
+  padding: 2rem;
+  box-shadow: 0 4px 25px -4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium), border-color 0.35s var(--ease-premium);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-touchpoint-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.contact-touchpoint-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -8px rgba(212, 175, 55, 0.18), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(212, 175, 55, 0.65);
+}
+
+.contact-touchpoint-card:hover::after {
+  opacity: 1;
+}
+
+.contact-icon-box {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 1.1rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.22) 0%, rgba(243, 229, 171, 0.45) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #8C6B14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s var(--ease-premium), background 0.35s var(--ease-premium), color 0.35s var(--ease-premium), border-color 0.35s ease;
+}
+
+.contact-icon-box svg {
+  width: 24px;
+  height: 24px;
+  stroke: #8C6B14;
+  stroke-width: 2.2px;
+  transition: stroke 0.35s ease, transform 0.35s ease;
+}
+
+.contact-touchpoint-card:hover .contact-icon-box {
+  transform: scale(1.1) rotate(6deg);
+  background: #D4AF37;
+  border-color: #D4AF37;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+}
+
+.contact-touchpoint-card:hover .contact-icon-box svg {
+  stroke: #090807;
+}
+
+/* Circular Carousel Arrow Button */
+.carousel-arrow-btn {
+  width: clamp(44px, 5vw, 56px);
+  height: clamp(44px, 5vw, 56px);
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #FAF7F2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: 
+    background 0.3s var(--ease-standard),
+    border-color 0.3s var(--ease-standard),
+    color 0.3s var(--ease-standard),
+    transform 0.3s var(--ease-standard);
+  cursor: pointer;
+}
+
+.carousel-arrow-btn:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #D4AF37;
+  color: #FFFFFF;
+  transform: scale(1.08);
+}
+
+.carousel-arrow-btn:active {
+  transform: scale(0.94);
+}
+
+/* ==========================================================================
+   LUXURY BUTTONS & HOVER MOTION
+   ========================================================================== */
+
+.btn-luxury-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  background: linear-gradient(135deg, #d4af37 0%, #c9b08d 100%);
+  color: #090807;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.35);
+  transition: 
+    transform 0.3s var(--ease-premium), 
+    box-shadow 0.3s var(--ease-premium), 
+    background 0.3s var(--ease-premium);
+  min-height: 48px;
+}
+
+.btn-luxury-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 16px 32px -4px rgba(212, 175, 55, 0.45);
+  background: linear-gradient(135deg, #e2c766 0%, #d4af37 100%);
+}
+
+.btn-luxury-primary:active {
+  transform: scale(0.97);
+}
+
+/* Clean Animated Text Roll (Fixes Mobile Duplicate Text Bug) */
+.btn-animated-text {
+  position: relative;
+  overflow: hidden;
+  height: 1.35em;
+  line-height: 1.35em;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.btn-animated-text span {
+  display: block;
+  height: 1.35em;
+  line-height: 1.35em;
+  white-space: nowrap;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-animated-text span {
+    transition: transform 0.28s var(--ease-editorial);
+  }
+  .btn-luxury-primary:hover .btn-animated-text span:first-child,
+  .btn-luxury-primary:hover .btn-animated-text span:last-child {
+    transform: translateY(-100%);
+  }
+}
+
+/* Touch / non-hover devices: strictly show only the first span */
+@media not all and (hover: hover) and (pointer: fine) {
+  .btn-animated-text span:last-child {
+    display: none !important;
+  }
+}
+
+.btn-luxury-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f8f5ef;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  transition: all 0.35s var(--ease-premium);
+  min-height: 48px;
+}
+
+.btn-luxury-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(212, 175, 55, 0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   CUSTOMER REVIEWS & PARALLAX LIQUID-GLASS ARCHITECTURE
+   ========================================================================== */
+
+.reviews-section {
+  position: relative;
+  background-color: #070504;
+  overflow: hidden;
+}
+
+/* Background Royal Floral Frame Arch */
+.reviews-floral-frame-bg {
+  position: absolute;
+  inset: -45px -55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+  transform: translate3d(0, calc(var(--reviews-stage-y, 0px) * 0.25), 0);
+  transition: transform 0.12s linear;
+}
+
+.reviews-floral-frame-img {
+  width: 100%;
+  max-width: 840px;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.95));
+}
+
+@media (max-width: 640px) {
+  .reviews-floral-frame-bg {
+    inset: -30px -30px;
+  }
+  .reviews-floral-frame-img {
+    max-width: 100%;
+    transform: scale(1.12);
+  }
+}
+
+.reviews-stage {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  min-height: 270px;
+  will-change: transform;
+  transform: translate3d(0, var(--reviews-stage-y, 0px), 0);
+  transition: transform 0.12s linear;
+}
+
+@media (max-width: 640px) {
+  .reviews-stage {
+    min-height: 300px;
+    max-width: 100%;
+  }
+}
+
+/* High-Contrast Luminous Liquid Glass Luxury Review Card */
+.review-card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border-radius: 26px;
+  padding: clamp(20px, 3.5vw, 32px);
+  background: linear-gradient(145deg, rgba(22, 16, 14, 0.94) 0%, rgba(10, 8, 7, 0.98) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.40);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
+  box-shadow: 
+    0 25px 60px -10px rgba(0, 0, 0, 0.90),
+    0 0 30px rgba(212, 175, 55, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.20);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 
+    transform 0.6s var(--ease-premium), 
+    opacity 0.6s var(--ease-premium), 
+    filter 0.6s var(--ease-premium), 
+    visibility 0.6s step-start;
+  will-change: transform, opacity, filter;
+}
+
+.review-card[data-role="active"] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0px);
+  z-index: 10;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.review-card[data-role="prev"] {
+  opacity: 0;
+  transform: translate3d(30px, 0, 0) scale(0.94);
+  filter: blur(4px);
+  z-index: 5;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.review-card[data-role="next"] {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0) scale(0.94);
+  filter: blur(4px);
+  z-index: 5;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Foreground Panoramic Floral Garland Overlay (Velorah-style Botanical Parallax) */
+.reviews-fg-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+  width: 100%;
+  pointer-events: none;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  will-change: transform;
+  transform: translate3d(0, var(--reviews-fg-y, 0px), 0);
+  transition: transform 0.12s linear;
+}
+
+@media (max-width: 640px) {
+  .reviews-fg-container {
+    bottom: -20px;
+  }
+}
+
+.reviews-fg-img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  object-fit: cover;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.95));
+}
+
+/* ==========================================================================
+   TIKTOK-INSPIRED EXPANDABLE EDITORIAL CANVAS MOMENT
+   ========================================================================== */
+
+.editorial-expand-canvas {
+  clip-path: inset(5% 5% 5% 5% round 24px);
+  transition: clip-path 1.2s var(--ease-premium), transform 1.2s var(--ease-premium);
+  will-change: clip-path, transform;
+}
+
+.editorial-expand-canvas.is-expanded {
+  clip-path: inset(0% 0% 0% 0% round 0px);
+}
+
+.editorial-canvas-img {
+  transform: scale(1.08);
+  transition: transform 1.4s var(--ease-premium);
+  will-change: transform;
+}
+
+.editorial-expand-canvas.is-expanded .editorial-canvas-img {
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   SCROLL REVEAL & CARD HOVER SYSTEM
+   ========================================================================== */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s var(--ease-editorial), transform 0.85s var(--ease-editorial);
+  will-change: transform, opacity;
+}
+
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Occasion Cards Luxury Hover */
+#occasions-container .group {
+  transition: transform 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium), border-color 0.4s var(--ease-premium);
+}
+
+#occasions-container .group:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 25px 50px -10px rgba(212, 175, 55, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+}
+
+.flower-card {
+  transition: transform 0.45s var(--ease-premium), box-shadow 0.45s var(--ease-premium), border-color 0.45s var(--ease-premium);
+}
+
+.flower-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+}
+
+.flower-card-img {
+  transition: transform 0.7s var(--ease-premium);
+}
+
+.flower-card:hover .flower-card-img {
+  transform: scale(1.05);
+}
+
+/* Editorial Marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 32s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+[dir="rtl"] .marquee-track {
+  animation: marqueeScrollRtl 32s linear infinite;
+}
+
+@keyframes marqueeScrollRtl {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(50%); }
+}
+
+/* Accessible Focus States */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--color-gold-400);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   CONFIGURATOR, TRUST BADGES, UGC & TOAST NOTIFICATIONS
+   ========================================================================== */
+
+/* Configurator Step Tabs */
+.config-tab-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.config-tab-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.config-tab-pill.active {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.22) 0%, rgba(0, 0, 0, 0.8) 100%);
+  border-color: #D4AF37;
+  color: #FFFFFF;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+/* Configurator Options Cards */
+.config-option-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: all 0.28s var(--ease-premium);
+  cursor: pointer;
+  position: relative;
+  text-align: start;
+}
+
+.config-option-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+}
+
+.config-option-card.selected {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(20, 16, 15, 0.9) 100%);
+  border-color: #D4AF37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Trust Badges Bar */
+.trust-badge-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 1.1rem;
+  transition: all 0.3s var(--ease-standard);
+}
+
+.trust-badge-card:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.45);
+  transform: translateY(-2px);
+}
+
+/* UGC Gallery Cards */
+.ugc-card {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #141211;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s var(--ease-premium), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.ugc-card:hover {
+  transform: translateY(-6px);
+  border-color: #D4AF37;
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+}
+
+.ugc-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-premium);
+}
+
+.ugc-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Toast Notifications */
+.luxury-toast {
+  animation: toastSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-line-inner, .hero-fade-up, .scroll-reveal, .editorial-expand-canvas, .floral-object, .review-slide {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+}
