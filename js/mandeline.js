@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearInterval(revAutoTimer);
     revAutoTimer = setInterval(() => {
       if (isReviewsInView) navigateReview('next');
-    }, 8000);
+    }, 4500);
   }
 
   function resetRevAutoTimer() {

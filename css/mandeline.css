@@ -195,16 +195,28 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--font-en-display);
-  font-size: clamp(80px, 15vw, 260px);
+  font-size: clamp(48px, 12vw, 240px);
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: #FAF7F2;
-  opacity: 0.05;
+  opacity: 0.06;
   pointer-events: none;
   white-space: nowrap;
   user-select: none;
   z-index: 2;
+  max-width: 96vw;
+  text-align: center;
   will-change: transform, opacity;
+}
+
+@media (max-width: 640px) {
+  .hero-giant-word {
+    top: 38%;
+    font-size: clamp(36px, 11vw, 54px);
+    letter-spacing: 0.05em;
+    opacity: 0.08;
+    max-width: 92vw;
+  }
 }
 
 /* Floral Carousel Stage Container */
@@ -459,26 +471,140 @@ body {
 }
 
 .glass-nav.scrolled {
-  background: rgba(9, 8, 7, 0.88);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  background: rgba(9, 8, 7, 0.90);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
-  padding-top: 0.85rem !important;
-  padding-bottom: 0.85rem !important;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+/* Luxury Floating Glass Capsule Nav on Desktop */
+.nav-center-capsule {
+  background: rgba(22, 17, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  padding: 0.35rem 0.65rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav-link-pill {
+  position: relative;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9999px;
+  color: rgba(250, 247, 242, 0.78);
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.25s var(--ease-standard);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.nav-link-pill:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-link-pill.bespoke-pill {
+  color: #D4AF37;
+  background: rgba(212, 175, 55, 0.14);
+  border: 1px solid rgba(212, 175, 55, 0.40);
+  font-weight: 700;
+}
+
+.nav-link-pill.bespoke-pill:hover {
+  background: #D4AF37;
+  color: #090807;
+  border-color: #D4AF37;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.45);
 }
 
 .glass-pill {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   transition: all 0.3s var(--ease-standard);
 }
 
 .glass-pill:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(212, 175, 55, 0.4);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(212, 175, 55, 0.5);
+}
+
+/* Luxury Contact & Boutique Touchpoint Cards */
+.contact-touchpoint-card {
+  background: #FFFFFF;
+  border: 1px solid #E8DFCC;
+  border-radius: 1.75rem;
+  padding: 2rem;
+  box-shadow: 0 4px 25px -4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s var(--ease-premium), box-shadow 0.35s var(--ease-premium), border-color 0.35s var(--ease-premium);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-touchpoint-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.contact-touchpoint-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -8px rgba(212, 175, 55, 0.18), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(212, 175, 55, 0.65);
+}
+
+.contact-touchpoint-card:hover::after {
+  opacity: 1;
+}
+
+.contact-icon-box {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 1.1rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.22) 0%, rgba(243, 229, 171, 0.45) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #8C6B14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s var(--ease-premium), background 0.35s var(--ease-premium), color 0.35s var(--ease-premium), border-color 0.35s ease;
+}
+
+.contact-icon-box svg {
+  width: 24px;
+  height: 24px;
+  stroke: #8C6B14;
+  stroke-width: 2.2px;
+  transition: stroke 0.35s ease, transform 0.35s ease;
+}
+
+.contact-touchpoint-card:hover .contact-icon-box {
+  transform: scale(1.1) rotate(6deg);
+  background: #D4AF37;
+  border-color: #D4AF37;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.35);
+}
+
+.contact-touchpoint-card:hover .contact-icon-box svg {
+  stroke: #090807;
 }
 
 /* Circular Carousel Arrow Button */
@@ -614,7 +740,7 @@ body {
 /* Background Royal Floral Frame Arch */
 .reviews-floral-frame-bg {
   position: absolute;
-  inset: -30px -40px;
+  inset: -45px -55px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -627,19 +753,19 @@ body {
 
 .reviews-floral-frame-img {
   width: 100%;
-  max-width: 860px;
+  max-width: 840px;
   height: 100%;
-  object-fit: fill;
+  object-fit: contain;
   filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.95));
 }
 
 @media (max-width: 640px) {
   .reviews-floral-frame-bg {
-    inset: -20px -25px;
+    inset: -30px -30px;
   }
   .reviews-floral-frame-img {
     max-width: 100%;
-    transform: scale(1.08);
+    transform: scale(1.12);
   }
 }
 
@@ -668,7 +794,7 @@ body {
   width: 100%;
   border-radius: 26px;
   padding: clamp(20px, 3.5vw, 32px);
-  background: linear-gradient(145deg, rgba(22, 16, 14, 0.92) 0%, rgba(10, 8, 7, 0.97) 100%);
+  background: linear-gradient(145deg, rgba(22, 16, 14, 0.94) 0%, rgba(10, 8, 7, 0.98) 100%);
   border: 1px solid rgba(212, 175, 55, 0.40);
   backdrop-filter: blur(28px) saturate(150%);
   -webkit-backdrop-filter: blur(28px) saturate(150%);
@@ -784,13 +910,25 @@ body {
   transform: translateY(0);
 }
 
+/* Occasion Cards Luxury Hover */
+#occasions-container .group {
+  transition: transform 0.4s var(--ease-premium), box-shadow 0.4s var(--ease-premium), border-color 0.4s var(--ease-premium);
+}
+
+#occasions-container .group:hover {
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 25px 50px -10px rgba(212, 175, 55, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+}
+
 .flower-card {
-  transition: transform 0.45s var(--ease-premium), box-shadow 0.45s var(--ease-premium);
+  transition: transform 0.45s var(--ease-premium), box-shadow 0.45s var(--ease-premium), border-color 0.45s var(--ease-premium);
 }
 
 .flower-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px -10px rgba(26, 23, 22, 0.12);
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(212, 175, 55, 0.15), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
 }
 
 .flower-card-img {
@@ -798,7 +936,7 @@ body {
 }
 
 .flower-card:hover .flower-card-img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
 /* Editorial Marquee */

@@ -37,6 +37,16 @@ const fs = require('fs');
     fs.copyFileSync(dRevPath, path.join(brainDir, 'verify_desktop_reviews.png'));
   }
 
+  // Scroll to Contact on Desktop (Arabic)
+  const dContact = await desktopPage.$('#contact');
+  if (dContact) {
+    await dContact.scrollIntoViewIfNeeded();
+    await desktopPage.waitForTimeout(500);
+    const dContactPath = path.join(localDir, 'verify_desktop_contact.png');
+    await desktopPage.screenshot({ path: dContactPath });
+    fs.copyFileSync(dContactPath, path.join(brainDir, 'verify_desktop_contact.png'));
+  }
+
   // Switch to English on Desktop
   await desktopPage.click('.lang-toggle-btn');
   await desktopPage.waitForTimeout(500);
@@ -63,6 +73,16 @@ const fs = require('fs');
     const mRevPath = path.join(localDir, 'verify_mobile_reviews.png');
     await mobilePage.screenshot({ path: mRevPath });
     fs.copyFileSync(mRevPath, path.join(brainDir, 'verify_mobile_reviews.png'));
+  }
+
+  // Scroll to Contact on Mobile
+  const mContact = await mobilePage.$('#contact');
+  if (mContact) {
+    await mContact.scrollIntoViewIfNeeded();
+    await mobilePage.waitForTimeout(500);
+    const mContactPath = path.join(localDir, 'verify_mobile_contact.png');
+    await mobilePage.screenshot({ path: mContactPath });
+    fs.copyFileSync(mContactPath, path.join(brainDir, 'verify_mobile_contact.png'));
   }
   await mobilePage.close();
 
