@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const data = window.MandelineData;
   if (!data) return;
 
+  // Ensure the page always starts from the very top on load/reload
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  if (!window.location.hash || window.location.hash === '#' || window.location.hash === '#hero-section') {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }
+
   // --- Global App State ---
   let currentLang = localStorage.getItem('mandeline_lang') || 'ar';
   let activeFilter = 'all';
@@ -286,29 +294,32 @@ document.addEventListener('DOMContentLoaded', () => {
       return `
         <div class="review-card" data-idx="${idx}" data-role="${role}">
           <div>
-            <div class="flex items-center justify-between gap-4 mb-5">
+            <div class="flex items-center justify-between gap-4 mb-4 sm:mb-5">
               <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] font-bold text-sm flex items-center justify-center font-display">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-[#D4AF37] to-[#F3E5AB] text-black font-bold text-base flex items-center justify-center font-display shadow-md shrink-0">
                   ${initial}
                 </div>
                 <div>
-                  <h4 class="text-sm font-bold text-white font-display">${author}</h4>
-                  <p class="text-[11px] text-stone-400">${city}</p>
+                  <h4 class="text-base font-bold text-white font-display leading-tight">${author}</h4>
+                  <p class="text-xs text-[#D4AF37]/90 font-medium">${city}</p>
                 </div>
               </div>
-              <span class="text-[10px] text-[#D4AF37] font-medium px-3 py-1 rounded-full bg-white/5 border border-white/10">
+              <span class="text-xs text-[#D4AF37] font-semibold px-3.5 py-1.5 rounded-full bg-white/10 border border-[#D4AF37]/35 backdrop-blur-md">
                 ${occasion}
               </span>
             </div>
             
-            <p class="text-base sm:text-lg lg:text-xl text-stone-100 font-light leading-relaxed mb-6 font-display">
+            <p class="text-base sm:text-lg lg:text-xl text-[#FAF8F5] font-light leading-relaxed my-3 sm:my-5 font-display drop-shadow-sm">
               «${quote}»
             </p>
           </div>
 
-          <div class="flex items-center justify-between pt-4 border-t border-white/10 text-xs text-stone-400">
-            <span data-i18n="reviewsSec.verified">${data.translations[currentLang].reviewsSec.verified || 'تجربة إهداء موثقة'}</span>
-            <span class="text-[#D4AF37] font-mono text-xs">${rev.source || 'WhatsApp'}</span>
+          <div class="flex items-center justify-between pt-4 border-t border-white/15 text-xs text-stone-300">
+            <span class="flex items-center gap-1.5 text-emerald-400 font-medium">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span data-i18n="reviewsSec.verified">${data.translations[currentLang].reviewsSec.verified || 'تجربة إهداء موثقة'}</span>
+            </span>
+            <span class="text-[#D4AF37] font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-white/5 border border-white/10">${rev.source || 'WhatsApp'}</span>
           </div>
         </div>
       `;
@@ -563,55 +574,59 @@ document.addEventListener('DOMContentLoaded', () => {
       const tag = isAr ? item.tagAr : item.tagEn;
 
       return `
-        <div class="flower-card rounded-2xl bg-white border border-[#E2D8C9] overflow-hidden flex flex-col justify-between group shadow-sm">
+        <div class="flower-card rounded-2xl bg-white border border-[#E2D8C9] overflow-hidden flex flex-col justify-between group shadow-sm hover:shadow-lg transition-all duration-300">
           <div class="relative aspect-4/3 overflow-hidden bg-stone-100 cursor-pointer" onclick="window.openQuickView('${item.id}')">
             <img 
               src="${item.image}" 
               alt="${title}"
               loading="lazy"
-              class="flower-card-img w-full h-full object-cover"
+              class="flower-card-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div class="absolute top-3 ${isAr ? 'right-3' : 'left-3'}">
               <span class="glass-pill text-[11px] font-semibold text-white px-3 py-1 rounded-full shadow-sm">
                 ${tag}
               </span>
             </div>
-            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="glass-pill text-xs font-semibold text-stone-900 bg-white/85 px-4 py-2 rounded-full transform translate-y-2 group-hover:translate-y-0 transition-transform">
+            <div class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="glass-pill text-xs font-semibold text-stone-900 bg-white/90 px-4 py-2 rounded-full transform translate-y-2 group-hover:translate-y-0 transition-transform shadow-md">
                 ${tSec.viewDetails} ⤢
               </span>
             </div>
           </div>
 
-          <div class="p-6 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex items-baseline justify-between gap-2 mb-1">
-                <h3 class="font-display font-bold text-lg text-stone-900 leading-snug">${title}</h3>
-              </div>
-              <p class="text-xs text-stone-500 mb-3">${subtitle}</p>
-              <div class="text-sm font-semibold text-[#D4AF37] mb-6">${price}</div>
+          <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+            <div class="mb-4">
+              <h3 class="font-display font-bold text-lg text-stone-900 leading-snug mb-1.5">${title}</h3>
+              <p class="text-xs text-stone-500 line-clamp-2 leading-relaxed mb-3">${subtitle}</p>
+              <div class="text-base font-bold text-[#D4AF37]">${price}</div>
             </div>
 
-            <div class="grid grid-cols-2 gap-2">
-              <button 
-                type="button" 
-                onclick="window.openQuickView('${item.id}')"
-                class="py-2.5 px-3 rounded-xl text-xs font-medium text-stone-700 bg-stone-100 hover:bg-stone-200 transition-colors text-center cursor-pointer"
-              >
-                ${tSec.viewDetails}
-              </button>
+            <div class="flex items-center gap-2 pt-3 border-t border-stone-100">
               <button 
                 type="button" 
                 onclick="window.orderDirectItem('${item.id}')"
-                class="py-2.5 px-3 rounded-xl text-xs font-semibold text-stone-950 bg-[#D4AF37] hover:bg-[#E2C766] transition-colors text-center shadow-xs cursor-pointer"
+                class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold text-black bg-[#D4AF37] hover:bg-[#E2C766] transition-all text-center shadow-xs cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
               >
-                ${tSec.orderItem}
+                <i data-lucide="message-circle" class="w-3.5 h-3.5 shrink-0"></i>
+                <span class="whitespace-nowrap">${isAr ? 'طلب التنسيق' : 'Order Now'}</span>
+              </button>
+              <button 
+                type="button" 
+                onclick="window.openQuickView('${item.id}')"
+                class="py-2.5 px-3.5 rounded-xl text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200 transition-colors text-center cursor-pointer shrink-0 active:scale-95"
+                aria-label="${tSec.viewDetails}"
+              >
+                <span class="whitespace-nowrap">${isAr ? 'التفاصيل' : 'Details'}</span>
               </button>
             </div>
           </div>
         </div>
       `;
     }).join('');
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
   }
 
   filterBtns.forEach(btn => {

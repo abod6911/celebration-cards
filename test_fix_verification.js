@@ -8,7 +8,7 @@ const fs = require('fs');
   const localDir = path.join(__dirname, 'test_screenshots');
   if (!fs.existsSync(localDir)) fs.mkdirSync(localDir, { recursive: true });
 
-  // 1. Desktop Viewport (1440x900)
+  // 1. Desktop Viewport (1440x900) - Arabic
   const desktopPage = await browser.newPage({ viewport: { width: 1440, height: 900 } });
   await desktopPage.goto('file:///C:/مشاريع mit/مشورع بطايق الاحتفالات/index.html');
   await desktopPage.waitForTimeout(600);
@@ -17,14 +17,17 @@ const fs = require('fs');
   await desktopPage.screenshot({ path: dHeroPath });
   fs.copyFileSync(dHeroPath, path.join(brainDir, 'verify_desktop_hero.png'));
 
-  // Switch to English on Desktop
-  await desktopPage.click('.lang-toggle-btn');
-  await desktopPage.waitForTimeout(500);
-  const dHeroEnPath = path.join(localDir, 'verify_desktop_hero_en.png');
-  await desktopPage.screenshot({ path: dHeroEnPath });
-  fs.copyFileSync(dHeroEnPath, path.join(brainDir, 'verify_desktop_hero_en.png'));
+  // Scroll to Collections on Desktop (Arabic)
+  const dCollections = await desktopPage.$('#collections');
+  if (dCollections) {
+    await dCollections.scrollIntoViewIfNeeded();
+    await desktopPage.waitForTimeout(500);
+    const dCollPath = path.join(localDir, 'verify_desktop_collections.png');
+    await desktopPage.screenshot({ path: dCollPath });
+    fs.copyFileSync(dCollPath, path.join(brainDir, 'verify_desktop_collections.png'));
+  }
 
-  // Scroll to Reviews on Desktop
+  // Scroll to Reviews on Desktop (Arabic)
   const dReviews = await desktopPage.$('#reviews');
   if (dReviews) {
     await dReviews.scrollIntoViewIfNeeded();
@@ -33,6 +36,14 @@ const fs = require('fs');
     await desktopPage.screenshot({ path: dRevPath });
     fs.copyFileSync(dRevPath, path.join(brainDir, 'verify_desktop_reviews.png'));
   }
+
+  // Switch to English on Desktop
+  await desktopPage.click('.lang-toggle-btn');
+  await desktopPage.waitForTimeout(500);
+  const dHeroEnPath = path.join(localDir, 'verify_desktop_hero_en.png');
+  await desktopPage.screenshot({ path: dHeroEnPath });
+  fs.copyFileSync(dHeroEnPath, path.join(brainDir, 'verify_desktop_hero_en.png'));
+
   await desktopPage.close();
 
   // 2. Mobile Viewport (390x844 iPhone 14)

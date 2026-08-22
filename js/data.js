@@ -107,7 +107,7 @@ window.MandelineData = {
     {
       id: "lamour",
       category: "bouquets",
-      titleAr: "باقة لامور إيتيرنيل (L'Amour Éternel)",
+      titleAr: "باقة لامور إيتيرنيل",
       titleEn: "L'Amour Éternel Grand Bouquet",
       subtitleAr: "ورود جاردن إنجليزية، بيوني فرنسي، وشريط حريري فاخر",
       subtitleEn: "English garden roses, French peonies & raw silk ribbon",
@@ -123,7 +123,7 @@ window.MandelineData = {
     {
       id: "twilight",
       category: "vases",
-      titleAr: "فازة توايلايت جدة (Jeddah Twilight)",
+      titleAr: "فازة توايلايت جدة",
       titleEn: "Jeddah Twilight Bronze Vase",
       subtitleAr: "كالا مخملية داكنة، ورود كابتشينو، وفازة سيراميك برونزية",
       subtitleEn: "Velvet black calla, cappuccino roses & artisan bronze vessel",
@@ -139,7 +139,7 @@ window.MandelineData = {
     {
       id: "solace",
       category: "vases",
-      titleAr: "سنتربيس رويال سولاس (Royal Solace)",
+      titleAr: "سنتربيس رويال سولاس",
       titleEn: "Royal Solace Orchid Centerpiece",
       subtitleAr: "أوركيد فالينوبسيس أبيض، تيوليب فرنسي، وكريستال مضلع",
       subtitleEn: "Cascading Phalaenopsis orchids & French champagne tulips",
@@ -155,7 +155,7 @@ window.MandelineData = {
     {
       id: "installation",
       category: "events",
-      titleAr: "تنسيقات معمارية للمناسبات (Bespoke Grand Arch)",
+      titleAr: "تنسيقات معمارية كبرى للمناسبات",
       titleEn: "Bespoke Grand Floral Architecture",
       subtitleAr: "أقواس وشلالات زهرية ضخمة لحفلات الاستقبال والزفاف",
       subtitleEn: "Palatial floral clouds and sculptural arches for luxury events",

@@ -633,7 +633,9 @@ body {
 .reviews-stage {
   position: relative;
   width: 100%;
-  min-height: 320px;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: 290px;
   will-change: transform;
   transform: translate3d(0, var(--reviews-stage-y, 0px), 0);
   transition: transform 0.12s linear;
@@ -641,22 +643,25 @@ body {
 
 @media (max-width: 640px) {
   .reviews-stage {
-    min-height: 280px;
+    min-height: 290px;
   }
 }
 
-/* Liquid Glass Luxury Review Card */
+/* High-Contrast Luminous Glass Luxury Review Card */
 .review-card {
   position: absolute;
   inset: 0;
   width: 100%;
-  border-radius: 24px;
-  padding: clamp(20px, 3.5vw, 36px);
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(18px) saturate(120%);
-  -webkit-backdrop-filter: blur(18px) saturate(120%);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 50px rgba(0, 0, 0, 0.35);
+  border-radius: 28px;
+  padding: clamp(24px, 4vw, 36px);
+  background: linear-gradient(145deg, rgba(28, 23, 21, 0.92) 0%, rgba(16, 13, 12, 0.96) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  box-shadow: 
+    0 25px 60px -10px rgba(0, 0, 0, 0.75),
+    0 0 35px rgba(212, 175, 55, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -679,8 +684,8 @@ body {
 
 .review-card[data-role="prev"] {
   opacity: 0;
-  transform: translate3d(24px, 0, 0) scale(0.96);
-  filter: blur(2px);
+  transform: translate3d(30px, 0, 0) scale(0.95);
+  filter: blur(3px);
   z-index: 5;
   pointer-events: none;
   visibility: hidden;
@@ -688,22 +693,22 @@ body {
 
 .review-card[data-role="next"] {
   opacity: 0;
-  transform: translate3d(-24px, 0, 0) scale(0.96);
-  filter: blur(2px);
+  transform: translate3d(-30px, 0, 0) scale(0.95);
+  filter: blur(3px);
   z-index: 5;
   pointer-events: none;
   visibility: hidden;
 }
 
-/* Foreground Botanical Parallax Layer (Tuned for Zero Text Collision) */
+/* Foreground Botanical Parallax Layer (Positioned unobtrusively in the background depth) */
 .reviews-fg-container {
   position: absolute;
-  bottom: -40px;
-  left: -20px;
-  width: clamp(180px, 20vw, 300px);
+  top: 10%;
+  left: 2%;
+  width: clamp(140px, 16vw, 240px);
   pointer-events: none;
-  z-index: 3;
-  opacity: 0.50;
+  z-index: 2;
+  opacity: 0.35;
   will-change: transform;
   transform: translate3d(0, var(--reviews-fg-y, 0px), 0);
   transition: transform 0.12s linear;
@@ -711,17 +716,16 @@ body {
 
 @media (max-width: 1023px) {
   .reviews-fg-container {
-    top: 10px;
-    left: -20px;
-    bottom: auto;
-    width: 130px;
-    opacity: 0.20;
+    top: 5%;
+    left: -15px;
+    width: 110px;
+    opacity: 0.18;
   }
 }
 
 [dir="ltr"] .reviews-fg-container {
   left: auto;
-  right: -20px;
+  right: 2%;
   transform: scaleX(-1) translate3d(0, var(--reviews-fg-y, 0px), 0);
 }
 
