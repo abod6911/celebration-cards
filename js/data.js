@@ -1,5 +1,5 @@
 /**
- * MANDELINE (مندلين) — Central Data & Localization Architecture
+ * MANDELINE / MEDELLIN (ميديلين) — Central Data & Localization Architecture
  * Complete Business Information, Floral Hero Scenes, Collections, Occasions, Real Customer Reviews & Bilingual Dictionaries
  */
 
@@ -65,6 +65,8 @@ window.MandelineData = {
       id: "romance",
       titleAr: "ذكرى وحب",
       titleEn: "Anniversary & Romance",
+      countAr: "12 باقة متوفرة",
+      countEn: "12 Curated Bouquets",
       descAr: "تنسيقات رومانسية ساحرة من ورود الجاردن والبيوني لتوثيق أصدق المشاعر.",
       descEn: "Enchanting romantic arrangements of heirloom garden roses and peonies.",
       image: "assets/images/occasion-romance.jpg",
@@ -75,6 +77,8 @@ window.MandelineData = {
       id: "celebration",
       titleAr: "تهنئة وتخرج",
       titleEn: "Celebrations & Milestones",
+      countAr: "8 باقات متوفرة",
+      countEn: "8 Exclusive Designs",
       descAr: "باقات مبهجة تفيض فخامة وأناقة لتشارك أحبابك أجمل لحظات نجاحهم.",
       descEn: "Vibrant and lavish bouquets crafted to celebrate triumphs and milestones.",
       image: "assets/images/occasion-celebration.jpg",
@@ -85,6 +89,8 @@ window.MandelineData = {
       id: "gratitude",
       titleAr: "شكر وتقدير",
       titleEn: "Gratitude & Appreciation",
+      countAr: "10 باقات متوفرة",
+      countEn: "10 Refined Gestures",
       descAr: "هدية تعبر عن الامتنان بأرقى لغة نباتية وألوان هادئة تأسر القلوب.",
       descEn: "Refined floral gestures expressing profound gratitude in serene palettes.",
       image: "assets/images/occasion-gratitude.jpg",
@@ -95,6 +101,8 @@ window.MandelineData = {
       id: "bespoke",
       titleAr: "تنسيق ومناسبات خاصة",
       titleEn: "VIP Bespoke & Events",
+      countAr: "تصاميم معمارية خاصة",
+      countEn: "Architectural Installations",
       descAr: "تصاميم معمارية استثنائية للمجالس الفاخرة، وحفلات الاستقبال والزفاف في جدة.",
       descEn: "Sculptural architectural floral installations for luxury receptions in Jeddah.",
       image: "assets/images/occasion-bespoke.jpg",
@@ -117,6 +125,14 @@ window.MandelineData = {
       image: "assets/images/collection-roses.jpg",
       tagAr: "الأكثر طلباً",
       tagEn: "Bestseller",
+      stemCountAr: "28 زهرة جاردن وبيوني نادر",
+      stemCountEn: "28 Heirloom Garden Stems",
+      originAr: "استيراد مباشر من كولومبيا وهولندا",
+      originEn: "Direct Import: Colombia & Holland",
+      fragranceAr: "عطر وردي كلاسيكي ناعم ومهدئ",
+      fragranceEn: "Subtle Classic English Rose Fragrance",
+      dimensionsAr: "ارتفاع 50 سم × عرض 40 سم",
+      dimensionsEn: "Height 50cm × Width 40cm",
       detailsAr: "تنسيق يدوي آسر يجمع أجود ورود الجاردن المورقة والبيوني الوردي والرانوكولاس مع تغليف كريمي فاخر وشريط حرير عاجي متدفق.",
       detailsEn: "An iconic hand-tied bouquet featuring lush David Austin garden roses, blush peonies, and ranunculus wrapped in matte cream paper."
     },
@@ -133,6 +149,14 @@ window.MandelineData = {
       image: "assets/images/collection-burgundy.jpg",
       tagAr: "إصدار مسائي حصري",
       tagEn: "Evening Noir",
+      stemCountAr: "22 زهرة كالا وكابتشينو فاخرة",
+      stemCountEn: "22 Dark Calla & Cappuccino Stems",
+      originAr: "مزارع هولندا وجبال الأنديز",
+      originEn: "Netherlands & Andes Mountain Farms",
+      fragranceAr: "نفحات عشبية مخملية عميقة ودافئة",
+      fragranceEn: "Warm Velvet & Deep Earthy Notes",
+      dimensionsAr: "ارتفاع 45 سم × عرض 35 سم",
+      dimensionsEn: "Height 45cm × Width 35cm",
       detailsAr: "تحفة نحتية عميقة بدرجات البرغندي المخملي والكابتشينو داخل فازة سيراميكية أثرية تضفي لمسة فندقية فاخرة على أي ركن.",
       detailsEn: "A deep, sculptural floral statement in a handcrafted fluted bronze vessel, featuring dark burgundy calla and cappuccino blooms."
     },
@@ -149,6 +173,14 @@ window.MandelineData = {
       image: "assets/images/collection-orchids.jpg",
       tagAr: "فخامة كلاسيكية",
       tagEn: "Signature Luxury",
+      stemCountAr: "شلال 6 فروع أوركيد ملكي + 15 تيوليب",
+      stemCountEn: "6 Royal Orchid Sprays + 15 Tulips",
+      originAr: "مزارع تايلاند وهولندا الفاخرة",
+      originEn: "Thailand & Royal Dutch Greenhouses",
+      fragranceAr: "نقاء عطري زهري منعش وخفيف",
+      fragranceEn: "Pristine Crisp Floral Scent",
+      dimensionsAr: "ارتفاع 65 سم × عرض 50 سم",
+      dimensionsEn: "Height 65cm × Width 50cm",
       detailsAr: "شلال من زهور الأوركيد البيضاء النقية مع الهيدرانجيا وتيوليب الشمبانيا في فازة زجاجية كريستالية مضلعة تشع نقاءً وبهاءً.",
       detailsEn: "A grand cascading arrangement of pristine white Phalaenopsis orchids and champagne tulips in an artisanal crystal urn."
     },
@@ -165,12 +197,68 @@ window.MandelineData = {
       image: "assets/images/collection-bespoke.jpg",
       tagAr: "خدمة VIP",
       tagEn: "VIP Concierge",
+      stemCountAr: "أكثر من 500 زهرة طازجة يتم اختيارها خصيصاً",
+      stemCountEn: "500+ Fresh Stems Custom Selected",
+      originAr: "شحنات طازجة خاصة للمناسبة",
+      originEn: "Dedicated Direct Harvest Airfreight",
+      fragranceAr: "عبير حدائقي فواح يملأ المكان",
+      fragranceEn: "Opulent Ambient Floral Atmosphere",
+      dimensionsAr: "تنسيق مخصص حسب مساحة القاعة أو الفيلا",
+      dimensionsEn: "Tailored to Venue & Villa Architecture",
       detailsAr: "فريق ميديلين الهندسي يصمم ديكورات زهرية غامرة تحول مساحات الأفراح والمؤتمرات الكبرى في جدة إلى واحة ملكية خيالية.",
       detailsEn: "Our floral architects conceptualize and construct bespoke floral installations, transforming luxury venues in Jeddah."
     }
   ],
 
-  // Dedicated Real Customer Feedback Model (Strictly Verified, No Fabricated Ratings)
+  // Instagram UGC Moments Gallery (#MedellinMoments)
+  ugcMoments: [
+    {
+      id: "ugc-1",
+      handle: "@nora_alotaibi",
+      locationAr: "جدة · حي الشاطئ",
+      locationEn: "Jeddah · Al Shati",
+      captionAr: "أجمل هدية وصلتني في ذكرى زواجنا.. تفاصيل التغليف تفوق الخيال 🤍✨",
+      captionEn: "The most exquisite anniversary gift. The craftsmanship is pure poetry 🤍✨",
+      image: "assets/images/occasion-romance.jpg",
+      tagAr: "ذكرى زواج",
+      tagEn: "Anniversary"
+    },
+    {
+      id: "ugc-2",
+      handle: "@dr_faisal_k",
+      locationAr: "جدة · حي الروضة",
+      locationEn: "Jeddah · Al Rawdah",
+      captionAr: "شكراً بوتيك ميديلين على سرعة التوصيل والإتقان الفندقي لسنتربيس المجلس 🌿",
+      captionEn: "Thank you Medellin for the 2-hour express delivery and hotel-grade elegance 🌿",
+      image: "assets/images/collection-orchids.jpg",
+      tagAr: "ضيافة خاصة",
+      tagEn: "VIP Reception"
+    },
+    {
+      id: "ugc-3",
+      handle: "@lama.weddings",
+      locationAr: "جدة · فندق بارك حياة",
+      locationEn: "Jeddah · Park Hyatt",
+      captionAr: "مدخل القاعة مع شلالات ورد ميديلين كان حديث كل الحضور بلا استثناء 🕊️",
+      captionEn: "The grand floral arch transformed the ballroom into a dreamlike sanctuary 🕊️",
+      image: "assets/images/collection-bespoke.jpg",
+      tagAr: "حفل زفاف",
+      tagEn: "Royal Wedding"
+    },
+    {
+      id: "ugc-4",
+      handle: "@sara_alghalib",
+      locationAr: "جدة · برج الماسة",
+      locationEn: "Jeddah · Diamond Tower",
+      captionAr: "الورد نضر جداً ورائحته الطبيعية تملأ المكان.. احترافية نفتخر فيها بجدة!",
+      captionEn: "Unbelievable freshness and natural fragrance. Proud to have this in Jeddah!",
+      image: "assets/images/collection-roses.jpg",
+      tagAr: "باقة إهداء",
+      tagEn: "Gift Bouquet"
+    }
+  ],
+
+  // Real Customer Reviews
   customerReviews: [
     {
       id: "review-01",
@@ -225,44 +313,55 @@ window.MandelineData = {
         reviews: "قالوا عنا",
         atelier: "عن ميديلين",
         contact: "تواصل معنا",
-        orderNow: "اطلب الآن"
+        orderNow: "احجز تنسيقك",
+        wishlist: "المفضلة"
       },
       hero: {
         eyebrow: "ميديلين · أتيليه الزهور الفاخرة · جدة",
         words: ["زهور", "تبقى", "في", "الذاكرة"],
-        supporting: "أخبرنا بالمناسبة والميزانية، ونحن نعتني بالباقي لنصنع من الورد لحظة لا تُنسى.",
-        ctaExplore: "اكتشف التشكيلات",
-        ctaWhatsapp: "اطلب عبر واتساب",
+        supporting: "أخبرنا بالمناسبة والميزانية، ونحن نعتني بالباقي لنصنع من الورد لحظة إنسانية خالدة.",
+        ctaExplore: "استكشف المجموعات",
+        ctaWhatsapp: "تحدث مع المنسق الخاص",
         slideIndicator: "التنسيق"
       },
-      marquee: [
-        "ورد للمناسبات الراقية",
-        "هدية فاخرة بلا حيرة",
-        "تنسيق حسب ميزانيتك وذوقك",
-        "ميديلين جدة — صياغة المشاعر بأناقة",
-        "توصيل فوري مبرد ومحكم"
+      trustBadges: [
+        {
+          icon: "truck",
+          title: "توصيل فوري خلال ساعتين",
+          desc: "سيارات مبردة مخصصة تغطي كافة أحياء جدة"
+        },
+        {
+          icon: "flower-2",
+          title: "استيراد يومي نضر",
+          desc: "من نخبة مزارع هولندا والإكوادور وكينيا"
+        },
+        {
+          icon: "gift",
+          title: "تغليف إهداء فاخر",
+          desc: "ورق مخملي مات مع شريط حريري وكرت قطني"
+        },
+        {
+          icon: "shield-check",
+          title: "ضمان الجودة والنضارة 100%",
+          desc: "معاينة صور التنسيق عبر واتساب قبل التوصيل"
+        }
       ],
       occasionsSec: {
         eyebrow: "اختر حسب النية والمناسبة",
         title: "ما هي مناسبتك القادمة؟",
-        subtitle: "صممنا مجموعات متخصصة تناسب كل لحظة إنسانية لتجعل إهداءك مؤثراً وراسخاً.",
+        subtitle: "صممنا مجموعات متخصصة تناسب كل لحظة إنسانية لتجعل إهداءك مؤثراً وراسخاً في الذاكرة.",
         selectCta: "اختر هذه المناسبة"
       },
       collectionsSec: {
         eyebrow: "إبداعات الأتيليه",
         title: "تشكيلات ميديلين المختارة",
-        subtitle: "زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تنسق بشغف ودقة فنية.",
+        subtitle: "زهور مستوردة نضرة يومياً من أرقى المزارع العالمية، تنسق بشغف ودقة فنية استثنائية.",
         filterAll: "الكل",
         filterBouquets: "باقات الإهداء",
         filterVases: "فازات وسنتربيس",
         filterEvents: "مناسبات خاصة",
         orderItem: "طلب هذا التنسيق",
-        viewDetails: "عرض التفاصيل"
-      },
-      editorialMoment: {
-        eyebrow: "فلسفة الجمال والندرة",
-        title: "كل بتلة تروي قصة لا تتكرر",
-        subtitle: "ننتقي أندر السلالات النباتية لنقدم لك قطعة فنية حية تحاكي ذوقك الرفيع في جدة."
+        viewDetails: "تفاصيل الباقة ⤢"
       },
       stepsSec: {
         eyebrow: "سلاسة وفخامة",
@@ -275,26 +374,20 @@ window.MandelineData = {
         step3Title: "3. توصيل فوري أنيق",
         step3Desc: "سيارات مبردة مخصصة تضمن وصول الزهور بنضارتها التامة في الموعد المحدد."
       },
-      reviewsSec: {
-        eyebrow: "انطباعات وتجارب حقيقية",
-        title: "قالوا عن ميديلين",
-        subtitle: "آراء عملائنا هي أجمل جزء من كل هدية نجهزها.",
-        ctaHeading: "خلّ هديتك القادمة من ميديلين",
-        ctaSub: "تواصل معنا مباشرة عبر واتساب لنبدأ بتصميم باقتك فوراً",
-        ctaBtn: "اطلب عبر واتساب",
-        verified: "تجربة إهداء موثقة"
-      },
       conciergeSec: {
         eyebrow: "المنسق الشخصي التفاعلي",
-        title: "تبغى شيء مختلف ومخصص؟",
-        subtitle: "حدد تفضيلاتك في ثوانٍ، وسنجهز لك رسالة الطلب مباشرة مع فريق التنسيق في ميديلين.",
-        stepOccasion: "1. ما هي المناسبة؟",
-        stepBudget: "2. الميزانية التقريبية:",
-        stepPalette: "3. درجات الألوان المفضلة:",
-        stepDelivery: "4. موعد التوصيل المطلوب:",
-        stepDeliveryPlaceholder: "مثال: اليوم مساءً / غداً 8 مساءً",
-        stepNote: "5. نص كرت الإهداء (اختياري):",
-        stepNotePlaceholder: "اكتب الكلمات التي ترغب بتضمينها في الكرت الفاخر...",
+        title: "صمم باقتك المخصصة",
+        subtitle: "3 خطوات بصرية سلسة لتحديد تفضيلاتك وسنقوم بتجهيز رسالة طلبك مباشرة مع فريق التنسيق في ميديلين.",
+        step1Label: "1. المناسبة والهدف",
+        step2Label: "2. الميزانية ولوحة الألوان",
+        step3Label: "3. موعد التوصيل وكرت الإهداء",
+        stepOccasion: "اختر مناسبة الإهداء:",
+        stepBudget: "حدد الميزانية التقريبية:",
+        stepPalette: "درجات الألوان المفضلة:",
+        stepDelivery: "موعد التوصيل المطلوب:",
+        stepDeliveryPlaceholder: "مثال: اليوم 8:00 مساءً / غداً بعد الظهر",
+        stepNote: "نص كرت الإهداء الفاخر:",
+        stepNotePlaceholder: "اكتب رسالتك هنا ليتم تضمينها في الكرت الملكي...",
         paletteRomantic: "شامبين ووردي ناعم (Champagne & Blush)",
         paletteVelvet: "برغندي مخملي وداكن (Velvet Burgundy)",
         paletteWhite: "أبيض ملكي وذهبي (Royal White & Gold)",
@@ -303,8 +396,26 @@ window.MandelineData = {
         budgetOption2: "650 ر.س (باقة فاخرة متكاملة)",
         budgetOption3: "1,200 ر.س (فازة ملكية كبيرة)",
         budgetOption4: "تنسيق خاص / ميزانية مفتوحة",
-        submitBtn: "إرسال الطلب لمنسق ميديلين عبر واتساب",
+        nextStepBtn: "المتابعة للخطوة التالية ←",
+        prevStepBtn: "→ الرجوع للخطوة السابقة",
+        submitBtn: "إرسال الطلب المخصص للمنسق عبر واتساب",
+        cardPreviewTitle: "معاينة كرت الإهداء الملكي",
+        cardPlaceholder: "سيتم كتابة رسالتكم هنا بخط عربي أنيق على ورق قطني فاخر...",
         guarantee: "✨ يتم الرد الفوري من المنسق مع إرسال صور الزهور المتاحة للتأكيد قبل التجهيز."
+      },
+      ugcSec: {
+        eyebrow: "لحظات ميديلين في جدة",
+        title: "وثّقوا أجمل اللحظات مع #MedellinMoments",
+        subtitle: "مقتطفات من تجارب عملائنا وحفلات الاستقبال الفاخرة التي زيّناها في عروس البحر الأحمر."
+      },
+      reviewsSec: {
+        eyebrow: "انطباعات وتجارب حقيقية",
+        title: "قالوا عن ميديلين",
+        subtitle: "آراء عملائنا هي أجمل جزء من كل هدية نجهزها.",
+        ctaHeading: "خلّ هديتك القادمة من ميديلين",
+        ctaSub: "تواصل معنا مباشرة عبر واتساب لنبدأ بتصميم باقتك فوراً",
+        ctaBtn: "اطلب عبر واتساب",
+        verified: "تجربة إهداء موثقة"
       },
       atelierSec: {
         eyebrow: "عالم ميديلين",
@@ -332,12 +443,27 @@ window.MandelineData = {
         mapsBtn: "فتح الموقع في خرائط Google",
         whatsappBtn: "محادثة فورية مع المنسق"
       },
+      quickView: {
+        stemCount: "عدد الأغصان والزهور:",
+        origin: "منشأ الاستيراد:",
+        fragrance: "الطابع العطري:",
+        dimensions: "الأبعاد التقريبية:",
+        orderBtn: "طلب هذه الباقة عبر واتساب",
+        closeBtn: "إغلاق"
+      },
+      newsletter: {
+        title: "العضوية الخاصة ودعوات المعاينات الحصرية",
+        sub: "انضم لنخبة عملاء ميديلين لتصلك إشعارات وصول أندر الزهور وتنسيقات المناسبات الخاصة.",
+        placeholder: "أدخل بريدك الإلكتروني...",
+        btn: "انضمام للعضوية",
+        success: "شكراً لانضمامكم لنخبة ميديلين. سنتواصل معكم قريباً ✨"
+      },
       footer: {
         about: "ميديلين — أتيليه الزهور الفاخرة في جدة. نصنع من كل مناسبة ذكرى استثنائية من خلال تنسيقات نباتية ملهمة وتجربة إهداء متكاملة.",
         quickLinks: "روابط سريعة",
         occasions: "المناسبات",
         collections: "التشكيلات",
-        concierge: "المنسق الخاص",
+        concierge: "صمم باقتك",
         reviews: "قالوا عنا",
         contact: "الموقع والتواصل",
         rights: "جميع الحقوق محفوظة © بوتيك ميديلين للزهور 2026."
@@ -352,26 +478,42 @@ window.MandelineData = {
         occasions: "Occasions",
         collections: "Collections",
         experience: "Gifting Experience",
-        concierge: "Bespoke Concierge",
+        concierge: "Bespoke Configurator",
         reviews: "Reviews",
         atelier: "About Medellin",
         contact: "Contact",
-        orderNow: "Order Now"
+        orderNow: "Book Atelier",
+        wishlist: "Wishlist"
       },
       hero: {
         eyebrow: "MEDELLIN · FINE FLORAL ATELIER · JEDDAH",
         words: ["Flowers,", "Made", "to", "Be", "Remembered."],
-        supporting: "Tell us the occasion and your budget. We will craft the quintessential floral gift and deliver it with uncompromised grace.",
+        supporting: "Tell us the occasion and your budget. We craft the quintessential floral gift and deliver it with uncompromised grace across Jeddah.",
         ctaExplore: "Explore Collections",
-        ctaWhatsapp: "Order on WhatsApp",
+        ctaWhatsapp: "Chat with Private Florist",
         slideIndicator: "Arrangement"
       },
-      marquee: [
-        "Flowers for Life's Rare Moments",
-        "Effortless Luxury Gifting",
-        "Curated to Your Budget & Taste",
-        "Medellin Jeddah — Artistry in Every Bloom",
-        "Climate-Controlled Express Delivery"
+      trustBadges: [
+        {
+          icon: "truck",
+          title: "2-Hour Express Delivery",
+          desc: "Climate-controlled delivery across all Jeddah districts"
+        },
+        {
+          icon: "flower-2",
+          title: "Fresh Daily Botanical Import",
+          desc: "Heirloom blooms sourced daily from Holland & Ecuador"
+        },
+        {
+          icon: "gift",
+          title: "Bespoke Velvet Packaging",
+          desc: "Matte imported paper, raw silk ribbons & cotton card"
+        },
+        {
+          icon: "shield-check",
+          title: "100% Quality & Freshness Guarantee",
+          desc: "Live photo preview sent on WhatsApp prior to dispatch"
+        }
       ],
       occasionsSec: {
         eyebrow: "Shop by Intent",
@@ -388,12 +530,7 @@ window.MandelineData = {
         filterVases: "Vases & Centerpieces",
         filterEvents: "Bespoke Events",
         orderItem: "Order This Design",
-        viewDetails: "View Details"
-      },
-      editorialMoment: {
-        eyebrow: "Philosophy of Rare Beauty",
-        title: "Every Petal Articulates a Unique Story",
-        subtitle: "Hand-selecting heirloom botanicals to create living art tailored to your discerning taste in Jeddah."
+        viewDetails: "View Details ⤢"
       },
       stepsSec: {
         eyebrow: "Seamless & Effortless",
@@ -406,26 +543,20 @@ window.MandelineData = {
         step3Title: "3. Express Chilled Delivery",
         step3Desc: "Delivered in climate-controlled vehicles ensuring peak bloom freshness across Jeddah."
       },
-      reviewsSec: {
-        eyebrow: "Client Impressions",
-        title: "WORDS FROM OUR CUSTOMERS",
-        subtitle: "The moments our customers share are part of every arrangement we create.",
-        ctaHeading: "Let Your Next Gift Be From Medellin",
-        ctaSub: "Connect with our floral concierge directly on WhatsApp to craft your bespoke piece.",
-        ctaBtn: "Order via WhatsApp",
-        verified: "Verified Gifting Moment"
-      },
       conciergeSec: {
-        eyebrow: "Interactive Bespoke Concierge",
-        title: "LOOKING FOR SOMETHING BESPOKE?",
-        subtitle: "Set your custom preferences in moments, and we will format your tailored order for instant WhatsApp consultation.",
-        stepOccasion: "1. What is the occasion?",
-        stepBudget: "2. Approximate Budget:",
-        stepPalette: "3. Preferred Color Palette:",
-        stepDelivery: "4. Desired Delivery Date/Time:",
-        stepDeliveryPlaceholder: "e.g., Tonight 8 PM / Tomorrow afternoon",
-        stepNote: "5. Card Message (Optional):",
-        stepNotePlaceholder: "Write the thoughtful words for your luxury gift card...",
+        eyebrow: "Interactive Bespoke Configurator",
+        title: "CUSTOM ARRANGEMENT BUILDER",
+        subtitle: "3 intuitive steps to configure your tailored arrangement with instant WhatsApp direct sync.",
+        step1Label: "1. Occasion & Intent",
+        step2Label: "2. Budget & Palette",
+        step3Label: "3. Delivery & Calligraphy Card",
+        stepOccasion: "Select the Occasion:",
+        stepBudget: "Select Approximate Budget:",
+        stepPalette: "Preferred Color Palette:",
+        stepDelivery: "Desired Delivery Date/Time:",
+        stepDeliveryPlaceholder: "e.g., Tonight 8:00 PM / Tomorrow Afternoon",
+        stepNote: "Luxury Gift Card Message:",
+        stepNotePlaceholder: "Type your heartfelt message for the cotton stationery...",
         paletteRomantic: "Champagne & Soft Blush",
         paletteVelvet: "Velvet Burgundy & Noir",
         paletteWhite: "Royal White & Gold Accents",
@@ -434,8 +565,26 @@ window.MandelineData = {
         budgetOption2: "650 SAR (Grand Statement Bouquet)",
         budgetOption3: "1,200 SAR (Royal Crystal Urn)",
         budgetOption4: "Custom VIP / Open Budget",
-        submitBtn: "Send Custom Request to Concierge on WhatsApp",
+        nextStepBtn: "Continue to Next Step ←",
+        prevStepBtn: "→ Back to Previous Step",
+        submitBtn: "Send Tailored Request to Concierge on WhatsApp",
+        cardPreviewTitle: "Royal Letterpress Card Preview",
+        cardPlaceholder: "Your words will appear here in bespoke typography on cotton paper...",
         guarantee: "✨ Our florist will reply immediately with live photos of today's blooms for your final approval."
+      },
+      ugcSec: {
+        eyebrow: "Medellin Moments in Jeddah",
+        title: "CURATED MOMENTS WITH #MedellinMoments",
+        subtitle: "A visual journal of real celebrations, private receptions, and luxury moments across the Bride of the Red Sea."
+      },
+      reviewsSec: {
+        eyebrow: "Client Impressions",
+        title: "WORDS FROM OUR CUSTOMERS",
+        subtitle: "The moments our customers share are part of every arrangement we create.",
+        ctaHeading: "Let Your Next Gift Be From Medellin",
+        ctaSub: "Connect with our floral concierge directly on WhatsApp to craft your bespoke piece.",
+        ctaBtn: "Order via WhatsApp",
+        verified: "Verified Gifting Moment"
       },
       atelierSec: {
         eyebrow: "The World of Medellin",
@@ -463,12 +612,27 @@ window.MandelineData = {
         mapsBtn: "Open in Google Maps",
         whatsappBtn: "Chat with Concierge"
       },
+      quickView: {
+        stemCount: "Stem & Bloom Count:",
+        origin: "Botanical Origin:",
+        fragrance: "Scent Profile:",
+        dimensions: "Approx. Dimensions:",
+        orderBtn: "Order via WhatsApp",
+        closeBtn: "Close"
+      },
+      newsletter: {
+        title: "VIP Private Previews & Membership",
+        sub: "Join the discerning circle of Medellin patrons for first access to rare seasonal blooms and holiday releases.",
+        placeholder: "Enter your email address...",
+        btn: "Join VIP Circle",
+        success: "Thank you for joining Medellin VIP. We look forward to connecting with you ✨"
+      },
       footer: {
         about: "Medellin — Fine floral boutique in Jeddah. Elevating gifting into an unforgettable emotional experience through intentional botanical design.",
         quickLinks: "Quick Links",
         occasions: "Occasions",
         collections: "Collections",
-        concierge: "Bespoke Concierge",
+        concierge: "Bespoke Configurator",
         reviews: "Customer Words",
         contact: "Location & Contact",
         rights: "All rights reserved © Medellin Floral Boutique 2026."

@@ -974,6 +974,119 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   outline-offset: 3px;
 }
 
+/* ==========================================================================
+   CONFIGURATOR, TRUST BADGES, UGC & TOAST NOTIFICATIONS
+   ========================================================================== */
+
+/* Configurator Step Tabs */
+.config-tab-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.config-tab-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.config-tab-pill.active {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.22) 0%, rgba(0, 0, 0, 0.8) 100%);
+  border-color: #D4AF37;
+  color: #FFFFFF;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+}
+
+/* Configurator Options Cards */
+.config-option-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: all 0.28s var(--ease-premium);
+  cursor: pointer;
+  position: relative;
+  text-align: start;
+}
+
+.config-option-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-2px);
+}
+
+.config-option-card.selected {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(20, 16, 15, 0.9) 100%);
+  border-color: #D4AF37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Trust Badges Bar */
+.trust-badge-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 1.1rem;
+  transition: all 0.3s var(--ease-standard);
+}
+
+.trust-badge-card:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.45);
+  transform: translateY(-2px);
+}
+
+/* UGC Gallery Cards */
+.ugc-card {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #141211;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s var(--ease-premium), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.ugc-card:hover {
+  transform: translateY(-6px);
+  border-color: #D4AF37;
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+}
+
+.ugc-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-premium);
+}
+
+.ugc-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Toast Notifications */
+.luxury-toast {
+  animation: toastSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* Reduced Motion Preferences */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {
