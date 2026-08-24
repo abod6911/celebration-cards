@@ -18,12 +18,12 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
-        react: path.resolve(__dirname, 'react.html'),
       },
     },
   },
   server: {
     port: 3000,
-    open: true,
+    open: false,
+    host: true,
   },
 });

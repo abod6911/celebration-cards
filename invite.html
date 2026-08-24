@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="h-full scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>دعوة زفاف خاصة ومميزة | Wedding Invitation</title>
+
+  <!-- Premium Google Fonts: Amiri, Cairo, Tajawal, IBM Plex Sans Arabic, Playfair Display, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0A2E23',
+            'brand-accent': '#D4AF37',
+          },
+          fontFamily: {
+            arabic: ['Cairo', 'Tajawal', 'sans-serif'],
+            serif: ['Amiri', 'Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'Tajawal', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- QRCode.js Library CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/themes.css">
+</head>
+<body class="min-h-full font-arabic antialiased selection:bg-[#D4AF37]/20 relative flex flex-col justify-between overflow-x-hidden transition-colors duration-500">
+
+  <!-- =================================================================== -->
+  <!-- INTERACTIVE OPENING EXPERIENCE MOUNT (Pointer Gesture / Theme Aware)-->
+  <!-- =================================================================== -->
+  <div id="opening-experience-mount"></div>
+
+  <!-- =================================================================== -->
+  <!-- MAIN RESPONSIVE INVITATION CONTAINER (True Mobile Edge-to-Edge)     -->
+  <!-- =================================================================== -->
+  <main class="w-full max-w-4xl mx-auto px-0 sm:px-6 md:px-8 py-0 sm:py-8 space-y-6 sm:space-y-16" id="guest-invite-mount">
+    <!-- Rendered dynamically by Invitation Script -->
+  </main>
+
+  <!-- =================================================================== -->
+  <!-- FLOATING CONTROLS: LANGUAGE SWITCHER & REPLAY OPENING               -->
+  <!-- =================================================================== -->
+  <div class="fixed bottom-6 left-6 z-40 flex items-center gap-2 pb-safe">
+    <!-- Language Switcher -->
+    <button onclick="toggleGuestLang()" class="px-4 py-2 rounded-full bg-white/90 backdrop-blur-md border border-[#E8E1D5] text-xs font-bold text-slate-800 shadow-lg flex items-center gap-2 hover:bg-white transition hover:scale-105 active:scale-95">
+      <span id="guest-lang-flag">🇬🇧</span>
+      <span id="guest-lang-label">English</span>
+    </button>
+
+    <!-- Subtle Replay Opening Button -->
+    <button onclick="OpeningEngine.replay(document.getElementById('opening-experience-mount'), currentGuest)" title="إعادة عرض الافتتاحية" class="p-2.5 rounded-full bg-white/90 backdrop-blur-md border border-[#E8E1D5] text-slate-700 shadow-lg hover:bg-white transition hover:scale-105 active:scale-95 text-xs">
+      🔄
+    </button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/icons.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/theme-registry.js"></script>
+  <script src="js/video-template-registry.js"></script>
+  <script src="js/section-registry.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/opening-engine.js"></script>
+  <script src="js/rsvp-engine.js"></script>
+
+  <script>
+    let guestLang = 'ar';
+    let currentGuest = null;
+
+    function initGuestPage() {
+      // Parse token from query parameter: ?token=k82f9x or /i/k82f9x
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token') || 'k82f9x';
+      
+      currentGuest = Store.getGuestByToken(token) || Store.state.guests[0];
+
+      // Mount Theme first
+      const theme = ThemeRegistry.getTheme(Store.state.event.activeTheme);
+      ThemeRegistry.applyThemeToElement(document.body, theme.id);
+
+      // Render invitation underneath
+      renderPage();
+      startCountdownTicker();
+
+      // Mount Interactive Opening Experience
+      const openingMount = document.getElementById('opening-experience-mount');
+      if (openingMount) {
+        OpeningEngine.mount(openingMount, currentGuest, Store.state.event.openingStyle || 'video-card');
+      }
+    }
+
+    function dismissEntrance() {
+      const modal = document.getElementById('invitation-entrance-modal');
+      if (modal) {
+        if (currentGuest) {
+          sessionStorage.setItem('quickrsvp_opened_' + currentGuest.token, 'true');
+        }
+        modal.classList.add('entrance-hidden');
+        setTimeout(() => modal.remove(), 800);
+      }
+    }
+
+    function startCountdownTicker() {
+      const targetDate = new Date('2026-10-14T19:30:00').getTime();
+
+      function update() {
+        const now = Date.now();
+        const diff = targetDate - now;
+
+        if (diff <= 0) return;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        const dEl = document.getElementById('cd-days');
+        const hEl = document.getElementById('cd-hours');
+        const mEl = document.getElementById('cd-mins');
+        const sEl = document.getElementById('cd-secs');
+
+        if (dEl) dEl.innerText = days < 10 ? '0' + days : days;
+        if (hEl) hEl.innerText = hours < 10 ? '0' + hours : hours;
+        if (mEl) mEl.innerText = mins < 10 ? '0' + mins : mins;
+        if (sEl) sEl.innerText = secs < 10 ? '0' + secs : secs;
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+
+    function renderPage() {
+      const container = document.getElementById('guest-invite-mount');
+      if (!container || !currentGuest) return;
+
+      const theme = ThemeRegistry.getTheme(Store.state.event.activeTheme);
+      ThemeRegistry.applyThemeToElement(document.body, theme.id);
+
+      container.innerHTML = `
+        <div class="space-y-12 md:space-y-20 animate-fadeIn">
+          ${Store.state.activeBlocks.filter(b => b.enabled !== false).map(blk => {
+            const def = SectionRegistry.get(blk.type);
+            return def ? def.renderGuest(blk.data, currentGuest, guestLang) : '';
+          }).join('')}
+        </div>
+      `;
+
+      // Mount RSVP Engine
+      const rsvpMount = document.getElementById('interactive-rsvp-mount-container');
+      if (rsvpMount) {
+        RsvpEngine.mount(rsvpMount, currentGuest.token);
+      }
+
+      // Mount QR code
+      const qrCanvas = document.getElementById('guest-qrcode-canvas');
+      if (qrCanvas && typeof QRCode !== 'undefined') {
+        qrCanvas.innerHTML = '';
+        new QRCode(qrCanvas, {
+          text: `https://quickrsvp.me/entry/${currentGuest.token}`,
+          width: 140,
+          height: 140,
+          colorDark: '#0A2E23',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      }
+    }
+
+    function toggleGuestLang() {
+      guestLang = guestLang === 'ar' ? 'en' : 'ar';
+      I18n.setLanguage(guestLang);
+      document.getElementById('guest-lang-flag').innerText = guestLang === 'ar' ? '🇬🇧' : '🇸🇦';
+      document.getElementById('guest-lang-label').innerText = guestLang === 'ar' ? 'English' : 'العربية';
+      
+      const openText = document.getElementById('entrance-open-btn-text');
+      if (openText) openText.innerText = guestLang === 'ar' ? 'فتح بطاقة الدعوة' : 'Open Invitation';
+      
+      renderPage();
+    }
+
+    window.downloadIcsCalendar = function() {
+      const icsData = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//QuickRSVP//Wedding Calendar//AR\nBEGIN:VEVENT\nSUMMARY:حفل زفاف مايا & ليام | Wedding of Maya & Liam\nDESCRIPTION:حفل زفاف قاعة القصر الكبير، جدة\nLOCATION:Jeddah, Saudi Arabia\nDTSTART:20261014T163000Z\nDTEND:20261014T213000Z\nEND:VEVENT\nEND:VCALENDAR";
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'wedding_maya_liam.ics';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    };
+
+    window.submitSongRequest = function() {
+      const input = document.getElementById('song-input-title');
+      if (input && input.value) {
+        alert(guestLang === 'ar' ? 'تم إرسال اقتراح الأغنية إلى الـ DJ بنجاح 🎶' : 'Song request sent to the DJ 🎶');
+        input.value = '';
+      }
+    };
+
+    window.openPhotoLightbox = function(url) {
+      window.open(url, '_blank');
+    };
+
+    window.addEventListener('DOMContentLoaded', initGuestPage);
+  </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+/**
+ * QuickRSVP - 5 Luxury Wedding Invitation Themes & Semantic Design Tokens
+ * Scalable Token Architecture controlling Typography, Surfaces, Accents, Spacing, and Motifs
+ */
+
+/* ========================================================================== */
+/* BASE THEME SEMANTIC VARIABLES & INVITATION TOKENS                          */
+/* ========================================================================== */
+:root {
+  --invite-bg: #FAF7F2;
+  --invite-surface: #FFFDF9;
+  --invite-surface-alt: #F3ECE1;
+  --invite-text: #1D2520;
+  --invite-text-muted: #5D6660;
+  --invite-primary: #0A2E23;
+  --invite-accent: #D4AF37;
+  --invite-accent-light: #F6E8B1;
+  --invite-border: rgba(212, 175, 55, 0.35);
+  --invite-card-radius: 24px;
+  --invite-btn-radius: 16px;
+  --invite-heading-font: 'Amiri', 'Playfair Display', 'Cairo', serif;
+  --invite-body-font: 'Tajawal', 'Plus Jakarta Sans', sans-serif;
+  --invite-hero-overlay: linear-gradient(180deg, rgba(10, 46, 35, 0.3) 0%, rgba(10, 46, 35, 0.85) 100%);
+  --invite-ornament-color: #D4AF37;
+}
+
+/* ========================================================================== */
+/* THEME 1: ROYAL ARABIC (الملكي العربي)                                       */
+/* Deep emerald, warm gold, ivory, Diwani/Amiri accents, subtle geometry      */
+/* ========================================================================== */
+[data-theme="royal-arabic"] {
+  --invite-bg: #FAF7F2;
+  --invite-surface: #FFFDF9;
+  --invite-surface-alt: #F3ECE1;
+  --invite-text: #1D2520;
+  --invite-text-muted: #5D6660;
+  --invite-primary: #0A2E23;
+  --invite-accent: #D4AF37;
+  --invite-accent-light: #F6E8B1;
+  --invite-border: rgba(212, 175, 55, 0.35);
+  --invite-card-radius: 28px;
+  --invite-btn-radius: 16px;
+  --invite-heading-font: 'Amiri', 'Cairo', serif;
+  --invite-body-font: 'Tajawal', 'Plus Jakarta Sans', sans-serif;
+  --invite-hero-overlay: linear-gradient(180deg, rgba(10, 46, 35, 0.25) 0%, rgba(10, 46, 35, 0.9) 100%);
+  --invite-ornament-color: #D4AF37;
+  background-color: var(--invite-bg);
+  color: var(--invite-text);
+}
+
+[data-theme="royal-arabic"] .theme-card {
+  background: rgba(255, 253, 249, 0.95);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 15px 35px -8px rgba(10, 46, 35, 0.08), 0 0 1px 1px rgba(212, 175, 55, 0.15);
+}
+
+[data-theme="royal-arabic"] .theme-ornament-divider {
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+}
+
+/* ========================================================================== */
+/* THEME 2: MODERN EDITORIAL (المودرن التحريري)                               */
+/* Off-white, obsidian black, huge whitespace, high-contrast typography       */
+/* ========================================================================== */
+[data-theme="modern-editorial"] {
+  --invite-bg: #F9F9FB;
+  --invite-surface: #FFFFFF;
+  --invite-surface-alt: #F0F1F5;
+  --invite-text: #111827;
+  --invite-text-muted: #6B7280;
+  --invite-primary: #111827;
+  --invite-accent: #374151;
+  --invite-accent-light: #E5E7EB;
+  --invite-border: rgba(17, 24, 39, 0.12);
+  --invite-card-radius: 12px;
+  --invite-btn-radius: 8px;
+  --invite-heading-font: 'Playfair Display', 'IBM Plex Sans Arabic', serif;
+  --invite-body-font: 'IBM Plex Sans Arabic', 'Plus Jakarta Sans', sans-serif;
+  --invite-hero-overlay: linear-gradient(180deg, rgba(17, 24, 39, 0.3) 0%, rgba(17, 24, 39, 0.9) 100%);
+  --invite-ornament-color: #111827;
+  background-color: var(--invite-bg);
+  color: var(--invite-text);
+}
+
+[data-theme="modern-editorial"] .theme-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="modern-editorial"] .theme-ornament-divider {
+  background: linear-gradient(90deg, transparent, #111827, transparent);
+}
+
+/* ========================================================================== */
+/* THEME 3: ROMANTIC GARDEN (الحديقة الرومانسية)                              */
+/* Sage green, blush dusty rose, warm cream, soft botanical vibes             */
+/* ========================================================================== */
+[data-theme="romantic-garden"] {
+  --invite-bg: #F7F6F2;
+  --invite-surface: #FFFFFF;
+  --invite-surface-alt: #EAE7DD;
+  --invite-text: #2C3531;
+  --invite-text-muted: #697470;
+  --invite-primary: #40534C;
+  --invite-accent: #D69E9E;
+  --invite-accent-light: #F7E7E7;
+  --invite-border: rgba(214, 158, 158, 0.35);
+  --invite-card-radius: 32px;
+  --invite-btn-radius: 24px;
+  --invite-heading-font: 'Playfair Display', 'Cairo', serif;
+  --invite-body-font: 'Tajawal', 'Plus Jakarta Sans', sans-serif;
+  --invite-hero-overlay: linear-gradient(180deg, rgba(64, 83, 76, 0.3) 0%, rgba(64, 83, 76, 0.85) 100%);
+  --invite-ornament-color: #D69E9E;
+  background-color: var(--invite-bg);
+  color: var(--invite-text);
+}
+
+[data-theme="romantic-garden"] .theme-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(214, 158, 158, 0.35);
+  box-shadow: 0 12px 30px -8px rgba(64, 83, 76, 0.08);
+}
+
+[data-theme="romantic-garden"] .theme-ornament-divider {
+  background: linear-gradient(90deg, transparent, #D69E9E, transparent);
+}
+
+/* ========================================================================== */
+/* THEME 4: SAUDI ELEGANCE (الفخامة السعودية)                                  */
+/* Warm ivory, camel bronze, desert sand gold, regional refined aesthetics    */
+/* ========================================================================== */
+[data-theme="saudi-elegance"] {
+  --invite-bg: #FAF5EF;
+  --invite-surface: #FFFDFB;
+  --invite-surface-alt: #EFE4D6;
+  --invite-text: #28190E;
+  --invite-text-muted: #68574B;
+  --invite-primary: #482E1D;
+  --invite-accent: #DFBA73;
+  --invite-accent-light: #FCEFD6;
+  --invite-border: rgba(223, 186, 115, 0.4);
+  --invite-card-radius: 24px;
+  --invite-btn-radius: 16px;
+  --invite-heading-font: 'Amiri', 'Cairo', serif;
+  --invite-body-font: 'Tajawal', 'Plus Jakarta Sans', sans-serif;
+  --invite-hero-overlay: linear-gradient(180deg, rgba(72, 46, 29, 0.3) 0%, rgba(72, 46, 29, 0.9) 100%);
+  --invite-ornament-color: #DFBA73;
+  background-color: var(--invite-bg);
+  color: var(--invite-text);
+}
+
+[data-theme="saudi-elegance"] .theme-card {
+  background: rgba(255, 253, 251, 0.96);
+  border: 1px solid rgba(223, 186, 115, 0.4);
+  box-shadow: 0 15px 35px -8px rgba(72, 46, 29, 0.08);
+}
+
+[data-theme="saudi-elegance"] .theme-ornament-divider {
+  background: linear-gradient(90deg, transparent, #DFBA73, transparent);
+}
+
+/* ========================================================================== */
+/* THEME 5: NIGHT CEREMONY (الليلة الساهرة)                                    */
+/* Obsidian midnight navy, glowing champagne gold, celestial cinematic luxury */
+/* ========================================================================== */
+[data-theme="night-ceremony"] {
+  --invite-bg: #0B0F19;
+  --invite-surface: #131A2B;
+  --invite-surface-alt: #1E2840;
+  --invite-text: #FFFFFF;
+  --invite-text-muted: #94A3B8;
+  --invite-primary: #F3CE72;
+  --invite-accent: #E5B84B;
+  --invite-accent-light: #382D12;
+  --invite-border: rgba(243, 206, 114, 0.28);
+  --invite-card-radius: 28px;
+  --invite-btn-radius: 16px;
+  --invite-heading-font: 'Playfair Display', 'Cairo', serif;
+  --invite-body-font: 'Plus Jakarta Sans', 'Tajawal', sans-serif;
+  --invite-hero-overlay: linear-gradient(180deg, rgba(11, 15, 25, 0.4) 0%, rgba(11, 15, 25, 0.95) 100%);
+  --invite-ornament-color: #F3CE72;
+  background-color: var(--invite-bg);
+  color: var(--invite-text);
+}
+
+[data-theme="night-ceremony"] .theme-card {
+  background: rgba(19, 26, 43, 0.88);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(243, 206, 114, 0.28);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="night-ceremony"] .theme-ornament-divider {
+  background: linear-gradient(90deg, transparent, #F3CE72, transparent);
+}
+
+/* ========================================================================== */
+/* FLUID TYPOGRAPHY & LUXURY WEDDING STYLING                                  */
+/* ========================================================================== */
+.wedding-hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  line-height: 1.15;
+  font-family: var(--invite-heading-font);
+}
+
+.wedding-section-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  line-height: 1.25;
+  font-family: var(--invite-heading-font);
+}
+
+.wedding-verse-text {
+  font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+  line-height: 2;
+  font-family: 'Amiri', 'Cairo', serif;
+}
+
+/* ========================================================================== */
+/* LUXURY ENTRANCE REVEAL OVERLAY                                             */
+/* ========================================================================== */
+#invitation-entrance-modal {
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.entrance-hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: scale(1.04) translateY(-10px);
+}

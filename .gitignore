@@ -6,4 +6,5 @@ assets/wedding_sample.mp4
 .DS_Store
 Thumbs.db
 *.log
+temp_video_frames/
 dist/

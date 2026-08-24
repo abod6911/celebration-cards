@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>QuickRSVP — منصة بطاقات دعوات الزفاف الفاخرة</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      font-family: 'Cairo', 'Readex Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0E0B16;
+      color: #1A2E26;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      overflow-x: hidden;
+    }
+    .font-serif {
+      font-family: 'Amiri', 'Playfair Display', serif;
+    }
+    .font-sans {
+      font-family: 'Cairo', 'Readex Pro', sans-serif;
+    }
+    
+    /* Main Outer Frame */
+    .outer-canvas {
+      width: 100%;
+      max-width: 1380px;
+      background: #FAF8F5;
+      border-radius: 44px;
+      box-shadow: 0 25px 80px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.15);
+      padding: 28px 32px 32px 32px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 900px;
+    }
+    @media (max-width: 768px) {
+      .outer-canvas {
+        padding: 16px;
+        border-radius: 28px;
+        min-height: auto;
+      }
+    }
+
+    /* Radar Rings */
+    .radar-rings {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 900px;
+      height: 900px;
+      pointer-events: none;
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(168, 85, 247, 0.18);
+    }
+    .ring-1 { width: 100%; height: 100%; animation: pulseRing 4s infinite alternate; }
+    .ring-2 { width: 78%; height: 78%; }
+    .ring-3 { width: 56%; height: 56%; }
+    .ring-4 { width: 34%; height: 34%; border-color: rgba(168, 85, 247, 0.3); }
+    @keyframes pulseRing {
+      0% { transform: scale(0.98); opacity: 0.5; }
+      100% { transform: scale(1.02); opacity: 1; }
+    }
+
+    /* Top Nav Capsule */
+    .nav-capsule {
+      background: rgba(234, 228, 242, 0.92);
+      backdrop-filter: blur(16px);
+      border-radius: 9999px;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      max-width: 980px;
+      margin: 0 auto 24px auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(192, 132, 252, 0.35);
+      position: relative;
+      z-index: 30;
+      width: 100%;
+    }
+
+    /* Floating Toast Badges */
+    .toast-badge {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(192, 132, 252, 0.35);
+      border-radius: 20px;
+      padding: 14px 18px;
+      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 25;
+      animation: floatToast 5s ease-in-out infinite alternate;
+    }
+    .toast-left { top: 120px; left: 30px; }
+    .toast-right { bottom: 120px; right: 30px; }
+    @media (max-width: 1024px) {
+      .toast-badge { display: none; }
+    }
+    @keyframes floatToast {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    /* 3D Phone Container */
+    .phone-mockup {
+      width: 370px;
+      height: 520px;
+      background: #FAF7F2;
+      border: 10px solid #1C1A27;
+      border-radius: 52px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(168, 85, 247, 0.25);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 0 auto;
+      z-index: 20;
+    }
+    @media (max-width: 480px) {
+      .phone-mockup {
+        width: 100%;
+        max-width: 340px;
+        height: 480px;
+      }
+    }
+
+    /* Bottom Controller Bar */
+    .bottom-controller {
+      background: rgba(26, 22, 43, 0.96);
+      backdrop-filter: blur(16px);
+      border-radius: 9999px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      max-width: 1040px;
+      margin: 20px auto 0 auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: white;
+      position: relative;
+      z-index: 30;
+      width: 100%;
+    }
+
+    /* Buttons & Interactive Elements */
+    .btn-step {
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-step.active {
+      background: #9333EA;
+      color: white;
+      box-shadow: 0 2px 10px rgba(147, 51, 234, 0.4);
+    }
+    .btn-step:hover:not(.active) {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-primary-dark {
+      background: #1A162B;
+      color: white;
+      padding: 12px 26px;
+      border-radius: 9999px;
+      font-weight: 800;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-primary-dark:hover {
+      background: #2E2548;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary-white {
+      background: white;
+      color: #1A2E26;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-secondary-white:hover {
+      background: #FAF7F2;
+      transform: translateY(-2px);
+    }
+
+    .slide-content {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+    .slide-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Luxury Framed Container (Exact Reference UI) -->
+  <div class="outer-canvas">
+    
+    <!-- Background Radar Rings -->
+    <div class="radar-rings">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+      <div class="ring ring-4"></div>
+    </div>
+
+    <!-- 1. TOP NAV CAPSULE -->
+    <header class="nav-capsule">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #9333EA, #4F46E5); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; box-shadow: 0 2px 8px rgba(147, 51, 234, 0.4);">
+          ⚡
+        </div>
+        <span class="font-serif" style="font-size: 18px; font-weight: 900; color: #1A162B;">
+          Quick<span style="color: #9333EA;">RSVP</span>.me
+        </span>
+      </div>
+
+      <nav style="display: flex; align-items: center; gap: 20px; font-size: 12px; font-weight: 700; color: #4B5563;">
+        <span style="cursor: pointer;" onclick="setSlide(1)">المميزات</span>
+        <span style="cursor: pointer;" onclick="setSlide(2)">كيف تعمل الدعوة</span>
+        <span style="cursor: pointer;" onclick="setSlide(3)">المحاكي السينمائي</span>
+        <span style="cursor: pointer;" onclick="setSlide(6)">آراء وتبريكات</span>
+        <span style="cursor: pointer;" onclick="setSlide(4)">الأمان و QR</span>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <a href="quickrsvp_invitation_mobile_fast.html" target="_blank" style="padding: 6px 14px; border-radius: 9999px; background: white; border: 1px solid rgba(192, 132, 252, 0.5); font-size: 11px; font-weight: 700; color: #7E22CE; text-decoration: none; display: flex; align-items: center; gap: 4px;">
+          <span>✨ تجربة حية (Live Demo)</span>
+        </a>
+        <button onclick="setSlide(3)" style="padding: 7px 18px; border-radius: 9999px; background: #1A162B; color: white; font-size: 11px; font-weight: 800; border: none; cursor: pointer;">
+          صمم بطاقتك ↗
+        </button>
+      </div>
+    </header>
+
+    <!-- 2. HERO HEADLINE & ACTIONS -->
+    <div style="text-align: center; max-width: 720px; margin: 0 auto 16px auto; position: relative; z-index: 20;">
+      
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 16px; border-radius: 9999px; background: rgba(243, 232, 255, 0.9); border: 1px solid rgba(216, 180, 254, 0.9); font-size: 11px; font-weight: 700; color: #6B21A8; margin-bottom: 12px;">
+        <span>✨</span>
+        <span>الجيل الجديد من بطاقات دعوات الزفاف الفاخرة</span>
+      </div>
+
+      <h1 class="font-serif" style="font-size: 48px; font-weight: 900; color: #111827; line-height: 1.15; margin-bottom: 12px;">
+        مرحباً بك في <span style="background: rgba(233, 213, 255, 0.9); color: #581C87; padding: 2px 14px; border-radius: 16px; border: 1px solid rgba(216, 180, 254, 0.9); display: inline-block;">QuickRSVP</span>
+      </h1>
+
+      <p style="font-size: 15px; font-weight: 700; color: #374151; margin-bottom: 6px;">
+        أرقى تجربة دعوات رقمية تفاعلية لحفلات الزفاف والمناسبات الخاصة في الخليج.
+      </p>
+
+      <p style="font-size: 12px; color: #6B7280; max-width: 580px; margin: 0 auto 18px auto; line-height: 1.6;">
+        وداعاً لبطاقات الـ PDF الثابتة وفوضى تأكيد الحضور. صمم دعوة زفاف ملكية سينمائية مع مسح QR، وتأكيد الحضور التلقائي عبر واتساب، وتسكين الطاولات.
+      </p>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
+        <button class="btn-primary-dark" onclick="setSlide(3)">
+          <span>احجز بطاقة زفافك @QuickRSVP</span>
+          <span>↗</span>
+        </button>
+        <a href="quickrsvp_invitation_mobile_fast.html" target="_blank" class="btn-secondary-white">
+          <span>📱</span>
+          <span>معاينة دعوة حية (50KB سريع)</span>
+          <span style="font-size: 10px; opacity: 0.6;">[QR Pass]</span>
+        </a>
+      </div>
+
+      <!-- Social Proof -->
+      <div style="display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 11px; color: #4B5563; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; gap: 6px; font-weight: 700;">
+          <span>💍 👑 🌸</span>
+          <span>+12,000 دعوة زفاف مرسلة</span>
+        </div>
+        <div style="color: #D97706; font-weight: 700;">
+          ⭐⭐⭐⭐⭐ <span style="color: #111827;">4.9/5 تقييم العرسان</span>
+        </div>
+        <div style="color: #065F46; font-weight: 700; display: flex; align-items: center; gap: 4px;">
+          <span>🛡️</span>
+          <span>ضمان خصوصية وعدم إزعاج 100%</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. CENTER SHOWCASE STAGE WITH FLOATING TOAST BADGES -->
+    <div style="position: relative; width: 100%; max-width: 820px; margin: 10px auto; display: flex; align-items: center; justify-content: center;">
+      
+      <!-- Left Toast -->
+      <div class="toast-badge toast-left">
+        <div style="width: 36px; height: 36px; border-radius: 12px; background: linear-gradient(135deg, #059669, #0D9488); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+          ✓
+        </div>
+        <div>
+          <div style="font-size: 10px; font-weight: 800; color: #9CA3AF; text-transform: uppercase;">تم تأكيد الحضور (RSVP)</div>
+          <div style="font-size: 12px; font-weight: 800; color: #111827;">سعادة الأستاذ فهد السديري</div>
+          <div style="font-size: 10px; color: #047857; font-weight: 700;">طاولة كبار الشخصيات (VIP 02)</div>
+        </div>
+      </div>
+
+      <!-- Right Toast -->
+      <div class="toast-badge toast-right">
+        <div style="width: 36px; height: 36px; border-radius: 12px; background: linear-gradient(135deg, #9333EA, #4F46E5); color: white; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+          ⚡
+        </div>
+        <div>
+          <div style="font-size: 10px; font-weight: 800; color: #9333EA; text-transform: uppercase;">بوابة الاستقبال الحية</div>
+          <div style="font-size: 12px; font-weight: 800; color: #111827;">تم مسح 142+ بطاقة QR</div>
+          <div style="font-size: 10px; color: #6B7280;">متزامن مع طاقم البوابة 📱</div>
+        </div>
+      </div>
+
+      <!-- 3D Phone Screen -->
+      <div class="phone-mockup">
+        
+        <!-- Dynamic Island -->
+        <div style="width: 90px; height: 20px; background: black; border-radius: 9999px; margin: 8px auto 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 10px;">
+          <div style="width: 6px; height: 6px; background: #9333EA; border-radius: 50%;"></div>
+          <span style="font-size: 8px; font-family: monospace; color: white; font-weight: bold;">QuickRSVP</span>
+        </div>
+
+        <!-- Dynamic Stages Content (01 - 06) -->
+        <div style="padding: 16px; flex: 1; overflow-y: auto;">
+          
+          <!-- Stage 01: Royal Opening -->
+          <div id="stage-1" class="slide-content active" style="text-align: center;">
+            <div style="padding: 24px 16px; border-radius: 24px; color: white; background: linear-gradient(180deg, rgba(14, 11, 22, 0.4) 0%, rgba(14, 11, 22, 0.9) 100%), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80') center/cover; margin-bottom: 12px;">
+              <div style="display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 9999px; background: rgba(255, 255, 255, 0.2); font-size: 9px; font-weight: bold; color: #FDE68A; margin-bottom: 8px;">
+                <span>✨</span>
+                <span>دعوة زفاف خاصة</span>
+              </div>
+              <h3 class="font-serif" style="font-size: 26px; font-weight: 800; margin-bottom: 6px;">مايا & ليام</h3>
+              <div style="width: 40px; height: 2px; background: #FCD34D; margin: 0 auto 8px auto; border-radius: 2px;"></div>
+              <p style="font-size: 11px; opacity: 0.9;">الأربعاء، 14 أكتوبر 2026</p>
+              <p style="font-size: 10px; opacity: 0.7;">قاعة القصر الكبير للمؤتمرات • جدة</p>
+            </div>
+            <div style="padding: 12px; background: white; border-radius: 16px; border: 1px solid rgba(147, 51, 234, 0.15); font-size: 11px;">
+              <div style="font-weight: 800; color: #7E22CE; margin-bottom: 2px;">الافتتاحية السينمائية الملكية</div>
+              <div style="color: #6B7280;">تخصيص فوري لاسم الضيف مع فيديو ترحيبي عالي الدقة.</div>
+            </div>
+          </div>
+
+          <!-- Stage 02: Hanging Card -->
+          <div id="stage-2" class="slide-content" style="text-align: center;">
+            <div id="hanging-box" onclick="toggleHanging()" style="padding: 24px 16px; border-radius: 24px; background: white; border: 2px dashed #9333EA; cursor: pointer; transition: all 0.3s ease; margin-bottom: 12px;">
+              <div style="width: 24px; height: 32px; background: #064E3B; margin: -24px auto 10px auto; border-radius: 0 0 6px 6px; border: 1px solid #FCD34D; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #FCD34D;">
+                🎗️
+              </div>
+              <div class="font-serif" style="font-size: 13px; font-weight: 800; color: #374151; margin-bottom: 4px;">البطاقة الملكية المعلّقة</div>
+              <div id="hanging-title" style="font-size: 15px; font-weight: 800; color: #064E3B; margin-bottom: 4px;">👇 اسحب البطاقة لفتح الدعوة</div>
+              <p id="hanging-desc" style="font-size: 11px; color: #6B7280;">انقر هنا لتجربة السحب الحركي التفاعلي وختم الشمع</p>
+            </div>
+            <div style="padding: 12px; background: white; border-radius: 16px; border: 1px solid rgba(0, 0, 0, 0.08); font-size: 11px; color: #4B5563;">
+              محاكاة فيزيائية واقعية 1:1 لفتح بطاقة الدعوة المعلقة.
+            </div>
+          </div>
+
+          <!-- Stage 03: Smart RSVP -->
+          <div id="stage-3" class="slide-content" style="text-align: center;">
+            <div style="padding: 20px 16px; border-radius: 24px; background: white; border: 1px solid #E9D5FF; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); margin-bottom: 12px;">
+              <div class="font-serif" style="font-size: 13px; font-weight: 800; color: #7E22CE; margin-bottom: 4px;">تأكيد الحضور (Smart RSVP)</div>
+              <div style="font-size: 12px; font-weight: 700; color: #1F2937; margin-bottom: 12px;">هل يسعدنا حضوركم ومشاركتنا الفرحة؟</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <button onclick="confirmRsvp('yes')" style="padding: 10px; border-radius: 12px; background: #064E3B; color: #FEF08A; font-weight: 800; font-size: 11px; border: none; cursor: pointer;">
+                  يشرفني الحضور 🤍
+                </button>
+                <button onclick="confirmRsvp('no')" style="padding: 10px; border-radius: 12px; background: #FFF1F2; color: #9F1239; font-weight: 800; font-size: 11px; border: 1px solid #FECDD3; cursor: pointer;">
+                  أعتذر بلطف 💌
+                </button>
+              </div>
+              <div id="rsvp-status-badge" style="margin-top: 10px; display: none; padding: 8px; border-radius: 10px; background: #ECFDF5; color: #065F46; font-size: 10px; font-weight: 800;">
+                ✓ تم تأكيد حجز مقعدين لعائلتك الكريمة!
+              </div>
+            </div>
+            <div style="padding: 12px; background: white; border-radius: 16px; border: 1px solid rgba(0, 0, 0, 0.08); font-size: 11px; color: #4B5563;">
+              تأكيد فوري يحدّث لوحة تحكم المنظم وعدد المقاعد مباشرة.
+            </div>
+          </div>
+
+          <!-- Stage 04: Gate QR Pass -->
+          <div id="stage-4" class="slide-content" style="text-align: center;">
+            <div style="padding: 20px 16px; border-radius: 24px; background: linear-gradient(135deg, #064E3B, #0F766E); color: white; border: 1px solid rgba(253, 224, 71, 0.4); margin-bottom: 12px;">
+              <div style="font-size: 10px; font-weight: 800; color: #FDE047; letter-spacing: 1px; margin-bottom: 8px;">VIP ENTRY PASS</div>
+              <div style="width: 120px; height: 120px; margin: 0 auto 10px auto; background: white; border-radius: 16px; padding: 10px; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" width="90" height="90" fill="#111827">
+                  <path d="M4 4h6v6H4V4zm2 2v2h2V6H6zm8-2h6v6h-6V4zm2 2v2h2V6h-2zM4 14h6v6H4v-6zm2 2v2h2v-2H6zm10 0h2v2h-2v-2zm-2-2h2v2h-2v-2zm4 4h2v2h-2v-2zm-2 2h2v2h-2v-2zm4-4h2v2h-2v-2zm-4-4h2v2h-2v-2zm2 2h2v2h-2v-2z"/>
+                </svg>
+              </div>
+              <div style="font-size: 13px; font-weight: 800; color: #FEF08A;">هاشم النماري • مقعدين</div>
+              <div style="font-size: 10px; opacity: 0.8; font-family: monospace;">طاولة: VIP 01 • رمز: k82f9x</div>
+            </div>
+            <div style="padding: 12px; background: white; border-radius: 16px; border: 1px solid rgba(0, 0, 0, 0.08); font-size: 11px; color: #4B5563;">
+              مسح ضوئي ذكي عند البوابة يمنع الدخول المكرر.
+            </div>
+          </div>
+
+          <!-- Stage 05: Seating Plan -->
+          <div id="stage-5" class="slide-content" style="text-align: center;">
+            <div style="padding: 20px 16px; border-radius: 24px; background: white; border: 1px solid #E9D5FF; margin-bottom: 12px;">
+              <div class="font-serif" style="font-size: 13px; font-weight: 800; color: #581C87; margin-bottom: 8px;">مخطط وتسكين الطاولات</div>
+              <div style="width: 90px; height: 90px; margin: 0 auto 10px auto; border-radius: 50%; border: 2px dashed #F59E0B; background: #FFFBEB; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <span class="font-serif" style="font-size: 14px; font-weight: 800; color: #064E3B;">طاولة 06</span>
+                <span style="font-size: 9px; color: #6B7280; font-weight: 700;">4 / 8 مقاعد</span>
+              </div>
+              <div style="padding: 8px; background: #F3F4F6; border-radius: 10px; font-size: 11px; font-weight: 700; color: #374151;">
+                عائلة المهندس ريان الغامدي (4 أفراد)
+              </div>
+            </div>
+            <div style="padding: 12px; background: white; border-radius: 16px; border: 1px solid rgba(0, 0, 0, 0.08); font-size: 11px; color: #4B5563;">
+              توزيع سلس وإرسال رسائل واتساب للضيوف بمواقع جلوسهم.
+            </div>
+          </div>
+
+          <!-- Stage 06: Wishes -->
+          <div id="stage-6" class="slide-content" style="text-align: center;">
+            <div style="padding: 20px 16px; border-radius: 24px; background: linear-gradient(135deg, #FFFBEB, #FFFFFF); border: 1px solid #FDE68A; margin-bottom: 12px;">
+              <div class="font-serif" style="font-size: 13px; font-weight: 800; color: #92400E; margin-bottom: 8px;">سجل تهاني وتبريكات الضيوف</div>
+              <div style="padding: 12px; background: white; border-radius: 14px; border: 1px solid #FEF3C7; font-size: 11px; color: #374151; font-style: italic; margin-bottom: 6px;">
+                "ألف مبروك لأجمل عروسين، بارك الله لكما وعليكما وجمع بينكما في خير 🤍"
+              </div>
+              <div style="font-size: 10px; color: #9CA3AF; font-weight: 700;">— هاشم النماري</div>
+            </div>
+            <a href="quickrsvp_invitation_mobile_fast.html" target="_blank" style="display: block; width: 100%; padding: 12px; border-radius: 16px; background: #9333EA; color: white; font-weight: 800; font-size: 12px; text-decoration: none;">
+              افتح الدعوة التفاعلية الكاملة 📱
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Phone Footer Status -->
+        <div style="padding: 10px 16px; background: rgba(255, 255, 255, 0.85); border-top: 1px solid #E5E7EB; display: flex; align-items: center; justify-content: space-between; font-size: 9px; color: #9CA3AF; font-family: monospace;">
+          <span>QuickRSVP Live Studio</span>
+          <span style="color: #059669; font-weight: bold;">● متصل</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 4. BOTTOM FLOATING CONTROLLER BAR (Exact Reference UI) -->
+    <div class="bottom-controller">
+      
+      <!-- Left: View Mode -->
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <button class="btn-step active" id="btn-mode-story" onclick="switchMode('story')">
+          <span>عرض القصة (Storyboard)</span>
+        </button>
+        <button class="btn-step" id="btn-mode-matrix" onclick="switchMode('matrix')">
+          <span>لوحة التحكم (Matrix)</span>
+        </button>
+      </div>
+
+      <!-- Center: Play/Pause and Step Pills -->
+      <div style="display: flex; align-items: center; gap: 6px; overflow-x: auto;">
+        
+        <button onclick="togglePlay()" id="play-btn" style="width: 32px; height: 32px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+          ▶
+        </button>
+
+        <button class="btn-step active" id="pill-1" onclick="setSlide(1)">01 الافتتاحية الملكية</button>
+        <button class="btn-step" id="pill-2" onclick="setSlide(2)">02 البطاقة المعلّقة</button>
+        <button class="btn-step" id="pill-3" onclick="setSlide(3)">03 تأكيد الحضور RSVP</button>
+        <button class="btn-step" id="pill-4" onclick="setSlide(4)">04 مسح الـ QR عند البوابة</button>
+        <button class="btn-step" id="pill-5" onclick="setSlide(5)">05 مخطط الطاولات</button>
+        <button class="btn-step" id="pill-6" onclick="setSlide(6)">06 تهاني وتبريكات</button>
+
+      </div>
+
+      <!-- Right: Counter and Arrows -->
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="font-size: 11px; font-family: monospace; color: rgba(255, 255, 255, 0.7); font-weight: 700;">
+          <span id="slide-num-indicator" style="color: #C084FC; font-weight: 900;">01</span> / 06
+        </div>
+
+        <button onclick="prevSlide()" style="width: 28px; height: 28px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px;">
+          ›
+        </button>
+
+        <button onclick="nextSlide()" style="width: 28px; height: 28px; border-radius: 50%; background: #9333EA; border: none; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px;">
+          ‹
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 6;
+    let isPlaying = false;
+    let playInterval = null;
+
+    function setSlide(n) {
+      currentSlide = n;
+      document.querySelectorAll('.slide-content').forEach(el => el.classList.remove('active'));
+      const activeStage = document.getElementById('stage-' + n);
+      if (activeStage) activeStage.classList.add('active');
+
+      document.querySelectorAll('[id^="pill-"]').forEach((btn, idx) => {
+        if (idx + 1 === n) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      const ind = document.getElementById('slide-num-indicator');
+      if (ind) ind.innerText = (n < 10 ? '0' + n : n);
+    }
+
+    function nextSlide() {
+      setSlide(currentSlide >= totalSlides ? 1 : currentSlide + 1);
+    }
+
+    function prevSlide() {
+      setSlide(currentSlide <= 1 ? totalSlides : currentSlide - 1);
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      const btn = document.getElementById('play-btn');
+      if (isPlaying) {
+        btn.innerText = '⏸';
+        playInterval = setInterval(nextSlide, 4000);
+      } else {
+        btn.innerText = '▶';
+        clearInterval(playInterval);
+      }
+    }
+
+    function toggleHanging() {
+      const box = document.getElementById('hanging-box');
+      const title = document.getElementById('hanging-title');
+      const desc = document.getElementById('hanging-desc');
+      box.style.background = '#FEF3C7';
+      box.style.borderColor = '#F59E0B';
+      title.innerText = '🎉 تم فتح بطاقة الدعوة بنجاح!';
+      desc.innerText = 'أهلاً بك سعادة الأستاذ فهد السديري 🤍';
+    }
+
+    function confirmRsvp(choice) {
+      const badge = document.getElementById('rsvp-status-badge');
+      badge.style.display = 'block';
+      if (choice === 'yes') {
+        badge.style.background = '#ECFDF5';
+        badge.style.color = '#065F46';
+        badge.innerText = '✓ تم تأكيد حجز مقعدين لعائلتك الكريمة!';
+      } else {
+        badge.style.background = '#FFF1F2';
+        badge.style.color = '#9F1239';
+        badge.innerText = 'تم تسجيل اعتذارك مع أطيب التمنيات للعروسين 💌';
+      }
+    }
+
+    function switchMode(mode) {
+      document.getElementById('btn-mode-story').classList.toggle('active', mode === 'story');
+      document.getElementById('btn-mode-matrix').classList.toggle('active', mode === 'matrix');
+      if (mode === 'matrix') {
+        setSlide(5);
+      } else {
+        setSlide(1);
+      }
+    }
+  </script>
+</body>
+</html>

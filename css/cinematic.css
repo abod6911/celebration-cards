@@ -1,0 +1,578 @@
+/* ==========================================================================
+   CELEBRIA — ULTRA-LUXURY CELEBRATION & WEDDING INVITATIONS PLATFORM
+   HIGH-FIDELITY CINEMATIC STAGE & SPATIAL MOTION ENGINE
+   ========================================================================== */
+
+:root {
+  --bg-dark: #070605;
+  --bg-stage: #0c0a08;
+  --bg-card: #14110e;
+  --bg-card-glass: rgba(22, 19, 15, 0.85);
+  
+  --gold-primary: #d4af37;
+  --gold-light: #f5e29f;
+  --gold-dark: #967417;
+  --gold-gradient: linear-gradient(135deg, #ecd58c 0%, #d4af37 50%, #9e7a1c 100%);
+  --gold-glow: rgba(212, 175, 55, 0.35);
+  --gold-border: rgba(212, 175, 55, 0.25);
+  --gold-border-hover: rgba(212, 175, 55, 0.65);
+
+  --emerald-deep: #071912;
+  --burgundy-deep: #2e0d14;
+  --ivory-white: #fdfbf7;
+  --cream-soft: #ede6d8;
+  --text-muted: #968c81;
+
+  --radius-stage: 28px;
+  --radius-card: 20px;
+  --radius-pill: 9999px;
+
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Global resets & luxury typography */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg-dark);
+  color: var(--ivory-white);
+  font-family: 'IBM Plex Sans Arabic', 'Readex Pro', -apple-system, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+[dir="ltr"] body {
+  font-family: 'Plus Jakarta Sans', 'Manrope', -apple-system, sans-serif;
+}
+
+[dir="ltr"] .font-display {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+}
+
+[dir="rtl"] .font-display {
+  font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+}
+
+/* Ambient Stage Background */
+.ambient-stage-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at 50% 12%, rgba(212, 175, 55, 0.12) 0%, rgba(7, 6, 5, 0.98) 70%, #030202 100%);
+  position: relative;
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Presentation Frame */
+.presentation-frame {
+  width: 100%;
+  max-width: 1540px;
+  margin: 0 auto;
+  border-radius: var(--radius-stage);
+  box-shadow: 0 35px 120px -20px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(212, 175, 55, 0.22);
+  background: var(--bg-stage);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Spatial Camera Rig */
+#spatial-camera-rig {
+  width: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1400px;
+}
+
+/* ==========================================================================
+   1. OVERVIEW MOSAIC STYLES (HIGH VISUAL DENSITY)
+   ========================================================================== */
+#mosaic-canvas {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  padding: 32px;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 25, 20, 0.9) 0%, rgba(12, 10, 8, 0.98) 100%);
+  border-radius: var(--radius-stage);
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.8);
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.mosaic-tile {
+  background: linear-gradient(145deg, rgba(26, 22, 18, 0.9) 0%, rgba(14, 12, 10, 0.95) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.4s var(--ease-cinematic), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.mosaic-tile:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 25px 60px rgba(212, 175, 55, 0.2), 0 10px 25px rgba(0,0,0,0.7);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.mosaic-tile-hero { grid-column: span 8; min-height: 390px; }
+.mosaic-tile-preview { grid-column: span 4; min-height: 390px; }
+.mosaic-tile-how { grid-column: span 5; min-height: 310px; }
+.mosaic-tile-benefits { grid-column: span 7; min-height: 310px; }
+.mosaic-tile-typo { grid-column: span 7; min-height: 290px; }
+.mosaic-tile-reviews { grid-column: span 5; min-height: 290px; }
+.mosaic-tile-footer { grid-column: span 12; min-height: 230px; }
+
+.mini-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  background: rgba(212, 175, 55, 0.14);
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  margin-bottom: 12px;
+}
+
+/* ==========================================================================
+   2. HERO SECTION & LUXURY 3D CARD SPECIMEN
+   ========================================================================== */
+.hero-container {
+  min-height: 94vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 90px 24px 70px;
+  overflow: hidden;
+}
+
+.hero-spotlight {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 850px;
+  height: 850px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0.03) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(50px);
+}
+
+.hero-headline {
+  font-size: clamp(2.5rem, 6.4vw, 5.8rem);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F2 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-subtext {
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  line-height: 1.68;
+  color: var(--cream-soft);
+  max-width: 760px;
+  margin: 0 auto 36px;
+  opacity: 0.92;
+  position: relative;
+  z-index: 10;
+}
+
+/* Ultra-Luxury Interactive Invitation Suite Specimen */
+.invitation-suite-wrapper {
+  width: 100%;
+  max-width: 580px;
+  margin: 24px auto 40px;
+  perspective: 1200px;
+  position: relative;
+  z-index: 20;
+}
+
+.invitation-card-specimen {
+  width: 100%;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #1c1814 0%, #0d0b09 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 50px rgba(212, 175, 55, 0.2);
+  padding: 32px 28px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease-cinematic), box-shadow 0.5s ease;
+}
+
+.invitation-card-specimen:hover {
+  transform: translateY(-8px) rotateX(4deg) scale(1.02);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.95), 0 0 70px rgba(212, 175, 55, 0.35);
+}
+
+.card-wax-seal {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #c99718 0%, #805c08 100%);
+  border: 2px solid #f5e29f;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #faf7f2;
+  font-weight: 800;
+  font-family: serif;
+}
+
+.hero-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 38px;
+  background: linear-gradient(135deg, #d4af37 0%, #b89228 100%);
+  color: #070605;
+  font-weight: 800;
+  font-size: 1.1rem;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+  transition: transform 0.3s var(--ease-cinematic), box-shadow 0.3s ease;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hero-cta-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 18px 45px rgba(212, 175, 55, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+}
+
+.hero-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--ivory-white);
+  font-weight: 600;
+  font-size: 1.05rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hero-secondary-btn:hover {
+  background: rgba(212, 175, 55, 0.18);
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   3. "HOW IT WORKS" RIPPLE PULSE SCENE
+   ========================================================================== */
+.ripple-section {
+  padding: 130px 24px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 25, 20, 0.9) 0%, rgba(12, 10, 8, 1) 80%);
+}
+
+.highlight-pill {
+  display: inline-block;
+  padding: 8px 32px;
+  background: linear-gradient(135deg, #d4af37 0%, #c59b27 100%);
+  color: #070605;
+  font-weight: 800;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.55);
+  position: relative;
+  vertical-align: middle;
+  transform-origin: center;
+}
+
+.ripple-origin {
+  position: relative;
+  display: inline-block;
+}
+
+.ripple-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  border-radius: 9999px;
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.ripple-ring-1 { width: 220px; height: 100px; animation: ripple-wave 3.6s infinite var(--ease-soft); }
+.ripple-ring-2 { width: 340px; height: 155px; animation: ripple-wave 3.6s infinite 0.9s var(--ease-soft); }
+.ripple-ring-3 { width: 480px; height: 225px; animation: ripple-wave 3.6s infinite 1.8s var(--ease-soft); }
+.ripple-ring-4 { width: 660px; height: 310px; animation: ripple-wave 3.6s infinite 2.7s var(--ease-soft); }
+
+@keyframes ripple-wave {
+  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.9; }
+  50% { opacity: 0.4; }
+  100% { transform: translate(-50%, -50%) scale(1.7); opacity: 0; }
+}
+
+/* ==========================================================================
+   4. ASYMMETRIC BENTO FEATURE GRID & METRICS
+   ========================================================================== */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  padding: 40px 0 80px;
+  width: 100%;
+}
+
+.bento-card {
+  background: linear-gradient(145deg, rgba(24, 20, 16, 0.85) 0%, rgba(14, 12, 10, 0.95) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.4s var(--ease-cinematic), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.bento-card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.15);
+}
+
+.bento-card-large { grid-column: span 8; min-height: 440px; }
+.bento-card-metric { grid-column: span 4; min-height: 200px; }
+.bento-card-compact { grid-column: span 4; min-height: 280px; }
+.bento-card-wide { grid-column: span 8; min-height: 280px; }
+
+.metric-number {
+  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--gold-primary);
+  font-family: 'Cinzel', 'Cairo', serif;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   5. LARGE TYPOGRAPHY STATEMENT & FLOATING OBJECTS
+   ========================================================================== */
+.statement-scene {
+  padding: 160px 24px;
+  position: relative;
+  text-align: center;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(ellipse at 50% 50%, rgba(35, 29, 22, 0.98) 0%, rgba(12, 10, 8, 1) 75%);
+  overflow: visible;
+}
+
+.statement-text {
+  font-size: clamp(2.6rem, 6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--ivory-white);
+  max-width: 1100px;
+  position: relative;
+  z-index: 10;
+}
+
+.statement-pill {
+  display: inline-block;
+  padding: 4px 32px;
+  background: linear-gradient(135deg, #d4af37 0%, #c59b27 100%);
+  color: #070605;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 45px rgba(212, 175, 55, 0.6);
+  transform: translateY(-4px);
+}
+
+.floating-object {
+  position: absolute;
+  pointer-events: none;
+  z-index: 15;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
+  will-change: transform;
+}
+
+.float-1 { top: 15%; left: 8%; animation: float-drift-1 7s ease-in-out infinite; }
+.float-2 { top: 18%; right: 10%; animation: float-drift-2 8.5s ease-in-out infinite; }
+.float-3 { bottom: 20%; left: 12%; animation: float-drift-3 6.5s ease-in-out infinite; }
+.float-4 { bottom: 15%; right: 12%; animation: float-drift-4 9s ease-in-out infinite; }
+
+@keyframes float-drift-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(12px, -18px, 0) rotate(3deg); }
+}
+
+@keyframes float-drift-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-14px, -15px, 0) rotate(-4deg); }
+}
+
+@keyframes float-drift-3 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(10px, 14px, 0) rotate(2.5deg); }
+}
+
+@keyframes float-drift-4 {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(-12px, 16px, 0) rotate(-3deg); }
+}
+
+/* ==========================================================================
+   6. EDITORIAL TESTIMONIALS & GRAND FOOTER
+   ========================================================================== */
+.testimonial-card {
+  background: linear-gradient(145deg, rgba(22, 19, 15, 0.9) 0%, rgba(13, 11, 9, 0.95) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: var(--radius-card);
+  padding: 36px;
+  position: relative;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
+  transition: transform 0.4s var(--ease-cinematic), border-color 0.4s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.55);
+}
+
+.atelier-footer {
+  background: linear-gradient(180deg, #14110e 0%, #060504 100%);
+  border-top: 1px solid rgba(212, 175, 55, 0.24);
+  padding: 100px 24px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-wordmark {
+  font-size: clamp(3.2rem, 11vw, 10.5rem);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(212, 175, 55, 0.08);
+  text-align: center;
+  line-height: 0.9;
+  user-select: none;
+  margin-top: 40px;
+  pointer-events: none;
+}
+
+/* Header & Controls */
+.glass-header {
+  background: rgba(12, 10, 8, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+.floating-pill-ctrl {
+  background: rgba(20, 17, 14, 0.9);
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  backdrop-filter: blur(14px);
+  color: var(--ivory-white);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.floating-pill-ctrl:hover {
+  background: rgba(212, 175, 55, 0.22);
+  border-color: var(--gold-primary);
+  transform: translateY(-2px);
+}
+
+#scroll-progress-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #d4af37, #fdfbf7, #d4af37);
+  z-index: 100;
+  transform-origin: 0% 50%;
+  transform: scaleX(0);
+}
+
+[dir="rtl"] #scroll-progress-line {
+  transform-origin: 100% 50%;
+}
+
+@media (max-width: 1024px) {
+  .mosaic-tile-hero { grid-column: span 12; }
+  .mosaic-tile-preview { grid-column: span 12; }
+  .mosaic-tile-how { grid-column: span 6; }
+  .mosaic-tile-benefits { grid-column: span 6; }
+  .mosaic-tile-typo { grid-column: span 12; }
+  .mosaic-tile-reviews { grid-column: span 12; }
+  
+  .bento-card-large { grid-column: span 12; }
+  .bento-card-metric { grid-column: span 6; }
+  .bento-card-compact { grid-column: span 6; }
+  .bento-card-wide { grid-column: span 12; }
+}
+
+@media (max-width: 768px) {
+  .presentation-frame { border-radius: 16px; margin: 8px; }
+  #mosaic-canvas { gap: 12px; padding: 16px; }
+  .mosaic-tile-how { grid-column: span 12; }
+  .mosaic-tile-benefits { grid-column: span 12; }
+  .bento-card-metric { grid-column: span 12; }
+  .bento-card-compact { grid-column: span 12; }
+  .hero-container { padding: 60px 16px 40px; min-height: 85vh; }
+  .statement-scene { padding: 100px 16px; min-height: 70vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

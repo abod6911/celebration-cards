@@ -1,0 +1,450 @@
+/**
+ * QuickRSVP - Global SaaS Design System & Styling Architecture V2
+ * Luxury Wedding SaaS: Layered Tonal Surfaces, Refined Spacing, Fluid Typography,
+ * Cinematic Motion System, Ambient Spotlights, and Full-Screen Reception Mode
+ */
+
+:root {
+  /* Surface Tokens */
+  --surface-bg: #FAF7F2;
+  --surface-card: #FFFFFF;
+  --surface-subtle: #F3ECE1;
+  --surface-elevated: #FFFFFF;
+  --surface-sidebar: #FAF7F2;
+  --surface-overlay: rgba(6, 21, 16, 0.65);
+
+  /* Brand Palette */
+  --brand-forest: #0B251D;
+  --brand-primary: #0B251D;
+  --brand-primary-hover: #061812;
+  --brand-accent: #D4AF37;
+  --brand-champagne: #C5A059;
+  --brand-sand: #EFE9DE;
+  --brand-sage: #556B2F;
+  --brand-rose: #9E4759;
+  --brand-gold-glow: rgba(212, 175, 55, 0.2);
+
+  /* Typography & Ink Tokens */
+  --text-ink: #0F172A;
+  --text-body: #334155;
+  --text-muted: #64748B;
+  --text-subtle: #94A3B8;
+
+  /* Borders & Dividers */
+  --border-subtle: #E8E1D5;
+  --border-card: rgba(15, 23, 42, 0.06);
+  --border-focus: #0B251D;
+
+  /* Border Radii */
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+
+  /* SaaS Elevation Shadows */
+  --shadow-subtle: 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-card: 0 4px 16px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --shadow-elevated: 0 20px 40px -8px rgba(15, 23, 42, 0.09), 0 8px 16px -3px rgba(15, 23, 42, 0.04);
+  --shadow-gold: 0 10px 30px -4px rgba(212, 175, 55, 0.3);
+
+  /* Global Motion Tokens */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  --motion-fast: 150ms;
+  --motion-standard: 240ms;
+  --motion-emphasis: 360ms;
+  --motion-cinematic: 650ms;
+}
+
+/* ========================================================================== */
+/* TYPOGRAPHY & RTL LOGICAL FOUNDATION                                        */
+/* ========================================================================== */
+body {
+  background-color: var(--surface-bg);
+  color: var(--text-ink);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-arabic {
+  font-family: 'Cairo', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.font-sans-en {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-serif {
+  font-family: 'Amiri', 'Playfair Display', 'Cairo', serif;
+}
+
+/* Fluid Display Headings */
+.heading-hero {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.heading-section {
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
+  line-height: 1.25;
+}
+
+/* Responsive Adaptive SaaS Container (Up to 1536px on wide displays) */
+.saas-container {
+  width: 100%;
+  max-width: 1536px;
+  margin-inline: auto;
+}
+
+/* Touch Targets Standard */
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* ========================================================================== */
+/* CINEMATIC PAGE TRANSITIONS & AMBIENT MOTION                                */
+/* ========================================================================== */
+@keyframes pageViewEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-view-transition {
+  animation: pageViewEnter var(--motion-standard) var(--ease-spring) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes ambientSpotlight {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(40px, -20px) scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+.ambient-spotlight-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  pointer-events: none;
+  animation: ambientSpotlight 14s ease-in-out infinite alternate;
+}
+
+/* Staggered Content Entrances */
+.stagger-1 { animation: pageViewEnter var(--motion-standard) var(--ease-spring) 40ms forwards; }
+.stagger-2 { animation: pageViewEnter var(--motion-standard) var(--ease-spring) 90ms forwards; }
+.stagger-3 { animation: pageViewEnter var(--motion-standard) var(--ease-spring) 140ms forwards; }
+.stagger-4 { animation: pageViewEnter var(--motion-standard) var(--ease-spring) 190ms forwards; }
+
+/* ========================================================================== */
+/* SAAS TONAL SURFACES & LUXURY PANELS                                        */
+/* ========================================================================== */
+.saas-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--motion-fast) var(--ease-spring),
+              box-shadow var(--motion-fast) var(--ease-spring),
+              border-color var(--motion-fast) var(--ease-spring);
+}
+
+.saas-card:hover {
+  box-shadow: var(--shadow-elevated);
+}
+
+.saas-card-interactive {
+  cursor: pointer;
+}
+
+.saas-card-interactive:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.saas-card-interactive:active {
+  transform: translateY(0);
+}
+
+.saas-surface-subtle {
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-subtle);
+}
+
+.surface-forest-hero {
+  background: linear-gradient(135deg, #0B251D 0%, #061510 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 16px 36px -8px rgba(6, 21, 16, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================================================== */
+/* BUILDER WORKSPACE VIEWPORT STUDIO (3-Column Viewport-Bound Shell)          */
+/* ========================================================================== */
+.builder-workspace-shell {
+  height: calc(100vh - 120px);
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.builder-panel-scroll {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* Creative Canvas Micro-Dot Grid */
+.builder-canvas-backdrop {
+  background-color: #F3EFE6;
+  background-image: radial-gradient(rgba(11, 37, 29, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Refined Device Preview Frames */
+.viewport-mobile {
+  width: 390px !important;
+  max-width: 100%;
+  border-radius: 44px;
+  border: 12px solid #0F172A;
+  box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  background-color: var(--invite-bg, #FAF7F2);
+  position: relative;
+}
+
+.viewport-tablet {
+  width: 768px !important;
+  max-width: 100%;
+  border-radius: 32px;
+  border: 10px solid #0F172A;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  background-color: var(--invite-bg, #FAF7F2);
+}
+
+.viewport-desktop {
+  width: 100% !important;
+  max-width: 1060px;
+  border-radius: 24px;
+  border: 1px solid var(--border-card);
+  box-shadow: 0 15px 35px -8px rgba(15, 23, 42, 0.12);
+  background-color: var(--invite-bg, #FAF7F2);
+}
+
+/* ========================================================================== */
+/* SLIDE-OUT GUEST CRM DRAWER                                                 */
+/* ========================================================================== */
+.drawer-backdrop {
+  background-color: rgba(6, 21, 16, 0.55);
+  backdrop-filter: blur(4px);
+  transition: opacity var(--motion-standard) var(--ease-spring);
+}
+
+.drawer-panel {
+  transform: translateX(100%);
+  transition: transform var(--motion-emphasis) var(--ease-spring);
+}
+
+html[dir="rtl"] .drawer-panel {
+  transform: translateX(-100%);
+}
+
+.drawer-open .drawer-panel {
+  transform: translateX(0) !important;
+}
+
+/* ========================================================================== */
+/* FULL-SCREEN EVENT RECEPTION & SCANNER MODE                                 */
+/* ========================================================================== */
+.reception-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #061510;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================================================================== */
+/* CUSTOM CLEAN SCROLLBARS                                                    */
+/* ========================================================================== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Safe Area Insets */
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+.pt-safe {
+  padding-top: max(1rem, env(safe-area-inset-top));
+}
+
+/* ========================================================================== */
+/* HANGING INVITATION CARD ANIMATIONS & THEME TEXTURES                         */
+/* ========================================================================== */
+
+@keyframes hangingSettle {
+  0% {
+    transform: translateY(-90px) scale(0.96) rotate(-1deg);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(6px) scale(1.01) rotate(0.6deg);
+    opacity: 1;
+  }
+  85% {
+    transform: translateY(-2px) scale(0.995) rotate(-0.3deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes hangingIdleSway {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: rotate(0.75deg) translateY(-1px);
+  }
+  50% {
+    transform: rotate(-0.25deg) translateY(1px);
+  }
+  75% {
+    transform: rotate(-0.75deg) translateY(-0.5px);
+  }
+}
+
+@keyframes hangingIdleSwayCalm {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  50% {
+    transform: rotate(0.4deg) translateY(-0.5px);
+  }
+}
+
+.hanging-card-container {
+  transform-origin: top center;
+  animation: hangingSettle 0.85s var(--ease-spring) forwards;
+  will-change: transform, opacity;
+}
+
+.hanging-card-container.hanging-animated-cinematic {
+  animation: hangingSettle 0.85s var(--ease-spring) forwards,
+             hangingIdleSway 6.5s ease-in-out 0.9s infinite alternate;
+}
+
+.hanging-card-container.hanging-animated-calm {
+  animation: hangingSettle 0.85s var(--ease-spring) forwards,
+             hangingIdleSwayCalm 8s ease-in-out 0.9s infinite alternate;
+}
+
+.hanging-card-container.hanging-animated-static {
+  animation: none;
+}
+
+/* Theme-Specific Ribbon Materials */
+[data-theme="royal-arabic"] .hanging-ribbon {
+  background: linear-gradient(90deg, #041d15, #0A3D2C 40%, #06281d 70%, #031811);
+  border-left: 1px solid rgba(212, 175, 55, 0.6);
+  border-right: 1px solid rgba(212, 175, 55, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="modern-editorial"] .hanging-ribbon {
+  background: #0F172A;
+  width: 2px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="romantic-garden"] .hanging-ribbon {
+  background: linear-gradient(90deg, #3d4a3e, #556B2F 45%, #445445);
+  border-left: 1px solid rgba(232, 208, 153, 0.5);
+  border-right: 1px solid rgba(232, 208, 153, 0.5);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="saudi-elegance"] .hanging-ribbon {
+  background: linear-gradient(90deg, #422817, #5C381E 50%, #3B2212);
+  border-left: 1px solid rgba(212, 175, 55, 0.5);
+  border-right: 1px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="night-ceremony"] .hanging-ribbon {
+  background: linear-gradient(90deg, #090e1f, #151f38 50%, #080c1b);
+  border-left: 1px solid rgba(241, 196, 15, 0.4);
+  border-right: 1px solid rgba(241, 196, 15, 0.4);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Theme-Specific Metallic Eyelet Grommet */
+[data-theme="royal-arabic"] .hanging-grommet {
+  background: radial-gradient(circle, #D4AF37 35%, #997B24 85%, #423207 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.3);
+}
+
+[data-theme="modern-editorial"] .hanging-grommet {
+  background: #0F172A;
+  border: 1.5px solid #64748B;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.6);
+}
+
+[data-theme="romantic-garden"] .hanging-grommet {
+  background: radial-gradient(circle, #E8D099 35%, #B89758 85%, #5E4720 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 2px 5px rgba(0,0,0,0.2);
+}
+
+[data-theme="saudi-elegance"] .hanging-grommet {
+  background: radial-gradient(circle, #C5A059 35%, #8E6D30 85%, #473210 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5), 0 2px 6px rgba(0,0,0,0.25);
+}
+
+[data-theme="night-ceremony"] .hanging-grommet {
+  background: radial-gradient(circle, #F1C40F 35%, #B7950B 85%, #513F04 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.6), 0 0 10px rgba(241, 196, 15, 0.3);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
