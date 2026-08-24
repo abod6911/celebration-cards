@@ -6,13 +6,22 @@
 (function () {
   'use strict';
 
-  window.addEventListener('DOMContentLoaded', () => {
-    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-      setTimeout(initSpatialExperience, 150);
-      return;
+  function safeInit() {
+    try {
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+      initSpatialExperience();
+    } catch (e) {
+      console.warn('Spatial engine init warning:', e);
     }
-    initSpatialExperience();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', safeInit);
+  } else {
+    safeInit();
+  }
 
   function initSpatialExperience() {
     gsap.registerPlugin(ScrollTrigger);
