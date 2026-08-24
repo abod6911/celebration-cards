@@ -1,19 +1,742 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="h-full scroll-smooth">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>QuickRSVP — منصة بطاقات دعوات الزفاف الفاخرة</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>سيليبريا — أتيليه بطاقات ودعوات الاحتفالات الفاخرة | CELEBRIA Luxury Invitations</title>
   
-  <meta name="description" content="منصة تنظيم وإدارة بطاقات دعوات حفلات الزفاف الفاخرة، إدارة الضيوف، التسكين الذكي، التحقق ببوابة الاستقبال ومراسلات واتساب الرسمية." />
-  <meta name="theme-color" content="#0E0B16" />
+  <!-- SEO & Social Meta -->
+  <meta name="description" content="منصة سيليبريا لتصميم بطاقات ودعوات الاحتفالات والأعراس الفاخرة. دعوات رقمية تفاعلية، تأكيد حضور ذكي (RSVP)، باركود دخول VIP، وطباعة مذهبة على ورق قطني فاخر.">
+  <meta property="og:title" content="سيليبريا — أتيليه بطاقات ودعوات الاحتفالات الفاخرة">
+  <meta property="og:description" content="دعوات تُصاغ لتخليد أسعد اللحظات. تجربة سينمائية فريدة لتصميم وإرسال أرقى بطاقات الزفاف والاحتفالات.">
   
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Readex+Pro:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;500;600;700;800;900&family=Cinzel:wght@500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Readex+Pro:wght@300;400;500;600;700&display=swap">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              charcoal: '#070605',
+              espresso: '#0c0a08',
+              dark: '#14110e',
+              gold: '#d4af37',
+              goldLight: '#f5e29f',
+              goldDark: '#967417',
+              emeraldDeep: '#071912',
+              ivory: '#fdfbf7',
+              cream: '#ede6d8',
+              muted: '#968c81',
+              burgundy: '#2e0d14'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <!-- Cinematic Design System Styles -->
+  <link rel="stylesheet" href="./css/cinematic.css">
 </head>
-<body class="h-full bg-[#0E0B16] text-[#1A2E26] font-sans antialiased overflow-x-hidden">
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
+
+<body class="bg-[#070605] text-[#FDFBF7] antialiased selection:bg-[#D4AF37]/30 relative flex flex-col min-h-screen">
+
+  <!-- Top Scroll Progress Line -->
+  <div id="scroll-progress-line"></div>
+
+  <!-- =================================================================== -->
+  <!-- 1. FIXED LUXURY NAVIGATION & CONTROLS                                -->
+  <!-- =================================================================== -->
+  <header class="fixed top-0 inset-x-0 z-50 py-4 px-4 sm:px-8 glass-header transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo & Monogram -->
+      <a href="#hero-section" class="flex items-center gap-3 text-decoration-none group">
+        <div class="w-10 h-10 rounded-full border border-[#D4AF37]/50 flex items-center justify-center bg-[#14110e] shadow-lg group-hover:border-[#D4AF37] transition-all">
+          <span class="text-[#D4AF37] font-bold text-lg font-serif">C</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg tracking-wider text-[#FDFBF7] group-hover:text-[#D4AF37] transition-colors font-display">CELEBRIA</span>
+          <span class="text-[0.68rem] tracking-widest text-[#D4AF37] uppercase" data-i18n="nav_tagline">منصة بطاقات ودعوات الاحتفالات الفاخرة</span>
+        </div>
+      </a>
+
+      <!-- Center Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-[#EDE6D8]">
+        <a href="#hero-section" class="hover:text-[#D4AF37] transition-colors" data-i18n="nav_explore">نماذج البطاقات</a>
+        <a href="#how-it-works" class="hover:text-[#D4AF37] transition-colors" data-i18n="nav_how">كيف تعمل</a>
+        <a href="#bento-section" class="hover:text-[#D4AF37] transition-colors" data-i18n="mosaic_features_label">المزايا الذكية</a>
+        <a href="#testimonials-section" class="hover:text-[#D4AF37] transition-colors" data-i18n="nav_reviews">تجارب أصحاب الحفل</a>
+        <a href="#atelier-footer" class="hover:text-[#D4AF37] transition-colors" data-i18n="nav_contact">تواصل معنا</a>
+      </nav>
+
+      <!-- Right Utility Controls -->
+      <div class="flex items-center gap-3">
+        <!-- Sound Effect Toggle -->
+        <button id="sound-toggle-btn" class="floating-pill-ctrl text-xs py-2 px-3.5" title="تشغيل التأثيرات الصوتية الراقية">
+          <i data-lucide="volume-2" class="w-4 h-4 text-[#D4AF37]" id="sound-icon"></i>
+        </button>
+
+        <!-- Language Switcher (AR/EN) -->
+        <button id="lang-toggle-btn" class="floating-pill-ctrl text-xs py-2 px-4 font-bold text-[#D4AF37] hover:border-[#D4AF37]">
+          English
+        </button>
+
+        <!-- WhatsApp VIP Concierge Button -->
+        <button onclick="openConciergeWhatsApp()" class="hidden sm:inline-flex floating-pill-ctrl text-xs py-2 px-4 bg-[#D4AF37]/10 text-[#D4AF37] border-[#D4AF37]/50 hover:bg-[#D4AF37] hover:text-[#070605] font-bold">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+          <span data-i18n="nav_whatsapp">طلب تصميم خاص</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =================================================================== -->
+  <!-- 2. AMBIENT PRESENTATION STAGE                                       -->
+  <!-- =================================================================== -->
+  <main id="stage-wrapper" class="ambient-stage-wrapper pt-24 pb-16 px-2 sm:px-6">
+    <div class="presentation-frame">
+      
+      <!-- ========================================================= -->
+      <!-- A. OPENING WEBSITE MOSAIC SECTION (0% - 10% SCROLL)       -->
+      <!-- ========================================================= -->
+      <section id="mosaic-overview-section" class="hidden md:block py-10 px-8 relative overflow-hidden bg-gradient-to-b from-[#14110e] to-[#0c0a08]">
+        <div id="mosaic-zoom-hint" class="flex items-center justify-between mb-6 pb-4 border-b border-[#D4AF37]/20">
+          <div class="flex items-center gap-3">
+            <span class="mini-badge" data-i18n="mosaic_title">خريطة المنصة السينمائية</span>
+            <span class="text-xs text-[#EDE6D8]/75">مرر للأسفل للدخول السينمائي إلى عالم بطاقات الاحتفالات</span>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-[#D4AF37] font-semibold animate-pulse">
+            <span>كاميرا التكبير ثلاثية الأبعاد</span>
+            <i data-lucide="zoom-in" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <div id="mosaic-canvas" class="grid grid-cols-12 gap-5 p-8 rounded-3xl bg-[#090706]/95 border border-[#D4AF37]/30 shadow-2xl">
+          
+          <!-- Mosaic Tile 1: Hero Miniature Focus Target -->
+          <div id="opening-hero-tile" class="mosaic-tile mosaic-tile-hero flex flex-col justify-between border-[#D4AF37]/50 shadow-2xl bg-gradient-to-br from-[#1c1813] to-[#0e0c0a]">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="mini-badge" data-i18n="mosaic_hero_label">المدخل الملكي للدعوة</span>
+                <span class="text-[0.65rem] text-[#D4AF37] font-bold border border-[#D4AF37]/30 px-2 py-0.5 rounded-full">VIP RSVP</span>
+              </div>
+              <h3 class="text-2xl font-bold text-[#FDFBF7] mt-2 font-display" data-i18n="hero_h1_1">دعوات تُصاغ لتخليد أسعد اللحظات</h3>
+              <p class="text-xs text-[#EDE6D8]/75 mt-2 line-clamp-2" data-i18n="hero_desc">نبتكر في سيليبريا أرقى بطاقات ودعوات الاحتفالات الرقمية والمطبوعة، بتصاميم ملكية مذهبة وتأكيد حضور ذكي.</p>
+            </div>
+
+            <!-- Mini Rendered Invitation Card Preview inside Tile -->
+            <div class="p-3.5 rounded-xl border border-[#D4AF37]/30 bg-[#070605]/80 my-2 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-[#967417] to-[#f5e29f] flex items-center justify-center text-[#070605] font-bold text-xs shadow">
+                  C
+                </div>
+                <div>
+                  <span class="text-[0.7rem] font-bold text-[#FDFBF7] block">دعوة زفاف آل سعود & آل الشيخ</span>
+                  <span class="text-[0.6rem] text-[#D4AF37]">قصر الضيافة الملكي — تأكيد فوري عبر QR</span>
+                </div>
+              </div>
+              <span class="text-xs text-[#D4AF37] font-bold"><i data-lucide="check-circle" class="w-4 h-4"></i></span>
+            </div>
+
+            <div class="flex items-center justify-between mt-3 pt-3 border-t border-[#D4AF37]/20">
+              <span class="text-xs text-[#D4AF37] font-semibold flex items-center gap-1.5">
+                <i data-lucide="arrow-down-left" class="w-3.5 h-3.5"></i> نقطة ارتكاز التكبير السينمائي
+              </span>
+              <span class="w-3 h-3 rounded-full bg-[#D4AF37] shadow-[0_0_15px_#d4af37]"></span>
+            </div>
+          </div>
+
+          <!-- Mosaic Tile 2: Royal Wedding Preview -->
+          <div class="mosaic-tile mosaic-tile-preview flex flex-col justify-between bg-gradient-to-br from-[#1e1914] to-[#0e0c0a]">
+            <span class="mini-badge">أطقم الأعراس الملكية</span>
+            <div class="p-4 rounded-xl border border-[#D4AF37]/35 bg-[#070605]/70 text-center">
+              <div class="w-8 h-8 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] mx-auto mb-2 text-xs font-bold font-serif">
+                W
+              </div>
+              <span class="text-xs text-[#D4AF37] font-bold block">ROYAL WEDDING SUITE</span>
+              <p class="text-sm font-bold text-[#FDFBF7] mt-1">دعوة زفاف مذهبة بالشمع الملكي</p>
+              <span class="text-[0.65rem] text-[#968C81] mt-2 block">باركود دخول VIP + تأكيد الحضور الفوري</span>
+            </div>
+            <span class="text-[0.7rem] text-[#D4AF37] text-center block">ثيمات حصرية متجددة</span>
+          </div>
+
+          <!-- Mosaic Tile 3: How It Works Miniature -->
+          <div class="mosaic-tile mosaic-tile-how flex flex-col justify-between">
+            <span class="mini-badge" data-i18n="mosaic_how_label">رحلة تصميم البطاقة</span>
+            <div class="text-center py-4">
+              <span class="highlight-pill text-xs">دعوة استثنائية</span>
+              <p class="text-xs text-[#EDE6D8]/80 mt-3">تنسيق مخصص يليق بمقام ضيوفك</p>
+            </div>
+            <div class="flex justify-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-[#D4AF37]/40"></span>
+              <span class="w-2 h-2 rounded-full bg-[#D4AF37]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#D4AF37]/40"></span>
+            </div>
+          </div>
+
+          <!-- Mosaic Tile 4: Benefits & Metrics Miniature -->
+          <div class="mosaic-tile mosaic-tile-benefits flex flex-col justify-between">
+            <span class="mini-badge" data-i18n="mosaic_features_label">المزايا والتقنيات الذكية</span>
+            <div class="grid grid-cols-3 gap-2 text-center my-auto">
+              <div class="p-2.5 rounded-xl bg-[#070605]/70 border border-[#D4AF37]/20">
+                <span class="text-lg font-bold text-[#D4AF37]">100%</span>
+                <span class="text-[0.65rem] text-[#EDE6D8] block mt-0.5">تسليم فوري</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#070605]/70 border border-[#D4AF37]/20">
+                <span class="text-lg font-bold text-[#D4AF37]">3 ث</span>
+                <span class="text-[0.65rem] text-[#EDE6D8] block mt-0.5">سرعة الفتح</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-[#070605]/70 border border-[#D4AF37]/20">
+                <span class="text-lg font-bold text-[#D4AF37]">+50k</span>
+                <span class="text-[0.65rem] text-[#EDE6D8] block mt-0.5">دعوة فاخرة</span>
+              </div>
+            </div>
+            <span class="text-[0.7rem] text-[#968C81] text-center">أعلى معايير الأمان والخصوصية</span>
+          </div>
+
+          <!-- Mosaic Tile 5: Large Typography Miniature -->
+          <div class="mosaic-tile mosaic-tile-typo flex flex-col justify-center items-center text-center bg-gradient-to-br from-[#1a1612] to-[#0e0c0a]">
+            <span class="mini-badge">فلسفة الأناقة</span>
+            <p class="text-base font-bold text-[#FDFBF7] leading-relaxed">
+              الدعوة ليست مجرد كرت — <span class="text-[#D4AF37]">بصمة الفخامة الأولى</span>
+            </p>
+            <span class="text-xs text-[#EDE6D8]/60 mt-2">تخليد اللحظات بأسلوب ملكي</span>
+          </div>
+
+          <!-- Mosaic Tile 6: Testimonials Miniature -->
+          <div class="mosaic-tile mosaic-tile-reviews flex flex-col justify-between">
+            <span class="mini-badge" data-i18n="mosaic_reviews_label">تجارب العملاء</span>
+            <p class="text-xs italic text-[#EDE6D8]/90">"نظام باركود الدخول والبطاقة التفاعلية أبهر كل ضيوف حفل زفافنا..."</p>
+            <div class="flex items-center gap-1 text-[#D4AF37] text-xs">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-[#D4AF37]"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-[#D4AF37]"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-[#D4AF37]"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-[#D4AF37]"></i>
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-[#D4AF37]"></i>
+            </div>
+          </div>
+
+          <!-- Mosaic Tile 7: Grand Footer Miniature -->
+          <div class="mosaic-tile mosaic-tile-footer flex items-center justify-between bg-gradient-to-r from-[#181410] to-[#0a0907]">
+            <div>
+              <span class="mini-badge" data-i18n="mosaic_footer_label">أتيليه البطاقات والدعوات</span>
+              <p class="text-sm font-bold text-[#FDFBF7]">المملكة العربية السعودية والخليج العربي</p>
+            </div>
+            <span class="text-xs text-[#D4AF37] border border-[#D4AF37]/35 px-4 py-1.5 rounded-full font-bold">
+              خدمة مستمرة 24/7
+            </span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================================= -->
+      <!-- B. MAIN LIVE CONTENT FLOW                                 -->
+      <!-- ========================================================= -->
+      <div id="main-content-flow" class="relative">
+
+        <!-- 1. HERO SECTION -->
+        <section id="hero-section" class="hero-container relative border-b border-[#D4AF37]/15">
+          <div class="hero-spotlight"></div>
+
+          <!-- Luxury Top Badge -->
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37]/40 bg-[#14110e]/90 text-[#D4AF37] text-xs font-semibold tracking-widest uppercase mb-8 shadow-md">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span data-i18n="hero_badge">أتيليه بطاقات الزفاف والاحتفالات الفاخرة</span>
+          </div>
+
+          <!-- Staggered Mask Headline -->
+          <h1 class="hero-headline font-display">
+            <span class="hero-reveal-word inline-block" data-i18n="hero_h1_1">دعوات تُصاغ</span><br>
+            <span class="hero-reveal-word inline-block text-[#D4AF37]" data-i18n="hero_h1_2">لتخليد أسعد اللحظات</span>
+          </h1>
+
+          <!-- Hero Editorial Description -->
+          <p class="hero-subtext" data-i18n="hero_desc">
+            نبتكر في سيليبريا أرقى بطاقات ودعوات الاحتفالات الرقمية والمطبوعة، بتصاميم ملكية مذهبة، وتأكيد حضور ذكي (RSVP) عبر واتساب، وباركود دخول VIP مخصص لكل ضيف.
+          </p>
+
+          <!-- Central Master Luxury Invitation Suite Specimen -->
+          <div class="invitation-suite-wrapper">
+            <div class="invitation-card-specimen">
+              
+              <!-- Card Header with Royal Seal & Tag -->
+              <div class="flex items-center justify-between border-b border-[#D4AF37]/30 pb-4 mb-5">
+                <div class="flex items-center gap-3.5">
+                  <div class="card-wax-seal shadow-lg">C</div>
+                  <div class="text-right">
+                    <span class="text-[0.68rem] tracking-widest text-[#D4AF37] font-bold block uppercase">ROYAL INVITATION SUITE</span>
+                    <span class="text-sm text-[#FDFBF7] font-bold" data-i18n="card_preview_title">دعوة زفاف آل سعود & آل الشيخ</span>
+                  </div>
+                </div>
+                <span class="text-[0.68rem] text-[#D4AF37] bg-[#D4AF37]/15 px-3 py-1 rounded-full border border-[#D4AF37]/40 font-bold">بطاقة خاصة VIP</span>
+              </div>
+
+              <!-- Gilded Invitation Body Text -->
+              <div class="text-center py-7 border border-[#D4AF37]/25 rounded-2xl bg-[#080706]/85 my-3 px-6 relative overflow-hidden shadow-inner">
+                <div class="text-xs text-[#D4AF37] tracking-widest mb-2 font-serif">بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</div>
+                <p class="text-base sm:text-lg font-serif font-bold text-[#FDFBF7] leading-relaxed mt-3">
+                  يتشرف الداعون بدعوة سعادتكم الكريمة لحضور حفل الزفاف المبارك
+                </p>
+                <div class="inline-block my-3 px-4 py-1 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-xs text-[#D4AF37] font-semibold" data-i18n="card_preview_date">
+                  الجمعة، 15 شعبان 1448 هـ — قصر الضيافة الملكي
+                </div>
+                <p class="text-xs text-[#EDE6D8]/75 mt-1">حضوركم يزدان به حفلنا ويزيدنا بهجة وسروراً</p>
+              </div>
+
+              <!-- Interactive Card Footer Action -->
+              <div class="flex flex-wrap items-center justify-between pt-4 border-t border-[#D4AF37]/25 mt-4 text-xs gap-2">
+                <span class="text-[#968C81] flex items-center gap-1.5">
+                  <i data-lucide="qr-code" class="w-4 h-4 text-[#D4AF37]"></i> رمز دخول VIP مشفّر لكل ضيف
+                </span>
+                <button onclick="openConciergeWhatsApp('أود طلب بطاقة دعوة زفاف ملكية مخصصة لحفلي.')" class="text-xs font-bold text-[#D4AF37] flex items-center gap-1.5 hover:underline bg-[#D4AF37]/10 px-3 py-1.5 rounded-full border border-[#D4AF37]/30">
+                  <span data-i18n="card_preview_cta">تأكيد الحضور ومسح رمز الدخول</span> <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- CTA Actions -->
+          <div class="flex flex-wrap items-center justify-center gap-4 mt-2">
+            <button onclick="openConciergeWhatsApp()" class="hero-cta-btn">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+              <span data-i18n="hero_cta">صمّم بطاقة دعوتك الآن</span>
+            </button>
+            <a href="#collections-section" class="hero-secondary-btn">
+              <span data-i18n="hero_cta_sec">استكشف تشكيلات البطاقات الملكية</span>
+              <i data-lucide="arrow-down" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </section>
+
+        <!-- 2. "HOW IT WORKS" RIPPLE PULSE SCENE -->
+        <section id="how-it-works" class="ripple-section border-b border-[#D4AF37]/15">
+          <div class="max-w-4xl mx-auto">
+            <p class="text-xs font-bold tracking-widest text-[#D4AF37] uppercase mb-4" data-i18n="how_lead">
+              رحلة دعوة تتجاوز التوقعات
+            </p>
+            
+            <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#FDFBF7] leading-tight my-6 font-display">
+              <span data-i18n="how_phrase_1">نصنع من تفاصيل حفلكم</span><br class="hidden sm:inline">
+              
+              <!-- Highlighted Keyword Pill with Concentric Ripple Waves -->
+              <span class="ripple-origin my-3 inline-block">
+                <span class="highlight-pill text-2xl sm:text-4xl" data-i18n="how_pill">دعوة استثنائية</span>
+                <span class="ripple-ring ripple-ring-1"></span>
+                <span class="ripple-ring ripple-ring-2"></span>
+                <span class="ripple-ring ripple-ring-3"></span>
+                <span class="ripple-ring ripple-ring-4"></span>
+              </span>
+              <br class="hidden sm:inline">
+              <span data-i18n="how_phrase_2">تليق بمقام ضيوفكم</span>
+            </h2>
+
+            <p class="text-base sm:text-lg text-[#EDE6D8]/80 max-w-2xl mx-auto mt-6" data-i18n="how_sub">
+              من الفكرة والخط العربي المذهب، إلى إرسال الدعوات الذكية ومتابعة تأكيد الحضور الفوري لضيوفكم بكل سلاسة وأناقة.
+            </p>
+
+            <!-- 3 Distinct Luxury Steps -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 text-right">
+              <div class="p-6 rounded-2xl bg-[#14110e]/70 border border-[#D4AF37]/25 hover:border-[#D4AF37]/60 transition-all shadow-lg">
+                <div class="w-8 h-8 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] font-bold text-xs mb-3">01</div>
+                <h4 class="text-lg font-bold text-[#FDFBF7]">اختيار الثيم والخطوط المذهبة</h4>
+                <p class="text-xs text-[#968C81] mt-2.5 leading-relaxed">تنسيق رقمي ملكي متناسق مع ألوان القاعة وطابع حفلكم الخاص بدقة بالغة.</p>
+              </div>
+              <div class="p-6 rounded-2xl bg-[#14110e]/70 border border-[#D4AF37]/25 hover:border-[#D4AF37]/60 transition-all shadow-lg">
+                <div class="w-8 h-8 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] font-bold text-xs mb-3">02</div>
+                <h4 class="text-lg font-bold text-[#FDFBF7]">باركود VIP مخصص لكل ضيف</h4>
+                <p class="text-xs text-[#968C81] mt-2.5 leading-relaxed">رابط خاص بكل عائلة أو ضيف يمنع تكرار الحضور ويسهل الاستقبال السريع عند البوابة.</p>
+              </div>
+              <div class="p-6 rounded-2xl bg-[#14110e]/70 border border-[#D4AF37]/25 hover:border-[#D4AF37]/60 transition-all shadow-lg">
+                <div class="w-8 h-8 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 flex items-center justify-center text-[#D4AF37] font-bold text-xs mb-3">03</div>
+                <h4 class="text-lg font-bold text-[#FDFBF7]">تأكيد الحضور اللحظي (RSVP)</h4>
+                <p class="text-xs text-[#968C81] mt-2.5 leading-relaxed">لوحة تحكم مباشرة تعرض المعتذرين والمؤكدين وعدد المرافقين بدقة على مدار الساعة.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 3. ASYMMETRIC BENTO BENEFITS & LIVE METRICS -->
+        <section id="bento-section" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto border-b border-[#D4AF37]/15">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-xs font-bold tracking-widest text-[#D4AF37] uppercase" data-i18n="bento_tag">تقنيات الدعوات الفاخرة</span>
+            <h2 class="text-3xl sm:text-5xl font-bold text-[#FDFBF7] mt-3 font-display" data-i18n="bento_title">
+              لماذا يختار أصحاب الأفراح والمناسبات الراقية منصة سيليبريا؟
+            </h2>
+          </div>
+
+          <div class="bento-grid">
+            
+            <!-- Bento 1: Major Feature Card (8 Cols) -->
+            <div class="bento-card bento-card-large flex flex-col justify-between relative overflow-hidden group bg-gradient-to-br from-[#1a1612] to-[#0d0b09]">
+              <div class="relative z-10">
+                <span class="mini-badge">التقنية الذكية المتكاملة</span>
+                <h3 class="text-2xl sm:text-3xl font-bold text-[#FDFBF7] mt-2" data-i18n="bento_card1_title">بطاقة دعوة تفاعلية وتأكيد حضور ذكي</h3>
+              </div>
+
+              <!-- Interactive Live RSVP Simulator Box -->
+              <div class="my-6 p-6 rounded-2xl bg-[#070605]/80 border border-[#D4AF37]/30 relative z-10 shadow-lg">
+                <div class="flex items-center justify-between text-xs mb-3 text-[#D4AF37] font-semibold">
+                  <span class="flex items-center gap-1.5"><i data-lucide="activity" class="w-4 h-4"></i> تأكيد الحضور المباشر</span>
+                  <span class="px-2.5 py-0.5 rounded-full bg-[#D4AF37]/20 text-[#D4AF37] border border-[#D4AF37]/40 font-bold">LIVE RSVP</span>
+                </div>
+                <div class="w-full bg-[#181512] rounded-full h-2.5 overflow-hidden border border-[#D4AF37]/25">
+                  <div class="bg-gradient-to-r from-[#D4AF37] via-[#F5E29F] to-[#D4AF37] h-full w-[91%] rounded-full animate-pulse"></div>
+                </div>
+                <div class="flex items-center justify-between text-xs text-[#EDE6D8]/85 mt-2.5 font-medium">
+                  <span>تم تأكيد حضور 364 ضيفاً (91%)</span>
+                  <span>المستهدف: 400 ضيف</span>
+                </div>
+              </div>
+
+              <div class="relative z-10 mt-2">
+                <p class="text-sm sm:text-base text-[#EDE6D8]/90 max-w-xl leading-relaxed" data-i18n="bento_card1_desc">
+                  رابط خاص لكل ضيف مع بطاقة تفاعلية سينمائية، تأكيد فوري بالاسم وعدد المرافقين، وموقع القاعة عبر خرائط Google مباشرة.
+                </p>
+                <div class="flex items-center gap-4 mt-6">
+                  <button onclick="openConciergeWhatsApp('أود تجربة لوحة تحكم الدعوات وتأكيد الحضور الذكي.')" class="text-xs font-bold text-[#D4AF37] flex items-center gap-1 hover:underline">
+                    احجز استشارتك مع مصمم الدعوات <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bento 2: Metric Card 1 (4 Cols) -->
+            <div class="bento-card bento-card-metric flex flex-col justify-center items-center text-center">
+              <span class="metric-number counter-val" data-target="100" data-suffix="%">0%</span>
+              <span class="text-sm font-semibold text-[#EDE6D8] mt-2" data-i18n="bento_stat1_label">تسليم فوري ومزامنة فورية للضيوف</span>
+              <span class="text-xs text-[#968C81] mt-1">تحديث لحظي لحالة الاستلام والقراءة</span>
+            </div>
+
+            <!-- Bento 3: Metric Card 2 (4 Cols) -->
+            <div class="bento-card bento-card-compact flex flex-col justify-center items-center text-center">
+              <span class="metric-number counter-val" data-target="3" data-suffix=" ثوانٍ">0</span>
+              <span class="text-sm font-semibold text-[#EDE6D8] mt-2" data-i18n="bento_stat2_label">سرعة فتح بطاقة الدعوة عبر كافة الهواتف</span>
+              <span class="text-xs text-[#968C81] mt-1">متوافقة 100% مع iOS و Android</span>
+            </div>
+
+            <!-- Bento 4: Metric Card 3 (4 Cols) -->
+            <div class="bento-card bento-card-compact flex flex-col justify-center items-center text-center">
+              <span class="metric-number counter-val" data-target="50000" data-prefix="+">0</span>
+              <span class="text-sm font-semibold text-[#EDE6D8] mt-2" data-i18n="bento_stat3_label">بطاقة دعوة فاخرة تم إرسالها</span>
+              <span class="text-xs text-[#968C81] mt-1">أعراس ملكية، حفلات تخرج، ومؤتمرات كبرى</span>
+            </div>
+
+            <!-- Bento 5: Wide Feature Card (8 Cols) -->
+            <div class="bento-card bento-card-wide flex flex-col justify-between relative overflow-hidden group bg-gradient-to-r from-[#1a1612] to-[#0f0d0a]">
+              <div class="relative z-10">
+                <span class="mini-badge">الطباعة والمقتنيات الملموسة</span>
+                <h3 class="text-xl sm:text-2xl font-bold text-[#FDFBF7] mt-2" data-i18n="bento_card4_title">طباعة قطنية فاخرة وختم الشمع الملكي</h3>
+              </div>
+
+              <div class="relative z-10 mt-6">
+                <p class="text-sm text-[#EDE6D8]/85 max-w-lg leading-relaxed" data-i18n="bento_card4_desc">
+                  إمكانية الحصول على نسخ ورقية مطبوعة على ورق قطني إيطالي مذهب مع أختام شمع ملكية مخصصة بحروف العروسين.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 4. LARGE TYPOGRAPHY STATEMENT SCENE WITH FLOATING OBJECTS -->
+        <section id="statement-section" class="statement-scene border-b border-[#D4AF37]/15">
+          
+          <!-- Floating Luxury Invitation Artifacts -->
+          <div class="floating-object float-1">
+            <div class="w-16 h-16 rounded-full border border-[#D4AF37]/45 bg-[#14110e]/95 p-3.5 shadow-2xl backdrop-blur-md flex items-center justify-center">
+              <i data-lucide="feather" class="w-full h-full text-[#D4AF37]"></i>
+            </div>
+          </div>
+
+          <div class="floating-object float-2">
+            <div class="w-14 h-14 rounded-2xl border border-[#D4AF37]/45 bg-[#14110e]/95 p-3 shadow-2xl backdrop-blur-md flex items-center justify-center">
+              <i data-lucide="crown" class="w-full h-full text-[#D4AF37]"></i>
+            </div>
+          </div>
+
+          <div class="floating-object float-3">
+            <div class="w-16 h-16 rounded-full border border-[#D4AF37]/45 bg-[#14110e]/95 p-3.5 shadow-2xl backdrop-blur-md flex items-center justify-center">
+              <i data-lucide="gem" class="w-full h-full text-[#D4AF37]"></i>
+            </div>
+          </div>
+
+          <div class="floating-object float-4">
+            <div class="w-14 h-14 rounded-2xl border border-[#D4AF37]/45 bg-[#14110e]/95 p-3 shadow-2xl backdrop-blur-md flex items-center justify-center">
+              <i data-lucide="mail-check" class="w-full h-full text-[#D4AF37]"></i>
+            </div>
+          </div>
+
+          <!-- Main Large Typography Statement -->
+          <div class="relative z-10 max-w-5xl mx-auto">
+            <span class="mini-badge mb-6">فلسفة الاحتفال</span>
+            
+            <h2 class="statement-text font-display">
+              <span data-i18n="typo_line1">بطاقة الدعوة ليست مجرد كرت</span><br>
+              <span class="statement-pill my-4" data-i18n="typo_pill">بصمة الفخامة الأولى</span><br>
+              <span data-i18n="typo_line2">لأرقى ليالي العمر</span>
+            </h2>
+
+            <p class="text-sm sm:text-base text-[#EDE6D8]/75 max-w-xl mx-auto mt-8 leading-relaxed">
+              إنها أول انطباع يراه ضيوفك عن رقي حفلكم، وصناع الذكريات التي تخلد في أذهانهم قبل أن تبدأ الليلة.
+            </p>
+          </div>
+
+        </section>
+
+        <!-- 5. CURATED CARD SUITES & THEMES SHOWCASE -->
+        <section id="collections-section" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto border-b border-[#D4AF37]/15">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+            <div>
+              <span class="text-xs font-bold tracking-widest text-[#D4AF37] uppercase">أطقم الدعوات الأيقونية</span>
+              <h2 class="text-3xl sm:text-4xl font-bold text-[#FDFBF7] mt-2 font-display">تشكيلات سيليبريا للأعراس والمناسبات</h2>
+            </div>
+            <p class="text-sm text-[#968C81] max-w-md">مجموعات مصممة بأعلى معايير الفخامة لتلائم كافة المناسبات الملكية والخاصة.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Card Theme 1 -->
+            <div class="bento-card flex flex-col justify-between group">
+              <div class="p-6 rounded-2xl border border-[#D4AF37]/35 bg-[#070605] text-center mb-6">
+                <div class="card-wax-seal mx-auto mb-3 shadow">W</div>
+                <span class="text-xs text-[#D4AF37] font-bold">ROYAL WEDDING GOLD</span>
+                <h4 class="text-base font-bold text-[#FDFBF7] mt-2">ثيم الزفاف الملكي المذهب</h4>
+                <p class="text-xs text-[#968C81] mt-2 leading-relaxed">خط عربي كلاسيكي مع إطارات ذهبية بارزة ونظام تأكيد حضور مشفر.</p>
+              </div>
+              <button onclick="openConciergeWhatsApp('أود تصميم دعوة زفاف من ثيم الزفاف الملكي المذهب.')" class="w-full py-3 rounded-full border border-[#D4AF37]/35 text-[#D4AF37] text-xs font-bold hover:bg-[#D4AF37] hover:text-[#070605] transition-all">
+                طلب هذا الثيم
+              </button>
+            </div>
+
+            <!-- Card Theme 2 -->
+            <div class="bento-card flex flex-col justify-between group">
+              <div class="p-6 rounded-2xl border border-[#D4AF37]/35 bg-[#070605] text-center mb-6">
+                <div class="card-wax-seal mx-auto mb-3 shadow">H</div>
+                <span class="text-xs text-[#D4AF37] font-bold">SAUDI HERITAGE GALA</span>
+                <h4 class="text-base font-bold text-[#FDFBF7] mt-2">ثيم الأصالة والتراث النبيل</h4>
+                <p class="text-xs text-[#968C81] mt-2 leading-relaxed">زخارف نجدية وسعودية أصيلة مع درجات الأخضر الملكي والذهب العتيق.</p>
+              </div>
+              <button onclick="openConciergeWhatsApp('أود تصميم دعوة من ثيم الأصالة والتراث النبيل.')" class="w-full py-3 rounded-full border border-[#D4AF37]/35 text-[#D4AF37] text-xs font-bold hover:bg-[#D4AF37] hover:text-[#070605] transition-all">
+                طلب هذا الثيم
+              </button>
+            </div>
+
+            <!-- Card Theme 3 -->
+            <div class="bento-card flex flex-col justify-between group">
+              <div class="p-6 rounded-2xl border border-[#D4AF37]/35 bg-[#070605] text-center mb-6">
+                <div class="card-wax-seal mx-auto mb-3 shadow">E</div>
+                <span class="text-xs text-[#D4AF37] font-bold">BLACK TIE EDITORIAL</span>
+                <h4 class="text-base font-bold text-[#FDFBF7] mt-2">ثيم الإيديتوريال المعاصر</h4>
+                <p class="text-xs text-[#968C81] mt-2 leading-relaxed">تصميم عصري بسيط وعالي الفخامة للمناسبات الراقية وحفلات التخرج.</p>
+              </div>
+              <button onclick="openConciergeWhatsApp('أود تصميم دعوة من ثيم الإيديتوريال المعاصر.')" class="w-full py-3 rounded-full border border-[#D4AF37]/35 text-[#D4AF37] text-xs font-bold hover:bg-[#D4AF37] hover:text-[#070605] transition-all">
+                طلب هذا الثيم
+              </button>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 6. EDITORIAL TESTIMONIALS SCENE -->
+        <section id="testimonials-section" class="py-20 px-4 sm:px-8 max-w-7xl mx-auto">
+          <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="text-xs font-bold tracking-widest text-[#D4AF37] uppercase" data-i18n="testimonials_tag">ثقة نعتز بها</span>
+            <h2 class="text-3xl sm:text-4xl font-bold text-[#FDFBF7] mt-2 font-display" data-i18n="testimonials_title">
+              ماذا يقول أصحاب الأعراس والمناسبات الكبرى؟
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="testimonial-card">
+              <div class="flex items-center gap-1 text-[#D4AF37] mb-4">
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+              </div>
+              <p class="text-sm text-[#EDE6D8] leading-relaxed italic">
+                "الدعوة الرقمية كانت مذهلة وسهلت علينا حصر عدد الحضور تماماً. الضيوف دخلوا القاعة عبر مسح باركود الـ QR بكل فخامة وتنظيم."
+              </p>
+              <div class="mt-6 pt-4 border-t border-[#D4AF37]/20 flex items-center justify-between">
+                <div>
+                  <h4 class="text-sm font-bold text-[#FDFBF7]">فيصل بن منصور</h4>
+                  <span class="text-xs text-[#968C81]">حفل زفاف — الرياض</span>
+                </div>
+                <span class="text-[0.68rem] text-[#D4AF37] bg-[#D4AF37]/15 px-2.5 py-1 rounded-full border border-[#D4AF37]/30">مضيف موثق</span>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="flex items-center gap-1 text-[#D4AF37] mb-4">
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+              </div>
+              <p class="text-sm text-[#EDE6D8] leading-relaxed italic">
+                "تصميم الدعوة بالشمع الملكي والخط العربي نال إعجاب كل العائلة. دعم وتعديل فوري من الفريق على مدار الساعة."
+              </p>
+              <div class="mt-6 pt-4 border-t border-[#D4AF37]/20 flex items-center justify-between">
+                <div>
+                  <h4 class="text-sm font-bold text-[#FDFBF7]">د. ريم المقرن</h4>
+                  <span class="text-xs text-[#968C81]">مناسبة خاصة — جدة</span>
+                </div>
+                <span class="text-[0.68rem] text-[#D4AF37] bg-[#D4AF37]/15 px-2.5 py-1 rounded-full border border-[#D4AF37]/30">مضيف موثق</span>
+              </div>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="flex items-center gap-1 text-[#D4AF37] mb-4">
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-[#D4AF37]"></i>
+              </div>
+              <p class="text-sm text-[#EDE6D8] leading-relaxed italic">
+                "أفضل منصة دعوات تعاملت معها، جمعت بين سرعة الإرسال وفخامة المظهر وتتبع المعتذرين والمؤكدين بدقة."
+              </p>
+              <div class="mt-6 pt-4 border-t border-[#D4AF37]/20 flex items-center justify-between">
+                <div>
+                  <h4 class="text-sm font-bold text-[#FDFBF7]">سلطان الدوسري</h4>
+                  <span class="text-xs text-[#968C81]">حفل تكريم VIP — الخبر</span>
+                </div>
+                <span class="text-[0.68rem] text-[#D4AF37] bg-[#D4AF37]/15 px-2.5 py-1 rounded-full border border-[#D4AF37]/30">مضيف موثق</span>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- 7. GRAND ATELIER FOOTER SCENE -->
+        <footer id="atelier-footer" class="atelier-footer">
+          <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-16 border-b border-[#D4AF37]/20">
+              
+              <div class="md:col-span-2">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-10 h-10 rounded-full border border-[#D4AF37]/50 flex items-center justify-center bg-[#14110e]">
+                    <span class="text-[#D4AF37] font-bold text-lg font-serif">C</span>
+                  </div>
+                  <span class="text-2xl font-bold tracking-wider text-[#FDFBF7] font-display" data-i18n="footer_title">سيليبريا — أتيليه بطاقات الاحتفالات</span>
+                </div>
+                <p class="text-sm text-[#968C81] max-w-md leading-relaxed mt-3" data-i18n="footer_sub">
+                  المملكة العربية السعودية — الرياض / جدة / الخليج العربي. بطاقات ودعوات تُصاغ لتبقى خالدة في الذاكرة.
+                </p>
+                <p class="text-xs text-[#D4AF37] mt-3 font-semibold" data-i18n="footer_hours">
+                  خدمة العملاء ومصممو الدعوات متاحون يومياً على مدار 24 ساعة
+                </p>
+              </div>
+
+              <div>
+                <h4 class="text-sm font-bold text-[#FDFBF7] uppercase tracking-widest mb-4">روابط سريعة</h4>
+                <ul class="space-y-2.5 text-xs text-[#EDE6D8]/80">
+                  <li><a href="#hero-section" class="hover:text-[#D4AF37] transition-colors">المدخل الرئيسي</a></li>
+                  <li><a href="#how-it-works" class="hover:text-[#D4AF37] transition-colors">مراحل تصميم الدعوة</a></li>
+                  <li><a href="#bento-section" class="hover:text-[#D4AF37] transition-colors">المزايا والتقنيات الذكية</a></li>
+                  <li><a href="#collections-section" class="hover:text-[#D4AF37] transition-colors">أطقم الدعوات الأيقونية</a></li>
+                  <li><a href="#testimonials-section" class="hover:text-[#D4AF37] transition-colors">تجارب أصحاب الحفل</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="text-sm font-bold text-[#FDFBF7] uppercase tracking-widest mb-4">خدمة الكونسيرج الخاصة</h4>
+                <p class="text-xs text-[#968C81] mb-4">تواصل مباشرة مع مصمم الدعوات لتخصيص بطاقتك أو طلب عرض سعر لحفل زفافك.</p>
+                <button onclick="openConciergeWhatsApp()" class="w-full py-3.5 px-4 rounded-full bg-gradient-to-r from-[#D4AF37] to-[#B89228] text-[#070605] font-bold text-xs flex items-center justify-center gap-2 hover:scale-[1.02] transition-all shadow-xl">
+                  <i data-lucide="sparkles" class="w-4 h-4"></i>
+                  <span data-i18n="footer_cta">تحدث مع مصمم الدعوات الخاص بك</span>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Grand Footer Wordmark -->
+            <div class="footer-wordmark font-serif">
+              CELEBRIA
+            </div>
+
+            <div class="text-center text-xs text-[#968C81] mt-6" data-i18n="footer_rights">
+              جميع الحقوق محفوظة © منصة سيليبريا لبطاقات الاحتفالات 2026
+            </div>
+          </div>
+        </footer>
+
+      </div>
+      <!-- END MAIN CONTENT FLOW -->
+
+      <!-- ========================================================= -->
+      <!-- C. FINAL PULL-BACK MOSAIC STAGE (90% - 100% SCROLL)       -->
+      <!-- ========================================================= -->
+      <section id="closing-mosaic-stage" class="hidden md:block py-20 px-8 bg-gradient-to-t from-[#070605] to-[#0c0a08] border-t border-[#D4AF37]/25">
+        <div class="text-center mb-8">
+          <span class="mini-badge">الرؤية الشاملة للمنصة</span>
+          <h3 class="text-2xl font-bold text-[#FDFBF7] font-display">خارطة تجربة سيليبريا المتكاملة</h3>
+          <p class="text-xs text-[#968C81] mt-2">انسحاب سينمائي للكاميرا ليكشف العالم الكامل لبطاقات الاحتفالات</p>
+        </div>
+
+        <div id="closing-mosaic-canvas" class="grid grid-cols-12 gap-4 p-8 rounded-3xl bg-[#0B0907]/95 border border-[#D4AF37]/35 shadow-2xl">
+          <div class="col-span-8 p-6 rounded-2xl bg-[#14110E] border border-[#D4AF37]/25 flex items-center justify-between">
+            <div>
+              <span class="text-xs text-[#D4AF37] font-bold">المدخل الملكي</span>
+              <h4 class="text-lg font-bold text-[#FDFBF7] mt-1 font-display">دعوات تُصاغ لتخليد أسعد اللحظات</h4>
+            </div>
+            <a href="#hero-section" class="text-xs font-bold text-[#D4AF37] border border-[#D4AF37]/35 px-4 py-1.5 rounded-full hover:bg-[#D4AF37] hover:text-[#070605] transition-all">العودة للقمة</a>
+          </div>
+          <div class="col-span-4 p-6 rounded-2xl bg-[#14110E] border border-[#D4AF37]/25 text-center">
+            <span class="text-xs text-[#D4AF37] font-bold">مراحل التصميم</span>
+            <p class="text-sm font-bold text-[#FDFBF7] mt-1">صياغة الدعوات الاستثنائية</p>
+          </div>
+          <div class="col-span-4 p-6 rounded-2xl bg-[#14110E] border border-[#D4AF37]/25 text-center">
+            <span class="text-xs text-[#D4AF37] font-bold">السرعة والأمان</span>
+            <p class="text-sm font-bold text-[#FDFBF7] mt-1">100% تسليم فوري | 3 ثوانٍ</p>
+          </div>
+          <div class="col-span-4 p-6 rounded-2xl bg-[#14110E] border border-[#D4AF37]/25 text-center">
+            <span class="text-xs text-[#D4AF37] font-bold">تجارب النخبة</span>
+            <p class="text-sm font-bold text-[#FDFBF7] mt-1">+50,000 دعوة زفاف واحتفال</p>
+          </div>
+          <div class="col-span-4 p-6 rounded-2xl bg-[#14110E] border border-[#D4AF37]/25 text-center">
+            <span class="text-xs text-[#D4AF37] font-bold">أتيليه سيليبريا</span>
+            <p class="text-sm font-bold text-[#FDFBF7] mt-1">المملكة العربية السعودية والخليج</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- =================================================================== -->
+  <!-- 3. FLOATING DIRECT WHATSAPP CONCIERGE CTA                           -->
+  <!-- =================================================================== -->
+  <div class="fixed bottom-6 end-6 z-50">
+    <button onclick="openConciergeWhatsApp()" class="flex items-center gap-3 py-3.5 px-6 rounded-full bg-gradient-to-r from-[#D4AF37] via-[#F5E29F] to-[#B89228] text-[#070605] font-bold text-sm shadow-2xl hover:scale-105 transition-transform duration-300 border border-white/30">
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      <span data-i18n="nav_whatsapp">طلب تصميم فوري عبر واتساب</span>
+    </button>
+  </div>
+
+  <!-- Spatial Motion Engine Initialization -->
+  <script src="./js/spatial-engine.js"></script>
 </body>
 </html>
